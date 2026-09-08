@@ -1,17 +1,17 @@
 ---
-title: Quick start
-description: Start QTable and QTableUI locally with the recommended PostgreSQL development stack.
+title: 快速开始
+description: 使用推荐的 PostgreSQL 开发栈在本地启动 QTable 与 QTableUI。
 ---
 
-The recommended development stack uses **PostgreSQL + Redis + S3-compatible attachment storage**. SQLite is an explicit lightweight fallback, not the normal deployment default.
+推荐开发栈为 **PostgreSQL + Redis + S3 兼容附件存储**。SQLite 是显式的轻量回退方案，不是常规部署默认值。
 
-## Requirements
+## 环境要求
 
-- Python 3.12 recommended for QTable.
-- Node.js 22 for QTableUI.
-- Docker / Docker Compose for PostgreSQL, Redis and MinIO.
+- QTable 推荐 Python 3.12。
+- QTableUI 使用 Node.js 22。
+- 使用 Docker / Docker Compose 启动 PostgreSQL、Redis 与 MinIO。
 
-## 1. Start QTable dependencies
+## 1. 启动 QTable 依赖
 
 ```bash
 git clone https://github.com/QingZoneX/QTable.git
@@ -21,7 +21,7 @@ cp .env.example .env
 docker compose up -d db redis minio
 ```
 
-## 2. Start the backend
+## 2. 启动后端
 
 ```bash
 python3 -m venv .venv
@@ -32,11 +32,11 @@ alembic upgrade head
 uvicorn app.main:app --reload --port 9000
 ```
 
-GraphQL is available at `http://localhost:9000/graphql`.
+GraphQL 地址为 `http://localhost:9000/graphql`。
 
-## 3. Start QTableUI
+## 3. 启动 QTableUI
 
-In a second terminal:
+在第二个终端中：
 
 ```bash
 git clone https://github.com/QingZoneX/QTableUI.git
@@ -45,13 +45,13 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:9100`.
+打开 `http://localhost:9100`。
 
-The frontend development server proxies API, GraphQL, WebSocket and OAuth traffic to the backend on port `9000`.
+前端开发服务器会把 API、GraphQL、WebSocket 与 OAuth 流量代理到 `9000` 端口的后端。
 
-## Next steps
+## 下一步
 
-- [Architecture](../../qtable/architecture/)
-- [AI workflows](../../qtable/ai-workflows/)
-- [Security model](../../qtable/security/)
-- [QTableUI development](../../qtable-ui/development/)
+- [系统架构](../../qtable/architecture/)
+- [AI 工作流](../../qtable/ai-workflows/)
+- [安全模型](../../qtable/security/)
+- [QTableUI 开发](../../qtable-ui/development/)

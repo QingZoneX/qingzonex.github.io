@@ -1,14 +1,14 @@
 ---
-title: QTableUI development
-description: Local development, Docker runtime and frontend safety requirements for QTableUI.
+title: QTableUI 开发
+description: QTableUI 的本地开发、Docker 运行方式与前端安全要求。
 ---
 
-## Requirements
+## 环境要求
 
 - Node.js 22
-- A running QTable API on port `9000`
+- `9000` 端口上运行的 QTable API
 
-## Local development
+## 本地开发
 
 ```bash
 git clone https://github.com/QingZoneX/QTableUI.git
@@ -17,11 +17,11 @@ npm ci
 npm run dev
 ```
 
-The development server listens on `http://localhost:9100` and proxies API / GraphQL / WebSocket / OAuth traffic to `http://localhost:9000`.
+开发服务器监听 `http://localhost:9100`，并代理到 `http://localhost:9000` 的 API / GraphQL / WebSocket / OAuth 流量。
 
 ## Docker
 
-Build and run only the UI image:
+只构建并运行 UI 镜像：
 
 ```bash
 docker build -t qtable-ui .
@@ -31,14 +31,14 @@ docker run --rm -p 9100:9100 \
   qtable-ui
 ```
 
-The container exposes `/healthz` as a health endpoint.
+容器提供 `/healthz` 健康检查端点。
 
-## Frontend safety invariants
+## 前端安全不变量
 
-- Do not load hidden rows to implement client-side AI or analytics.
-- Do not bypass Preview → Confirm → Apply flows.
-- Do not write records directly when an atomic audited mutation exists.
-- Workspace Member candidates must come from the current workspace.
-- Public dashboard pages must use public-token-safe APIs.
-- Large-table paths should preserve server paging / aggregation rather than downloading the entire table.
-- No real credential belongs in frontend environment variables.
+- 不加载隐藏行来实现客户端 AI 或分析。
+- 不绕过 Preview → Confirm → Apply。
+- 存在原子可审计 Mutation 时，不直接绕过写入 Record。
+- Workspace Member 候选必须来自当前 Workspace。
+- Public Dashboard 必须使用适用于 Public Token 的安全 API。
+- 大表路径应保持服务端分页 / 聚合，不下载整张表。
+- 真实凭据不得放入前端环境变量。

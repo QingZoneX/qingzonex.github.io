@@ -1,15 +1,15 @@
 ---
-title: Contributing
-description: Contribution entry points for QTable, QTableUI and the QingZoneX open-source roadmap.
+title: 参与贡献
+description: QTable、QTableUI 与 QingZoneX 开源路线图的贡献入口。
 ---
 
-Contribution details should remain close to each codebase so commands and quality gates cannot drift from implementation.
+贡献细节应尽量靠近各自代码库维护，避免命令与质量门禁和真实实现发生漂移。
 
 ## QTable
 
-Read the repository's [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md) before opening a pull request.
+提交 Pull Request 前，请阅读仓库 [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md)。
 
-The backend README currently documents these high-level checks:
+后端 README 当前记录的高层检查包括：
 
 ```bash
 pytest -q
@@ -19,10 +19,10 @@ python scripts/check_open_source_readiness.py
 
 ## QTableUI
 
-Read the frontend [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md).
+请阅读前端 [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md)。
 
-The frontend repository documents build, dependency, license and product-contract checks as part of its quality gates.
+前端仓库把 Build、Dependency、License 与 Product Contract 检查作为质量门禁的一部分。
 
-## Roadmap discussion
+## 路线图讨论
 
-Use GitHub Issues for concrete roadmap proposals, defects and implementation discussion. The portal roadmap is deliberately a summary rather than a second issue tracker.
+具体路线图提案、缺陷与实现讨论请使用 GitHub Issues。门户路线图只提供摘要，不作为第二套 Issue Tracker。

@@ -1,48 +1,48 @@
 ---
-title: QTable overview
-description: "Product capabilities and current scope of the QTable v0.1.0-alpha open-source preview."
+title: QTable 概览
+description: "QTable v0.1.0-alpha 开源预览的产品能力与当前范围。"
 ---
 
-QTable is an AI-native, open-source project and work management backend built on multidimensional tables. It supplies the product models and server-side contracts used by QTableUI.
+QTable 是基于多维表格构建的 AI 原生开源项目与工作管理后端，为 QTableUI 提供产品模型和服务端契约。
 
-## Current baseline
+## 当前基线
 
-### Table and work model
+### 表格与工作模型
 
-- Grid / Kanban / Gantt / Calendar / Gallery view models.
-- Filters, multi-field sorting, grouping and named views.
-- Formula, relation, auto-number, Workspace Member, select, date, attachment and other field types.
-- Task Profile/business semantics and server-backed My Work/project aggregation.
-- Workspace membership, item permissions and row-level permissions.
-- Permission-aware global search.
+- Grid / Kanban / Gantt / Calendar / Gallery 视图模型。
+- 过滤、多字段排序、分组与命名视图。
+- Formula、Relation、Auto Number、Workspace Member、Select、Date、Attachment 等字段类型。
+- Task Profile 业务语义，以及服务端 My Work / 项目聚合。
+- 工作空间成员、对象权限与行级权限。
+- 权限感知全局搜索。
 
-### Operations and lifecycle
+### 运行与生命周期
 
-- Automation engine with validation, scheduling/execution and execution history.
-- Dashboard widgets with server-side aggregation and permission-safe public sharing.
-- ChangeSet-based audit/undo foundations and recycle lifecycle.
-- OAuth 2.0 Authorization Code Flow with S256 PKCE.
-- PostgreSQL + Redis recommended stack, with SQLite as an explicit lightweight fallback.
+- 自动化引擎：规则校验、调度/执行与执行历史。
+- Dashboard 组件、服务端聚合与权限安全的公开分享。
+- 基于 ChangeSet 的审计/Undo 基础与回收生命周期。
+- OAuth 2.0 Authorization Code Flow + S256 PKCE。
+- 推荐 PostgreSQL + Redis；SQLite 作为显式轻量回退。
 
-### Private attachments
+### 私有附件
 
-Attachments use an S3-compatible storage contract. Table records persist stable `attachmentId` / `objectKey` metadata rather than temporary presigned URLs. Upload/download/delete re-check current table and row permission. Recycle/restore preserves object identity, purge participates in durable cleanup, and upload intents make abandoned object writes recoverable.
+附件采用 S3 兼容存储契约。表记录保存稳定的 `attachmentId` / `objectKey` 元数据，而不是临时 presigned URL。上传、下载和删除会重新检查当前表与行权限；Recycle/Restore 保留对象身份，Purge 进入持久清理流程，Upload Intent 让异常中断的对象写入可被发现并清理。
 
-The canonical Compose stack includes MinIO. External S3-compatible endpoints can be configured without editing the Compose file.
+标准 Compose 包含 MinIO，也可以不修改 Compose 文件直接配置外部 S3 兼容 endpoint。
 
-### AI workflow
+### AI 工作流
 
-- Goal-driven workspace generation.
-- Task planning.
-- Workload/schedule estimation.
-- Workspace-member assignment suggestions.
-- AI Project Steward diagnostics and question answering.
-- AI action plans with diff preview, partial acceptance and permission/state revalidation.
-- AI-generated Views and Dashboards using existing product models.
-- QNote / Clipper Source Inbox with source context and duplicate hints.
+- 目标驱动的 Workspace 生成。
+- 任务规划。
+- 工作量 / 排期估算。
+- 工作空间成员分配建议。
+- AI Project Steward 诊断与问答。
+- 支持差异预览、部分接受及权限/状态重新校验的 AI Action Plan。
+- 使用现有模型生成 View 与 Dashboard。
+- 带来源上下文和重复提示的 QNote / Clipper Source Inbox。
 
-Core table functionality does **not** require an external AI service.
+核心表格功能 **不需要** 外部 AI 服务。
 
-## Alpha boundary
+## Alpha 边界
 
-`v0.1.0-alpha` is an Open Source Preview. The implemented product baseline is broader than the future roadmap, but release hardening is still active around full-stack browser E2E, operations guidance, security defaults and large-table performance. See the [feature matrix](../../project/feature-matrix/) and [release status](../../project/release-status/).
+`v0.1.0-alpha` 是 Open Source Preview。当前产品基线已经较完整，但公开发布仍在加强全栈浏览器 E2E、运维指南、安全默认值与大表性能。请查看 [功能矩阵](../../project/feature-matrix/) 与 [发布状态](../../project/release-status/)。
