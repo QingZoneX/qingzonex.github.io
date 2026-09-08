@@ -1,0 +1,153 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+
+<section class:list={['tour', { 'tour-compact': compact }]} data-product-tour>
+  <div class="tour-topbar">
+    <div>
+      <span class="tour-label">Live interface tour</span>
+      <strong>Release workspace</strong>
+    </div>
+    <label class="tour-search">
+      <span class="sr-only">Filter demo tasks</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input data-tour-search type="search" placeholder="Filter tasks…" autocomplete="off" />
+    </label>
+  </div>
+  <div class="tour-tabs" role="tablist" aria-label="Table view demo">
+    <button type="button" class="active" data-view="grid" role="tab" aria-selected="true">Grid</button>
+    <button type="button" data-view="kanban" role="tab" aria-selected="false">Kanban</button>
+    <button type="button" data-view="gantt" role="tab" aria-selected="false">Gantt</button>
+    <button type="button" data-view="calendar" role="tab" aria-selected="false">Calendar</button>
+    <button type="button" data-view="gallery" role="tab" aria-selected="false">Gallery</button>
+  </div>
+  <div class="tour-canvas" data-tour-canvas aria-live="polite"></div>
+  <div class="tour-foot">
+    <span><i class="live-dot"></i>Interactive demo · no backend required</span>
+    <a href="https://github.com/QingZoneX/QTableUI">QTableUI source <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<style>
+  .tour { border: 1px solid var(--line-strong); border-radius: 22px; background: var(--bg-elevated); box-shadow: var(--shadow); overflow: hidden; }
+  .tour-topbar { min-height: 62px; padding: 13px 15px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); }
+  .tour-topbar > div { display: grid; }
+  .tour-topbar strong { font-size: 12px; }
+  .tour-label { color: var(--muted); font-size: 8px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .tour-search { width: min(190px, 40%); height: 32px; padding: 0 9px; border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; gap: 7px; background: var(--bg-soft); color: var(--muted); }
+  .tour-search svg { width: 13px; flex: 0 0 auto; }
+  .tour-search input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--text); background: transparent; font-size: 9px; }
+  .tour-search input::placeholder { color: var(--muted); }
+  .tour-tabs { padding: 8px 10px; display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+  .tour-tabs::-webkit-scrollbar { display: none; }
+  .tour-tabs button { padding: 5px 9px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); cursor: pointer; white-space: nowrap; font-size: 9px; font-weight: 800; }
+  .tour-tabs button:hover { color: var(--text); }
+  .tour-tabs button.active { color: var(--text); background: var(--bg-soft); }
+  .tour-canvas { min-height: 390px; padding: 13px; overflow: auto; }
+  .tour-foot { min-height: 40px; padding: 8px 13px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 8px; }
+  .tour-foot span { display: inline-flex; align-items: center; gap: 5px; }
+  .tour-foot a { color: var(--muted-strong); font-weight: 750; }
+  .live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 9px var(--accent); }
+  .tour :global(.demo-grid) { min-width: 610px; }
+  .tour :global(.demo-row) { display: grid; grid-template-columns: 2.2fr 1fr .9fr .8fr .8fr; border-bottom: 1px solid var(--line); }
+  .tour :global(.demo-row > span) { min-height: 47px; padding: 8px 10px; display: flex; align-items: center; border-right: 1px solid var(--line); color: var(--muted-strong); font-size: 9px; }
+  .tour :global(.demo-row > span:last-child) { border-right: 0; }
+  .tour :global(.demo-row.head > span) { min-height: 34px; background: var(--bg-soft); color: var(--muted); font-size: 8px; font-weight: 850; text-transform: uppercase; letter-spacing: .05em; }
+  .tour :global(.pill) { padding: 3px 7px; border-radius: 999px; font-size: 8px; font-weight: 850; }
+  .tour :global(.pill.progress) { color: var(--accent-2); background: rgba(93,169,255,.12); }
+  .tour :global(.pill.review) { color: var(--warning); background: rgba(251,191,36,.12); }
+  .tour :global(.pill.done) { color: var(--accent); background: rgba(99,230,190,.12); }
+  .tour :global(.priority.high) { color: #fb7185; }
+  .tour :global(.priority.medium) { color: var(--warning); }
+  .tour :global(.priority.low) { color: var(--muted); }
+  .tour :global(.demo-kanban) { min-width: 650px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tour :global(.kanban-col) { padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in srgb, var(--bg-soft) 55%, transparent); }
+  .tour :global(.kanban-head) { padding: 2px 2px 9px; display: flex; justify-content: space-between; color: var(--muted); font-size: 9px; font-weight: 850; }
+  .tour :global(.task-card) { margin-top: 8px; padding: 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-elevated); }
+  .tour :global(.task-card b) { display: block; margin-bottom: 9px; font-size: 10px; }
+  .tour :global(.task-meta) { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 8px; }
+  .tour :global(.demo-gantt) { min-width: 690px; }
+  .tour :global(.gantt-head), .tour :global(.gantt-row) { display: grid; grid-template-columns: 170px 1fr; }
+  .tour :global(.gantt-head) { color: var(--muted); font-size: 8px; }
+  .tour :global(.gantt-dates) { display: grid; grid-template-columns: repeat(12, 1fr); }
+  .tour :global(.gantt-dates span) { padding: 5px 0; text-align: center; border-left: 1px solid var(--line); }
+  .tour :global(.gantt-row) { min-height: 47px; border-top: 1px solid var(--line); }
+  .tour :global(.gantt-name) { padding: 10px; font-size: 9px; }
+  .tour :global(.gantt-track) { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); background-image: repeating-linear-gradient(to right, transparent 0, transparent calc(8.333% - 1px), var(--line) calc(8.333% - 1px), var(--line) 8.333%); }
+  .tour :global(.gantt-bar) { position: absolute; top: 13px; height: 20px; border-radius: 6px; background: linear-gradient(90deg, var(--accent-2), var(--accent-3)); opacity: .9; }
+  .tour :global(.demo-calendar) { min-width: 610px; }
+  .tour :global(.calendar-head), .tour :global(.calendar-grid) { display: grid; grid-template-columns: repeat(7, 1fr); }
+  .tour :global(.calendar-head span) { padding: 7px; color: var(--muted); text-align: center; font-size: 8px; font-weight: 800; }
+  .tour :global(.day) { min-height: 72px; padding: 6px; border: 1px solid var(--line); border-right: 0; border-bottom: 0; font-size: 8px; }
+  .tour :global(.day:nth-child(7n)) { border-right: 1px solid var(--line); }
+  .tour :global(.day:nth-last-child(-n+7)) { border-bottom: 1px solid var(--line); }
+  .tour :global(.day em) { display: block; color: var(--muted); font-style: normal; }
+  .tour :global(.calendar-task) { margin-top: 4px; padding: 3px 4px; border-radius: 4px; background: rgba(93,169,255,.12); color: var(--accent-2); line-height: 1.3; }
+  .tour :global(.demo-gallery) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tour :global(.gallery-card) { min-height: 120px; padding: 13px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, var(--bg-soft), var(--bg-elevated)); }
+  .tour :global(.gallery-accent) { width: 34px; height: 6px; margin-bottom: 22px; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  .tour :global(.gallery-card b) { display: block; font-size: 10px; }
+  .tour :global(.gallery-card small) { color: var(--muted); font-size: 8px; }
+  .tour-compact .tour-canvas { min-height: 310px; }
+  @media (max-width: 700px) {
+    .tour-topbar { align-items: flex-start; flex-direction: column; }
+    .tour-search { width: 100%; }
+    .tour-foot { align-items: flex-start; flex-direction: column; }
+    .tour :global(.demo-gallery) { grid-template-columns: 1fr 1fr; min-width: 450px; }
+  }
+</style>
+
+<script>
+  const root = document.querySelector('[data-product-tour]');
+  if (root instanceof HTMLElement) {
+    const canvas = root.querySelector('[data-tour-canvas]');
+    const search = root.querySelector('[data-tour-search]');
+    const tabs = [...root.querySelectorAll('[data-view]')];
+    const tasks = [
+      { name: 'Define open-source release scope', status: 'Done', priority: 'High', owner: 'Mina', date: 'Sep 08', start: 1, span: 3 },
+      { name: 'Harden row-level permissions', status: 'In progress', priority: 'High', owner: 'Kai', date: 'Sep 09', start: 2, span: 5 },
+      { name: 'Publish self-hosting guide', status: 'Review', priority: 'Medium', owner: 'Lin', date: 'Sep 10', start: 5, span: 3 },
+      { name: 'Prepare QTableUI examples', status: 'In progress', priority: 'Medium', owner: 'Ari', date: 'Sep 11', start: 4, span: 6 },
+      { name: 'Run open-source readiness checks', status: 'Review', priority: 'High', owner: 'Mina', date: 'Sep 12', start: 7, span: 4 },
+      { name: 'Draft community roadmap', status: 'Done', priority: 'Low', owner: 'Kai', date: 'Sep 13', start: 8, span: 3 },
+    ];
+    let active = 'grid';
+    let query = '';
+
+    const esc = (value) => String(value).replace(/[&<>'"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const filtered = () => tasks.filter((task) => Object.values(task).join(' ').toLowerCase().includes(query));
+    const statusClass = (status) => status === 'Done' ? 'done' : status === 'Review' ? 'review' : 'progress';
+
+    function grid(items) {
+      return `<div class="demo-grid"><div class="demo-row head"><span>Task</span><span>Status</span><span>Priority</span><span>Owner</span><span>Due</span></div>${items.map(t => `<div class="demo-row"><span><b>${esc(t.name)}</b></span><span><i class="pill ${statusClass(t.status)}">${esc(t.status)}</i></span><span><i class="priority ${t.priority.toLowerCase()}">● ${esc(t.priority)}</i></span><span>${esc(t.owner)}</span><span>${esc(t.date)}</span></div>`).join('')}</div>`;
+    }
+    function kanban(items) {
+      const groups = ['In progress', 'Review', 'Done'];
+      return `<div class="demo-kanban">${groups.map(g => { const group = items.filter(t => t.status === g); return `<div class="kanban-col"><div class="kanban-head"><span>${g}</span><span>${group.length}</span></div>${group.map(t => `<article class="task-card"><b>${esc(t.name)}</b><div class="task-meta"><span>${esc(t.owner)}</span><span>${esc(t.date)}</span></div></article>`).join('') || '<div class="task-card"><span class="task-meta">No matching tasks</span></div>'}</div>`; }).join('')}</div>`;
+    }
+    function gantt(items) {
+      return `<div class="demo-gantt"><div class="gantt-head"><span>Task</span><div class="gantt-dates">${Array.from({length:12},(_,i)=>`<span>${i+8}</span>`).join('')}</div></div>${items.map(t => `<div class="gantt-row"><div class="gantt-name">${esc(t.name)}</div><div class="gantt-track"><i class="gantt-bar" style="left:${(t.start-1)*8.333}%;width:${t.span*8.333}%"></i></div></div>`).join('')}</div>`;
+    }
+    function calendar(items) {
+      const days = Array.from({length:21},(_,i)=>i+1);
+      return `<div class="demo-calendar"><div class="calendar-head">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<span>${d}</span>`).join('')}</div><div class="calendar-grid">${days.map((d,i) => { const task = items[i % items.length]; return `<div class="day"><em>Sep ${d}</em>${items.length && (i % 3 === 0) ? `<div class="calendar-task">${esc(task.name)}</div>` : ''}</div>`; }).join('')}</div></div>`;
+    }
+    function gallery(items) {
+      return `<div class="demo-gallery">${items.map(t => `<article class="gallery-card"><div class="gallery-accent"></div><b>${esc(t.name)}</b><small>${esc(t.status)} · ${esc(t.owner)} · ${esc(t.date)}</small></article>`).join('')}</div>`;
+    }
+    function render() {
+      if (!(canvas instanceof HTMLElement)) return;
+      const items = filtered();
+      if (!items.length) { canvas.innerHTML = '<div class="notice"><strong>No matching tasks.</strong> Clear the filter to restore the demo data.</div>'; return; }
+      canvas.innerHTML = active === 'kanban' ? kanban(items) : active === 'gantt' ? gantt(items) : active === 'calendar' ? calendar(items) : active === 'gallery' ? gallery(items) : grid(items);
+    }
+    tabs.forEach((tab) => tab.addEventListener('click', () => {
+      active = tab.getAttribute('data-view') || 'grid';
+      tabs.forEach((item) => { item.classList.toggle('active', item === tab); item.setAttribute('aria-selected', String(item === tab)); });
+      render();
+    }));
+    search?.addEventListener('input', () => { if (search instanceof HTMLInputElement) { query = search.value.trim().toLowerCase(); render(); }});
+    render();
+  }
+</script>
