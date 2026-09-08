@@ -52,7 +52,7 @@ The canonical stack contains QTable API, QTableUI, PostgreSQL, Redis and MinIO.
 Before production-critical use:
 
 1. Read both repositories' latest release notes.
-2. Check the [release status](../project/release-status/) and open release-gate Issues.
+2. Check the [release status](../../project/release-status/) and open release-gate Issues.
 3. Verify fresh install, login, core table writes, hard refresh persistence and permission-negative paths.
 4. Verify upload/download plus permission loss for attachments if you use them.
 5. Verify Recycle Bin restore/purge behavior.
