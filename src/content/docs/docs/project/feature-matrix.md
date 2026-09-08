@@ -28,7 +28,7 @@ This matrix is intentionally conservative. **Implemented baseline** means the ca
 
 ## Active hardening, not new product marketing
 
-The public Alpha gate still includes browser-level full-stack E2E, selected authentication/security defaults, Service Worker private-data safeguards, browser security headers, operations runbooks and large-table performance work. See [Release status](./release-status/).
+The public Alpha gate still includes browser-level full-stack E2E, selected authentication/security defaults, Service Worker private-data safeguards, browser security headers, operations runbooks and large-table performance work. See [Release status](../release-status/).
 
 ## Planned capabilities
 
