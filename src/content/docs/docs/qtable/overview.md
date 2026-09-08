@@ -9,7 +9,7 @@ QTable 是一个完整的 AI 原生开源项目与工作管理产品。**Web 前
 
 ### QTable Web App
 
-前端实现维护在 [`QingZoneX/QTableUI`](https://github.com/QingZoneX/QTableUI)，当前提供：
+[Web 前端实现源码](https://github.com/QingZoneX/QTableUI) 当前提供：
 
 - Home / My Work / Projects Center；
 - Grid / Kanban / Gantt / Calendar / Gallery；
@@ -17,11 +17,11 @@ QTable 是一个完整的 AI 原生开源项目与工作管理产品。**Web 前
 - Automation Center 与执行历史；
 - Notification Center、记录工作区、Activity 与实时路径；
 - 权限感知全局搜索与 Recycle Bin；
-- AI Planning、Project Steward、Action Plan 与 QNote / Clipper Source Inbox。
+- AI Planning、Project Steward、Action Plan 与 Source Inbox。
 
 ### QTable API & Domain Services
 
-后端实现维护在 [`QingZoneX/QTable`](https://github.com/QingZoneX/QTable)，负责：
+[后端与领域服务源码](https://github.com/QingZoneX/QTable) 负责：
 
 - 字段、记录、过滤、排序、分组、命名视图与 Task Profile；
 - Workspace、对象与行级权限；

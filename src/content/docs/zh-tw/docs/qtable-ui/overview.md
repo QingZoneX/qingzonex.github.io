@@ -1,9 +1,11 @@
 ---
 title: QTable 前端實作
-description: "QTable Web App 的產品介面與前端技術堆疊；實作儲存庫名為 QingZoneX/QTableUI。"
+description: "QTable Web App 的產品介面與前端技術堆疊。"
 ---
 
-本章節描述 **QTable 的前端實作**。程式碼儲存庫名為 [`QingZoneX/QTableUI`](https://github.com/QingZoneX/QTableUI)，但它在入口網站產品層級中不是獨立產品；它是 QTable Web App 的工程實作。
+本章節描述 **QTable 的 Web 前端實作**。它是 QTable 產品的一部分，與 QTable API 共用權限、資料與發佈契約。
+
+[查看 Web 前端實作原始碼](https://github.com/QingZoneX/QTableUI)。
 
 ## 目前產品介面
 
@@ -17,7 +19,7 @@ description: "QTable Web App 的產品介面與前端技術堆疊；實作儲存
 - Global Search / Command paths；
 - Recycle Bin；
 - AI Planning、Project Steward 與安全 Action Plan；
-- QNote Source Inbox。
+- Source Inbox。
 
 ## 技術堆疊
 

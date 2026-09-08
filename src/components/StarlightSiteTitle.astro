@@ -1,0 +1,33 @@
+---
+import { ORG_AVATAR_URL } from '../lib/site';
+const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+---
+<a href={siteTitleHref} class="site-title sl-flex" aria-label={siteTitle}>
+  <img src={ORG_AVATAR_URL} width="34" height="34" alt="" decoding="async" />
+  <span translate="no">{siteTitle}</span>
+</a>
+<style>
+  @layer starlight.core {
+    .site-title {
+      align-items: center;
+      gap: .68rem;
+      color: var(--sl-color-white);
+      font-size: var(--sl-text-h4);
+      font-weight: 720;
+      letter-spacing: -.025em;
+      text-decoration: none;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .site-title img {
+      width: 2.1rem;
+      height: 2.1rem;
+      flex: 0 0 auto;
+      border: 1px solid color-mix(in srgb, var(--sl-color-gray-4) 45%, transparent);
+      border-radius: .62rem;
+      object-fit: cover;
+      box-shadow: 0 7px 20px rgba(0,0,0,.13);
+    }
+    .site-title span { overflow: hidden; text-overflow: ellipsis; }
+  }
+</style>

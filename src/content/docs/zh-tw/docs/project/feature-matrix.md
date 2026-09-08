@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-本矩陣以 **QTable 單一產品** 為單位描述能力。前端實作儲存庫 `QingZoneX/QTableUI` 與後端實作儲存庫 `QingZoneX/QTable` 共同交付這些產品能力。
+本矩陣以 **QTable** 作為唯一產品邊界。Web 前端、API 與領域服務、資料層和物件儲存共同交付這些能力。
 
 **已實作基線** 表示能力已存在於目前產品 / main 分支，不代表 v1.0 API 穩定性。
 
@@ -23,14 +23,14 @@ sidebar:
 | AI 規劃 | Goal-to-workspace、Task Planning、Workload、Assignment、Project Steward | 已實作基線 |
 | AI 動作 | Preview → Confirm → Apply、部分接受、權限 / 狀態重新驗證 | 已實作基線 |
 | AI 視覺化 | 使用既有模型產生 View 與 Dashboard | 已實作基線 |
-| Source Inbox | QNote / Clipper、來源脈絡與重複提示 | 已實作基線 |
+| Source Inbox | 來源脈絡、擷取入口與重複提示 | 已實作基線 |
 | Identity | OAuth2 Authorization Code + S256 PKCE | 已實作；Session / Security 持續加固 |
 | Self-host | Web App + API + PostgreSQL + Redis + MinIO Compose | 已實作；維運 Runbook 持續完善 |
 | 輕量資料庫 | 明確 SQLite 回退 | 適用評估 / 受限單一執行個體 |
 
 ## 正在加固
 
-公開 Alpha 仍在推進瀏覽器級完整堆疊 E2E、認證與安全預設值、Service Worker 私有資料保護、瀏覽器安全 Header、維運 Runbook 與大型表格效能。這些是 **QTable 發佈品質工作**，不是第二個產品的獨立路線圖。
+公開 Alpha 仍在推進瀏覽器級完整堆疊 E2E、認證與安全預設值、Service Worker 私有資料保護、瀏覽器安全 Header、維運 Runbook 與大型表格效能。以上均屬於 **QTable 發佈品質工作**。
 
 ## 規劃中的能力
 

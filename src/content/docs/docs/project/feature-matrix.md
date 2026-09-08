@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-本矩阵以 **QTable 单一产品** 为单位描述能力。前端实现仓库 `QingZoneX/QTableUI` 与后端实现仓库 `QingZoneX/QTable` 共同交付这些产品能力。
+本矩阵以 **QTable** 作为唯一产品边界。Web 前端、API 与领域服务、数据层和对象存储共同交付这些能力。
 
 **已实现基线** 表示能力已存在于当前产品 / main 分支，不代表 v1.0 API 稳定性。
 
@@ -23,14 +23,14 @@ sidebar:
 | AI 规划 | Goal-to-workspace、Task Planning、Workload、Assignment、Project Steward | 已实现基线 |
 | AI 动作 | Preview → Confirm → Apply、部分接受、权限 / 状态重新校验 | 已实现基线 |
 | AI 可视化 | 使用现有模型生成 View 与 Dashboard | 已实现基线 |
-| Source Inbox | QNote / Clipper、来源上下文与重复提示 | 已实现基线 |
+| Source Inbox | 来源上下文、采集入口与重复提示 | 已实现基线 |
 | Identity | OAuth2 Authorization Code + S256 PKCE | 已实现；Session / Security 继续加固 |
 | Self-host | Web App + API + PostgreSQL + Redis + MinIO Compose | 已实现；运维 Runbook 继续完善 |
 | 轻量数据库 | 显式 SQLite 回退 | 适用于评估 / 受限单实例 |
 
 ## 正在加固
 
-公开 Alpha 仍在推进浏览器级全栈 E2E、认证与安全默认值、Service Worker 私有数据保护、浏览器安全 Header、运维 Runbook 与大表性能。这些是 **QTable 发布质量工作**，不是第二个产品的独立路线图。
+公开 Alpha 仍在推进浏览器级全栈 E2E、认证与安全默认值、Service Worker 私有数据保护、浏览器安全 Header、运维 Runbook 与大表性能。以上均属于 **QTable 发布质量工作**。
 
 ## 规划中的能力
 

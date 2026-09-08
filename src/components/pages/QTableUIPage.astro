@@ -1,12 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { localePath } from '../../lib/i18n.mjs';
-import { getPortalContent, type PortalLocale } from '../../lib/portal-content';
+import type { PortalLocale } from '../../lib/portal-content';
 interface Props { locale: PortalLocale }
-const { locale }=Astro.props; const c=getPortalContent(locale).qtable; const target=localePath(locale,'qtable/',import.meta.env.BASE_URL)+'#frontend';
+const { locale }=Astro.props;
+const target=localePath(locale,'qtable/',import.meta.env.BASE_URL)+'#frontend';
 const redirectScript=`location.replace(${JSON.stringify(target)} + location.search + location.hash);`;
+const copy = {
+  'zh-cn': { title:'正在前往 QTable 前端实现', description:'该旧地址已并入 QTable 产品页，正在跳转到 Web 前端实现章节。', action:'前往 QTable' },
+  'zh-tw': { title:'正在前往 QTable 前端實作', description:'此舊網址已併入 QTable 產品頁，正在跳轉到 Web 前端實作章節。', action:'前往 QTable' },
+  en: { title:'Redirecting to the QTable frontend implementation', description:'This legacy URL is now part of the QTable product page and forwards to the web frontend implementation section.', action:'Open QTable' },
+}[locale];
 ---
-<BaseLayout locale={locale} route="qtable-ui/" title={c.redirect.title} description={c.redirect.description} noIndex>
+<BaseLayout locale={locale} route="qtable-ui/" title={copy.title} description={copy.description} noIndex>
 <script is:inline set:html={redirectScript}></script>
-<section class="redirect-page"><div class="shell"><article class="redirect-card"><span class="eyebrow"><i class="eyebrow-dot"></i>QTable</span><h1>{c.redirect.title}</h1><p>{c.redirect.description}</p><a class="button primary" href={target}>{c.redirect.action} →</a></article></div></section>
+<section class="redirect-page"><div class="shell"><article class="redirect-card"><span class="eyebrow"><i class="eyebrow-dot"></i>QTable</span><h1>{copy.title}</h1><p>{copy.description}</p><a class="button primary" href={target}>{copy.action} →</a></article></div></section>
 </BaseLayout>

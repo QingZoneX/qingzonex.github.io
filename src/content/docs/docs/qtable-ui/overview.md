@@ -1,9 +1,11 @@
 ---
 title: QTable 前端实现
-description: "QTable Web App 的产品界面与前端技术栈；实现仓库名为 QingZoneX/QTableUI。"
+description: "QTable Web App 的产品界面与前端技术栈。"
 ---
 
-本章节描述 **QTable 的前端实现**。代码仓库名为 [`QingZoneX/QTableUI`](https://github.com/QingZoneX/QTableUI)，但它在门户产品层级中不是独立产品；它是 QTable Web App 的工程实现。
+本章节描述 **QTable 的 Web 前端实现**。它是 QTable 产品的一部分，与 QTable API 共享权限、数据与发布契约。
+
+[查看 Web 前端实现源码](https://github.com/QingZoneX/QTableUI)。
 
 ## 当前产品界面
 
@@ -17,7 +19,7 @@ description: "QTable Web App 的产品界面与前端技术栈；实现仓库名
 - Global Search / Command paths；
 - Recycle Bin；
 - AI Planning、Project Steward 与安全 Action Plan；
-- QNote Source Inbox。
+- Source Inbox。
 
 ## 技术栈
 

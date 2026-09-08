@@ -1,18 +1,18 @@
 ---
 title: QTable 文档
-description: "QingZoneX 开源产品 QTable 的完整文档，覆盖前端体验、后端服务、自托管、安全与 AI 工作流。"
+description: "QingZoneX 开源产品 QTable 的完整文档，覆盖 Web 体验、API 服务、自托管、安全、附件与 AI 工作流。"
 sidebar:
   order: 1
 ---
 
 **QTable** 是 QingZoneX 当前对外开源的产品：一个基于多维表格构建的 AI 原生项目与工作管理系统。
 
-QTable 在工程上由两个实现仓库共同组成：
+从用户视角看，QTable 是一个完整产品；从工程视角看，它包含 Web 前端与 API / Domain Services 两个实现层。两个实现层共享同一套 Table / Record / View / Dashboard / Permission 模型，并通过 REST / GraphQL / WebSocket / Auth / OAuth 契约协同工作。
 
-- [`QingZoneX/QTable`](https://github.com/QingZoneX/QTable) — API、领域模型、权限、自动化、审计、附件、搜索与 AI 服务。
-- [`QingZoneX/QTableUI`](https://github.com/QingZoneX/QTableUI) — QTable 的 Web 前端实现，负责工作中心、五种视图、仪表盘、协作、自动化与 AI 交互。
+- [后端与领域服务源码](https://github.com/QingZoneX/QTable) — 数据模型、权限、自动化、审计、附件、搜索与 AI 服务。
+- [Web 前端实现源码](https://github.com/QingZoneX/QTableUI) — 工作中心、五种视图、仪表盘、协作、自动化与 AI 交互。
 
-这两个仓库是 **同一个 QTable 产品的实现层**，不是两个独立产品。当前开源预览版本为 **`v0.1.0-alpha`**，采用 **Apache License 2.0**。
+当前开源预览版本为 **`v0.1.0-alpha`**，采用 **Apache License 2.0**。
 
 ## 推荐阅读路径
 
