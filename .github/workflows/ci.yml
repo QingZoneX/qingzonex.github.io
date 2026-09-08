@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   SITE_URL: ${{ vars.SITE_URL }}
@@ -41,14 +41,15 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
-      - name: Preserve first generated lockfile
-        if: steps.install.outputs.generated_lockfile == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-package-lock
-          path: package-lock.json
-          if-no-files-found: error
-          retention-days: 1
+      - name: Commit bootstrap lockfile
+        if: github.event_name == 'push' && steps.install.outputs.generated_lockfile == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: add generated npm lockfile"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Verify deployment configuration
         run: npm run verify:config
