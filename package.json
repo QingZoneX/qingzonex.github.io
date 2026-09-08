@@ -15,7 +15,8 @@
     "verify:dist": "node scripts/verify-dist.mjs",
     "verify:source": "node scripts/verify-source.mjs",
     "verify:config": "node scripts/verify-site-config.mjs",
-    "verify:links": "node scripts/verify-doc-links.mjs"
+    "verify:links": "node scripts/verify-doc-links.mjs",
+    "verify:transfer": "node scripts/verify-transfer-build.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.0",
