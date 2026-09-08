@@ -1,33 +1,4 @@
-.locale-control {
-  height: 38px;
-  padding: 0 8px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--bg-elevated);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--muted-strong);
-}
-.locale-control:hover { border-color: var(--line-strong); }
-.locale-control svg { width: 16px; height: 16px; flex: 0 0 auto; }
-.locale-control select {
-  max-width: 104px;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: var(--text);
-  font: 700 12px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
-  cursor: pointer;
-}
-.locale-control select option { color: #0b1728; background: #fff; }
 html[data-locale='zh-cn'] body,
-html[data-locale='zh-tw'] body { font-family: Inter, "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Microsoft YaHei", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif; }
-@media (max-width: 700px) {
-  .locale-control { padding-inline: 6px; }
-  .locale-control svg { display: none; }
-  .locale-control select { width: 72px; max-width: 72px; font-size: 11px; }
-}
-@media (max-width: 520px) {
-  .nav-actions .github-button { display: none; }
+html[data-locale='zh-tw'] body {
+  font-family: Inter, "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Microsoft YaHei", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif;
 }
