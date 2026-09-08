@@ -31,13 +31,7 @@ jobs:
           package-manager-cache: false
 
       - name: Install dependencies
-        shell: bash
-        run: |
-          if [[ -f package-lock.json ]]; then
-            npm ci --no-audit --no-fund
-          else
-            npm install --no-audit --no-fund
-          fi
+        run: npm ci --no-audit --no-fund
 
       - name: Verify deployment configuration
         run: npm run verify:config
