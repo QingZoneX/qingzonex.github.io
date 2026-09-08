@@ -26,6 +26,9 @@ export default defineConfig({
       editLink: { baseUrl: `https://github.com/${sourceRepository}/edit/main/` },
       customCss: ['./src/styles/starlight.css'],
       head: [{ tag: 'script', attrs: { 'data-qingzonex-i18n': 'bootstrap' }, content: localeBootstrapScript(base) }],
+      components: {
+        LanguageSelect: './src/components/StarlightLanguageSwitcher.astro',
+      },
       sidebar: [
         { ...label('门户', '入口網站', 'Portal'), link: '/' },
         { ...label('开始', '開始', 'Start here'), items: [{ slug: 'docs' }, { slug: 'docs/getting-started/quick-start' }, { slug: 'docs/getting-started/self-hosting' }, { slug: 'docs/getting-started/production-checklist' }] },

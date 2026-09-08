@@ -1,0 +1,14 @@
+---
+import LocaleSwitcher from './LocaleSwitcher.astro';
+import { inferLocaleFromPath, logicalPathFromPathname } from '../lib/i18n.mjs';
+
+const base = import.meta.env.BASE_URL || '/';
+const locale = inferLocaleFromPath(Astro.url.pathname, base);
+const route = logicalPathFromPathname(Astro.url.pathname, base);
+const labels = {
+  'zh-cn': '选择语言',
+  'zh-tw': '選擇語言',
+  en: 'Select language',
+};
+---
+<LocaleSwitcher locale={locale} route={route} label={labels[locale]} compact />
