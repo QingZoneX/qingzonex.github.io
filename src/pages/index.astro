@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TableTour from '../components/TableTour.astro';
+import { QTABLE_GITHUB_URL, QTABLE_UI_GITHUB_URL, withBase } from '../lib/site';
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <span class="eyebrow"><i class="eyebrow-dot"></i> First open-source release · QTable + QTableUI</span>
+        <h1>Turn goals into <span class="gradient">structured work.</span></h1>
+        <p class="hero-copy">QingZoneX is opening the foundation of an AI-native project and work management system: multidimensional tables, multiple project views, permission-aware collaboration, and AI workflows built around Preview → Confirm → Apply.</p>
+        <div class="hero-actions">
+          <a class="button primary" href={withBase('docs/getting-started/quick-start/')}>Get started <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href={QTABLE_GITHUB_URL}>View QTable on GitHub
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="hero-meta"><span>Apache-2.0</span><span>Self-hostable</span><span>AI optional</span><span>Alpha preview</span></div>
+      </div>
+
+      <div class="product-window" aria-label="QTable product preview">
+        <div class="window-bar"><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i><span class="window-title">QTable · Product Launch</span></div>
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="side-item active"><i class="side-dot"></i> Projects</div>
+            <div class="side-item"><i class="side-dot"></i> Inbox</div>
+            <div class="side-item"><i class="side-dot"></i> Dashboards</div>
+            <div class="side-item"><i class="side-dot"></i> Members</div>
+            <div class="side-item"><i class="side-dot"></i> Settings</div>
+          </aside>
+          <div class="app-main">
+            <div class="app-toolbar"><strong>Open-source launch</strong><span>12 members · 48 tasks</span></div>
+            <div class="view-tabs"><span class="active">Grid</span><span>Kanban</span><span>Gantt</span><span>Calendar</span><span>Gallery</span></div>
+            <div class="mini-table">
+              <div class="mini-row header"><span>Task</span><span>Status</span><span>Owner</span><span>Priority</span></div>
+              <div class="mini-row"><span>Release readiness audit</span><span><i class="status-chip">Done</i></span><span><span class="avatar-stack"><i></i><i></i></span></span><span>High</span></div>
+              <div class="mini-row"><span>QTableUI examples</span><span><i class="status-chip blue">Active</i></span><span><span class="avatar-stack"><i></i></span></span><span>Medium</span></div>
+              <div class="mini-row"><span>Self-hosting guide</span><span><i class="status-chip amber">Review</i></span><span><span class="avatar-stack"><i></i><i></i></span></span><span>High</span></div>
+              <div class="mini-row"><span>Community roadmap</span><span><i class="status-chip">Done</i></span><span><span class="avatar-stack"><i></i></span></span><span>Low</span></div>
+              <div class="mini-row"><span>Security documentation</span><span><i class="status-chip blue">Active</i></span><span><span class="avatar-stack"><i></i></span></span><span>High</span></div>
+              <div class="mini-row"><span>Launch announcement</span><span><i class="status-chip amber">Review</i></span><span><span class="avatar-stack"><i></i><i></i></span></span><span>Medium</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="logo-strip" aria-label="Technology stack">
+    <div class="shell">
+      {['FastAPI','Strawberry GraphQL','PostgreSQL','Redis','S3-compatible','React 19','TypeScript 6','VTable','Apollo Client','Zustand'].map((item) => <span class="tech-chip">{item}</span>)}
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="shell">
+      <div class="section-head"><span class="kicker">Open-source foundation</span><h2>Two repositories. One coherent product.</h2><p>QTable owns the data model, permissions, auditability, storage, GraphQL/HTTP interfaces and AI services. QTableUI turns those capabilities into the interactive multidimensional-table experience.</p></div>
+      <div class="two-col">
+        <article class="product-card"><span class="eyebrow">Backend · v0.1.0-alpha</span><h3>QTable</h3><p>AI-native project and work management built on multidimensional tables, with server-side permission and aggregation foundations.</p><ul><li>Grid, Kanban, Gantt, Calendar and Gallery view models</li><li>Row-level permissions, named views and dashboards</li><li>Private S3-compatible attachment contract</li><li>AI goal planning with safe action preview and apply</li></ul><a class="text-link" href={withBase('qtable/')}>Explore QTable <span>→</span></a></article>
+        <article class="product-card ui"><span class="eyebrow">Frontend · v0.1.0-alpha</span><h3>QTableUI</h3><p>A React 19 + TypeScript frontend built for the complete QTable interaction model, including project views, dashboards and AI workflows.</p><ul><li>VTable / VTable Gantt based table experiences</li><li>Apollo Client + Zustand application state</li><li>VChart dashboards and responsive layouts</li><li>Safety invariants aligned with QTable permissions</li></ul><a class="text-link" href={withBase('qtable-ui/')}>Explore QTableUI <span>→</span></a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Product model</span><h2>One table, multiple ways to operate.</h2><p>The same underlying work can be viewed and managed from the perspective that fits the job instead of forcing every workflow into a single screen.</p></div><TableTour /></div></section>
+
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">AI workflow</span><h2>AI proposes. You stay in control.</h2><p>QTable’s current AI direction reuses the same product models as manual work and centers changes around explicit preview, confirmation and application.</p></div><div class="flow"><div class="flow-step"><b>Describe a goal</b><span>Start from intent instead of configuration.</span></div><div class="flow-step"><b>Generate structure</b><span>Create workspace and table plans.</span></div><div class="flow-step"><b>Plan the work</b><span>Break goals into executable tasks.</span></div><div class="flow-step"><b>Preview changes</b><span>Inspect proposed actions and diffs.</span></div><div class="flow-step"><b>Confirm & apply</b><span>Re-check permissions before mutation.</span></div></div></div></section>
+
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Architecture</span><h2>Designed for self-hosting and clear boundaries.</h2><p>Core table functionality does not require an external AI provider. The recommended development stack uses PostgreSQL, Redis and S3-compatible private attachment storage.</p></div><div class="architecture"><div class="arch-box primary"><strong>QTableUI</strong><span>React + TypeScript + VTable + Apollo</span></div><div class="arch-arrow">↓ HTTP / GraphQL / WebSocket ↓</div><div class="arch-box primary"><strong>QTable API</strong><span>FastAPI + Strawberry GraphQL</span></div><div class="arch-arrow">↓</div><div class="arch-row"><div class="arch-box"><strong>PostgreSQL / SQLite</strong><span>data + migrations</span></div><div class="arch-box"><strong>Redis</strong><span>runtime services</span></div></div><div class="arch-row"><div class="arch-box"><strong>Permission / ChangeSet / AI</strong><span>application services</span></div><div class="arch-box"><strong>S3-compatible storage</strong><span>private attachments</span></div></div></div></div></section>
+
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">Ecosystem boundary</span><h2>QingZoneX is the ecosystem. QSpace is a separate product layer.</h2><p>The first open-source release intentionally contains QTable and QTableUI. QSpace remains a distinct workspace/product surface and is not part of this open-source preview.</p></div><div class="two-col"><article class="product-card"><span class="eyebrow">Open source · Phase 1</span><h3>QTable + QTableUI</h3><p>The reusable foundation: data model, permissions, project views, APIs, UI and AI-assisted work flows.</p><ul><li>Source-first developer adoption</li><li>Self-hosted deployment path</li><li>Public docs, roadmap and contribution flow</li></ul></article><article class="product-card ui"><span class="eyebrow">Separate product layer</span><h3>QSpace</h3><p>A product/workspace surface in the wider QingZoneX ecosystem. It is intentionally not bundled into the first open-source release or required to run QTable.</p><ul><li>Separate product responsibility</li><li>No dependency for QTable self-hosting</li><li>Can be linked from the portal when its public entry point is ready</li></ul></article></div></div></section>
+
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">Start locally</span><h2>A complete stack, with one Compose command.</h2><p>Clone QTable and QTableUI as sibling directories. QTable’s canonical Compose setup starts the API, frontend, PostgreSQL, Redis and MinIO.</p></div><div class="two-col"><div class="code-card"><div class="code-head">Terminal</div><pre><span class="cmd">git clone</span> https://github.com/QingZoneX/QTable.git
+<span class="cmd">git clone</span> https://github.com/QingZoneX/QTableUI.git
+
+<span class="cmd">cd</span> QTable
+<span class="cmd">cp</span> .env.example .env
+<span class="cmd">docker compose</span> up --build -d
+
+<span class="comment"># Open http://localhost:9100</span></pre></div><div><div class="feature-grid" style="grid-template-columns:1fr 1fr"><article class="feature-card"><div class="feature-icon">01</div><h3>Self-hosted by default</h3><p>Keep the core product in infrastructure you operate.</p></article><article class="feature-card"><div class="feature-icon">02</div><h3>AI is optional</h3><p>Table functionality stays available without an external AI service.</p></article><article class="feature-card"><div class="feature-icon">03</div><h3>Private attachments</h3><p>Stable object identities with permission checks on every read.</p></article><article class="feature-card"><div class="feature-icon">04</div><h3>Alpha transparency</h3><p>Current release status is clearly marked before v1.0.</p></article></div></div></div></div></section>
+
+  <section class="cta"><div class="shell"><div class="cta-card"><h2>Build with the first QingZoneX open-source release.</h2><p>Start with the documentation, inspect the source, and use GitHub Issues to shape the roadmap as QTable and QTableUI move toward v1.0.</p><div class="hero-actions"><a class="button primary" href={withBase('docs/')}>Read the docs →</a><a class="button secondary" href={QTABLE_GITHUB_URL}>QTable source</a><a class="button ghost" href={QTABLE_UI_GITHUB_URL}>QTableUI source</a></div></div></div></section>
+</BaseLayout>
