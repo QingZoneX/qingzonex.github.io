@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   SITE_URL: ${{ vars.SITE_URL }}
@@ -30,26 +30,7 @@ jobs:
           package-manager-cache: false
 
       - name: Install dependencies
-        id: install
-        shell: bash
-        run: |
-          if [[ -f package-lock.json ]]; then
-            echo "generated_lockfile=false" >> "$GITHUB_OUTPUT"
-            npm ci --no-audit --no-fund
-          else
-            echo "generated_lockfile=true" >> "$GITHUB_OUTPUT"
-            npm install --no-audit --no-fund
-          fi
-
-      - name: Commit bootstrap lockfile
-        if: github.event_name == 'push' && steps.install.outputs.generated_lockfile == 'true'
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json
-          git commit -m "chore: add generated npm lockfile"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+        run: npm ci --no-audit --no-fund
 
       - name: Verify deployment configuration
         run: npm run verify:config
