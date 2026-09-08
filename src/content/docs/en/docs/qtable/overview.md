@@ -9,7 +9,7 @@ QTable is a complete AI-native open-source project and work management product. 
 
 ### QTable Web App
 
-The frontend implementation lives in [`QingZoneX/QTableUI`](https://github.com/QingZoneX/QTableUI) and currently provides:
+[Web frontend implementation source](https://github.com/QingZoneX/QTableUI) currently provides:
 
 - Home / My Work / Projects Center;
 - Grid / Kanban / Gantt / Calendar / Gallery;
@@ -17,11 +17,11 @@ The frontend implementation lives in [`QingZoneX/QTableUI`](https://github.com/Q
 - Automation Center and execution history;
 - Notification Center, record workspace, activity and realtime paths;
 - permission-aware global search and Recycle Bin;
-- AI Planning, Project Steward, Action Plans and QNote / Clipper Source Inbox.
+- AI Planning, Project Steward, Action Plans and Source Inbox.
 
 ### QTable API & Domain Services
 
-The backend implementation lives in [`QingZoneX/QTable`](https://github.com/QingZoneX/QTable) and owns:
+[Backend and domain-services source](https://github.com/QingZoneX/QTable) owns:
 
 - fields, records, filters, sorting, grouping, named views and Task Profile semantics;
 - workspace, object and row-level permissions;

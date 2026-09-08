@@ -1,9 +1,11 @@
 ---
 title: QTable frontend implementation
-description: "The QTable Web App product interface and frontend stack; the implementation repository is named QingZoneX/QTableUI."
+description: "The QTable Web App product interface and frontend stack."
 ---
 
-This section documents **QTable’s frontend implementation**. The code repository is named [`QingZoneX/QTableUI`](https://github.com/QingZoneX/QTableUI), but it is not a separate product in the portal hierarchy; it implements the QTable Web App.
+This section documents **QTable’s web frontend implementation**. It is part of the QTable product and shares permission, data and release contracts with the QTable API.
+
+[View the web frontend implementation source](https://github.com/QingZoneX/QTableUI).
 
 ## Current product surfaces
 
@@ -17,7 +19,7 @@ This section documents **QTable’s frontend implementation**. The code reposito
 - Global Search / Command paths;
 - Recycle Bin;
 - AI Planning, Project Steward and safe Action Plans;
-- QNote Source Inbox.
+- Source Inbox.
 
 ## Stack
 

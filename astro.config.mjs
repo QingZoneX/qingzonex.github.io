@@ -4,6 +4,7 @@ import { resolveSiteConfig } from './site-config.mjs';
 import { localeBootstrapScript } from './src/lib/i18n.mjs';
 
 const { site, base, sourceRepository } = resolveSiteConfig();
+const ORG_AVATAR_URL = 'https://avatars.githubusercontent.com/u/280868418?v=4';
 const label = (zhCn, zhTw, en) => ({ label: zhCn, translations: { 'zh-TW': zhTw, en } });
 
 export default defineConfig({
@@ -13,20 +14,25 @@ export default defineConfig({
   integrations: [
     starlight({
       title: { 'zh-CN': 'QTable 文档', 'zh-TW': 'QTable 說明文件', en: 'QTable Docs' },
-      description: 'Documentation for the QTable open-source product, including its frontend and backend implementation layers.',
+      description: 'Documentation for the QTable open-source product across its web, API, data, security and self-hosting layers.',
       locales: {
         root: { label: '简体中文', lang: 'zh-CN' },
         'zh-tw': { label: '繁體中文', lang: 'zh-TW' },
         en: { label: 'English', lang: 'en' },
       },
-      logo: { src: './src/assets/logo.svg', replacesTitle: false },
-      favicon: '/favicon.svg',
+      favicon: ORG_AVATAR_URL,
       disable404Route: true,
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/QingZoneX' }],
       editLink: { baseUrl: `https://github.com/${sourceRepository}/edit/main/` },
       customCss: ['./src/styles/starlight.css'],
-      head: [{ tag: 'script', attrs: { 'data-qingzonex-i18n': 'bootstrap' }, content: localeBootstrapScript(base) }],
-      components: { LanguageSelect: './src/components/StarlightLanguageSwitcher.astro' },
+      head: [
+        { tag: 'link', attrs: { rel: 'preconnect', href: 'https://avatars.githubusercontent.com', crossorigin: '' } },
+        { tag: 'script', attrs: { 'data-qingzonex-i18n': 'bootstrap' }, content: localeBootstrapScript(base) },
+      ],
+      components: {
+        LanguageSelect: './src/components/StarlightLanguageSwitcher.astro',
+        SiteTitle: './src/components/StarlightSiteTitle.astro',
+      },
       sidebar: [
         { ...label('门户', '入口網站', 'Portal'), link: '/' },
         { ...label('开始', '開始', 'Start here'), items: [{ slug: 'docs' }, { slug: 'docs/getting-started/quick-start' }, { slug: 'docs/getting-started/self-hosting' }, { slug: 'docs/getting-started/production-checklist' }] },
