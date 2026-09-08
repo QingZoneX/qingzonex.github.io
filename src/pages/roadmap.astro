@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { QTABLE_GITHUB_URL, withBase } from '../lib/site';
+const items = [
+  ['Now','Large-table performance','Improve incremental realtime, server paging and large-table paths.','active'],
+  ['Now','Templates & dashboards','Raise templates and dashboards toward commercial-quality product experiences.','active'],
+  ['Next','Table-as-API','Expand developer-facing capabilities for treating structured tables as an application API.',''],
+  ['Next','Skill / Connector integrations','Connect QTable work models to external skills and integrations.',''],
+  ['Next','Semantic duplicate detection','Improve duplicate detection beyond explicit/source-level hints.',''],
+  ['Next','Self-hosted / BYO AI hardening','Strengthen deployment and provider flexibility for user-controlled AI paths.',''],
+  ['Later','Comments, mentions & notifications','Add collaboration primitives around records and project activity.',''],
+];
+---
+<BaseLayout title="Roadmap | QingZoneX" description="Public roadmap themes for QTable and QTableUI as the projects move from v0.1.0-alpha toward v1.0.">
+  <section class="page-hero"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i> Public roadmap</span><h1>From open-source preview<br/>toward a durable platform.</h1><p>The themes below reflect the current QTable repository roadmap. GitHub Issues remains the detailed source of truth for active work and community discussion.</p><div class="page-actions"><a class="button primary" href={`${QTABLE_GITHUB_URL}/issues`}>Open GitHub Issues →</a><a class="button secondary" href={withBase('docs/project/release-status/')}>Release status</a></div></div></section>
+  <section class="section"><div class="shell"><div class="roadmap">{items.map(([phase,title,description,state]) => <article class="roadmap-item"><span class:list={['roadmap-tag', state]}>{phase}</span><div><h3>{title}</h3><p>{description}</p></div><a class="text-link" href={`${QTABLE_GITHUB_URL}/issues`}>Discuss →</a></article>)}</div></div></section>
+  <section class="cta"><div class="shell"><div class="cta-card"><h2>The roadmap is intentionally issue-driven.</h2><p>As the repositories become public, concrete milestones and implementation discussion should live next to the code rather than drifting into a separate marketing roadmap.</p><div class="hero-actions"><a class="button primary" href={`${QTABLE_GITHUB_URL}/issues`}>Browse issues →</a><a class="button secondary" href={withBase('docs/project/contributing/')}>Contributing guide</a></div></div></div></section>
+</BaseLayout>
