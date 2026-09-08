@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#0f2037"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#5da9ff" stop-opacity=".24"/><stop offset="1" stop-color="#5da9ff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#63e6be"/><stop offset=".55" stop-color="#5da9ff"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="900" cy="90" r="430" fill="url(#glow)"/>
+  <g transform="translate(74 70)">
+    <rect width="72" height="72" rx="20" fill="#0B1728" stroke="#28405c"/>
+    <path d="M20 23h21c8 0 14.5 6.5 14.5 14.5S49 52 41 52H32" stroke="#63E6BE" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M20 23v29h15" stroke="#5DA9FF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m43 46 10.5 10.5" stroke="#A78BFA" stroke-width="5.5" stroke-linecap="round"/>
+    <text x="94" y="48" fill="#f3f7fb" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">QingZoneX</text>
+  </g>
+  <text x="74" y="264" fill="#f3f7fb" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="760">Open-source foundations for</text>
+  <text x="74" y="352" fill="url(#word)" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="760">AI-native structured work.</text>
+  <text x="76" y="426" fill="#9db0c7" font-family="Arial, Helvetica, sans-serif" font-size="29">QTable + QTableUI · First open-source release</text>
+  <g transform="translate(76 492)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">
+    <rect width="158" height="48" rx="24" fill="#102438" stroke="#29405a"/><text x="28" y="31" fill="#63e6be">Apache-2.0</text>
+    <rect x="176" width="164" height="48" rx="24" fill="#102438" stroke="#29405a"/><text x="203" y="31" fill="#5da9ff">Self-hostable</text>
+    <rect x="358" width="142" height="48" rx="24" fill="#102438" stroke="#29405a"/><text x="389" y="31" fill="#a78bfa">Alpha preview</text>
+  </g>
+</svg>
