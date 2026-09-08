@@ -3,14 +3,20 @@ export const DEFAULT_LOCALE = 'zh-cn';
 export const SUPPORTED_LOCALES = ['zh-cn', 'zh-tw', 'en'];
 
 export const LOCALE_SETTINGS = {
-  'zh-cn': { label: '简体中文', lang: 'zh-CN', prefix: '', ogLocale: 'zh_CN' },
-  'zh-tw': { label: '繁體中文', lang: 'zh-TW', prefix: 'zh-tw', ogLocale: 'zh_TW' },
-  en: { label: 'English', lang: 'en', prefix: 'en', ogLocale: 'en_US' },
+  'zh-cn': { label: '简体中文', lang: 'zh-CN', prefix: '', ogLocale: 'zh_CN', badge: '简' },
+  'zh-tw': { label: '繁體中文', lang: 'zh-TW', prefix: 'zh-tw', ogLocale: 'zh_TW', badge: '繁' },
+  en: { label: 'English', lang: 'en', prefix: 'en', ogLocale: 'en_US', badge: 'EN' },
 };
 
 export function normalizeBase(base = '/') {
   const value = `/${String(base || '/').replace(/^\/+|\/+$/g, '')}/`.replace(/\/+/g, '/');
   return value === '//' ? '/' : value;
+}
+
+export function ensureTrailingSlash(pathname = '/') {
+  const value = String(pathname || '/');
+  if (value === '/') return '/';
+  return value.endsWith('/') ? value : `${value}/`;
 }
 
 export function normalizeLocaleTag(input) {
@@ -55,10 +61,11 @@ export function logicalPathFromPathname(pathname, base = '/') {
 export function localePath(locale, path = '', base = '/') {
   const normalizedLocale = normalizeLocaleTag(locale) || DEFAULT_LOCALE;
   const normalizedBase = normalizeBase(base);
-  const cleanPath = String(path || '').replace(/^\/+/, '');
+  const cleanPath = String(path || '').replace(/^\/+|\/+$/g, '');
   const prefix = LOCALE_SETTINGS[normalizedLocale].prefix;
   const relative = [prefix, cleanPath].filter(Boolean).join('/');
-  return relative ? `${normalizedBase}${relative}`.replace(/([^:]\/)\/+/, '$1') : normalizedBase;
+  const output = relative ? `${normalizedBase}${relative}`.replace(/([^:]\/)\/+/, '$1') : normalizedBase;
+  return ensureTrailingSlash(output);
 }
 
 export function localeBootstrapScript(base = '/') {
@@ -75,6 +82,7 @@ export function localeBootstrapScript(base = '/') {
       if (value === 'en' || value.startsWith('en-')) return 'en';
       return SUPPORTED.has(value) ? value : undefined;
     };
+    const ensureSlash = (pathname) => pathname === '/' || pathname.endsWith('/') ? pathname : pathname + '/';
     const stripBase = (pathname) => {
       const path = '/' + String(pathname || '/').replace(/^\\/+/, '');
       if (BASE !== '/' && path.startsWith(BASE)) return path.slice(BASE.length);
@@ -88,9 +96,11 @@ export function localeBootstrapScript(base = '/') {
     };
     const logicalPath = (pathname) => stripBase(pathname).replace(/^(?:en|zh-tw)(?:\\/|$)/i, '');
     const targetPath = (locale, pathname) => {
-      const logical = logicalPath(pathname);
-      const prefix = locale === 'zh-cn' ? '' : locale + '/';
-      return (BASE + prefix + logical).replace(/([^:]\\/)\\/+/g, '$1');
+      const logical = logicalPath(pathname).replace(/^\\/+|\\/+$/g, '');
+      const prefix = locale === 'zh-cn' ? '' : locale;
+      const relative = [prefix, logical].filter(Boolean).join('/');
+      const result = relative ? (BASE + relative).replace(/([^:]\\/)\\/+/g, '$1') : BASE;
+      return ensureSlash(result);
     };
     const readStored = () => { try { return normalize(localStorage.getItem(KEY)); } catch { return undefined; } };
     const store = (locale) => { try { if (SUPPORTED.has(locale)) localStorage.setItem(KEY, locale); } catch {} };
@@ -102,6 +112,20 @@ export function localeBootstrapScript(base = '/') {
       location.replace(targetPath(desired, location.pathname) + location.search + location.hash);
       return;
     }
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const option = target.closest('[data-locale-option]');
+      if (!(option instanceof HTMLAnchorElement)) return;
+      const locale = normalize(option.dataset.locale);
+      if (!locale) return;
+      store(locale);
+      event.preventDefault();
+      const next = new URL(option.href, location.href);
+      next.search = location.search;
+      next.hash = location.hash;
+      location.assign(next.href);
+    }, true);
     document.addEventListener('change', (event) => {
       const select = event.target;
       if (!(select instanceof HTMLSelectElement)) return;
@@ -110,7 +134,7 @@ export function localeBootstrapScript(base = '/') {
         const locale = normalize(option?.dataset.locale);
         if (!locale) return;
         store(locale);
-        location.assign(select.value + location.search + location.hash);
+        location.assign(ensureSlash(select.value) + location.search + location.hash);
         return;
       }
       if (select.closest('starlight-lang-select')) store(localeFromPath(select.value));
