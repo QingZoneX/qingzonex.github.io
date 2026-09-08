@@ -1,51 +1,40 @@
 name: Portal CI
-
 on:
   push:
     branches: ['**']
   pull_request:
   workflow_dispatch:
-
 permissions:
   contents: read
-
 env:
   SITE_URL: ${{ vars.SITE_URL }}
-
 concurrency:
   group: portal-ci-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-
       - name: Use Node.js 22
         uses: actions/setup-node@v7
         with:
           node-version: '22'
           package-manager-cache: false
-
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
-
       - name: Verify deployment configuration
         run: npm run verify:config
-
       - name: Verify source
         run: npm run verify:source
-
+      - name: Verify multilingual contract
+        run: npm run verify:i18n
       - name: Verify documentation links
         run: npm run verify:links
-
       - name: Build current repository mode
         run: npm run build
-
       - name: Verify generated site
         run: npm run verify:dist
-
       - name: Verify QingZoneX organization Pages transfer
         run: npm run verify:transfer

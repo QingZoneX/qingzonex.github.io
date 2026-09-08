@@ -1,34 +1,28 @@
 ---
-interface Props { compact?: boolean; }
-const { compact = false } = Astro.props;
+import type { PortalLocale } from '../lib/portal-content';
+interface Props { compact?: boolean; locale?: PortalLocale; }
+const { compact = false, locale = 'zh-cn' } = Astro.props;
+const dictionaries = {
+  'zh-cn': {
+    live:'实时界面导览', workspace:'发布工作空间', filter:'筛选演示任务', placeholder:'筛选任务…', aria:'表格视图演示', tabs:{grid:'表格',kanban:'看板',gantt:'甘特',calendar:'日历',gallery:'画廊'}, foot:'交互演示 · 无需后端', source:'QTableUI 源码', headers:['任务','状态','优先级','负责人','截止'], status:{progress:'进行中',review:'评审中',done:'已完成'}, priority:{high:'高',medium:'中',low:'低'}, empty:'没有匹配的任务。清除筛选条件可恢复演示数据。', weekdays:['一','二','三','四','五','六','日'], month:'9月', tasks:[['定义开源发布范围','done','high','Mina','9月8日',1,3],['加固行级权限','progress','high','Kai','9月9日',2,5],['发布自托管指南','review','medium','Lin','9月10日',5,3],['准备 QTableUI 示例','progress','medium','Ari','9月11日',4,6],['执行开源就绪检查','review','high','Mina','9月12日',7,4],['起草社区路线图','done','low','Kai','9月13日',8,3]]
+  },
+  'zh-tw': {
+    live:'即時介面導覽', workspace:'發佈工作空間', filter:'篩選示範任務', placeholder:'篩選任務…', aria:'表格檢視示範', tabs:{grid:'表格',kanban:'看板',gantt:'甘特',calendar:'行事曆',gallery:'圖庫'}, foot:'互動示範 · 無需後端', source:'QTableUI 原始碼', headers:['任務','狀態','優先級','負責人','到期'], status:{progress:'進行中',review:'審查中',done:'已完成'}, priority:{high:'高',medium:'中',low:'低'}, empty:'沒有符合的任務。清除篩選條件即可還原示範資料。', weekdays:['一','二','三','四','五','六','日'], month:'9月', tasks:[['定義開源發佈範圍','done','high','Mina','9月8日',1,3],['加固列級權限','progress','high','Kai','9月9日',2,5],['發佈自託管指南','review','medium','Lin','9月10日',5,3],['準備 QTableUI 範例','progress','medium','Ari','9月11日',4,6],['執行開源就緒檢查','review','high','Mina','9月12日',7,4],['起草社群路線圖','done','low','Kai','9月13日',8,3]]
+  },
+  en: {
+    live:'Live interface tour', workspace:'Release workspace', filter:'Filter demo tasks', placeholder:'Filter tasks…', aria:'Table view demo', tabs:{grid:'Grid',kanban:'Kanban',gantt:'Gantt',calendar:'Calendar',gallery:'Gallery'}, foot:'Interactive demo · no backend required', source:'QTableUI source', headers:['Task','Status','Priority','Owner','Due'], status:{progress:'In progress',review:'Review',done:'Done'}, priority:{high:'High',medium:'Medium',low:'Low'}, empty:'No matching tasks. Clear the filter to restore the demo data.', weekdays:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], month:'Sep', tasks:[['Define open-source release scope','done','high','Mina','Sep 08',1,3],['Harden row-level permissions','progress','high','Kai','Sep 09',2,5],['Publish self-hosting guide','review','medium','Lin','Sep 10',5,3],['Prepare QTableUI examples','progress','medium','Ari','Sep 11',4,6],['Run open-source readiness checks','review','high','Mina','Sep 12',7,4],['Draft community roadmap','done','low','Kai','Sep 13',8,3]]
+  }
+};
+const d = dictionaries[locale];
+const payload = JSON.stringify(d).replace(/</g, '\\u003c');
 ---
-
 <section class:list={['tour', { 'tour-compact': compact }]} data-product-tour>
-  <div class="tour-topbar">
-    <div>
-      <span class="tour-label">Live interface tour</span>
-      <strong>Release workspace</strong>
-    </div>
-    <label class="tour-search">
-      <span class="sr-only">Filter demo tasks</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <input data-tour-search type="search" placeholder="Filter tasks…" autocomplete="off" />
-    </label>
-  </div>
-  <div class="tour-tabs" role="tablist" aria-label="Table view demo">
-    <button type="button" class="active" data-view="grid" role="tab" aria-selected="true">Grid</button>
-    <button type="button" data-view="kanban" role="tab" aria-selected="false">Kanban</button>
-    <button type="button" data-view="gantt" role="tab" aria-selected="false">Gantt</button>
-    <button type="button" data-view="calendar" role="tab" aria-selected="false">Calendar</button>
-    <button type="button" data-view="gallery" role="tab" aria-selected="false">Gallery</button>
-  </div>
+  <div class="tour-topbar"><div><span class="tour-label">{d.live}</span><strong>{d.workspace}</strong></div><label class="tour-search"><span class="sr-only">{d.filter}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input data-tour-search type="search" placeholder={d.placeholder} autocomplete="off" /></label></div>
+  <div class="tour-tabs" role="tablist" aria-label={d.aria}><button type="button" class="active" data-view="grid" role="tab" aria-selected="true">{d.tabs.grid}</button><button type="button" data-view="kanban" role="tab" aria-selected="false">{d.tabs.kanban}</button><button type="button" data-view="gantt" role="tab" aria-selected="false">{d.tabs.gantt}</button><button type="button" data-view="calendar" role="tab" aria-selected="false">{d.tabs.calendar}</button><button type="button" data-view="gallery" role="tab" aria-selected="false">{d.tabs.gallery}</button></div>
   <div class="tour-canvas" data-tour-canvas aria-live="polite"></div>
-  <div class="tour-foot">
-    <span><i class="live-dot"></i>Interactive demo · no backend required</span>
-    <a href="https://github.com/QingZoneX/QTableUI">QTableUI source <span aria-hidden="true">↗</span></a>
-  </div>
+  <div class="tour-foot"><span><i class="live-dot"></i>{d.foot}</span><a href="https://github.com/QingZoneX/QTableUI">{d.source} <span aria-hidden="true">↗</span></a></div>
+  <script type="application/json" data-tour-data set:html={payload}></script>
 </section>
-
 <style>
   .tour { border: 1px solid var(--line-strong); border-radius: 22px; background: var(--bg-elevated); box-shadow: var(--shadow); overflow: hidden; }
   .tour-topbar { min-height: 62px; padding: 13px 15px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); }
@@ -90,64 +84,29 @@ const { compact = false } = Astro.props;
   .tour :global(.gallery-card b) { display: block; font-size: 10px; }
   .tour :global(.gallery-card small) { color: var(--muted); font-size: 8px; }
   .tour-compact .tour-canvas { min-height: 310px; }
-  @media (max-width: 700px) {
-    .tour-topbar { align-items: flex-start; flex-direction: column; }
-    .tour-search { width: 100%; }
-    .tour-foot { align-items: flex-start; flex-direction: column; }
-    .tour :global(.demo-gallery) { grid-template-columns: 1fr 1fr; min-width: 450px; }
-  }
+  @media (max-width: 700px) { .tour-topbar { align-items: flex-start; flex-direction: column; } .tour-search { width: 100%; } .tour-foot { align-items: flex-start; flex-direction: column; } .tour :global(.demo-gallery) { grid-template-columns: 1fr 1fr; min-width: 450px; } }
 </style>
-
 <script>
-  const root = document.querySelector('[data-product-tour]');
-  if (root instanceof HTMLElement) {
+  document.querySelectorAll('[data-product-tour]').forEach((root) => {
+    if (!(root instanceof HTMLElement) || root.dataset.initialized === 'true') return;
+    root.dataset.initialized = 'true';
     const canvas = root.querySelector('[data-tour-canvas]');
     const search = root.querySelector('[data-tour-search]');
     const tabs = [...root.querySelectorAll('[data-view]')];
-    const tasks = [
-      { name: 'Define open-source release scope', status: 'Done', priority: 'High', owner: 'Mina', date: 'Sep 08', start: 1, span: 3 },
-      { name: 'Harden row-level permissions', status: 'In progress', priority: 'High', owner: 'Kai', date: 'Sep 09', start: 2, span: 5 },
-      { name: 'Publish self-hosting guide', status: 'Review', priority: 'Medium', owner: 'Lin', date: 'Sep 10', start: 5, span: 3 },
-      { name: 'Prepare QTableUI examples', status: 'In progress', priority: 'Medium', owner: 'Ari', date: 'Sep 11', start: 4, span: 6 },
-      { name: 'Run open-source readiness checks', status: 'Review', priority: 'High', owner: 'Mina', date: 'Sep 12', start: 7, span: 4 },
-      { name: 'Draft community roadmap', status: 'Done', priority: 'Low', owner: 'Kai', date: 'Sep 13', start: 8, span: 3 },
-    ];
-    let active = 'grid';
-    let query = '';
-
+    const dataNode = root.querySelector('[data-tour-data]');
+    if (!(dataNode instanceof HTMLScriptElement)) return;
+    const d = JSON.parse(dataNode.textContent || '{}');
+    const tasks = (d.tasks || []).map(([name,status,priority,owner,date,start,span]) => ({name,status,priority,owner,date,start,span}));
+    let active = 'grid'; let query = '';
     const esc = (value) => String(value).replace(/[&<>'"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-    const filtered = () => tasks.filter((task) => Object.values(task).join(' ').toLowerCase().includes(query));
-    const statusClass = (status) => status === 'Done' ? 'done' : status === 'Review' ? 'review' : 'progress';
-
-    function grid(items) {
-      return `<div class="demo-grid"><div class="demo-row head"><span>Task</span><span>Status</span><span>Priority</span><span>Owner</span><span>Due</span></div>${items.map(t => `<div class="demo-row"><span><b>${esc(t.name)}</b></span><span><i class="pill ${statusClass(t.status)}">${esc(t.status)}</i></span><span><i class="priority ${t.priority.toLowerCase()}">● ${esc(t.priority)}</i></span><span>${esc(t.owner)}</span><span>${esc(t.date)}</span></div>`).join('')}</div>`;
-    }
-    function kanban(items) {
-      const groups = ['In progress', 'Review', 'Done'];
-      return `<div class="demo-kanban">${groups.map(g => { const group = items.filter(t => t.status === g); return `<div class="kanban-col"><div class="kanban-head"><span>${g}</span><span>${group.length}</span></div>${group.map(t => `<article class="task-card"><b>${esc(t.name)}</b><div class="task-meta"><span>${esc(t.owner)}</span><span>${esc(t.date)}</span></div></article>`).join('') || '<div class="task-card"><span class="task-meta">No matching tasks</span></div>'}</div>`; }).join('')}</div>`;
-    }
-    function gantt(items) {
-      return `<div class="demo-gantt"><div class="gantt-head"><span>Task</span><div class="gantt-dates">${Array.from({length:12},(_,i)=>`<span>${i+8}</span>`).join('')}</div></div>${items.map(t => `<div class="gantt-row"><div class="gantt-name">${esc(t.name)}</div><div class="gantt-track"><i class="gantt-bar" style="left:${(t.start-1)*8.333}%;width:${t.span*8.333}%"></i></div></div>`).join('')}</div>`;
-    }
-    function calendar(items) {
-      const days = Array.from({length:21},(_,i)=>i+1);
-      return `<div class="demo-calendar"><div class="calendar-head">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<span>${d}</span>`).join('')}</div><div class="calendar-grid">${days.map((d,i) => { const task = items[i % items.length]; return `<div class="day"><em>Sep ${d}</em>${items.length && (i % 3 === 0) ? `<div class="calendar-task">${esc(task.name)}</div>` : ''}</div>`; }).join('')}</div></div>`;
-    }
-    function gallery(items) {
-      return `<div class="demo-gallery">${items.map(t => `<article class="gallery-card"><div class="gallery-accent"></div><b>${esc(t.name)}</b><small>${esc(t.status)} · ${esc(t.owner)} · ${esc(t.date)}</small></article>`).join('')}</div>`;
-    }
-    function render() {
-      if (!(canvas instanceof HTMLElement)) return;
-      const items = filtered();
-      if (!items.length) { canvas.innerHTML = '<div class="notice"><strong>No matching tasks.</strong> Clear the filter to restore the demo data.</div>'; return; }
-      canvas.innerHTML = active === 'kanban' ? kanban(items) : active === 'gantt' ? gantt(items) : active === 'calendar' ? calendar(items) : active === 'gallery' ? gallery(items) : grid(items);
-    }
-    tabs.forEach((tab) => tab.addEventListener('click', () => {
-      active = tab.getAttribute('data-view') || 'grid';
-      tabs.forEach((item) => { item.classList.toggle('active', item === tab); item.setAttribute('aria-selected', String(item === tab)); });
-      render();
-    }));
-    search?.addEventListener('input', () => { if (search instanceof HTMLInputElement) { query = search.value.trim().toLowerCase(); render(); }});
-    render();
-  }
+    const filtered = () => tasks.filter((task) => [task.name,d.status[task.status],d.priority[task.priority],task.owner,task.date].join(' ').toLowerCase().includes(query));
+    function grid(items) { return `<div class="demo-grid"><div class="demo-row head">${d.headers.map(x=>`<span>${esc(x)}</span>`).join('')}</div>${items.map(t=>`<div class="demo-row"><span><b>${esc(t.name)}</b></span><span><i class="pill ${t.status}">${esc(d.status[t.status])}</i></span><span><i class="priority ${t.priority}">● ${esc(d.priority[t.priority])}</i></span><span>${esc(t.owner)}</span><span>${esc(t.date)}</span></div>`).join('')}</div>`; }
+    function kanban(items) { const groups=['progress','review','done']; return `<div class="demo-kanban">${groups.map(g=>{const group=items.filter(t=>t.status===g);return `<div class="kanban-col"><div class="kanban-head"><span>${esc(d.status[g])}</span><span>${group.length}</span></div>${group.map(t=>`<article class="task-card"><b>${esc(t.name)}</b><div class="task-meta"><span>${esc(t.owner)}</span><span>${esc(t.date)}</span></div></article>`).join('') || `<div class="task-card"><span class="task-meta">${esc(d.empty)}</span></div>`}</div>`}).join('')}</div>`; }
+    function gantt(items) { return `<div class="demo-gantt"><div class="gantt-head"><span>${esc(d.headers[0])}</span><div class="gantt-dates">${Array.from({length:12},(_,i)=>`<span>${i+8}</span>`).join('')}</div></div>${items.map(t=>`<div class="gantt-row"><div class="gantt-name">${esc(t.name)}</div><div class="gantt-track"><i class="gantt-bar" style="left:${(t.start-1)*8.333}%;width:${t.span*8.333}%"></i></div></div>`).join('')}</div>`; }
+    function calendar(items) { const days=Array.from({length:21},(_,i)=>i+1); return `<div class="demo-calendar"><div class="calendar-head">${d.weekdays.map(x=>`<span>${esc(x)}</span>`).join('')}</div><div class="calendar-grid">${days.map((day,i)=>{const task=items[i%items.length];return `<div class="day"><em>${esc(d.month)} ${day}</em>${items.length && i%3===0?`<div class="calendar-task">${esc(task.name)}</div>`:''}</div>`}).join('')}</div></div>`; }
+    function gallery(items) { return `<div class="demo-gallery">${items.map(t=>`<article class="gallery-card"><div class="gallery-accent"></div><b>${esc(t.name)}</b><small>${esc(d.status[t.status])} · ${esc(t.owner)} · ${esc(t.date)}</small></article>`).join('')}</div>`; }
+    function render() { if (!(canvas instanceof HTMLElement)) return; const items=filtered(); if (!items.length) { canvas.innerHTML=`<div class="notice"><strong>${esc(d.empty)}</strong></div>`; return; } canvas.innerHTML=active==='kanban'?kanban(items):active==='gantt'?gantt(items):active==='calendar'?calendar(items):active==='gallery'?gallery(items):grid(items); }
+    tabs.forEach((tab)=>tab.addEventListener('click',()=>{active=tab.getAttribute('data-view')||'grid';tabs.forEach((item)=>{item.classList.toggle('active',item===tab);item.setAttribute('aria-selected',String(item===tab));});render();}));
+    search?.addEventListener('input',()=>{if(search instanceof HTMLInputElement){query=search.value.trim().toLowerCase();render();}}); render();
+  });
 </script>
