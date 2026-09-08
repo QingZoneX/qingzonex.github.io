@@ -7,8 +7,9 @@ Official portal and documentation site for the Phase 1 QingZoneX open-source pre
 - Astro 7
 - Starlight
 - Static output for GitHub Pages
+- Simplified Chinese, Traditional Chinese and English
 - No runtime database or server dependency
-- Vanilla JavaScript for the interactive product tour
+- Vanilla JavaScript for the interactive product tour and locale bootstrap
 
 ## Requirements
 
@@ -28,13 +29,26 @@ npm run dev
 npm ci
 npm run verify:config
 npm run verify:source
+npm run verify:i18n
 npm run verify:links
 npm run build
 npm run verify:dist
 npm run verify:transfer
 ```
 
-`verify:transfer` performs a second real Astro/Starlight production build while simulating the final `QingZoneX/qingzonex.github.io` repository. It verifies the root Pages base path, required routes, internal links/assets, QingZoneX canonical origin and Starlight edit links before the repository is transferred.
+`verify:transfer` performs a second real Astro/Starlight production build while simulating the final `QingZoneX/qingzonex.github.io` repository. It verifies the root Pages base path, all three locale trees, internal links/assets, QingZoneX canonical origin and Starlight edit links before the repository is transferred.
+
+## Localization
+
+The portal treats all three locales as first-class content:
+
+- Simplified Chinese: `/` (root and no-JS fallback)
+- Traditional Chinese: `/zh-tw/`
+- English: `/en/`
+
+Initial locale resolution uses persisted manual preference first, then browser language, then Simplified Chinese. Manual selection is stored in `localStorage` and synchronized across tabs. Custom portal pages and Starlight Docs use the same locale preference protocol.
+
+See [LOCALIZATION.md](LOCALIZATION.md) for the routing, browser mapping, persistence, content ownership and CI contract.
 
 ## GitHub Pages deployment
 

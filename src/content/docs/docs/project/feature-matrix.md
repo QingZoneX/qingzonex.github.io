@@ -28,7 +28,7 @@ sidebar:
 
 ## 正在加固，不作为新增产品营销
 
-公开 Alpha 仍包含浏览器级全栈 E2E、部分认证/安全默认值、Service Worker 私有数据保护、浏览器安全 Header、运维 Runbook 与大表性能工作。详情见 [发布状态](./release-status/)。
+公开 Alpha 仍包含浏览器级全栈 E2E、部分认证/安全默认值、Service Worker 私有数据保护、浏览器安全 Header、运维 Runbook 与大表性能工作。详情见 [发布状态](../release-status/)。
 
 ## 规划中的能力
 

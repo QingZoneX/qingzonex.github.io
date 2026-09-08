@@ -28,7 +28,7 @@ sidebar:
 
 ## 正在加固，不作為新增產品行銷
 
-公開 Alpha 仍包含瀏覽器級全端 E2E、部分認證/安全預設值、Service Worker 私有資料保護、瀏覽器安全 Header、維運 Runbook 與大型表格效能。詳情見 [發佈狀態](./release-status/)。
+公開 Alpha 仍包含瀏覽器級全端 E2E、部分認證/安全預設值、Service Worker 私有資料保護、瀏覽器安全 Header、維運 Runbook 與大型表格效能。詳情見 [發佈狀態](../release-status/)。
 
 ## 規劃中的能力
 

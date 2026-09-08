@@ -24,7 +24,7 @@ QTable 與 QTableUI 目前標記為 **`v0.1.0-alpha` — Alpha / Open Source Pre
 - OAuth2 + S256 PKCE；
 - 可重現 QTableUI 容器與標準完整堆疊 Compose。
 
-可透過 [功能矩陣](./feature-matrix/) 快速查看能力邊界。
+可透過 [功能矩陣](../feature-matrix/) 快速查看能力邊界。
 
 ## 正在執行的公開 Alpha 加固
 
@@ -54,4 +54,4 @@ QTable 與 QTableUI 目前標記為 **`v0.1.0-alpha` — Alpha / Open Source Pre
 
 ## 正式環境準備
 
-對外開放自託管執行個體前使用 [正式環境檢查清單](../getting-started/production-checklist/)。若儲存庫 Release Notes 或 GitHub Issues 更新得較晚，以它們為準。
+對外開放自託管執行個體前使用 [正式環境檢查清單](../../getting-started/production-checklist/)。若儲存庫 Release Notes 或 GitHub Issues 更新得較晚，以它們為準。
