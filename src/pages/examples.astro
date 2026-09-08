@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TableTour from '../components/TableTour.astro';
+import { withBase } from '../lib/site';
+---
+<BaseLayout title="Examples & product tour | QingZoneX" description="Explore a lightweight interactive tour of QTable view concepts and jump into the full self-hosted stack.">
+  <section class="page-hero"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i> Examples</span><h1>Explore the QTable interaction model.</h1><p>This page intentionally uses local simulated data so the portal remains a static GitHub Pages site. It demonstrates the view concepts without pretending to be a hosted QTable instance.</p></div></section>
+  <section class="section"><div class="shell"><div class="notice" style="margin-bottom:22px"><strong>Product-tour boundary:</strong> filtering and view switching below are portal-only demonstrations. For real permissions, persistence, AI flows, attachments and collaboration, run QTable + QTableUI.</div><TableTour /></div></section>
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">Real product</span><h2>Move from tour to a complete local stack.</h2><p>The canonical QTable Compose stack includes the API, QTableUI, PostgreSQL 16, Redis 7 and MinIO S3-compatible storage.</p></div><div class="page-actions"><a class="button primary" href={withBase('docs/getting-started/self-hosting/')}>Self-hosting guide →</a><a class="button secondary" href={withBase('docs/getting-started/quick-start/')}>Developer quick start</a></div></div></section>
+</BaseLayout>

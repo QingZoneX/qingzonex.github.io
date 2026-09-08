@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TableTour from '../components/TableTour.astro';
+import { QTABLE_UI_GITHUB_URL, withBase } from '../lib/site';
+---
+<BaseLayout title="QTableUI — React frontend for QTable | QingZoneX" description="Explore QTableUI, the React 19 + TypeScript frontend for QTable with VTable, Apollo Client, Zustand, VChart and multiple project views.">
+  <section class="page-hero"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i> QTableUI · v0.1.0-alpha</span><h1>The interactive frontend<br/>for the QTable model.</h1><p>QTableUI provides the multidimensional-table experience for QTable: Grid, Kanban, Gantt, Calendar, Gallery, dashboards, AI planning workflows and the QNote Source Inbox.</p><div class="page-actions"><a class="button primary" href={withBase('docs/qtable-ui/overview/')}>Read QTableUI docs →</a><a class="button secondary" href={QTABLE_UI_GITHUB_URL}>Source on GitHub</a></div><div class="stats"><div class="stat"><strong>React 19</strong><span>Application UI foundation</span></div><div class="stat"><strong>TypeScript 6</strong><span>Typed frontend codebase</span></div><div class="stat"><strong>VTable</strong><span>Grid + Gantt rendering</span></div><div class="stat"><strong>Apollo + Zustand</strong><span>Server and client state layers</span></div></div></div></section>
+
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Experience</span><h2>Views that match how teams think about work.</h2><p>This lightweight portal tour uses local simulated data. The actual QTableUI connects to a running QTable API and applies the product’s permission model.</p></div><TableTour compact /></div></section>
+
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">Frontend stack</span><h2>Purpose-built from modern application primitives.</h2></div><div class="feature-grid">
+    <article class="feature-card"><div class="feature-icon">R</div><h3>React 19</h3><p>Component foundation for the application shell and interactive product surfaces.</p></article>
+    <article class="feature-card"><div class="feature-icon">TS</div><h3>TypeScript 6</h3><p>Typed application logic across views, workflows and product integrations.</p></article>
+    <article class="feature-card"><div class="feature-icon">VT</div><h3>VTable + VTable Gantt</h3><p>High-density table and Gantt rendering for the core multidimensional experience.</p></article>
+    <article class="feature-card"><div class="feature-icon">A</div><h3>Apollo Client</h3><p>GraphQL data layer aligned to the QTable backend surface.</p></article>
+    <article class="feature-card"><div class="feature-icon">Z</div><h3>Zustand</h3><p>Focused client-side state where local interaction state is appropriate.</p></article>
+    <article class="feature-card"><div class="feature-icon">VC</div><h3>VChart</h3><p>Dashboard visualization together with react-grid-layout for flexible composition.</p></article>
+  </div></div></section>
+
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Product invariants</span><h2>The frontend does not bypass backend safety.</h2><p>Current project guidance explicitly prevents client-side shortcuts that would weaken data visibility, permissions or audited mutation paths.</p></div><div class="two-col"><div class="product-card"><h3>Do</h3><ul><li>Preserve server paging and aggregation for large-table paths</li><li>Load member candidates from the current workspace</li><li>Use public-token-safe APIs for public dashboards</li><li>Keep Preview → Confirm → Apply in AI workflows</li></ul></div><div class="product-card ui"><h3>Do not</h3><ul><li>Load hidden rows for client-side AI or analytics</li><li>Write records directly when an atomic audited mutation exists</li><li>Bypass backend permission boundaries for convenience</li><li>Put real credentials in frontend environment variables</li></ul></div></div></div></section>
+
+  <section class="cta"><div class="shell"><div class="cta-card"><h2>Develop QTableUI against a local QTable API.</h2><p>The development server listens on port 9100 and proxies API, GraphQL, WebSocket and OAuth traffic to the backend on port 9000.</p><div class="hero-actions"><a class="button primary" href={withBase('docs/qtable-ui/development/')}>Development guide →</a><a class="button secondary" href={QTABLE_UI_GITHUB_URL}>Inspect source</a></div></div></div></section>
+</BaseLayout>

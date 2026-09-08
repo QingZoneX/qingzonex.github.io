@@ -1,0 +1,24 @@
+{
+  "name": "qingzonex-portal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": ">=22.12.0 <25"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "verify:source": "node scripts/verify-source.mjs",
+    "verify:config": "node scripts/verify-site-config.mjs",
+    "verify:links": "node scripts/verify-doc-links.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.0",
+    "astro": "7.3.1"
+  }
+}

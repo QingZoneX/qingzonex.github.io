@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/site';
+---
+<BaseLayout title="Page not found | QingZoneX" description="The requested QingZoneX page could not be found.">
+  <section class="page-hero" style="min-height:68vh;display:grid;align-items:center"><div class="shell"><span class="kicker">404</span><h1>This page is not in the table.</h1><p>The link may have moved, or the page has not been published yet.</p><div class="page-actions"><a class="button primary" href={withBase()}>Back to QingZoneX →</a><a class="button secondary" href={withBase('docs/')}>Open documentation</a></div></div></section>
+</BaseLayout>
