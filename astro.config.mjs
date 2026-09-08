@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'QingZoneX Docs',
-      description: 'Documentation for QTable and QTableUI, the first open-source release from QingZoneX.',
+      description: 'Documentation for the QTable and QTableUI Phase 1 open-source preview.',
       logo: {
         src: './src/assets/logo.svg',
         replacesTitle: false,
@@ -31,6 +31,7 @@ export default defineConfig({
             { slug: 'docs' },
             { slug: 'docs/getting-started/quick-start' },
             { slug: 'docs/getting-started/self-hosting' },
+            { slug: 'docs/getting-started/production-checklist' },
           ],
         },
         {
@@ -53,6 +54,7 @@ export default defineConfig({
         {
           label: 'Project',
           items: [
+            { slug: 'docs/project/feature-matrix' },
             { slug: 'docs/project/release-status' },
             { slug: 'docs/project/contributing' },
           ],
