@@ -48,12 +48,23 @@ const visibleText=(html)=>html
   .replace(/<[^>]+>/g,' ')
   .replace(/&nbsp;|&#160;/gi,' ')
   .replace(/\s+/g,' ');
+
 for(const locale of locales){
   for(const route of marketingPortal){
     const rel=routeFile(locale.prefix,route);
     const text=visibleText(fs.readFileSync(path.join(dist,rel),'utf8'));
     for(const forbiddenBrand of ['QSpace','QNote','Clipper','QTableUI']){
       if(text.includes(forbiddenBrand)) throw new Error(`${rel} exposes non-QTable product branding in visible portal copy: ${forbiddenBrand}`);
+    }
+    for(const framing of ['第二个产品','第二個產品','两个独立产品','兩個獨立產品','second product','two independent products']){
+      if(text.toLowerCase().includes(framing.toLowerCase())) throw new Error(`${rel} contains comparative multi-product framing: ${framing}`);
+    }
+  }
+  for(const route of docs){
+    const rel=routeFile(locale.prefix,route);
+    const text=visibleText(fs.readFileSync(path.join(dist,rel),'utf8'));
+    for(const forbiddenBrand of ['QSpace','QNote','Clipper']){
+      if(text.includes(forbiddenBrand)) throw new Error(`${rel} exposes unrelated product branding in visible QTable documentation: ${forbiddenBrand}`);
     }
   }
 }
@@ -80,4 +91,4 @@ for(const file of htmlFiles){
 }
 if(forbidden.length)throw new Error(`Forbidden generated content:\n${forbidden.join('\n')}`);
 if(unresolved.length)throw new Error(`Unresolved internal links/assets:\n${unresolved.slice(0,80).join('\n')}`);
-console.log(`Verified ${htmlFiles.length} HTML files, 3 locale trees, QingZoneX avatar branding, QTable-only portal copy, trailing-slash-safe locale navigation and required portal/docs routes.`);
+console.log(`Verified ${htmlFiles.length} HTML files, 3 locale trees, QingZoneX avatar branding, QTable-focused portal/docs copy, trailing-slash-safe locale navigation and required portal/docs routes.`);

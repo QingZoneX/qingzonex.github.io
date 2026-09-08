@@ -5,7 +5,7 @@ description: "QTable 目前 Alpha 狀態、已實作產品基線與公開發佈�
 
 QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 
-發佈由兩個實作儲存庫共同完成：`QingZoneX/QTable` 負責後端服務，`QingZoneX/QTableUI` 負責 Web 前端。入口網站把它們視為 **一個 QTable 產品的同一發佈面**。
+目前發佈以 **QTable 單一產品版本**為單位：Web 前端、API 與領域服務、資料層和物件儲存在同一發佈基線上協同驗證。
 
 ## 已實作產品基線
 
@@ -20,7 +20,7 @@ QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 - ChangeSet 基礎與 Recycle Bin；
 - 持久私有 S3-compatible 附件；
 - Goal-to-workspace、Task / Workload / Assignment Planning、Project Steward 與安全 Action Plan；
-- QNote / Clipper Source Inbox；
+- Source Inbox、來源脈絡與重複提示；
 - OAuth2 + S256 PKCE；
 - Web + API + PostgreSQL + Redis + MinIO 的標準自託管堆疊。
 
@@ -28,7 +28,7 @@ QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 
 活躍發佈項目包括瀏覽器級完整堆疊 E2E、Production 密碼重設 fail-closed、Docker 可移植性、瀏覽器安全 Header、Service Worker 私有資料保護，以及備份 / 還原 / 升級 Runbook。
 
-這些工作屬於 **QTable 的 Release / Security / Operations / Full-stack Verification**，不代表另有一個獨立前端產品尚未完成。
+以上工作統一屬於 **QTable 的 Release / Security / Operations / Full-stack Verification**。
 
 ## Alpha 階段適用情境
 

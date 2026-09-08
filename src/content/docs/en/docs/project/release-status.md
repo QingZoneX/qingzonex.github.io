@@ -5,7 +5,7 @@ description: "QTable Alpha status, implemented product baseline and active publi
 
 QTable is currently **`v0.1.0-alpha` — Open Source Preview**.
 
-The release is delivered across two implementation repositories: `QingZoneX/QTable` for backend services and `QingZoneX/QTableUI` for the web frontend. The portal treats them as **one release surface for one QTable product**.
+The current release is managed as **one QTable product version**: the web frontend, API and domain services, data layer and object storage are validated together on the same release baseline.
 
 ## Implemented product baseline
 
@@ -20,7 +20,7 @@ The current main branches include, among other capabilities:
 - ChangeSet foundations and Recycle Bin;
 - durable private S3-compatible attachments;
 - goal-to-workspace, task / workload / assignment planning, Project Steward and safe Action Plans;
-- QNote / Clipper Source Inbox;
+- Source Inbox, source context and duplicate hints;
 - OAuth2 + S256 PKCE;
 - a canonical self-hosted Web + API + PostgreSQL + Redis + MinIO stack.
 
@@ -28,7 +28,7 @@ The current main branches include, among other capabilities:
 
 Active release tracks include browser-level full-stack E2E, production password-reset fail-closed behavior, Docker portability, browser security headers, private-data Service Worker protection, and backup / restore / upgrade runbooks.
 
-These are **QTable Release / Security / Operations / Full-stack Verification** tracks. They do not imply that a separate frontend product remains incomplete.
+All of this work belongs to **QTable Release / Security / Operations / Full-stack Verification**.
 
 ## Appropriate Alpha use
 

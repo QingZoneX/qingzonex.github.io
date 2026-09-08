@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-This matrix describes capability at the **single QTable product** level. The frontend implementation repository `QingZoneX/QTableUI` and backend implementation repository `QingZoneX/QTable` jointly deliver these product capabilities.
+This matrix uses **QTable** as the single product boundary. The web frontend, API and domain services, data layer and object storage jointly deliver these capabilities.
 
 **Implemented baseline** means the capability exists in the current product / main branches; it does not imply v1.0 API stability.
 
@@ -23,14 +23,14 @@ This matrix describes capability at the **single QTable product** level. The fro
 | AI planning | Goal-to-workspace, task planning, workload, assignment, Project Steward | Implemented baseline |
 | AI actions | Preview → Confirm → Apply, partial acceptance, permission / state revalidation | Implemented baseline |
 | AI visualization | Generate View and Dashboard through existing models | Implemented baseline |
-| Source Inbox | QNote / Clipper, source context and duplicate hints | Implemented baseline |
+| Source Inbox | Source context, capture intake and duplicate hints | Implemented baseline |
 | Identity | OAuth2 Authorization Code + S256 PKCE | Implemented; session/security hardening continues |
 | Self-host | Web App + API + PostgreSQL + Redis + MinIO Compose | Implemented; operations guidance continues |
 | Lightweight database | Explicit SQLite fallback | Evaluation / constrained single instance |
 
 ## Active hardening
 
-The public Alpha still includes browser-level full-stack E2E, auth and security defaults, private-data Service Worker protections, browser security headers, operations runbooks and large-table performance work. These are **QTable release-quality tracks**, not independent roadmaps for a second product.
+The public Alpha still includes browser-level full-stack E2E, auth and security defaults, private-data Service Worker protections, browser security headers, operations runbooks and large-table performance work. These are all **QTable release-quality tracks**.
 
 ## Planned capabilities
 
