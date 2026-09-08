@@ -34,4 +34,4 @@ QTable 当前处于 **`v0.1.0-alpha` — Open Source Preview**。
 
 适合评估、架构审查、本地 / 自托管测试、社区开发、Staging 与受控内部试用。生产关键数据采用前，请阅读最新 Release Notes，验证 Migration / Backup，并确认计划部署的精确 Tag / Commit。
 
-对外开放自托管实例前使用 [生产环境检查清单](../getting-started/production-checklist/)。
+对外开放自托管实例前使用 [生产环境检查清单](../../getting-started/production-checklist/)。

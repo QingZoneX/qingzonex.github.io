@@ -34,4 +34,4 @@ QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 
 適合評估、架構審查、本機 / 自託管測試、社群開發、Staging 與受控內部試用。正式環境關鍵資料採用前，請閱讀最新 Release Notes、驗證 Migration / Backup，並確認計畫部署的精確 Tag / Commit。
 
-對外開放自託管執行個體前使用 [正式環境檢查清單](../getting-started/production-checklist/)。
+對外開放自託管執行個體前使用 [正式環境檢查清單](../../getting-started/production-checklist/)。

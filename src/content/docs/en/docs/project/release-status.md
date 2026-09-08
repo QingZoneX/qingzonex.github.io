@@ -34,4 +34,4 @@ These are **QTable Release / Security / Operations / Full-stack Verification** t
 
 The Alpha is suited to evaluation, architecture review, local or self-hosted testing, community development, staging and controlled internal trials. Before production-critical adoption, read the latest release notes, validate migrations and backups, and pin the exact tag or commit you plan to deploy.
 
-Use the [production checklist](../getting-started/production-checklist/) before exposing a self-hosted instance.
+Use the [production checklist](../../getting-started/production-checklist/) before exposing a self-hosted instance.
