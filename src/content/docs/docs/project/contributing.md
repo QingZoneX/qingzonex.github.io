@@ -1,15 +1,15 @@
 ---
-title: 参与贡献
-description: QTable、QTableUI 与 QingZoneX 开源路线图的贡献入口。
+title: 参与 QTable 开发
+description: "QTable 单一产品在后端与前端实现仓库中的贡献入口。"
 ---
 
-贡献细节应尽量靠近各自代码库维护，避免命令与质量门禁和真实实现发生漂移。
+QTable 是一个产品，但为了保持工程边界清晰，贡献工作分布在两个仓库。
 
-## QTable
+## 后端与领域服务
 
-提交 Pull Request 前，请阅读仓库 [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md)。
+在修改 API、数据模型、权限、自动化、附件、审计或 AI 服务时，请阅读 [`QingZoneX/QTable` 的 CONTRIBUTING.md](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md)。
 
-后端 README 当前记录的高层检查包括：
+常用质量门禁包括：
 
 ```bash
 pytest -q
@@ -17,12 +17,12 @@ python scripts/check_secrets.py --history
 python scripts/check_open_source_readiness.py
 ```
 
-## QTableUI
+## QTable Web 前端
 
-请阅读前端 [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md)。
+在修改工作中心、视图、Dashboard、Automation、协作、搜索或 AI 交互时，请阅读 [`QingZoneX/QTableUI` 的 CONTRIBUTING.md](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md)。
 
-前端仓库把 Build、Dependency、License 与 Product Contract 检查作为质量门禁的一部分。
+前端仓库包含 Build、依赖、安全、许可证与产品契约检查。
 
 ## 路线图讨论
 
-具体路线图提案、缺陷与实现讨论请使用 GitHub Issues。门户路线图只提供摘要，不作为第二套 Issue Tracker。
+具体缺陷、实现与路线图讨论使用对应代码仓库的 GitHub Issues。门户路线图只做 QTable 产品级摘要，不作为第二套 Issue Tracker。

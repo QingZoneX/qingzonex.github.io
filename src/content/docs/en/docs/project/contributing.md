@@ -1,15 +1,15 @@
 ---
-title: Contributing
-description: Contribution entry points for QTable, QTableUI and the QingZoneX open-source roadmap.
+title: Contributing to QTable
+description: "Contribution entry points for the single QTable product across its backend and frontend implementation repositories."
 ---
 
-Contribution details should remain close to each codebase so commands and quality gates cannot drift from implementation.
+QTable is one product, while contribution work is split across two repositories to keep engineering boundaries clear.
 
-## QTable
+## Backend and domain services
 
-Read the repository's [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md) before opening a pull request.
+For APIs, data models, permissions, automation, attachments, auditability or AI services, read [`QingZoneX/QTable` CONTRIBUTING.md](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md).
 
-The backend README currently documents these high-level checks:
+Common quality gates include:
 
 ```bash
 pytest -q
@@ -17,12 +17,12 @@ python scripts/check_secrets.py --history
 python scripts/check_open_source_readiness.py
 ```
 
-## QTableUI
+## QTable Web frontend
 
-Read the frontend [`CONTRIBUTING.md`](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md).
+For work centers, views, dashboards, automation, collaboration, search or AI interactions, read [`QingZoneX/QTableUI` CONTRIBUTING.md](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md).
 
-The frontend repository documents build, dependency, license and product-contract checks as part of its quality gates.
+The frontend repository includes build, dependency, security, license and product-contract checks.
 
 ## Roadmap discussion
 
-Use GitHub Issues for concrete roadmap proposals, defects and implementation discussion. The portal roadmap is deliberately a summary rather than a second issue tracker.
+Use GitHub Issues in the relevant implementation repository for concrete defects, implementation and roadmap proposals. The portal roadmap is a QTable product-level summary, not a second issue tracker.

@@ -1,6 +1,13 @@
 # QingZoneX Portal
 
-Official portal and documentation site for the Phase 1 QingZoneX open-source preview: **QTable** and **QTableUI**.
+Official portal and documentation site for **QTable**, the first open-source QingZoneX product.
+
+QTable is presented as one product with two implementation repositories:
+
+- `QingZoneX/QTable` — backend API, domain services, permissions, automation, storage, auditability and AI;
+- `QingZoneX/QTableUI` — the QTable Web App frontend implementation.
+
+The portal must not present QTableUI as a second product. Repository names are engineering boundaries; product messaging stays centered on QTable.
 
 ## Stack
 
@@ -8,8 +15,8 @@ Official portal and documentation site for the Phase 1 QingZoneX open-source pre
 - Starlight
 - Static output for GitHub Pages
 - Simplified Chinese, Traditional Chinese and English
-- No runtime database or server dependency
-- Vanilla JavaScript for the interactive product tour and locale bootstrap
+- No runtime database or server dependency for the portal
+- Vanilla JavaScript for the interactive product tour
 
 ## Requirements
 
@@ -36,19 +43,7 @@ npm run verify:dist
 npm run verify:transfer
 ```
 
-`verify:transfer` performs a second real Astro/Starlight production build while simulating the final `QingZoneX/qingzonex.github.io` repository. It verifies the root Pages base path, all three locale trees, internal links/assets, QingZoneX canonical origin and Starlight edit links before the repository is transferred.
-
-## Localization
-
-The portal treats all three locales as first-class content:
-
-- Simplified Chinese: `/` (root and no-JS fallback)
-- Traditional Chinese: `/zh-tw/`
-- English: `/en/`
-
-Initial locale resolution uses persisted manual preference first, then browser language, then Simplified Chinese. Manual selection is stored in `localStorage` and synchronized across tabs. Custom portal pages and Starlight Docs use the same locale preference protocol.
-
-See [LOCALIZATION.md](LOCALIZATION.md) for the routing, browser mapping, persistence, content ownership and CI contract.
+`verify:transfer` performs a second real Astro/Starlight production build while simulating the final `QingZoneX/qingzonex.github.io` repository. It verifies root Pages paths, localized routes, internal links/assets, canonical origin and Starlight edit links before repository transfer.
 
 ## GitHub Pages deployment
 
@@ -60,16 +55,12 @@ The repository automatically adapts its base path:
 
 No application route rewrite is required during transfer.
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for the exact private-development, organization-transfer, public-launch and custom-domain procedure.
-
-## Reproducible installs
-
-`package-lock.json` is committed. CI and Pages deployment use `npm ci`; dependency changes must update `package.json` and the lockfile in the same change.
+See [DEPLOYMENT.md](DEPLOYMENT.md) and [LOCALIZATION.md](LOCALIZATION.md).
 
 ## Content contract
 
-Portal claims should track current QTable/QTableUI README, release notes and GitHub Issues. The website intentionally distinguishes implemented baseline capabilities from active Alpha hardening and future roadmap work.
+Portal claims track current QTable/QTableUI source, release notes and GitHub Issues while preserving the single-product model. QTableUI may be named as the frontend implementation repository, but never as a parallel product in primary navigation or product positioning.
 
 ## License
 
-QTable and QTableUI currently declare Apache License 2.0. Choose the portal repository license explicitly before making this repository public.
+QTable currently uses Apache License 2.0. Choose the portal repository license explicitly before making this repository public.
