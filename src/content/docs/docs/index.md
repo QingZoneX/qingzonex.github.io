@@ -1,6 +1,6 @@
 ---
 title: QingZoneX Documentation
-description: Documentation for the first QingZoneX open-source release: QTable and QTableUI.
+description: "Documentation for the first QingZoneX open-source release: QTable and QTableUI."
 sidebar:
   order: 1
 ---
