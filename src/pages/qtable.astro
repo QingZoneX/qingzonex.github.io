@@ -2,47 +2,35 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { QTABLE_GITHUB_URL, withBase } from '../lib/site';
 ---
-<BaseLayout title="QTable — AI-native project and work management | QingZoneX" description="Explore QTable: multidimensional tables, project views, permissions, dashboards, private attachments and permission-aware AI workflows.">
-  <section class="page-hero">
-    <div class="shell">
-      <span class="eyebrow"><i class="eyebrow-dot"></i> QTable · v0.1.0-alpha</span>
-      <h1>Project and work management,<br/>built on multidimensional tables.</h1>
-      <p>QTable is the backend and product-model foundation of the first QingZoneX open-source release. It combines flexible tables, multiple project views, dashboards, permissions, audited change foundations and AI workflows.</p>
-      <div class="page-actions"><a class="button primary" href={withBase('docs/qtable/overview/')}>Read QTable docs →</a><a class="button secondary" href={QTABLE_GITHUB_URL}>Source on GitHub</a></div>
-      <div class="stats"><div class="stat"><strong>5 views</strong><span>Grid · Kanban · Gantt · Calendar · Gallery</span></div><div class="stat"><strong>GraphQL + HTTP</strong><span>API surface with WebSocket paths</span></div><div class="stat"><strong>Apache-2.0</strong><span>Current repository license</span></div><div class="stat"><strong>Self-hostable</strong><span>PostgreSQL · Redis · S3-compatible storage</span></div></div>
-    </div>
-  </section>
+<BaseLayout title="QTable — AI-native project and work management | QingZoneX" description="Explore QTable: multidimensional work models, permissions, automation, dashboards, private attachments, search, recovery and permission-aware AI workflows.">
+  <section class="page-hero"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i> QTable · v0.1.0-alpha</span><h1>The backend foundation for<br/>structured, AI-assisted work.</h1><p>QTable combines multidimensional tables, work/project semantics, permissions, automation, dashboards, search, audited change foundations, private attachments and AI services behind one product model.</p><div class="page-actions"><a class="button primary" href={withBase('docs/qtable/overview/')}>Read QTable docs →</a><a class="button secondary" href={QTABLE_GITHUB_URL}>Source on GitHub</a></div><div class="stats"><div class="stat"><strong>5 views</strong><span>Grid · Kanban · Gantt · Calendar · Gallery</span></div><div class="stat"><strong>GraphQL + HTTP</strong><span>with WebSocket/realtime paths</span></div><div class="stat"><strong>Apache-2.0</strong><span>open-source preview license</span></div><div class="stat"><strong>Self-hostable</strong><span>PostgreSQL · Redis · S3-compatible storage</span></div></div></div></section>
 
-  <section class="section">
-    <div class="shell">
-      <div class="section-head"><span class="kicker">Core capabilities</span><h2>A shared model for structured work.</h2><p>The current alpha already spans table structure, project views, permission boundaries, dashboards and AI planning services.</p></div>
-      <div class="feature-grid">
-        <article class="feature-card"><div class="feature-icon">▦</div><h3>Multidimensional tables</h3><p>Formula, relation, auto-number, member, select, date, attachment and other field types with filters, sorting and grouping.</p></article>
-        <article class="feature-card"><div class="feature-icon">◫</div><h3>Multiple project views</h3><p>Grid, Kanban, Gantt, Calendar and Gallery present the same underlying work through different operating lenses.</p></article>
-        <article class="feature-card"><div class="feature-icon">⌁</div><h3>Named views</h3><p>Persist reusable filter, sort and grouping configurations instead of rebuilding working context each time.</p></article>
-        <article class="feature-card"><div class="feature-icon">◎</div><h3>Permissions</h3><p>Workspace membership, item permissions and row-level permissions form the security boundary for users and AI features.</p></article>
-        <article class="feature-card"><div class="feature-icon">◇</div><h3>Dashboards</h3><p>Server-side aggregation with permission-safe public sharing paths for operational reporting.</p></article>
-        <article class="feature-card"><div class="feature-icon">✦</div><h3>AI planning</h3><p>Goal-driven workspace generation, task planning, workload estimation, assignment suggestions and project diagnostics.</p></article>
-        <article class="feature-card"><div class="feature-icon">↺</div><h3>ChangeSet foundations</h3><p>Audit history and safe undo foundations keep automated and manual changes within an explicit change model.</p></article>
-        <article class="feature-card"><div class="feature-icon">⬡</div><h3>Private attachments</h3><p>S3-compatible object storage persists stable object identities rather than expiring URLs inside table cells.</p></article>
-        <article class="feature-card"><div class="feature-icon">⇄</div><h3>OAuth 2.0 + PKCE</h3><p>Authorization Code Flow with S256 PKCE is part of the current identity integration surface.</p></article>
-      </div>
-    </div>
-  </section>
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Core product model</span><h2>Structured work without a second task database.</h2><p>Project, AI, automation and UI surfaces reuse Table, Record, View, Dashboard, Permission and ChangeSet concepts.</p></div><div class="feature-grid">
+    <article class="feature-card"><div class="feature-icon">▦</div><h3>Multidimensional tables</h3><p>Formula, relation, auto-number, member, select, date, attachment and other field types with filters, sorting and grouping.</p></article>
+    <article class="feature-card"><div class="feature-icon">◫</div><h3>Five project views</h3><p>Grid, Kanban, Gantt, Calendar and Gallery operate on the same underlying records.</p></article>
+    <article class="feature-card"><div class="feature-icon">⌁</div><h3>Task & work semantics</h3><p>Task Profile and My Work/project aggregation provide business meaning without guessing field names.</p></article>
+    <article class="feature-card"><div class="feature-icon">◎</div><h3>Permissions</h3><p>Workspace membership, item permissions and row-level permissions protect detail, aggregation and AI-derived results.</p></article>
+    <article class="feature-card"><div class="feature-icon">⚡</div><h3>Automation engine</h3><p>Rules, scheduling/execution, validation and execution history support server-backed automation workflows.</p></article>
+    <article class="feature-card"><div class="feature-icon">◇</div><h3>Dashboards</h3><p>Server-side aggregation, multiple widget types and permission-safe public sharing.</p></article>
+    <article class="feature-card"><div class="feature-icon">⌕</div><h3>Global search</h3><p>Permission-aware search provides a cross-workspace discovery path without bypassing visibility rules.</p></article>
+    <article class="feature-card"><div class="feature-icon">↺</div><h3>ChangeSet & recovery</h3><p>Audit history, undo foundations and recycle lifecycle provide a safer mutation model.</p></article>
+    <article class="feature-card"><div class="feature-icon">⬡</div><h3>Private attachments</h3><p>Stable object identities, authenticated reads and lifecycle-aware S3-compatible storage replace expiring URLs in cells.</p></article>
+  </div></div></section>
 
-  <section class="section alt">
-    <div class="shell">
-      <div class="section-head"><span class="kicker">Safety model</span><h2>Permission checks remain part of the AI path.</h2><p>AI context must respect current-user row visibility. Preview operations do not mutate business data, and apply operations re-check permissions and optimistic/concurrent state.</p></div>
-      <div class="flow"><div class="flow-step"><b>Read visible context</b><span>Respect current row visibility.</span></div><div class="flow-step"><b>Generate action plan</b><span>Reuse existing product models.</span></div><div class="flow-step"><b>Preview diff</b><span>No business mutation in preview.</span></div><div class="flow-step"><b>Accept selectively</b><span>Keep human control over changes.</span></div><div class="flow-step"><b>Revalidate & apply</b><span>Check permission and state again.</span></div></div>
-    </div>
-  </section>
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">AI-native workflow</span><h2>From intent to an executable plan.</h2><p>Current AI services cover more than a chat box and remain permission-aware.</p></div><div class="feature-grid">
+    <article class="feature-card"><div class="feature-icon">01</div><h3>Goal → workspace</h3><p>Generate an initial work structure from a goal instead of starting with configuration.</p></article>
+    <article class="feature-card"><div class="feature-icon">02</div><h3>Task planning</h3><p>Break goals into executable tasks and project structure.</p></article>
+    <article class="feature-card"><div class="feature-icon">03</div><h3>Workload & assignment</h3><p>Estimate workload/schedule and suggest workspace members using current team context.</p></article>
+    <article class="feature-card"><div class="feature-icon">04</div><h3>Project Steward</h3><p>Diagnose project state and answer questions from permission-filtered records.</p></article>
+    <article class="feature-card"><div class="feature-icon">05</div><h3>AI views & dashboards</h3><p>Generate visual structures using the same View and Dashboard models as manual creation.</p></article>
+    <article class="feature-card"><div class="feature-icon">06</div><h3>Action plans</h3><p>Preview diffs, accept selectively, then revalidate permission/current state before apply.</p></article>
+  </div></div></section>
 
-  <section class="section">
-    <div class="shell">
-      <div class="section-head"><span class="kicker">Recommended stack</span><h2>Production-oriented defaults, explicit lightweight fallback.</h2><p>PostgreSQL is the default development and deployment database. SQLite exists as an explicit lightweight fallback for evaluation, offline development or constrained single-instance use.</p></div>
-      <div class="architecture"><div class="arch-box primary"><strong>QTable API</strong><span>FastAPI + Strawberry GraphQL</span></div><div class="arch-arrow">↓</div><div class="arch-row"><div class="arch-box"><strong>PostgreSQL</strong><span>recommended data store</span></div><div class="arch-box"><strong>Redis</strong><span>runtime services</span></div></div><div class="arch-row"><div class="arch-box"><strong>MinIO / S3-compatible</strong><span>private attachment storage</span></div><div class="arch-box"><strong>SQLite</strong><span>explicit lightweight fallback</span></div></div></div>
-    </div>
-  </section>
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Attachment contract</span><h2>Private files are application data, not public URLs.</h2><p>QTable stores stable attachment identity and metadata, re-checks table/row permission on access, preserves attachments across recycle/restore, and uses durable upload intents so abandoned object writes can be recovered by cleanup.</p></div><div class="two-col"><article class="product-card"><h3>Persisted in the record</h3><ul><li>attachmentId / objectKey</li><li>name / size / contentType</li><li>No expiring presigned URL persisted in table data</li></ul></article><article class="product-card ui"><h3>Runtime safeguards</h3><ul><li>Authenticated upload/download/delete</li><li>Current permission revalidation</li><li>Cleanup retry state and upload-intent recovery</li><li>MinIO default or external S3-compatible provider</li></ul></article></div></div></section>
 
-  <section class="cta"><div class="shell"><div class="cta-card"><h2>Run QTable locally.</h2><p>The quick start covers PostgreSQL, Redis, MinIO, migrations and the QTableUI frontend.</p><div class="hero-actions"><a class="button primary" href={withBase('docs/getting-started/quick-start/')}>Quick start →</a><a class="button secondary" href={withBase('docs/qtable/security/')}>Security model</a></div></div></div></section>
+  <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">Safety model</span><h2>Permission checks stay on the write path.</h2><p>Preview does not mutate business data; AI and other writes re-check permission and optimistic/concurrent state before apply.</p></div><div class="flow"><div class="flow-step"><b>Read visible context</b><span>Filter by current visibility first.</span></div><div class="flow-step"><b>Generate operation</b><span>Reuse product models.</span></div><div class="flow-step"><b>Preview</b><span>No business mutation.</span></div><div class="flow-step"><b>Accept selectively</b><span>Keep human control.</span></div><div class="flow-step"><b>Revalidate & apply</b><span>Check permission and state again.</span></div></div></div></section>
+
+  <section class="section"><div class="shell"><div class="section-head"><span class="kicker">Self-hosted stack</span><h2>Production-oriented defaults, explicit lightweight fallback.</h2><p>PostgreSQL is the normal development/deployment database. SQLite is an explicit evaluation or constrained single-instance fallback; QTable never silently switches database engines.</p></div><div class="architecture"><div class="arch-box primary"><strong>QTable API</strong><span>FastAPI + Strawberry GraphQL</span></div><div class="arch-arrow">↓</div><div class="arch-row"><div class="arch-box"><strong>PostgreSQL 16</strong><span>recommended data store</span></div><div class="arch-box"><strong>Redis 7</strong><span>runtime services</span></div></div><div class="arch-row"><div class="arch-box"><strong>MinIO / external S3</strong><span>private object storage</span></div><div class="arch-box"><strong>SQLite</strong><span>explicit lightweight fallback</span></div></div></div></div></section>
+
+  <section class="cta"><div class="shell"><div class="cta-card"><h2>Run QTable locally, then review the Alpha boundaries.</h2><p>The quick start covers migrations, PostgreSQL, Redis, MinIO and QTableUI. The feature matrix separates implemented capabilities from active hardening and future roadmap work.</p><div class="hero-actions"><a class="button primary" href={withBase('docs/getting-started/quick-start/')}>Quick start →</a><a class="button secondary" href={withBase('docs/project/feature-matrix/')}>Feature matrix</a><a class="button ghost" href={withBase('docs/qtable/security/')}>Security</a></div></div></div></section>
 </BaseLayout>

@@ -41,8 +41,11 @@ jobs:
       - name: Verify documentation links
         run: npm run verify:links
 
-      - name: Build
+      - name: Build current repository mode
         run: npm run build
 
       - name: Verify generated site
         run: npm run verify:dist
+
+      - name: Verify QingZoneX organization Pages transfer
+        run: npm run verify:transfer

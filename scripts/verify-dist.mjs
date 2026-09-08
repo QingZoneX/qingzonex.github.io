@@ -16,9 +16,11 @@ const required = [
   'docs/index.html',
   'docs/getting-started/quick-start/index.html',
   'docs/getting-started/self-hosting/index.html',
+  'docs/getting-started/production-checklist/index.html',
   'docs/qtable/overview/index.html',
   'docs/qtable/security/index.html',
   'docs/qtable-ui/overview/index.html',
+  'docs/project/feature-matrix/index.html',
   'docs/project/release-status/index.html',
   '404.html',
 ];
@@ -64,9 +66,7 @@ for (const file of htmlFiles) {
   if (/\b(TODO|FIXME)\b/i.test(html)) forbidden.push(`${rel}: contains TODO/FIXME`);
 
   // Starlight intentionally emits edit links to the current source repository.
-  // The source-level verifier is responsible for preventing hard-coded temporary
-  // owner/repository paths in application source; generated HTML may legitimately
-  // contain the current repository URL.
+  // Source verification prevents accidental hard-coding of the temporary owner.
   for (const match of html.matchAll(attrRe)) {
     const value = match[1];
     if (/^(https?:|mailto:|tel:|data:|javascript:|#)/.test(value)) continue;
