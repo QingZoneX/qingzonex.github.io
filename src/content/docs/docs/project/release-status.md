@@ -24,7 +24,7 @@ Current main branches include, among other capabilities:
 - OAuth2 + S256 PKCE;
 - reproducible QTableUI container build/runtime and canonical full-stack Compose.
 
-See the [feature matrix](./feature-matrix/) for a compact capability map.
+See the [feature matrix](../feature-matrix/) for a compact capability map.
 
 ## Active public-Alpha hardening
 
@@ -54,4 +54,4 @@ Before relying on an Alpha deployment for production-critical data, review the l
 
 ## Production preparation
 
-Use the [production checklist](../getting-started/production-checklist/) before exposing a self-hosted instance. Repository release notes and GitHub Issues remain the source of truth if they are newer than this portal.
+Use the [production checklist](../../getting-started/production-checklist/) before exposing a self-hosted instance. Repository release notes and GitHub Issues remain the source of truth if they are newer than this portal.
