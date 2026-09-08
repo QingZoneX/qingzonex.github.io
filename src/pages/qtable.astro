@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { QTABLE_GITHUB_URL, withBase } from '../lib/site';
+---
+<BaseLayout title="QTable — AI-native project and work management | QingZoneX" description="Explore QTable: multidimensional tables, project views, permissions, dashboards, private attachments and permission-aware AI workflows.">
+  <section class="page-hero">
+    <div class="shell">
+      <span class="eyebrow"><i class="eyebrow-dot"></i> QTable · v0.1.0-alpha</span>
+      <h1>Project and work management,<br/>built on multidimensional tables.</h1>
+      <p>QTable is the backend and product-model foundation of the first QingZoneX open-source release. It combines flexible tables, multiple project views, dashboards, permissions, audited change foundations and AI workflows.</p>
+      <div class="page-actions"><a class="button primary" href={withBase('docs/qtable/overview/')}>Read QTable docs →</a><a class="button secondary" href={QTABLE_GITHUB_URL}>Source on GitHub</a></div>
+      <div class="stats"><div class="stat"><strong>5 views</strong><span>Grid · Kanban · Gantt · Calendar · Gallery</span></div><div class="stat"><strong>GraphQL + HTTP</strong><span>API surface with WebSocket paths</span></div><div class="stat"><strong>Apache-2.0</strong><span>Current repository license</span></div><div class="stat"><strong>Self-hostable</strong><span>PostgreSQL · Redis · S3-compatible storage</span></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head"><span class="kicker">Core capabilities</span><h2>A shared model for structured work.</h2><p>The current alpha already spans table structure, project views, permission boundaries, dashboards and AI planning services.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon">▦</div><h3>Multidimensional tables</h3><p>Formula, relation, auto-number, member, select, date, attachment and other field types with filters, sorting and grouping.</p></article>
+        <article class="feature-card"><div class="feature-icon">◫</div><h3>Multiple project views</h3><p>Grid, Kanban, Gantt, Calendar and Gallery present the same underlying work through different operating lenses.</p></article>
+        <article class="feature-card"><div class="feature-icon">⌁</div><h3>Named views</h3><p>Persist reusable filter, sort and grouping configurations instead of rebuilding working context each time.</p></article>
+        <article class="feature-card"><div class="feature-icon">◎</div><h3>Permissions</h3><p>Workspace membership, item permissions and row-level permissions form the security boundary for users and AI features.</p></article>
+        <article class="feature-card"><div class="feature-icon">◇</div><h3>Dashboards</h3><p>Server-side aggregation with permission-safe public sharing paths for operational reporting.</p></article>
+        <article class="feature-card"><div class="feature-icon">✦</div><h3>AI planning</h3><p>Goal-driven workspace generation, task planning, workload estimation, assignment suggestions and project diagnostics.</p></article>
+        <article class="feature-card"><div class="feature-icon">↺</div><h3>ChangeSet foundations</h3><p>Audit history and safe undo foundations keep automated and manual changes within an explicit change model.</p></article>
+        <article class="feature-card"><div class="feature-icon">⬡</div><h3>Private attachments</h3><p>S3-compatible object storage persists stable object identities rather than expiring URLs inside table cells.</p></article>
+        <article class="feature-card"><div class="feature-icon">⇄</div><h3>OAuth 2.0 + PKCE</h3><p>Authorization Code Flow with S256 PKCE is part of the current identity integration surface.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="shell">
+      <div class="section-head"><span class="kicker">Safety model</span><h2>Permission checks remain part of the AI path.</h2><p>AI context must respect current-user row visibility. Preview operations do not mutate business data, and apply operations re-check permissions and optimistic/concurrent state.</p></div>
+      <div class="flow"><div class="flow-step"><b>Read visible context</b><span>Respect current row visibility.</span></div><div class="flow-step"><b>Generate action plan</b><span>Reuse existing product models.</span></div><div class="flow-step"><b>Preview diff</b><span>No business mutation in preview.</span></div><div class="flow-step"><b>Accept selectively</b><span>Keep human control over changes.</span></div><div class="flow-step"><b>Revalidate & apply</b><span>Check permission and state again.</span></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head"><span class="kicker">Recommended stack</span><h2>Production-oriented defaults, explicit lightweight fallback.</h2><p>PostgreSQL is the default development and deployment database. SQLite exists as an explicit lightweight fallback for evaluation, offline development or constrained single-instance use.</p></div>
+      <div class="architecture"><div class="arch-box primary"><strong>QTable API</strong><span>FastAPI + Strawberry GraphQL</span></div><div class="arch-arrow">↓</div><div class="arch-row"><div class="arch-box"><strong>PostgreSQL</strong><span>recommended data store</span></div><div class="arch-box"><strong>Redis</strong><span>runtime services</span></div></div><div class="arch-row"><div class="arch-box"><strong>MinIO / S3-compatible</strong><span>private attachment storage</span></div><div class="arch-box"><strong>SQLite</strong><span>explicit lightweight fallback</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="cta"><div class="shell"><div class="cta-card"><h2>Run QTable locally.</h2><p>The quick start covers PostgreSQL, Redis, MinIO, migrations and the QTableUI frontend.</p><div class="hero-actions"><a class="button primary" href={withBase('docs/getting-started/quick-start/')}>Quick start →</a><a class="button secondary" href={withBase('docs/qtable/security/')}>Security model</a></div></div></div></section>
+</BaseLayout>
