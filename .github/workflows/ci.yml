@@ -1,0 +1,54 @@
+name: Portal CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SITE_URL: ${{ vars.SITE_URL }}
+
+concurrency:
+  group: portal-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          if [[ -f package-lock.json ]]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Verify deployment configuration
+        run: npm run verify:config
+
+      - name: Verify source
+        run: npm run verify:source
+
+      - name: Verify documentation links
+        run: npm run verify:links
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify generated site
+        run: npm run verify:dist
