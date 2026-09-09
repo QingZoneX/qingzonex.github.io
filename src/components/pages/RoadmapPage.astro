@@ -1,15 +1,24 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import { QTABLE_GITHUB_URL, QTABLE_UI_GITHUB_URL } from '../../lib/site'; import { localePath } from '../../lib/i18n.mjs'; import { getPortalContent, type PortalLocale } from '../../lib/portal-content';
-interface Props { locale: PortalLocale } const { locale }=Astro.props; const c=getPortalContent(locale).roadmap; const href=(p='')=>localePath(locale,p,import.meta.env.BASE_URL);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { QTABLE_GITHUB_URL } from '../../lib/site';
+import { localePath } from '../../lib/i18n.mjs';
+import { getPortalContent, type PortalLocale } from '../../lib/portal-content';
+interface Props { locale: PortalLocale }
+const { locale }=Astro.props; const c=getPortalContent(locale).roadmap; const href=(p='')=>localePath(locale,p,import.meta.env.BASE_URL);
 const focused = (value: string) => {
   if (locale === 'zh-cn') return value.replaceAll('QNote', '来源工具').replaceAll('Clipper', '采集工具');
   if (locale === 'zh-tw') return value.replaceAll('QNote', '來源工具').replaceAll('Clipper', '擷取工具');
   return value.replaceAll('QNote', 'source tools').replaceAll('Clipper', 'capture tools');
 };
+const labels={
+  'zh-cn':{baseline:'已实现基线',active:'正在加固',next:'下一阶段',issues:'查看 QTable Issues'},
+  'zh-tw':{baseline:'已實作基線',active:'正在加固',next:'下一階段',issues:'查看 QTable Issues'},
+  en:{baseline:'Implemented baseline',active:'Active hardening',next:'Next stage',issues:'View QTable Issues'},
+}[locale];
 ---
 <BaseLayout locale={locale} route="roadmap/" title={c.metaTitle} description={c.metaDescription}>
-<section class="page-hero page-hero-v2"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i>{c.eyebrow}</span><h1>{c.heroA}<br/><span class="gradient-text">{c.heroB}</span></h1><p>{c.heroCopy}</p><div class="page-actions"><a class="button primary" href={`${QTABLE_GITHUB_URL}/issues`}>{c.productIssues} →</a><a class="button secondary" href={`${QTABLE_UI_GITHUB_URL}/issues`}>{c.frontendIssues}</a></div></div></section>
-<section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.implemented.kicker}</span><h2>{c.implemented.title}</h2><p>{c.implemented.description}</p></div><div class="feature-grid roadmap-baseline">{c.implemented.features.map(([title,d])=><article class="feature-card"><h3>{title}</h3><p>{focused(d)}</p></article>)}</div></div></section>
+<section class="page-hero page-hero-v2"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i>{c.eyebrow}</span><h1>{c.heroA}<br/><span class="gradient-text">{c.heroB}</span></h1><p>{c.heroCopy}</p><div class="page-actions"><a class="button primary" href={`${QTABLE_GITHUB_URL}/issues`}>{labels.issues} →</a></div><div class="product-metrics"><div class="metric-card"><strong>{c.implemented.features.length}</strong><span>{labels.baseline}</span></div><div class="metric-card"><strong>{c.active.length}</strong><span>{labels.active}</span></div><div class="metric-card"><strong>{c.next.length}</strong><span>{labels.next}</span></div><div class="metric-card"><strong>v0.1.0-alpha</strong><span>Open Source Preview</span></div></div></div></section>
+<section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.implemented.kicker}</span><h2>{c.implemented.title}</h2><p>{c.implemented.description}</p></div><div class="capability-cards roadmap-baseline">{c.implemented.features.map(([title,d],i)=><article class="capability-card"><span class="scenario-index">0{i+1}</span><h3>{title}</h3><p>{focused(d)}</p></article>)}</div></div></section>
 <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">{c.activeKicker}</span><h2>{c.activeTitle}</h2></div><div class="roadmap roadmap-v2">{c.active.map(([title,d,url])=><article class="roadmap-item"><span class="roadmap-tag active">{c.phaseNow}</span><div><h3>{title}</h3><p>{focused(d)}</p></div><a class="text-link" href={url}>{c.issue} →</a></article>)}</div></div></section>
 <section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.nextKicker}</span><h2>{c.nextTitle}</h2></div><div class="roadmap roadmap-v2">{c.next.map(([title,d,url])=><article class="roadmap-item"><span class="roadmap-tag">{c.phaseNext}</span><div><h3>{title}</h3><p>{focused(d)}</p></div><a class="text-link" href={url}>{c.issue} →</a></article>)}</div></div></section>
 <section class="cta"><div class="shell"><div class="cta-card"><h2>{c.ctaTitle}</h2><p>{c.ctaDescription}</p><div class="hero-actions"><a class="button primary" href={href('docs/project/feature-matrix/')}>{c.matrix} →</a><a class="button secondary" href={href('docs/project/release-status/')}>{c.status}</a></div></div></div></section>

@@ -1,10 +1,21 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import TableTour from '../TableTour.astro'; import { localePath } from '../../lib/i18n.mjs'; import { getPortalContent, type PortalLocale } from '../../lib/portal-content';
-interface Props { locale: PortalLocale } const { locale }=Astro.props; const c=getPortalContent(locale).examples; const href=(p='')=>localePath(locale,p,import.meta.env.BASE_URL);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableTour from '../TableTour.astro';
+import Icon from '../Icon.astro';
+import { localePath } from '../../lib/i18n.mjs';
+import { getPortalContent, type PortalLocale } from '../../lib/portal-content';
+interface Props { locale: PortalLocale }
+const { locale }=Astro.props; const c=getPortalContent(locale).examples; const href=(p='')=>localePath(locale,p,import.meta.env.BASE_URL);
+const copy = {
+  'zh-cn': { live:'本地交互演示', hint:'切换视图、搜索任务并观察同一份结构化数据如何以不同方式呈现。', cards:[['views','多视图切换'],['search','本地筛选'],['shield','明确演示边界']] },
+  'zh-tw': { live:'本機互動示範', hint:'切換檢視、搜尋任務，觀察同一份結構化資料如何以不同方式呈現。', cards:[['views','多檢視切換'],['search','本機篩選'],['shield','清楚示範邊界']] },
+  en: { live:'Local interactive demo', hint:'Switch views, filter tasks and see how the same structured data is presented from different angles.', cards:[['views','Switch views'],['search','Local filtering'],['shield','Clear demo boundary']] },
+}[locale];
 ---
 <BaseLayout locale={locale} route="examples/" title={c.metaTitle} description={c.metaDescription}>
 <section class="page-hero page-hero-v2"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i>{c.eyebrow}</span><h1>{c.title}</h1><p>{c.description}</p></div></section>
-<section class="section section-tight"><div class="shell"><div class="notice demo-notice"><strong>{c.boundaryTitle}</strong> {c.boundary}</div><TableTour locale={locale}/></div></section>
+<section class="section section-tight"><div class="shell"><div class="experience-main"><div class="experience-copy"><span class="kicker">{copy.live}</span><h2>{c.eyebrow}</h2><p>{copy.hint}</p></div><TableTour locale={locale}/></div><div class="capability-cards" style="margin-top:14px">{copy.cards.map(([icon,title])=><article class="capability-card"><div class="capability-icon"><Icon name={icon} size={20}/></div><h3>{title}</h3><p>{c.boundary}</p></article>)}</div></div></section>
 <section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">{c.scenarioKicker}</span><h2>{c.scenarioTitle}</h2></div><div class="scenario-grid">{c.scenarios.map(([title,d],i)=><article class="scenario-card"><span class="scenario-index">0{i+1}</span><h3>{title}</h3><p>{d}</p></article>)}</div></div></section>
-<section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.realKicker}</span><h2>{c.realTitle}</h2><p>{c.realDescription}</p></div><div class="page-actions"><a class="button primary" href={href('docs/getting-started/self-hosting/')}>{c.selfHosting} →</a><a class="button secondary" href={href('docs/getting-started/quick-start/')}>{c.quick}</a></div></div></section>
+<section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.realKicker}</span><h2>{c.realTitle}</h2><p>{c.realDescription}</p></div><div class="notice demo-notice"><strong>{c.boundaryTitle}</strong> {c.boundary}</div></div></section>
+<section class="cta"><div class="shell"><div class="cta-card"><h2>{c.realTitle}</h2><p>{c.realDescription}</p><div class="hero-actions"><a class="button primary" href={href('docs/getting-started/self-hosting/')}>{c.selfHosting} →</a><a class="button secondary" href={href('docs/getting-started/quick-start/')}>{c.quick}</a></div></div></div></section>
 </BaseLayout>
