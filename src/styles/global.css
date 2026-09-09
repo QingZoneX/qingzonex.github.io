@@ -226,3 +226,193 @@ html[data-theme='light'] .code-card { background: #0b1728; color: #d8e4f0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+
+/* === Shared dropdown (used by LocaleSwitcher + StarlightThemeSwitcher) === */
+.locale-switcher {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.locale-trigger {
+  min-width: 132px;
+  height: 40px;
+  padding: 0 10px 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  color: var(--muted-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: inset 0 1px rgba(255,255,255,.035);
+  transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease;
+}
+
+.locale-trigger:hover,
+.locale-trigger[aria-expanded='true'] {
+  border-color: var(--line-strong);
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.locale-trigger:hover { transform: translateY(-1px); }
+
+.locale-trigger:focus-visible,
+.locale-option:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 72%, transparent);
+  outline-offset: 2px;
+}
+
+.locale-globe,
+.locale-theme-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.locale-trigger-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: -.01em;
+}
+
+.locale-chevron {
+  width: 13px;
+  height: 13px;
+  margin-left: auto;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .18s ease;
+}
+
+.locale-trigger[aria-expanded='true'] .locale-chevron { transform: rotate(180deg); }
+
+.locale-menu {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 9px);
+  right: 0;
+  width: 206px;
+  padding: 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--bg-elevated) 96%, transparent);
+  box-shadow: 0 18px 48px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.04);
+  backdrop-filter: blur(18px);
+  transform-origin: top right;
+}
+
+.locale-menu[hidden] { display: none; }
+
+.locale-menu-title {
+  padding: 5px 8px 7px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.locale-option {
+  min-height: 48px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 30px minmax(0,1fr) 18px;
+  gap: 9px;
+  align-items: center;
+  color: var(--muted-strong);
+  text-decoration: none;
+  transition: background .15s ease, color .15s ease;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.locale-option:hover { background: var(--bg-soft); color: var(--text); }
+.locale-option.active {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent-2) 13%, var(--bg-soft));
+}
+
+.locale-badge {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--bg-soft) 84%, transparent);
+  color: var(--muted-strong);
+  font: 800 10px/1 ui-sans-serif, system-ui, sans-serif;
+}
+
+.locale-badge svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.locale-option.active .locale-badge {
+  border-color: color-mix(in srgb, var(--accent-2) 38%, var(--line));
+  color: var(--accent-2);
+}
+
+.locale-option-copy { min-width: 0; display: grid; gap: 1px; }
+.locale-option-copy strong { font-size: 12.5px; line-height: 1.25; }
+.locale-option-copy small { color: var(--muted); font-size: 9.5px; line-height: 1.25; }
+
+.locale-check {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.locale-option.active .locale-check { opacity: 1; }
+
+.compact .locale-trigger { min-width: 116px; }
+
+@media (max-width: 700px) {
+  .locale-trigger {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+    gap: 0;
+  }
+  .locale-trigger-label,
+  .locale-chevron { display: none; }
+  .locale-menu { right: -2px; width: 198px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .locale-trigger,
+  .locale-chevron,
+  .locale-option { transition: none; }
+}

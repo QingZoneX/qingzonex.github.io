@@ -33,6 +33,7 @@ export default defineConfig({
       components: {
         LanguageSelect: './src/components/StarlightLanguageSwitcher.astro',
         SiteTitle: './src/components/StarlightSiteTitle.astro',
+        ThemeSelect: './src/components/StarlightThemeSwitcher.astro',
       },
       sidebar: [
         { ...label('门户', '入口網站', 'Portal'), link: '/' },
