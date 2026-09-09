@@ -1,11 +1,8 @@
 .brand-avatar {
   flex: 0 0 auto;
-  border: 1px solid color-mix(in srgb, var(--line-strong) 82%, transparent);
   border-radius: 10px;
-  background: var(--bg-elevated);
   object-fit: cover;
   filter: none !important;
-  box-shadow: 0 8px 24px rgba(22, 34, 52, .14), inset 0 0 0 1px rgba(255,255,255,.04);
 }
 
 .site-header .brand {
@@ -13,13 +10,7 @@
 }
 
 .site-header .brand-avatar {
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-.site-header .brand:hover .brand-avatar {
-  transform: translateY(-1px) scale(1.025);
-  border-color: color-mix(in srgb, var(--accent) 48%, var(--line-strong));
-  box-shadow: 0 10px 28px rgba(22, 34, 52, .18), 0 0 0 3px color-mix(in srgb, var(--accent) 8%, transparent);
+  transition: none;
 }
 
 .footer-brand .brand-avatar {

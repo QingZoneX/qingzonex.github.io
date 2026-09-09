@@ -51,7 +51,7 @@ button { color: inherit; }
 .site-header { position: sticky; top: 0; z-index: 100; height: var(--header-h); border-bottom: 1px solid var(--line); background: var(--bg-glass); backdrop-filter: blur(18px); }
 .nav-shell { height: 100%; display: flex; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.025em; white-space: nowrap; }
-.brand img { filter: drop-shadow(0 6px 16px rgba(77, 226, 184, .18)); }
+.brand img { filter: none; }
 .preview-pill { margin-left: 3px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .02em; }
 .primary-nav { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .primary-nav a { padding: 8px 10px; border-radius: 9px; color: var(--muted-strong); font-size: 14px; font-weight: 650; }
@@ -117,9 +117,9 @@ button { color: inherit; }
 
 .section { padding: 88px 0; }
 .section.alt { border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg-elevated) 45%, var(--bg)); }
-.section-head { max-width: 760px; margin-bottom: 38px; }
+.section .section-head { max-width: 960px; margin-bottom: 38px; }
 .kicker { color: var(--accent); font-size: 12px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
-.section h2, .page-hero h1 { margin: 8px 0 14px; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -.04em; }
+.section h2, .page-hero h1 { margin: 8px 0 14px; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -.04em; max-width: 960px !important; }
 .section-head p, .page-hero p { color: var(--muted-strong); font-size: 17px; }
 
 .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -143,7 +143,17 @@ button { color: inherit; }
 .arch-node small { color: var(--accent); font: 800 10px/1 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .09em; }
 .arch-node h3 { margin: 16px 0 7px; }
 .arch-node p { margin: 0; color: var(--muted); font-size: 13px; }
-.arch-arrow { color: var(--muted); font-size: 22px; }
+.arch-arrow { text-align: center; color: var(--muted); font: 750 12px/1 ui-monospace, monospace; padding: 6px 0; }
+
+/* Self-hosted architecture diagram (vertical layered layout) */
+.architecture-v2 { display: flex; flex-direction: column; }
+.arch-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; position: relative; }
+.arch-row::before { content: "↓"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: 13px; font-weight: 700; }
+.arch-box { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-elevated); text-align: center; }
+.arch-box strong { display: block; margin-bottom: 5px; font-size: 15px; font-weight: 750; color: var(--text); letter-spacing: -.01em; }
+.arch-box span { display: block; font-size: 11px; color: var(--muted); font-weight: 600; line-height: 1.45; }
+.arch-box.primary { border-color: color-mix(in srgb, var(--accent-2) 45%, var(--line)); background: color-mix(in srgb, var(--accent-2) 10%, var(--bg-elevated)); }
+.arch-box.accent { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); background: color-mix(in srgb, var(--accent) 10%, var(--bg-elevated)); }
 
 .release-card { padding: 32px; border: 1px solid var(--line-strong); border-radius: 24px; background: linear-gradient(125deg, rgba(99,230,190,.06), rgba(93,169,255,.06), rgba(167,139,250,.04)); display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; }
 .release-card h3 { margin: 0 0 8px; font-size: 24px; }
@@ -208,6 +218,7 @@ html[data-theme='light'] .code-card { background: #0b1728; color: #d8e4f0; }
   .section { padding: 66px 0; }
   .feature-grid, .content-grid { grid-template-columns: 1fr; }
   .release-card { grid-template-columns: 1fr; }
+  .arch-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > :first-child { grid-column: 1 / -1; }
   .roadmap-item { grid-template-columns: 1fr; gap: 7px; }
