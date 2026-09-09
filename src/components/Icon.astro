@@ -1,0 +1,42 @@
+---
+// Minimal stroke-style icon set for feature cards.
+// Add new icons by extending the `paths` map below.
+interface Props {
+  name:
+    | 'home' | 'views' | 'automation' | 'notify' | 'search' | 'ai'
+    | 'shield' | 'dashboard' | 'box' | 'table' | 'archive'
+    | (string & {});
+  size?: number;
+  class?: string;
+}
+const { name, size = 22, class: className } = Astro.props;
+
+// 24x24 viewBox, stroke-based (1.6 stroke width). Designed to read clearly at 22–28px.
+const paths: Record<string, string> = {
+  home: '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/>',
+  views: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+  automation: '<path d="M13 3 5 10h4l-1 6 8-7h-4z"/>',
+  notify: '<path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+  search: '<circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/>',
+  ai: '<path d="M12 4v3"/><path d="M12 17v3"/><path d="M4 12h3"/><path d="M17 12h3"/><path d="m6.3 6.3 2.1 2.1"/><path d="m15.6 15.6 2.1 2.1"/><path d="m6.3 17.7 2.1-2.1"/><path d="m15.6 8.4 2.1-2.1"/><circle cx="12" cy="12" r="3"/>',
+  shield: '<path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>',
+  dashboard: '<rect x="3" y="3" width="8" height="9" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/>',
+  box: '<path d="M3.5 7 12 3l8.5 4"/><path d="M3.5 7v10l8.5 4 8.5-4V7"/><path d="M3.5 7 12 11l8.5-4"/><path d="M12 11v10"/>',
+  table: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 11h18"/><path d="M9 11v8"/>',
+  archive: '<rect x="3" y="4" width="18" height="4" rx="1.5"/><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/><path d="M10 13h4"/>',
+};
+const inner = paths[name] ?? '';
+---
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  class={className}
+  set:html={inner}
+/>
