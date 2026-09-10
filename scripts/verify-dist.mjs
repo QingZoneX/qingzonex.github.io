@@ -19,6 +19,7 @@ for(const rel of required) if(!fs.existsSync(path.join(dist,rel))) throw new Err
 
 const {base:configuredBase}=resolveSiteConfig();
 const base=configuredBase==='/'?'/':`${configuredBase.replace(/\/$/,'')}/`;
+const faviconHref=`${base}favicon.svg`;
 for(const locale of locales){
   for(const route of ['','docs/']){
     const rel=routeFile(locale.prefix,route);
@@ -26,6 +27,7 @@ for(const locale of locales){
     if(!new RegExp(`<html[^>]+lang=["']${locale.lang}["']`,'i').test(html)) throw new Error(`${rel} does not declare lang=${locale.lang}`);
     if(!html.includes('qingzonex.locale.v1')) throw new Error(`${rel} is missing locale preference bootstrap.`);
     if(!html.includes(ORG_AVATAR_URL)) throw new Error(`${rel} does not use the QingZoneX organization avatar.`);
+    if(route==='docs/' && !html.includes(`href="${faviconHref}"`) && !html.includes(`href='${faviconHref}'`)) throw new Error(`${rel} does not use the shared portal favicon ${faviconHref}`);
     if(!route && !/hreflang=["']zh-CN["']/i.test(html)) throw new Error(`${rel} is missing zh-CN hreflang.`);
     if(!route && !/hreflang=["']zh-TW["']/i.test(html)) throw new Error(`${rel} is missing zh-TW hreflang.`);
     if(!route && !/hreflang=["']en["']/i.test(html)) throw new Error(`${rel} is missing en hreflang.`);
@@ -91,4 +93,4 @@ for(const file of htmlFiles){
 }
 if(forbidden.length)throw new Error(`Forbidden generated content:\n${forbidden.join('\n')}`);
 if(unresolved.length)throw new Error(`Unresolved internal links/assets:\n${unresolved.slice(0,80).join('\n')}`);
-console.log(`Verified ${htmlFiles.length} HTML files, 3 locale trees, QingZoneX avatar branding, QTable-focused portal/docs copy, trailing-slash-safe locale navigation and required portal/docs routes.`);
+console.log(`Verified ${htmlFiles.length} HTML files, 3 locale trees, shared portal/docs favicon, QingZoneX avatar branding, QTable-focused portal/docs copy, trailing-slash-safe locale navigation and required portal/docs routes.`);
