@@ -4,7 +4,8 @@ import { resolveSiteConfig } from './site-config.mjs';
 import { localeBootstrapScript } from './src/lib/i18n.mjs';
 
 const { site, base, sourceRepository } = resolveSiteConfig();
-const PORTAL_FAVICON = base === '/' ? '/favicon.svg' : `${base}/favicon.svg`;
+const ORG_AVATAR_URL = 'https://avatars.githubusercontent.com/u/280868418?v=4';
+const ORG_AVATAR_FAVICON_URL = 'https://avatars.githubusercontent.com/u/280868418.png';
 const label = (zhCn, zhTw, en) => ({ label: zhCn, translations: { 'zh-TW': zhTw, en } });
 
 export default defineConfig({
@@ -20,13 +21,14 @@ export default defineConfig({
         'zh-tw': { label: '繁體中文', lang: 'zh-TW' },
         en: { label: 'English', lang: 'en' },
       },
-      favicon: PORTAL_FAVICON,
+      favicon: ORG_AVATAR_FAVICON_URL,
       disable404Route: true,
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/QingZoneX' }],
       editLink: { baseUrl: `https://github.com/${sourceRepository}/edit/main/` },
       customCss: ['./src/styles/starlight.css'],
       head: [
         { tag: 'link', attrs: { rel: 'preconnect', href: 'https://avatars.githubusercontent.com', crossorigin: '' } },
+        { tag: 'link', attrs: { rel: 'icon', href: ORG_AVATAR_URL, type: 'image/png' } },
         { tag: 'script', attrs: { 'data-qingzonex-i18n': 'bootstrap' }, content: localeBootstrapScript(base) },
       ],
       components: {
