@@ -63,4 +63,8 @@ Portal claims track current QTable/QTableUI source, release notes and GitHub Iss
 
 ## License
 
-QTable currently uses Apache License 2.0. Choose the portal repository license explicitly before making this repository public.
+The source code and documentation in this repository are licensed under the [Apache License, Version 2.0](LICENSE), unless otherwise noted.
+
+See [NOTICE](NOTICE) for project attribution and brand-use information. Third-party software, dependencies, fonts, icons, images, and other assets remain subject to their respective licenses and attribution terms.
+
+The Apache License 2.0 does not grant permission to use QingZoneX trade names, trademarks, service marks, product names, logos, or other brand assets except as permitted by Section 6 of the license and applicable law.
