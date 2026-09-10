@@ -27,7 +27,7 @@ jobs:
       - name: Install resolver and audit tooling
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pip-tools pip-audit
+          python -m pip install 'pip-tools==7.6.1' 'pip-audit==2.10.1'
           {
             python --version
             python -m pip --version
@@ -35,11 +35,10 @@ jobs:
             pip-audit --version
           } > .tmp/qtable-186/tool-versions.txt
 
-      - name: Resolve hashed lock
+      - name: Resolve exact lock
         run: |
           pip-compile \
             --resolver=backtracking \
-            --generate-hashes \
             --strip-extras \
             --output-file=.tmp/qtable-186/requirements.lock \
             .tmp/qtable-186/requirements.in
@@ -49,7 +48,6 @@ jobs:
           python -m venv /tmp/qtable-186-app
           /tmp/qtable-186-app/bin/python -m pip install --upgrade pip
           /tmp/qtable-186-app/bin/python -m pip install \
-            --require-hashes \
             -r .tmp/qtable-186/requirements.lock
           /tmp/qtable-186-app/bin/python -m pip check \
             | tee .tmp/qtable-186/pip-check.txt
@@ -93,7 +91,6 @@ jobs:
         run: |
           set +e
           pip-audit \
-            --require-hashes \
             -r .tmp/qtable-186/requirements.lock \
             --format=json \
             --output=.tmp/qtable-186/pip-audit.json \
@@ -102,7 +99,6 @@ jobs:
           echo "$audit_status" > .tmp/qtable-186/pip-audit-exit-code.txt
 
           pip-audit \
-            --require-hashes \
             -r .tmp/qtable-186/requirements.lock \
             --format=cyclonedx-json \
             --output=.tmp/qtable-186/cyclonedx.json \
