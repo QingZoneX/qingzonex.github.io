@@ -1,9 +1,9 @@
 ---
 title: 功能矩阵
-description: 区分 QTable v0.1.0-alpha 已实现能力、发布加固项与未来路线图。
+description: 区分 QTable v0.1.1-alpha 已实现能力、发布加固项与未来路线图。
 ---
 
-本页以 `qtable-server` 与 `qtable-web` 当前主干为基线，避免把计划能力描述成已经交付。
+本页以 `qtable-server` 与 `qtable-web` 的 `v0.1.1-alpha` 标签及当前源码为基线，避免把计划能力描述成已经交付。
 
 ## 已实现基线
 
@@ -39,4 +39,4 @@ description: 区分 QTable v0.1.0-alpha 已实现能力、发布加固项与未�
 - Self-hosted / BYO AI 标准化 — [`qtable-server #120`](https://github.com/QingZoneX/qtable-server/issues/120)
 - Source Inbox 语义重复识别 — [`qtable-server #119`](https://github.com/QingZoneX/qtable-server/issues/119)
 
-具体状态始终以对应 GitHub Issue 和当前源码为准。
+具体状态始终以对应 GitHub Issue、`v0.1.1-alpha` 标签和当前源码为准。
