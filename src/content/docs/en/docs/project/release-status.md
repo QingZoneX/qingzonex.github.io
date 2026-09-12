@@ -1,13 +1,13 @@
 ---
 title: Release status
-description: "QTable public-source status, Alpha baseline and distribution-artifact boundary."
+description: "QTable public-source status, Alpha tag and distribution-artifact boundary."
 ---
 
-QTable is currently **`v0.1.0-alpha` — Open Source Preview**.
+QTable's current public version is **`v0.1.1-alpha` — Open Source Preview**.
 
-## Public source
+## Public source and tag
 
-Both implementation repositories are public:
+Both implementation repositories are public and both publish the `v0.1.1-alpha` Git tag:
 
 - [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server)
 - [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web)
@@ -16,7 +16,7 @@ Together they form one QTable product version. The web frontend, API / domain se
 
 ## Distribution status
 
-Neither repository currently has a published GitHub Release. “Open Source Preview” therefore describes the public Alpha source baseline; it **must not be interpreted as a published stable GitHub Release, Docker Hub image or other distribution artifact**. Treat an image, tag or Release as available only when the corresponding repository or registry actually publishes it.
+As of this update, neither repository has a published GitHub Release for `v0.1.1-alpha`. A published Git tag therefore **must not be interpreted as a published GitHub Release, Docker Hub image or stable distribution artifact**. Treat an image, Release or other distribution artifact as available only when the corresponding repository or registry actually publishes it.
 
 ## Alpha expectations
 
