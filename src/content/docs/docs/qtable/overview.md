@@ -40,4 +40,4 @@ Web 与 API 通过 REST / GraphQL / WebSocket / Auth / OAuth 契约组合成一�
 
 ## Alpha 边界
 
-两个仓库当前都已发布 `v0.1.1-alpha` / Open Source Preview Git tag。源码仓库已经公开，但当前没有已发布的 GitHub Release；Git tag 状态与发行制品状态必须分开理解。请查看 [功能矩阵](../../project/feature-matrix/) 与 [发布状态](../../project/release-status/)。
+两个仓库当前使用 `v0.1.1-alpha` / Open Source Preview 源码基线。源码仓库已经公开，但当前没有已发布的 GitHub Release；源码状态与发行制品状态必须分开理解。请查看 [功能矩阵](../../project/feature-matrix/) 与 [发布状态](../../project/release-status/)。

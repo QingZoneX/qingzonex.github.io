@@ -26,7 +26,7 @@ Portal product claims must be reviewed against the two current public implementa
 - `QingZoneX/qtable-server` — API, domain services, data model, permissions, automation, auditability, attachments, search, OAuth and AI services;
 - `QingZoneX/qtable-web` — React web application, work centers, five views, dashboards, collaboration, automation and AI interactions.
 
-Both repositories currently carry the `0.1.0-alpha` source baseline. Public repository visibility and a source version do not automatically mean that a GitHub Release, Docker image or other distribution artifact has been published. The portal must distinguish those states explicitly.
+Both repositories currently carry the `0.1.1-alpha` source baseline. Public repository visibility and a source version do not automatically mean that a GitHub Release, Docker image or other distribution artifact has been published. The portal must distinguish those states explicitly.
 
 Before deployment, verify that repository names, source links, runtime requirements, feature claims, security guidance and release status in all three portal locales still match repository reality.
 
