@@ -1,16 +1,16 @@
 ---
 title: 生产环境检查清单
-description: "评估 QTable v0.1.0-alpha 自托管部署时应执行的实际检查。"
+description: "评估 QTable v0.1.1-alpha 自托管部署时应执行的实际检查。"
 ---
 
-`v0.1.0-alpha` 是 Open Source Preview。把 QTable 暴露给真实用户之前，应在与生产拓扑一致的环境中完成下面的检查。
+`v0.1.1-alpha` 是 Open Source Preview Git tag。把 QTable 暴露给真实用户之前，应在与生产拓扑一致的环境中完成下面的检查。
 
 ## 版本与来源
 
-- [ ] `qtable-server` 与 `qtable-web` 使用经过共同验证的精确 commit / tag。
+- [ ] `qtable-server` 与 `qtable-web` 使用经过共同验证的 `v0.1.1-alpha` Tag 或更明确的精确 commit。
 - [ ] 若使用源码 Compose，两个仓库为同级目录且 `.env` 中 `QTABLE_UI_CONTEXT=../qtable-web`。
 - [ ] 若使用预构建镜像，已确认 Registry 中真实存在目标 Tag，并记录 digest。
-- [ ] 不把“公开源码”误当成“已发布 GitHub Release / 稳定版制品”。
+- [ ] 不把“Git tag 已发布”误当成“已发布 GitHub Release / 稳定版制品”。
 
 ## 配置与秘密
 

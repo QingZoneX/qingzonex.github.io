@@ -1,16 +1,16 @@
 ---
 title: Production checklist
-description: "Practical checks for evaluating a QTable v0.1.0-alpha self-hosted deployment."
+description: "Practical checks for evaluating a QTable v0.1.1-alpha self-hosted deployment."
 ---
 
-`v0.1.0-alpha` is an Open Source Preview. Before exposing QTable to real users, complete these checks in an environment that matches your production topology.
+`v0.1.1-alpha` is an Open Source Preview Git tag. Before exposing QTable to real users, complete these checks in an environment that matches your production topology.
 
 ## Version and source
 
-- [ ] `qtable-server` and `qtable-web` use exact commits / tags that were validated together.
+- [ ] `qtable-server` and `qtable-web` use the `v0.1.1-alpha` tags or more explicit exact commits that were validated together.
 - [ ] For source Compose, both repositories are siblings and `.env` contains `QTABLE_UI_CONTEXT=../qtable-web`.
 - [ ] For prebuilt images, the target tags actually exist in the registry and their digests are recorded.
-- [ ] Public source visibility is not being mistaken for a published GitHub Release or stable artifact.
+- [ ] A published Git tag is not being mistaken for a published GitHub Release or stable artifact.
 
 ## Configuration and secrets
 

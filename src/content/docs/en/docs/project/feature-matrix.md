@@ -1,9 +1,9 @@
 ---
 title: Feature matrix
-description: Separate the QTable v0.1.0-alpha implemented baseline, release hardening and future roadmap.
+description: Separate the QTable v0.1.1-alpha implemented baseline, release hardening and future roadmap.
 ---
 
-This page tracks the current `qtable-server` and `qtable-web` main branches so planned capabilities are not presented as shipped.
+This page tracks the current `qtable-server` and `qtable-web` `v0.1.1-alpha` tags / main branches so planned capabilities are not presented as shipped.
 
 ## Implemented baseline
 
@@ -39,4 +39,4 @@ The following **must not be described as shipped**:
 - Self-hosted / BYO AI standardization — [`qtable-server #120`](https://github.com/QingZoneX/qtable-server/issues/120)
 - Semantic duplicate detection for Source Inbox — [`qtable-server #119`](https://github.com/QingZoneX/qtable-server/issues/119)
 
-Use the current source and linked GitHub Issues as the final status authority.
+Use the `v0.1.1-alpha` tags, current source and linked GitHub Issues as the final status authority.

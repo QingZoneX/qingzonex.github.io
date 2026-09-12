@@ -57,7 +57,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) and [LOCALIZATION.md](LOCALIZATION.md).
 
 Portal claims are checked against the current `qtable-server` and `qtable-web` source, version files, release evidence and GitHub Issues while preserving the single-product QTable model.
 
-When the implementation repositories change names, versions, runtime requirements or delivered capabilities, update all three locales together and keep source links canonical. Do not present roadmap items as shipped features, and do not present a source-preview branch as a published release artifact.
+When the implementation repositories change names, versions, runtime requirements or delivered capabilities, update all three locales together and keep source links canonical. Do not present roadmap items as shipped features, and do not present a source tag as a GitHub Release or other distribution artifact unless that artifact actually exists.
 
 ## License
 
