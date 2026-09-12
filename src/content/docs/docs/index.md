@@ -7,12 +7,12 @@ sidebar:
 
 **QTable** 是 QingZoneX 当前对外开源的产品：一个基于多维表格构建的 AI 原生项目与工作管理系统。
 
-从用户视角看，QTable 是一个完整产品；从工程视角看，它包含 Web 前端与 API / Domain Services 两个实现层。两个实现层共享同一套 Table / Record / View / Dashboard / Permission 模型，并通过 REST / GraphQL / WebSocket / Auth / OAuth 契约协同工作。
+从用户视角看，QTable 是一个完整产品；从工程视角看，它由两个公开实现仓库共同组成。两个实现层共享同一套 Table / Record / View / Dashboard / Permission 模型，并通过 REST / GraphQL / WebSocket / Auth / OAuth 契约协同工作。
 
-- [后端与领域服务源码](https://github.com/QingZoneX/QTable) — 数据模型、权限、自动化、审计、附件、搜索与 AI 服务。
-- [Web 前端实现源码](https://github.com/QingZoneX/QTableUI) — 工作中心、五种视图、仪表盘、协作、自动化与 AI 交互。
+- [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server) — FastAPI / Strawberry GraphQL 后端、数据模型、权限、自动化、审计、附件、搜索、OAuth 与 AI 服务。
+- [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web) — React Web 应用、工作中心、Grid / Kanban / Gantt / Calendar / Gallery、仪表盘、协作、自动化与 AI 交互。
 
-当前开源预览版本为 **`v0.1.0-alpha`**，采用 **Apache License 2.0**。
+两个仓库当前都采用 **`v0.1.0-alpha` / Open Source Preview** 源码基线，并以 **Apache License 2.0** 开源。仓库公开不等同于已经发布 GitHub Release、Docker 镜像或其他发行制品；正式发行状态请以 [发布状态](./project/release-status/) 和对应仓库的 Releases 为准。
 
 ## 推荐阅读路径
 
