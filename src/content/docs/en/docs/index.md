@@ -12,7 +12,7 @@ Users experience one QTable product. Engineering work is split across two public
 - [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server) — FastAPI / Strawberry GraphQL backend, data model, permissions, automation, auditability, attachments, search, OAuth and AI services.
 - [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web) — React web application, work centers, Grid / Kanban / Gantt / Calendar / Gallery, dashboards, collaboration, automation and AI interactions.
 
-Both repositories currently use the **`v0.1.0-alpha` / Open Source Preview** source baseline under **Apache License 2.0**. Public source visibility does not itself mean that a GitHub Release, container image or other distribution artifact has been published. See [Release status](./project/release-status/) for that distinction.
+Both repositories currently use the **`v0.1.1-alpha` / Open Source Preview** tag baseline under **Apache License 2.0**. Public source visibility or a source tag does not itself mean that a GitHub Release, container image or other distribution artifact has been published. See [Release status](./project/release-status/) for that distinction.
 
 ## Recommended path
 
