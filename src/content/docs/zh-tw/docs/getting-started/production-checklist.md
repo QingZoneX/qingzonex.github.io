@@ -1,16 +1,16 @@
 ---
 title: 正式環境檢查清單
-description: "評估 QTable v0.1.0-alpha 自託管部署時應執行的實際檢查。"
+description: "評估 QTable v0.1.1-alpha 自託管部署時應執行的實際檢查。"
 ---
 
-`v0.1.0-alpha` 是 Open Source Preview。將 QTable 提供給真實使用者前，應在與正式環境拓撲一致的環境完成以下檢查。
+`v0.1.1-alpha` 是 Open Source Preview。將 QTable 提供給真實使用者前，應在與正式環境拓撲一致的環境完成以下檢查。
 
 ## 版本與來源
 
-- [ ] `qtable-server` 與 `qtable-web` 使用已共同驗證的精確 commit / tag。
+- [ ] `qtable-server` 與 `qtable-web` 使用已共同驗證的 `v0.1.1-alpha` 標籤或精確 commit。
 - [ ] 使用原始碼 Compose 時，兩個儲存庫為同層目錄，且 `.env` 包含 `QTABLE_UI_CONTEXT=../qtable-web`。
 - [ ] 使用預建映像時，已確認 Registry 中確實存在目標 Tag，並記錄 digest。
-- [ ] 未把「公開原始碼」誤認為「已發佈 GitHub Release / 穩定版成品」。
+- [ ] 未把「公開原始碼 / Git Tag」誤認為「已發佈 GitHub Release / 穩定版成品」。
 
 ## 設定與秘密
 
