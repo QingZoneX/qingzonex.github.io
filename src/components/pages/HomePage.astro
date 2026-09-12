@@ -4,7 +4,7 @@ import TableTour from '../TableTour.astro';
 import Icon from '../Icon.astro';
 import { QTABLE_GITHUB_URL } from '../../lib/site';
 import { localePath } from '../../lib/i18n.mjs';
-import { getPortalContent, type PortalLocale } from '../../lib/current-portal-content';
+import { getPortalContent, QTABLE_VERSION, type PortalLocale } from '../../lib/current-portal-content';
 interface Props { locale: PortalLocale }
 const { locale }=Astro.props; const c=getPortalContent(locale).home; const href=(p='')=>localePath(locale,p,import.meta.env.BASE_URL);
 const copy = {
@@ -55,7 +55,7 @@ const focused = (value: string) => {
         <a class="button primary" href={href('docs/')}>{c.getStarted} <span aria-hidden="true">→</span></a>
         <a class="button secondary" href={QTABLE_GITHUB_URL}>GitHub {c.viewGithub}</a>
       </div>
-      <div class="hero-meta"><span>Apache-2.0</span><span>Self-hostable</span><span>AI optional</span><span>Permission-aware</span><span>v0.1.0-alpha</span></div>
+      <div class="hero-meta"><span>Apache-2.0</span><span>Self-hostable</span><span>AI optional</span><span>Permission-aware</span><span>{QTABLE_VERSION}</span></div>
     </div>
     <div class="hero-visual">
       <div class="product-window" aria-label="QTable product preview">
