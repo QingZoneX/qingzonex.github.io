@@ -1,13 +1,13 @@
 ---
 title: 發佈狀態
-description: "QTable 目前公開原始碼狀態、Alpha 基線與發行成品邊界。"
+description: "QTable 目前公開原始碼狀態、Alpha 標籤基線與發行成品邊界。"
 ---
 
-QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
+QTable 目前處於 **`v0.1.1-alpha` — Open Source Preview**。
 
-## 公開原始碼
+## 公開原始碼與標籤
 
-兩個實作儲存庫目前都已公開：
+兩個實作儲存庫目前都已公開，並且都存在 `v0.1.1-alpha` 標籤：
 
 - [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server)
 - [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web)
@@ -16,7 +16,7 @@ QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 
 ## 發行成品狀態
 
-目前兩個儲存庫都沒有已發佈的 GitHub Release。因此「Open Source Preview」描述的是公開 Alpha 原始碼基線，**不應被解讀為已經發佈正式 GitHub Release、Docker Hub 映像或其他穩定版成品**。映像、Tag 或 Release 只有在對應儲存庫或 Registry 實際發佈時才視為可用。
+目前兩個儲存庫都沒有已發佈的 GitHub Release。因此 `v0.1.1-alpha` 標籤代表目前公開 Alpha 原始碼基線，**不應被解讀為已經發佈正式 GitHub Release、Docker Hub 映像或其他穩定版成品**。映像或 Release 只有在對應儲存庫或 Registry 實際發佈時才視為可用。
 
 ## Alpha 預期
 
