@@ -1,44 +1,39 @@
 ---
-title: QTable 前端开发
-description: "开发 QTable Web App：本地运行、Docker 与前端安全约束。"
+title: Web 前端开发
+description: qtable-web 的本地开发、代理约定与质量门禁。
 ---
 
-QTable 的 Web 前端实现仓库是 `QingZoneX/QTableUI`。
-
-## 环境要求
-
-- Node.js 22
-- 本地运行的 QTable API（默认端口 `9000`）
+QTable 的 Web 前端实现仓库是 [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web)。
 
 ## 本地开发
 
+要求：Node.js 22，以及一个运行在 `http://localhost:9000` 的 qtable-server。
+
 ```bash
-git clone https://github.com/QingZoneX/QTableUI.git
-cd QTableUI
+git clone https://github.com/QingZoneX/qtable-web.git
+cd qtable-web
 npm ci
 npm run dev
 ```
 
-开发服务器默认监听 `http://localhost:9100`，并把 API / GraphQL / WebSocket / Auth / OAuth 流量代理到 `http://localhost:9000`。
+开发服务器默认监听 `http://localhost:9100`，并将 API / GraphQL / WebSocket / Auth / OAuth 流量代理到 qtable-server。
 
-## Docker
+不要把真实凭据放入前端环境变量。npm 与根目录 `package-lock.json` 是可重复安装的支持路径。
+
+## 主要质量门禁
 
 ```bash
-docker build -t qtable-web .
-docker run --rm -p 9100:9100 \
-  -e QTABLE_HOST=host.docker.internal \
-  -e QTABLE_PORT=9000 \
-  qtable-web
+node scripts/check-secrets.mjs --history
+node scripts/check-open-source-readiness.mjs
+npm run check:dependencies
+npm run check:licenses
+npm run test:license-policy
+npm run test:xlsx-export
+npm run build
 ```
 
-容器提供 `/healthz` 健康检查。
+仓库还包含 OAuth、搜索、AI、Member 字段、Source Inbox、Dashboard、Automation、附件与服务工作线程等契约检查。提交前应以仓库当前 `package.json` 与 CI 为最终命令来源。
 
-## 前端安全不变量
+## 与服务端联调
 
-- 不加载隐藏行来实现客户端 AI 或 Analytics。
-- 不绕过 Preview → Confirm → Apply。
-- 存在原子可审计 Mutation 时，不直接拼接多次写入。
-- Workspace Member 候选必须来自当前 Workspace。
-- Public Dashboard 必须使用 public-token-safe API。
-- 大表路径保留服务端分页 / 聚合。
-- 前端环境变量不能包含真实凭据。
+若需要完整栈，按照 [快速开始](../getting-started/quick-start/) 将 `qtable-server` 与 `qtable-web` 克隆为同级目录，并确保 Compose 的 `QTABLE_UI_CONTEXT` 指向 `../qtable-web`。

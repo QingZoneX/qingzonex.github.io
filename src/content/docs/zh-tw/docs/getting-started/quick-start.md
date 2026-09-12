@@ -1,57 +1,55 @@
 ---
 title: 快速開始
-description: 使用建議的 PostgreSQL 開發堆疊在本機啟動 QTable 與 QTableUI。
+description: 使用目前公開的 qtable-server 與 qtable-web 儲存庫在本機啟動完整 QTable。
 ---
 
-建議開發堆疊為 **PostgreSQL + Redis + S3 相容附件儲存**。SQLite 是明確的輕量回退方案，不是一般部署預設值。
+## 1. 克隆兩個實作儲存庫
 
-## 環境需求
-
-- QTable 建議 Python 3.12。
-- QTableUI 使用 Node.js 22。
-- 使用 Docker / Docker Compose 啟動 PostgreSQL、Redis 與 MinIO。
-
-## 1. 啟動 QTable 相依服務
+將兩個儲存庫放在同一父目錄：
 
 ```bash
-git clone https://github.com/QingZoneX/QTable.git
-cd QTable
+git clone https://github.com/QingZoneX/qtable-server.git
+git clone https://github.com/QingZoneX/qtable-web.git
+```
+
+目錄應類似：
+
+```text
+qingzone/
+├── qtable-server/
+└── qtable-web/
+```
+
+## 2. 設定伺服器端 Compose
+
+```bash
+cd qtable-server
 cp .env.example .env
-
-docker compose up -d db redis minio
 ```
 
-## 2. 啟動後端
+目前伺服器端 Compose 為相容舊目錄名，預設值仍是 `../QTableUI`；使用目前公開儲存庫名稱時，**必須**在 `.env` 中設定：
+
+```dotenv
+QTABLE_UI_CONTEXT=../qtable-web
+```
+
+本機開發可保留 `.env.example` 的開發憑證；任何共用或網際網路環境都必須更換 `SECRET_KEY`、附件儲存憑證，並設定穩定的 `ENCRYPTION_KEY`。
+
+## 3. 啟動完整堆疊
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-alembic upgrade head
-uvicorn app.main:app --reload --port 9000
+docker compose up --build -d
 ```
 
-GraphQL 位於 `http://localhost:9000/graphql`。
+開啟 `http://localhost:9100`。Web 是面向使用者的入口；API、PostgreSQL、Redis 與 MinIO 預設只綁定本機回環地址。
 
-## 3. 啟動 QTableUI
-
-在第二個終端機中：
+## 4. 驗證
 
 ```bash
-git clone https://github.com/QingZoneX/QTableUI.git
-cd QTableUI
-npm ci
-npm run dev
+docker compose ps
+curl -fsS http://localhost:9100/healthz
 ```
 
-開啟 `http://localhost:9100`。
+核心表格能力不需要外部 AI Provider。啟用 AI 時，請透過 QTable 的加密 AI 設定流程配置 Provider 憑證，不要把真實 API Key 寫入前端環境變數或儲存庫檔案。
 
-前端開發伺服器會把 API、GraphQL、WebSocket 與 OAuth 流量代理到 `9000` 連接埠的後端。
-
-## 下一步
-
-- [系統架構](../../qtable/architecture/)
-- [AI 工作流程](../../qtable/ai-workflows/)
-- [安全模型](../../qtable/security/)
-- [QTableUI 開發](../../qtable-ui/development/)
+更多部署資訊請查看 [自託管](./self-hosting/) 與 [正式環境檢查清單](./production-checklist/)。

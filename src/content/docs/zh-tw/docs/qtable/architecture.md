@@ -1,36 +1,37 @@
 ---
 title: 系統架構
-description: QTable 與 QTableUI 的架構、執行服務與儲存邊界。
+description: qtable-web 與 qtable-server 共同組成的 QTable 架構、執行服務與儲存邊界。
 ---
 
-目前架構把前端與 QTable API 分離，同時把權限與變更規則保留在伺服器端。
+QTable 採用前後端分倉、產品模型統一的架構：
 
 ```text
-QTableUI (React + TypeScript + VTable + Apollo)
-               │
-        HTTP / GraphQL / WS
-               │
-QTable API (FastAPI + Strawberry GraphQL)
-       │                 │
- PostgreSQL/SQLite      Redis
-       │
- Permission / ChangeSet / AI services
-       │
- S3-compatible attachment storage
+qtable-web / QTable Web App
+React 19 + TypeScript 7 + VTable + Apollo
+                 │
+      REST / GraphQL / WebSocket / OAuth
+                 │
+qtable-server / QTable API & Domain Services
+FastAPI + Strawberry GraphQL
+                 │
+      ┌──────────┼──────────┐
+      │          │          │
+ PostgreSQL    Redis    S3-compatible
+                         object storage
 ```
 
-## 資料庫模式
+## Web 層：qtable-web
 
-**PostgreSQL** 是一般開發與部署的預設資料庫。
+[`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web) 負責最終使用者體驗、路由、檢視呈現、協作互動與 AI 工作流程介面。開發伺服器預設監聽 `9100`；正式映像使用 Nginx 提供 SPA、Proxy 路由與安全回應標頭。
 
-**SQLite** 可用於輕量評估、離線開發或受限單一執行個體。QTable 不會在 PostgreSQL 失敗時自動切換 SQLite；資料庫引擎必須透過設定明確選擇。
+## 服務層：qtable-server
 
-## 資料庫 Migration
+[`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server) 預設監聽 `9000`，負責資料模型、權限、自動化、稽核、搜尋、附件、OAuth 與 AI 服務。伺服器端是授權與寫入規則的最終可信任邊界。
 
-QTable 使用 Alembic Migration Baseline。全新資料庫執行：
+## 資料與執行時
 
-```bash
-alembic upgrade head
-```
+標準自託管堆疊使用 PostgreSQL 16、Redis 7 與 MinIO / 外部 S3-compatible 物件儲存。SQLite 僅作為明確的輕量回退，不是一般正式部署的預設路徑。
 
-後續 Schema 演進應透過版本化 Migration 交付。
+## 安全邊界
+
+記錄詳情、搜尋、Dashboard 聚合、附件存取與 AI 脈絡都必須經過伺服器端權限檢查。用戶端不能為分析或 AI 下載目前使用者無權查看的資料。

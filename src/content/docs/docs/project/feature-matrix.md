@@ -1,46 +1,42 @@
 ---
-title: QTable 功能矩阵
-description: "QTable 当前已实现能力、公开 Alpha 加固项与未来路线图边界。"
-sidebar:
-  order: 2
+title: 功能矩阵
+description: 区分 QTable v0.1.0-alpha 已实现能力、发布加固项与未来路线图。
 ---
 
-本矩阵以 **QTable** 作为唯一产品边界。Web 前端、API 与领域服务、数据层和对象存储共同交付这些能力。
+本页以 `qtable-server` 与 `qtable-web` 当前主干为基线，避免把计划能力描述成已经交付。
 
-**已实现基线** 表示能力已存在于当前产品 / main 分支，不代表 v1.0 API 稳定性。
+## 已实现基线
 
-| 产品范围 | 当前基线 | 状态 |
+| 能力 | 当前状态 | 主要实现仓库 |
 | --- | --- | --- |
-| 表格模型 | 字段、记录、过滤、多字段排序、分组、命名视图 | 已实现基线 |
-| 工作视图 | Grid、Kanban、Gantt、Calendar、Gallery | 已实现基线 |
-| 工作入口 | Home / My Work、Projects Center | 已实现基线 |
-| Dashboard | Center / Workbench、组件、服务端聚合、公开分享 | 已实现；体验继续增强 |
-| Automation | 服务端引擎 + Automation Center + 执行历史 | 已实现基线 |
-| 协作 | 通知、实时生命周期、记录协作 / Activity | 已实现；协作深度继续增强 |
-| 搜索 | 权限感知全局搜索 / Command Discovery | 已实现基线 |
-| 删除安全 | ChangeSet / Undo 基础 + Recycle Bin Restore / Purge | 已实现基线 |
-| 私有附件 | 稳定 S3-compatible 引用、权限访问、生命周期清理、Upload Intent Recovery | 已实现；发布验证继续 |
-| AI 规划 | Goal-to-workspace、Task Planning、Workload、Assignment、Project Steward | 已实现基线 |
-| AI 动作 | Preview → Confirm → Apply、部分接受、权限 / 状态重新校验 | 已实现基线 |
-| AI 可视化 | 使用现有模型生成 View 与 Dashboard | 已实现基线 |
-| Source Inbox | 来源上下文、采集入口与重复提示 | 已实现基线 |
-| Identity | OAuth2 Authorization Code + S256 PKCE | 已实现；Session / Security 继续加固 |
-| Self-host | Web App + API + PostgreSQL + Redis + MinIO Compose | 已实现；运维 Runbook 继续完善 |
-| 轻量数据库 | 显式 SQLite 回退 | 适用于评估 / 受限单实例 |
+| Home / My Work / Projects Center | 已实现 | qtable-web + qtable-server |
+| Grid / Kanban / Gantt / Calendar / Gallery | 已实现 | qtable-web + qtable-server |
+| Dashboard Center / Workbench / 服务端聚合 | 已实现 | 两者 |
+| Automation Center / 规则执行 / 历史 | 已实现 | 两者 |
+| Notification / Record Collaboration / Activity | 已实现 | 两者 |
+| 权限感知全局搜索 / Recycle Bin | 已实现 | 两者 |
+| 私有 S3-compatible 附件生命周期 | 已实现 | qtable-server + qtable-web |
+| Goal / Task / Workload / Project Steward AI 工作流 | 已实现基线 | 两者 |
+| Source Inbox | 已实现基线 | 两者 |
+| OAuth2 + S256 PKCE | 已实现 | qtable-server + qtable-web |
 
 ## 正在加固
 
-公开 Alpha 仍在推进浏览器级全栈 E2E、认证与安全默认值、Service Worker 私有数据保护、浏览器安全 Header、运维 Runbook 与大表性能。以上均属于 **QTable 发布质量工作**。
+这些工作属于 Alpha 发布质量提升，不代表上述产品面不存在：
 
-## 规划中的能力
+- 全栈浏览器 Release E2E — [`qtable-server #170`](https://github.com/QingZoneX/qtable-server/issues/170)
+- 大表性能与实时链路 — [`qtable-server #104`](https://github.com/QingZoneX/qtable-server/issues/104)
+- 自托管备份 / 恢复 / 升级 Runbook — [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173)
+- 前端响应式、可访问性、国际化与一致状态 — [`qtable-web #56`](https://github.com/QingZoneX/qtable-web/issues/56)
+
+## 下一阶段
 
 以下能力 **不应** 描述为已交付：
 
-- Form View / Public Form — [QTable #148](https://github.com/QingZoneX/QTable/issues/148)
-- Table-as-API / Token / Webhook 平台 — [QTable #116](https://github.com/QingZoneX/QTable/issues/116)
-- Skill / Connector 平台 — [QTable #117](https://github.com/QingZoneX/QTable/issues/117)
-- 更完整的 Self-hosted / BYO AI Provider 平台 — [QTable #120](https://github.com/QingZoneX/QTable/issues/120)
-- 语义重复检测 — [QTable #119](https://github.com/QingZoneX/QTable/issues/119)
-- 完整百万行性能目标 — [QTable #104](https://github.com/QingZoneX/QTable/issues/104)
+- Form View / Public Form — [`qtable-server #148`](https://github.com/QingZoneX/qtable-server/issues/148)
+- Table-as-API / Token / Webhook 平台 — [`qtable-server #116`](https://github.com/QingZoneX/qtable-server/issues/116)
+- Skill / Connector 平台 — [`qtable-server #117`](https://github.com/QingZoneX/qtable-server/issues/117)
+- Self-hosted / BYO AI 标准化 — [`qtable-server #120`](https://github.com/QingZoneX/qtable-server/issues/120)
+- Source Inbox 语义重复识别 — [`qtable-server #119`](https://github.com/QingZoneX/qtable-server/issues/119)
 
-若 Release Notes 或 GitHub Issues 更新得更晚，以它们为准。
+具体状态始终以对应 GitHub Issue 和当前源码为准。

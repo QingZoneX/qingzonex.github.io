@@ -1,51 +1,44 @@
 ---
 title: 自托管
-description: 使用 Docker Compose 运行标准 QTable 与 QTableUI 全栈。
+description: 使用 qtable-server 的 Docker Compose 运行 qtable-web、API、PostgreSQL、Redis 与对象存储。
 ---
 
-标准的一键启动栈由 **QTable 后端仓库**维护。
-
-将 QTable 与 QTableUI 作为同级目录克隆：
+QTable 的标准源码自托管路径使用两个同级仓库：`qtable-server` 与 `qtable-web`。
 
 ```text
 qingzone/
-├── QTable/
-└── QTableUI/
+├── qtable-server/
+└── qtable-web/
+```
+
+在 `qtable-server` 中：
+
+```bash
+cp .env.example .env
+```
+
+将 `.env` 中的 Web 构建上下文改为当前仓库目录：
+
+```dotenv
+QTABLE_UI_CONTEXT=../qtable-web
 ```
 
 然后运行：
 
 ```bash
-cd QTable
-cp .env.example .env
 docker compose up --build -d
 ```
 
-打开 `http://localhost:9100`。
+默认端口：Web `9100`、API `9000`、PostgreSQL `5432`、Redis `6379`、MinIO API `9001`、MinIO Console `9002`。除 Web 外，标准 Compose 将数据面和管理端口绑定到 `127.0.0.1`。
 
-## 包含的服务
+## 生产环境
 
-当前 Compose 栈包含：
+- 将 `APP_ENV` 设置为 `production`；
+- 使用高强度 `SECRET_KEY` 和稳定有效的 Fernet `ENCRYPTION_KEY`；
+- 更换 PostgreSQL 与对象存储凭据；
+- 在反向代理配置 TLS、HTTPS 重定向和 HSTS；
+- 保持 OAuth plain PKCE、动态客户端注册和密码重置调试 Token 关闭；
+- 对 PostgreSQL、对象存储和关键配置执行真实备份 / 恢复演练；
+- 记录实际部署的 qtable-server 与 qtable-web commit / tag。
 
-- QTable API
-- QTableUI
-- PostgreSQL 16
-- Redis 7
-- MinIO S3 兼容私有附件存储
-
-## 生产部署检查
-
-生产环境建议：
-
-- 数据库使用 PostgreSQL。
-- 设置 `APP_ENV=production`。
-- 替换示例 `SECRET_KEY`。
-- 使用稳定的 `ENCRYPTION_KEY`。
-- 替换示例附件存储凭据，或配置托管的 S3 兼容服务。
-- 为 PostgreSQL 与对象存储配置持久备份。
-- 配置 TLS 与合适的反向代理。
-- 多用户生产部署不要使用 SQLite 回退模板。
-
-:::caution[密钥]
-不要把真实凭据、API Key 或生产 `.env` 文件提交到源码仓库。
-:::
+源码公开不意味着某个容器 Tag 已经发布。使用预构建镜像前，请先确认对应 Registry 中存在该精确版本，并与计划部署的源码版本匹配。

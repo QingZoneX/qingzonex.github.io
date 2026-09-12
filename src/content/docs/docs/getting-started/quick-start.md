@@ -1,57 +1,55 @@
 ---
 title: 快速开始
-description: 使用推荐的 PostgreSQL 开发栈在本地启动 QTable 与 QTableUI。
+description: 使用当前 qtable-server 与 qtable-web 公开仓库在本地启动完整 QTable。
 ---
 
-推荐开发栈为 **PostgreSQL + Redis + S3 兼容附件存储**。SQLite 是显式的轻量回退方案，不是常规部署默认值。
+## 1. 克隆两个实现仓库
 
-## 环境要求
-
-- QTable 推荐 Python 3.12。
-- QTableUI 使用 Node.js 22。
-- 使用 Docker / Docker Compose 启动 PostgreSQL、Redis 与 MinIO。
-
-## 1. 启动 QTable 依赖
+将两个仓库放在同一父目录：
 
 ```bash
-git clone https://github.com/QingZoneX/QTable.git
-cd QTable
+git clone https://github.com/QingZoneX/qtable-server.git
+git clone https://github.com/QingZoneX/qtable-web.git
+```
+
+目录应类似：
+
+```text
+qingzone/
+├── qtable-server/
+└── qtable-web/
+```
+
+## 2. 配置服务端 Compose
+
+```bash
+cd qtable-server
 cp .env.example .env
-
-docker compose up -d db redis minio
 ```
 
-## 2. 启动后端
+当前服务端 Compose 的兼容默认值仍是 `../QTableUI`，因此使用新公开仓库名时，必须在 `.env` 中设置：
+
+```dotenv
+QTABLE_UI_CONTEXT=../qtable-web
+```
+
+本地开发可以保留 `.env.example` 中的开发凭据；对任何共享或公网环境都必须更换 `SECRET_KEY`、附件存储凭据，并配置稳定的 `ENCRYPTION_KEY`。
+
+## 3. 启动完整栈
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-alembic upgrade head
-uvicorn app.main:app --reload --port 9000
+docker compose up --build -d
 ```
 
-GraphQL 地址为 `http://localhost:9000/graphql`。
+打开 `http://localhost:9100`。Web 是面向用户的入口；API、PostgreSQL、Redis 与 MinIO 默认只绑定到本机回环地址。
 
-## 3. 启动 QTableUI
-
-在第二个终端中：
+## 4. 验证
 
 ```bash
-git clone https://github.com/QingZoneX/QTableUI.git
-cd QTableUI
-npm ci
-npm run dev
+docker compose ps
+curl -fsS http://localhost:9100/healthz
 ```
 
-打开 `http://localhost:9100`。
+核心表格能力不要求配置外部 AI Provider。需要 AI 时，通过 QTable 的加密 AI 配置流程设置 Provider 凭据，不要把真实 API Key 写入前端环境变量或仓库文件。
 
-前端开发服务器会把 API、GraphQL、WebSocket 与 OAuth 流量代理到 `9000` 端口的后端。
-
-## 下一步
-
-- [系统架构](../../qtable/architecture/)
-- [AI 工作流](../../qtable/ai-workflows/)
-- [安全模型](../../qtable/security/)
-- [QTableUI 开发](../../qtable-ui/development/)
+更多部署细节请查看 [自托管](./self-hosting/) 与 [生产环境检查清单](./production-checklist/)。

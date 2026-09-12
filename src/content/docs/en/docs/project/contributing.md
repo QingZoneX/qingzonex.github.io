@@ -1,28 +1,22 @@
 ---
-title: Contributing to QTable
-description: "Contribution entry points for the single QTable product across its backend and frontend implementation repositories."
+title: Contributing
+description: Choose the correct contribution entry point across qtable-server, qtable-web and the portal.
 ---
 
-QTable is one product, while contribution work is split across two repositories to keep engineering boundaries clear.
+QTable is one product with source split by implementation responsibility. Before opening an issue or pull request, choose the repository that owns the capability.
 
-## Backend and domain services
+## qtable-server
 
-For APIs, data models, permissions, automation, attachments, auditability or AI services, read [`QingZoneX/QTable` CONTRIBUTING.md](https://github.com/QingZoneX/QTable/blob/main/CONTRIBUTING.md).
+For API, data-model, permissions, automation, attachments, audit, search, OAuth or AI-service changes, read [`QingZoneX/qtable-server` CONTRIBUTING.md](https://github.com/QingZoneX/qtable-server/blob/main/CONTRIBUTING.md).
 
-Common quality gates include:
+Server changes must preserve authorization, migration, audit, atomic-write and compatibility contracts.
 
-```bash
-pytest -q
-python scripts/check_secrets.py --history
-python scripts/check_open_source_readiness.py
-```
+## qtable-web
 
-## QTable Web frontend
+For work centers, views, dashboards, automation UI, collaboration, search, accessibility, localization or AI interactions, read [`QingZoneX/qtable-web` CONTRIBUTING.md](https://github.com/QingZoneX/qtable-web/blob/main/CONTRIBUTING.md).
 
-For work centers, views, dashboards, automation, collaboration, search or AI interactions, read [`QingZoneX/QTableUI` CONTRIBUTING.md](https://github.com/QingZoneX/QTableUI/blob/main/CONTRIBUTING.md).
+The web repository includes build, dependency, security, license, container and product-contract gates.
 
-The frontend repository includes build, dependency, security, license and product-contract checks.
+## Portal and docs
 
-## Roadmap discussion
-
-Use GitHub Issues in the relevant implementation repository for concrete defects, implementation and roadmap proposals. The portal roadmap is a QTable product-level summary, not a second issue tracker.
+Portal content must remain aligned across Simplified Chinese, Traditional Chinese and English. Treat current public source, version files, Release state and GitHub Issues as the evidence base. Do not present roadmap work as shipped capability, and do not present public source status as a published release artifact.

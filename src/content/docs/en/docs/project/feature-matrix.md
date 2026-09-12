@@ -1,46 +1,42 @@
 ---
-title: QTable feature matrix
-description: "QTable implemented capability, public-Alpha hardening and future roadmap boundaries."
-sidebar:
-  order: 2
+title: Feature matrix
+description: Separate the QTable v0.1.0-alpha implemented baseline, release hardening and future roadmap.
 ---
 
-This matrix uses **QTable** as the single product boundary. The web frontend, API and domain services, data layer and object storage jointly deliver these capabilities.
+This page tracks the current `qtable-server` and `qtable-web` main branches so planned capabilities are not presented as shipped.
 
-**Implemented baseline** means the capability exists in the current product / main branches; it does not imply v1.0 API stability.
+## Implemented baseline
 
-| Product area | Current baseline | Status |
+| Capability | Status | Primary implementation |
 | --- | --- | --- |
-| Table model | Fields, records, filters, multi-field sorting, grouping, named views | Implemented baseline |
-| Work views | Grid, Kanban, Gantt, Calendar, Gallery | Implemented baseline |
-| Work entry | Home / My Work, Projects Center | Implemented baseline |
-| Dashboard | Center / Workbench, widgets, server aggregation, public sharing | Implemented; UX continues |
-| Automation | Server engine + Automation Center + execution history | Implemented baseline |
-| Collaboration | Notifications, realtime lifecycle, record collaboration / activity | Implemented; depth continues |
-| Search | Permission-aware global search / command discovery | Implemented baseline |
-| Delete safety | ChangeSet / undo foundations + Recycle Bin restore / purge | Implemented baseline |
-| Private attachments | Stable S3-compatible references, permission access, lifecycle cleanup, Upload Intent recovery | Implemented; release verification continues |
-| AI planning | Goal-to-workspace, task planning, workload, assignment, Project Steward | Implemented baseline |
-| AI actions | Preview → Confirm → Apply, partial acceptance, permission / state revalidation | Implemented baseline |
-| AI visualization | Generate View and Dashboard through existing models | Implemented baseline |
-| Source Inbox | Source context, capture intake and duplicate hints | Implemented baseline |
-| Identity | OAuth2 Authorization Code + S256 PKCE | Implemented; session/security hardening continues |
-| Self-host | Web App + API + PostgreSQL + Redis + MinIO Compose | Implemented; operations guidance continues |
-| Lightweight database | Explicit SQLite fallback | Evaluation / constrained single instance |
+| Home / My Work / Projects Center | Implemented | qtable-web + qtable-server |
+| Grid / Kanban / Gantt / Calendar / Gallery | Implemented | qtable-web + qtable-server |
+| Dashboard Center / Workbench / server aggregation | Implemented | Both |
+| Automation Center / rule execution / history | Implemented | Both |
+| Notifications / record collaboration / activity | Implemented | Both |
+| Permission-aware global search / Recycle Bin | Implemented | Both |
+| Private S3-compatible attachment lifecycle | Implemented | qtable-server + qtable-web |
+| Goal / task / workload / Project Steward AI workflows | Baseline implemented | Both |
+| Source Inbox | Baseline implemented | Both |
+| OAuth2 + S256 PKCE | Implemented | qtable-server + qtable-web |
 
 ## Active hardening
 
-The public Alpha still includes browser-level full-stack E2E, auth and security defaults, private-data Service Worker protections, browser security headers, operations runbooks and large-table performance work. These are all **QTable release-quality tracks**.
+These items improve Alpha release quality; they do not mean the product surfaces above are absent:
 
-## Planned capabilities
+- Full-stack browser release E2E — [`qtable-server #170`](https://github.com/QingZoneX/qtable-server/issues/170)
+- Large-table performance and realtime paths — [`qtable-server #104`](https://github.com/QingZoneX/qtable-server/issues/104)
+- Self-host backup / restore / upgrade runbook — [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173)
+- Frontend responsive behavior, accessibility, i18n and consistent states — [`qtable-web #56`](https://github.com/QingZoneX/qtable-web/issues/56)
 
-The following must **not** be represented as shipped:
+## Next capabilities
 
-- Form View / Public Form — [QTable #148](https://github.com/QingZoneX/QTable/issues/148)
-- Table-as-API / token / webhook platform — [QTable #116](https://github.com/QingZoneX/QTable/issues/116)
-- Skill / Connector platform — [QTable #117](https://github.com/QingZoneX/QTable/issues/117)
-- More complete self-hosted / BYO AI provider platform — [QTable #120](https://github.com/QingZoneX/QTable/issues/120)
-- Semantic duplicate detection — [QTable #119](https://github.com/QingZoneX/QTable/issues/119)
-- Full million-row performance target — [QTable #104](https://github.com/QingZoneX/QTable/issues/104)
+The following **must not be described as shipped**:
 
-If release notes or GitHub Issues are newer, treat them as the source of truth.
+- Form View / Public Form — [`qtable-server #148`](https://github.com/QingZoneX/qtable-server/issues/148)
+- Table-as-API / token / webhook platform — [`qtable-server #116`](https://github.com/QingZoneX/qtable-server/issues/116)
+- Skill / Connector platform — [`qtable-server #117`](https://github.com/QingZoneX/qtable-server/issues/117)
+- Self-hosted / BYO AI standardization — [`qtable-server #120`](https://github.com/QingZoneX/qtable-server/issues/120)
+- Semantic duplicate detection for Source Inbox — [`qtable-server #119`](https://github.com/QingZoneX/qtable-server/issues/119)
+
+Use the current source and linked GitHub Issues as the final status authority.
