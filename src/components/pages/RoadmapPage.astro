@@ -10,16 +10,55 @@ const focused = (value: string) => {
   if (locale === 'zh-tw') return value.replaceAll('QNote', '來源工具').replaceAll('Clipper', '擷取工具');
   return value.replaceAll('QNote', 'source tools').replaceAll('Clipper', 'capture tools');
 };
-const labels={
-  'zh-cn':{baseline:'已实现基线',active:'正在加固',next:'下一阶段',issues:'查看 QTable Issues'},
-  'zh-tw':{baseline:'已實作基線',active:'正在加固',next:'下一階段',issues:'查看 QTable Issues'},
-  en:{baseline:'Implemented baseline',active:'Active hardening',next:'Next stage',issues:'View QTable Issues'},
+const copy={
+  'zh-cn':{
+    baseline:'已实现基线', architecture:'产品架构', themes:'规划方向', source:'查看源码',
+    architectureKicker:'QingZoneX 产品架构', architectureTitle:'以 QTable 作为结构化工作的开放底座。', architectureCopy:'当前开源重心是 QTable。未来产品能力会围绕数据接入、自动化、AI 与更高层工作体验扩展，但门户只表达稳定的产品方向，不再绑定具体 GitHub Issue 编号。',
+    experience:'体验与协作层', experienceCopy:'多视图、仪表盘、协作、自动化与 AI 工作流，由 qtable-web 提供统一 Web 体验。',
+    core:'QTable 产品核心', coreCopy:'Table / Record / View / Dashboard / Permission 组成统一的结构化工作模型，所有体验共用同一数据与权限语义。',
+    services:'服务与数据层', servicesCopy:'qtable-server 提供 API、权限、实时协作、自动化、审计、附件、搜索、OAuth 与 AI 服务。',
+    planKicker:'未来产品规划', planTitle:'从 Alpha 走向更完整的开放工作平台。', planCopy:'下面是方向性规划，不代表承诺的发布日期或已经交付的能力。',
+    plans:[
+      ['发布质量与规模化','继续强化端到端验证、大表性能、实时稳定性、响应式与可访问性，以及自托管备份、恢复和升级体验。'],
+      ['开放接入与集成','逐步扩展表单/公开采集、API、Webhook、Connector 与来源接入能力，让 QTable 更容易进入现有业务系统。'],
+      ['AI 与自动化平台化','扩展 BYO / Self-hosted AI、权限感知 Agent 与自动化编排，同时坚持 Preview → Confirm → Apply 的安全写入路径。'],
+      ['QingZoneX 产品生态','未来更高层的 QingZoneX 工作体验将复用 QTable 的结构化数据、权限、协作与自动化基础，而不是重复建设第二套数据模型。'],
+    ]
+  },
+  'zh-tw':{
+    baseline:'已實作基線', architecture:'產品架構', themes:'規劃方向', source:'查看原始碼',
+    architectureKicker:'QingZoneX 產品架構', architectureTitle:'以 QTable 作為結構化工作的開放底座。', architectureCopy:'目前開源重心是 QTable。未來產品能力會圍繞資料接入、自動化、AI 與更高層工作體驗擴展，但入口網站只表達穩定的產品方向，不再綁定具體 GitHub Issue 編號。',
+    experience:'體驗與協作層', experienceCopy:'多檢視、儀表板、協作、自動化與 AI 工作流程，由 qtable-web 提供統一 Web 體驗。',
+    core:'QTable 產品核心', coreCopy:'Table / Record / View / Dashboard / Permission 組成統一的結構化工作模型，所有體驗共用同一資料與權限語意。',
+    services:'服務與資料層', servicesCopy:'qtable-server 提供 API、權限、即時協作、自動化、稽核、附件、搜尋、OAuth 與 AI 服務。',
+    planKicker:'未來產品規劃', planTitle:'從 Alpha 走向更完整的開放工作平台。', planCopy:'以下為方向性規劃，不代表承諾的發佈日期或已交付能力。',
+    plans:[
+      ['發佈品質與規模化','持續強化端到端驗證、大表效能、即時穩定性、響應式與可及性，以及自託管備份、還原與升級體驗。'],
+      ['開放接入與整合','逐步擴展表單/公開收集、API、Webhook、Connector 與來源接入能力，讓 QTable 更容易進入既有業務系統。'],
+      ['AI 與自動化平台化','擴展 BYO / Self-hosted AI、權限感知 Agent 與自動化編排，同時維持 Preview → Confirm → Apply 的安全寫入路徑。'],
+      ['QingZoneX 產品生態','未來更高層的 QingZoneX 工作體驗將共用 QTable 的結構化資料、權限、協作與自動化基礎，而不是重複建立第二套資料模型。'],
+    ]
+  },
+  en:{
+    baseline:'Implemented baseline', architecture:'Product architecture', themes:'Planning themes', source:'View source',
+    architectureKicker:'QingZoneX product architecture', architectureTitle:'QTable is the open foundation for structured work.', architectureCopy:'QTable is the current open-source focus. Future capabilities will expand around data intake, automation, AI and higher-level work experiences, while the portal communicates durable product direction instead of binding the roadmap to specific GitHub issue numbers.',
+    experience:'Experience & collaboration layer', experienceCopy:'Multiple views, dashboards, collaboration, automation and AI workflows are delivered through the unified qtable-web experience.',
+    core:'QTable product core', coreCopy:'Table / Record / View / Dashboard / Permission form one structured-work model shared by every experience and permission boundary.',
+    services:'Services & data layer', servicesCopy:'qtable-server provides APIs, permissions, realtime collaboration, automation, audit, attachments, search, OAuth and AI services.',
+    planKicker:'Future product direction', planTitle:'From Alpha toward a broader open work platform.', planCopy:'These are directional themes, not committed dates or claims that the capabilities have already shipped.',
+    plans:[
+      ['Release quality & scale','Continue strengthening end-to-end validation, large-table performance, realtime stability, responsive/accessibility quality, and self-host backup, restore and upgrade workflows.'],
+      ['Open intake & integrations','Expand forms/public intake, APIs, webhooks, connectors and source intake so QTable can fit more naturally into existing business systems.'],
+      ['AI & automation platform','Extend BYO / self-hosted AI, permission-aware agents and automation orchestration while preserving the Preview → Confirm → Apply safety model.'],
+      ['QingZoneX product ecosystem','Future higher-level QingZoneX experiences can reuse QTable structured data, permissions, collaboration and automation instead of creating a second data model.'],
+    ]
+  },
 }[locale];
 ---
 <BaseLayout locale={locale} route="roadmap/" title={c.metaTitle} description={c.metaDescription}>
-<section class="page-hero page-hero-v2"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i>{c.eyebrow}</span><h1>{c.heroA}<br/><span class="gradient-text">{c.heroB}</span></h1><p>{c.heroCopy}</p><div class="page-actions"><a class="button primary" href={`${QTABLE_GITHUB_URL}/issues`}>{labels.issues} →</a></div><div class="product-metrics"><div class="metric-card"><strong>{c.implemented.features.length}</strong><span>{labels.baseline}</span></div><div class="metric-card"><strong>{c.active.length}</strong><span>{labels.active}</span></div><div class="metric-card"><strong>{c.next.length}</strong><span>{labels.next}</span></div><div class="metric-card"><strong>{QTABLE_VERSION}</strong><span>Open Source Preview</span></div></div></div></section>
+<section class="page-hero page-hero-v2"><div class="shell"><span class="eyebrow"><i class="eyebrow-dot"></i>{c.eyebrow}</span><h1>{c.heroA}<br/><span class="gradient-text">{c.heroB}</span></h1><p>{c.heroCopy}</p><div class="page-actions"><a class="button primary" href={href('docs/project/feature-matrix/')}>{c.matrix} →</a><a class="button secondary" href={QTABLE_GITHUB_URL}>{copy.source}</a></div><div class="product-metrics"><div class="metric-card"><strong>{c.implemented.features.length}</strong><span>{copy.baseline}</span></div><div class="metric-card"><strong>3</strong><span>{copy.architecture}</span></div><div class="metric-card"><strong>{copy.plans.length}</strong><span>{copy.themes}</span></div><div class="metric-card"><strong>{QTABLE_VERSION}</strong><span>Open Source Preview</span></div></div></div></section>
 <section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.implemented.kicker}</span><h2>{c.implemented.title}</h2><p>{c.implemented.description}</p></div><div class="capability-cards roadmap-baseline">{c.implemented.features.map(([title,d],i)=><article class="capability-card"><span class="scenario-index">0{i+1}</span><h3>{title}</h3><p>{focused(d)}</p></article>)}</div></div></section>
-<section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">{c.activeKicker}</span><h2>{c.activeTitle}</h2></div><div class="roadmap roadmap-v2">{c.active.map(([title,d,url])=><article class="roadmap-item"><span class="roadmap-tag active">{c.phaseNow}</span><div><h3>{title}</h3><p>{focused(d)}</p></div><a class="text-link" href={url}>{c.issue} →</a></article>)}</div></div></section>
-<section class="section"><div class="shell"><div class="section-head"><span class="kicker">{c.nextKicker}</span><h2>{c.nextTitle}</h2></div><div class="roadmap roadmap-v2">{c.next.map(([title,d,url])=><article class="roadmap-item"><span class="roadmap-tag">{c.phaseNext}</span><div><h3>{title}</h3><p>{focused(d)}</p></div><a class="text-link" href={url}>{c.issue} →</a></article>)}</div></div></section>
+<section class="architecture-showcase"><div class="shell architecture-layout"><div class="architecture-copy"><span class="kicker">{copy.architectureKicker}</span><h2>{copy.architectureTitle}</h2><p>{copy.architectureCopy}</p></div><div class="arch-pipeline"><article class="arch-stage"><div class="arch-stage-head"><div><h3>{copy.experience}</h3><p>{copy.experienceCopy}</p></div></div><div class="arch-stage-list"><span>qtable-web</span><span>Views · Dashboard · Collaboration</span><span>Automation · AI</span></div></article><div class="arch-connector">↔</div><article class="arch-stage"><div class="arch-stage-head"><div><h3>{copy.core}</h3><p>{copy.coreCopy}</p></div></div><div class="arch-stage-list"><span>Table · Record · View</span><span>Dashboard · Permission</span><span>One product contract</span></div></article><div class="arch-connector">↔</div><article class="arch-stage"><div class="arch-stage-head"><div><h3>{copy.services}</h3><p>{copy.servicesCopy}</p></div></div><div class="arch-stage-list"><span>qtable-server</span><span>API · Realtime · Automation</span><span>PostgreSQL · Redis · S3</span></div></article></div></div></section>
+<section class="section alt"><div class="shell"><div class="section-head"><span class="kicker">{copy.planKicker}</span><h2>{copy.planTitle}</h2><p>{copy.planCopy}</p></div><div class="capability-cards">{copy.plans.map(([title,d],i)=><article class="capability-card"><span class="scenario-index">0{i+1}</span><h3>{title}</h3><p>{d}</p></article>)}</div></div></section>
 <section class="cta"><div class="shell"><div class="cta-card"><h2>{c.ctaTitle}</h2><p>{c.ctaDescription}</p><div class="hero-actions"><a class="button primary" href={href('docs/project/feature-matrix/')}>{c.matrix} →</a><a class="button secondary" href={href('docs/project/release-status/')}>{c.status}</a></div></div></div></section>
 </BaseLayout>
