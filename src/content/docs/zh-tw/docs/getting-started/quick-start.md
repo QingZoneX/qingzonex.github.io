@@ -27,7 +27,7 @@ cd qtable-server
 cp .env.example .env
 ```
 
-目前伺服器端 Compose 為相容舊目錄名，預設值仍是 `../QTableUI`；使用目前公開儲存庫名稱時，**必須**在 `.env` 中設定：
+目前伺服器端 Compose 為舊目錄配置保留了相容預設值，因此使用目前公開儲存庫名稱時，**必須**在 `.env` 中明確設定：
 
 ```dotenv
 QTABLE_UI_CONTEXT=../qtable-web

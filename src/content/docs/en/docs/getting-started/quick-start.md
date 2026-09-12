@@ -27,7 +27,7 @@ cd qtable-server
 cp .env.example .env
 ```
 
-The current server Compose keeps a compatibility default of `../QTableUI`, so with the current public repository name you **must** set this in `.env`:
+The current server Compose still carries a compatibility default for the previous frontend directory layout, so with the current public repository name you **must** set this in `.env`:
 
 ```dotenv
 QTABLE_UI_CONTEXT=../qtable-web

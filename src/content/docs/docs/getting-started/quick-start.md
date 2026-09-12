@@ -27,7 +27,7 @@ cd qtable-server
 cp .env.example .env
 ```
 
-当前服务端 Compose 的兼容默认值仍是 `../QTableUI`，因此使用新公开仓库名时，必须在 `.env` 中设置：
+当前服务端 Compose 为旧目录布局保留了兼容默认值，因此使用当前公开仓库名时，必须在 `.env` 中显式设置：
 
 ```dotenv
 QTABLE_UI_CONTEXT=../qtable-web
