@@ -1,9 +1,13 @@
 import { getPortalContent as getBasePortalContent, type PortalLocale } from './portal-content';
 
+export const QTABLE_VERSION = 'v0.1.1-alpha';
+
 const STRING_REPLACEMENTS: ReadonlyArray<readonly [string, string]> = [
   ['QingZoneX/QTableUI', 'QingZoneX/qtable-web'],
   ['QingZoneX/QTable', 'QingZoneX/qtable-server'],
   ['TypeScript 6', 'TypeScript 7'],
+  ['v0.1.0-alpha', QTABLE_VERSION],
+  ['0.1.0-alpha', QTABLE_VERSION.slice(1)],
   ['QTableUI', 'QTable Web'],
 ];
 
@@ -33,8 +37,9 @@ function normalizePortalValue<T>(value: T): T {
 
 /**
  * Keep the presentation layer aligned with the currently public repository names
- * without mutating the historical copy source in-place. This also keeps legacy
- * QTableUI route wording compatible while presenting qtable-web to users.
+ * and release baseline without mutating the historical copy source in-place. This
+ * also keeps legacy QTableUI route wording compatible while presenting qtable-web
+ * to users.
  */
 export function getPortalContent(locale: PortalLocale) {
   return normalizePortalValue(getBasePortalContent(locale));
