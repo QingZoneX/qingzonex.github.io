@@ -1,6 +1,6 @@
 ---
 title: QTable 產品概覽
-description: "QTable v0.1.0-alpha 的產品能力，以及 qtable-web 與 qtable-server 的實作邊界。"
+description: "QTable v0.1.1-alpha 的產品能力，以及 qtable-web 與 qtable-server 的實作邊界。"
 ---
 
 QTable 是一個完整的 AI 原生開源專案與工作管理產品。**Web 前端與伺服器端服務共同組成同一個 QTable**，共用 Table / Record / View / Dashboard / Permission 產品模型。
@@ -40,4 +40,4 @@ Web 與 API 透過 REST / GraphQL / WebSocket / Auth / OAuth 契約組合成一�
 
 ## Alpha 邊界
 
-兩個儲存庫目前都使用 `v0.1.0-alpha` / Open Source Preview 原始碼基線。原始碼已公開，但目前兩個儲存庫都沒有已發佈的 GitHub Release；原始碼狀態與發行成品狀態應分開理解。請查看 [功能矩陣](../../project/feature-matrix/) 與 [發佈狀態](../../project/release-status/)。
+兩個儲存庫目前都已發佈 `v0.1.1-alpha` 標籤，仍屬於 Open Source Preview。原始碼與標籤已公開，但目前兩個儲存庫都沒有已發佈的 GitHub Release；原始碼/標籤狀態與發行成品狀態應分開理解。請查看 [功能矩陣](../../project/feature-matrix/) 與 [發佈狀態](../../project/release-status/)。
