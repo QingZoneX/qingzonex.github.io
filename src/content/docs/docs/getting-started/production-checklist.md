@@ -37,4 +37,4 @@ description: "评估 QTable v0.1.1-alpha 自托管部署时应执行的实际检
 7. 若启用 AI，验证 Preview → Confirm → Apply 与权限重新校验。
 8. 在非生产副本上实际执行一次 PostgreSQL + 对象存储备份与恢复。
 
-正式备份 / 恢复 / 升级 Runbook 由 [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173) 跟踪。在该任务关闭前，运维方应把真实恢复演练作为上线前置条件，而不是只确认“有备份文件”。
+Alpha 阶段的备份、恢复与升级 Runbook 仍会持续完善。生产部署应把真实恢复演练、版本固定和升级回滚验证作为上线前置条件，而不是只确认“存在备份文件”。
