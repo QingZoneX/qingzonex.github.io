@@ -26,7 +26,7 @@ Portal product claims must be reviewed against the two current public implementa
 - `QingZoneX/qtable-server` — API, domain services, data model, permissions, automation, auditability, attachments, search, OAuth and AI services;
 - `QingZoneX/qtable-web` — React web application, work centers, five views, dashboards, collaboration, automation and AI interactions.
 
-Both repositories currently carry the `0.1.0-alpha` source baseline. Public repository visibility and a source version do not automatically mean that a GitHub Release, Docker image or other distribution artifact has been published. The portal must distinguish those states explicitly.
+Both repositories currently carry the `v0.1.1-alpha` tag / Open Source Preview baseline. Public repository visibility and a source tag do not automatically mean that a GitHub Release, Docker image or other distribution artifact has been published. The portal must distinguish those states explicitly.
 
 Before deployment, verify that repository names, source links, runtime requirements, feature claims, security guidance and release status in all three portal locales still match repository reality.
 
@@ -80,7 +80,7 @@ When a custom domain is selected:
 ## Final release checklist
 
 - `qtable-server` / `qtable-web` repository names and links are current in all locales.
-- QTable version and source/release status match repository reality.
+- QTable version and source/tag/release status match repository reality.
 - Feature Matrix distinguishes implemented baseline, active hardening and future roadmap.
 - Security and contribution links point to the correct implementation repository.
 - Quick Start and self-hosting examples use the current clone paths and directory names.
