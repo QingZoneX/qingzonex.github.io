@@ -9,7 +9,7 @@ QTable is one product implemented across two public repositories:
 
 Repository names are engineering boundaries, not separate products. Portal copy, documentation and links must stay centered on the QTable product while identifying `qtable-server` and `qtable-web` precisely when source ownership matters.
 
-The current source baseline is **`v0.1.0-alpha` / Open Source Preview** and both source repositories are public. A public source repository does not by itself imply that a GitHub Release or registry artifact has been published, so release documentation must keep source status and published artifacts distinct.
+The current source baseline is **`v0.1.1-alpha` / Open Source Preview** and both source repositories are public. A public source repository does not by itself imply that a GitHub Release or registry artifact has been published, so release documentation must keep source status and published artifacts distinct.
 
 ## Stack
 
