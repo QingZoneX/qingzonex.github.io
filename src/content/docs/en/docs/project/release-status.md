@@ -22,4 +22,4 @@ Neither repository currently has a published GitHub Release. “Open Source Prev
 
 The current baseline is appropriate for source evaluation, community development, staging and controlled trials. Before v1.0, public APIs, migration behavior, operations runbooks and some product contracts may still change.
 
-Before production deployment, complete the [Production checklist](../getting-started/production-checklist/) and review the [Feature matrix](./feature-matrix/).
+Before production deployment, complete the [Production checklist](../../getting-started/production-checklist/) and review the [Feature matrix](../feature-matrix/).

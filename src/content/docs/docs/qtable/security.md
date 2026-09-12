@@ -21,4 +21,4 @@ QTable 将 `qtable-server` 作为最终数据安全边界，`qtable-web` 只呈�
 
 ## 生产环境建议
 
-对公网开放部署前，请阅读 [`qtable-server/SECURITY.md`](https://github.com/QingZoneX/qtable-server/blob/main/SECURITY.md)、[`qtable-web/SECURITY.md`](https://github.com/QingZoneX/qtable-web/blob/main/SECURITY.md) 以及计划部署版本的发布说明，并完成 [生产环境检查清单](../getting-started/production-checklist/)。
+对公网开放部署前，请阅读 [`qtable-server/SECURITY.md`](https://github.com/QingZoneX/qtable-server/blob/main/SECURITY.md)、[`qtable-web/SECURITY.md`](https://github.com/QingZoneX/qtable-web/blob/main/SECURITY.md) 以及计划部署版本的发布说明，并完成 [生产环境检查清单](../../getting-started/production-checklist/)。

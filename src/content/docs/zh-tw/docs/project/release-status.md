@@ -22,4 +22,4 @@ QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 
 目前基線適合原始碼評估、社群開發、Staging 與受控試用。v1.0 之前，公開 API、遷移行為、維運 Runbook 與部分產品契約仍可能調整。
 
-正式部署前，請完成 [正式環境檢查清單](../getting-started/production-checklist/) 並閱讀 [功能矩陣](./feature-matrix/)。
+正式部署前，請完成 [正式環境檢查清單](../../getting-started/production-checklist/) 並閱讀 [功能矩陣](../feature-matrix/)。

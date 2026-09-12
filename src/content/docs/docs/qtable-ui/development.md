@@ -36,4 +36,4 @@ npm run build
 
 ## 与服务端联调
 
-若需要完整栈，按照 [快速开始](../getting-started/quick-start/) 将 `qtable-server` 与 `qtable-web` 克隆为同级目录，并确保 Compose 的 `QTABLE_UI_CONTEXT` 指向 `../qtable-web`。
+若需要完整栈，按照 [快速开始](../../getting-started/quick-start/) 将 `qtable-server` 与 `qtable-web` 克隆为同级目录，并确保 Compose 的 `QTABLE_UI_CONTEXT` 指向 `../qtable-web`。

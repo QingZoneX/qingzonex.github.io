@@ -22,4 +22,4 @@ QTable 当前处于 **`v0.1.0-alpha` — Open Source Preview**。
 
 当前基线适合源码评估、社区开发、Staging 和受控试用。v1.0 之前，公开 API、迁移行为、部署 Runbook 与部分产品契约仍可能调整。
 
-在生产部署前，请完成 [生产环境检查清单](../getting-started/production-checklist/) 并阅读 [功能矩阵](./feature-matrix/)。
+在生产部署前，请完成 [生产环境检查清单](../../getting-started/production-checklist/) 并阅读 [功能矩阵](../feature-matrix/)。

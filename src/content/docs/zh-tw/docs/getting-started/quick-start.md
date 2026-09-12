@@ -52,4 +52,4 @@ curl -fsS http://localhost:9100/healthz
 
 核心表格能力不需要外部 AI Provider。啟用 AI 時，請透過 QTable 的加密 AI 設定流程配置 Provider 憑證，不要把真實 API Key 寫入前端環境變數或儲存庫檔案。
 
-更多部署資訊請查看 [自託管](./self-hosting/) 與 [正式環境檢查清單](./production-checklist/)。
+更多部署資訊請查看 [自託管](../self-hosting/) 與 [正式環境檢查清單](../production-checklist/)。

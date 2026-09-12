@@ -36,4 +36,4 @@ npm run build
 
 ## 完整堆疊聯調
 
-若需要完整堆疊，請依 [快速開始](../getting-started/quick-start/) 將 `qtable-server` 與 `qtable-web` 克隆為同層目錄，並確認 Compose 的 `QTABLE_UI_CONTEXT` 指向 `../qtable-web`。
+若需要完整堆疊，請依 [快速開始](../../getting-started/quick-start/) 將 `qtable-server` 與 `qtable-web` 克隆為同層目錄，並確認 Compose 的 `QTABLE_UI_CONTEXT` 指向 `../qtable-web`。

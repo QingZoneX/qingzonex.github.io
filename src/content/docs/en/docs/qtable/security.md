@@ -21,4 +21,4 @@ The `qtable-web` production Nginx image sets CSP, `X-Content-Type-Options`, `Ref
 
 ## Production guidance
 
-Before exposing QTable to the internet, review [`qtable-server/SECURITY.md`](https://github.com/QingZoneX/qtable-server/blob/main/SECURITY.md), [`qtable-web/SECURITY.md`](https://github.com/QingZoneX/qtable-web/blob/main/SECURITY.md), the release evidence for the exact versions you plan to deploy, and the [Production checklist](../getting-started/production-checklist/).
+Before exposing QTable to the internet, review [`qtable-server/SECURITY.md`](https://github.com/QingZoneX/qtable-server/blob/main/SECURITY.md), [`qtable-web/SECURITY.md`](https://github.com/QingZoneX/qtable-web/blob/main/SECURITY.md), the release evidence for the exact versions you plan to deploy, and the [Production checklist](../../getting-started/production-checklist/).

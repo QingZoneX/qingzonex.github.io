@@ -52,4 +52,4 @@ curl -fsS http://localhost:9100/healthz
 
 Core table capability does not require an external AI provider. If you enable AI, configure provider credentials through QTable's encrypted AI configuration flow rather than frontend environment variables or repository files.
 
-See [Self-hosting](./self-hosting/) and the [Production checklist](./production-checklist/) for deployment guidance.
+See [Self-hosting](../self-hosting/) and the [Production checklist](../production-checklist/) for deployment guidance.

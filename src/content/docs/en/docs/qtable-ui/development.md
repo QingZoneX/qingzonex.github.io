@@ -36,4 +36,4 @@ The repository also contains contract checks for OAuth, search, AI, member field
 
 ## Full-stack development
 
-For the complete stack, follow [Quick start](../getting-started/quick-start/), clone `qtable-server` and `qtable-web` as sibling directories, and make sure Compose `QTABLE_UI_CONTEXT` points to `../qtable-web`.
+For the complete stack, follow [Quick start](../../getting-started/quick-start/), clone `qtable-server` and `qtable-web` as sibling directories, and make sure Compose `QTABLE_UI_CONTEXT` points to `../qtable-web`.
