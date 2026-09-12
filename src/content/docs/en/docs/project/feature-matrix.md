@@ -1,9 +1,9 @@
 ---
 title: Feature matrix
-description: Separate the QTable v0.1.1-alpha implemented baseline, release hardening and future roadmap.
+description: Separate the QTable v0.1.1-alpha implemented baseline from future product direction.
 ---
 
-This page tracks the current `qtable-server` and `qtable-web` `v0.1.1-alpha` tags / main branches so planned capabilities are not presented as shipped.
+This page tracks the current `qtable-server` and `qtable-web` `v0.1.1-alpha` tags / main branches so planned direction is not presented as shipped.
 
 ## Implemented baseline
 
@@ -20,23 +20,13 @@ This page tracks the current `qtable-server` and `qtable-web` `v0.1.1-alpha` tag
 | Source Inbox | Baseline implemented | Both |
 | OAuth2 + S256 PKCE | Implemented | qtable-server + qtable-web |
 
-## Active hardening
+## Future product direction
 
-These items improve Alpha release quality; they do not mean the product surfaces above are absent:
+The roadmap is intentionally expressed as durable product themes instead of binding portal documentation to specific GitHub issue numbers:
 
-- Full-stack browser release E2E — [`qtable-server #170`](https://github.com/QingZoneX/qtable-server/issues/170)
-- Large-table performance and realtime paths — [`qtable-server #104`](https://github.com/QingZoneX/qtable-server/issues/104)
-- Self-host backup / restore / upgrade runbook — [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173)
-- Frontend responsive behavior, accessibility, i18n and consistent states — [`qtable-web #56`](https://github.com/QingZoneX/qtable-web/issues/56)
+- **Release quality & scale**: strengthen end-to-end validation, large-table performance, realtime stability, responsive/accessibility quality, internationalization, and self-host backup, restore and upgrade workflows.
+- **Open intake & integrations**: expand forms/public intake, APIs, webhooks, connectors and source intake so QTable can fit more naturally into existing business systems.
+- **AI & automation platform**: extend BYO / self-hosted AI, permission-aware agents and automation orchestration while preserving the Preview → Confirm → Apply safety model.
+- **QingZoneX product ecosystem**: future higher-level work experiences can reuse QTable structured data, permissions, collaboration and automation instead of creating a second data model.
 
-## Next capabilities
-
-The following **must not be described as shipped**:
-
-- Form View / Public Form — [`qtable-server #148`](https://github.com/QingZoneX/qtable-server/issues/148)
-- Table-as-API / token / webhook platform — [`qtable-server #116`](https://github.com/QingZoneX/qtable-server/issues/116)
-- Skill / Connector platform — [`qtable-server #117`](https://github.com/QingZoneX/qtable-server/issues/117)
-- Self-hosted / BYO AI standardization — [`qtable-server #120`](https://github.com/QingZoneX/qtable-server/issues/120)
-- Semantic duplicate detection for Source Inbox — [`qtable-server #119`](https://github.com/QingZoneX/qtable-server/issues/119)
-
-Use the `v0.1.1-alpha` tags, current source and linked GitHub Issues as the final status authority.
+These are directional themes, not committed dates or claims that the capabilities have already shipped. Treat the `v0.1.1-alpha` tags, current source and actual published artifacts as the authority for what is available today.

@@ -37,4 +37,4 @@ description: "Practical checks for evaluating a QTable v0.1.1-alpha self-hosted 
 7. If AI is enabled, verify Preview → Confirm → Apply and permission re-validation.
 8. Perform a real PostgreSQL + object-storage backup and restore on a non-production copy.
 
-The formal backup / restore / upgrade runbook is tracked in [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173). Until that work is closed, treat a real restore drill as a production prerequisite rather than relying only on the existence of backup files.
+Backup, restore and upgrade runbooks will continue to mature during the Alpha period. Treat a real restore drill, version pinning and upgrade rollback validation as production prerequisites rather than relying only on the existence of backup files.

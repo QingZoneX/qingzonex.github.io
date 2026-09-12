@@ -37,4 +37,4 @@ description: "評估 QTable v0.1.1-alpha 自託管部署時應執行的實際檢
 7. 若啟用 AI，驗證 Preview → Confirm → Apply 與權限重新檢查。
 8. 在非正式環境副本上實際執行一次 PostgreSQL + 物件儲存備份與還原。
 
-正式備份 / 還原 / 升級 Runbook 由 [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173) 追蹤。在該工作完成前，應把真實還原演練視為上線前置條件，而不是只確認「存在備份檔」。
+Alpha 階段的備份、還原與升級 Runbook 仍會持續完善。正式部署應把真實還原演練、版本固定與升級回滾驗證視為上線前置條件，而不是只確認「存在備份檔」。

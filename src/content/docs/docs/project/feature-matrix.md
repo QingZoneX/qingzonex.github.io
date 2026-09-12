@@ -1,9 +1,9 @@
 ---
 title: 功能矩阵
-description: 区分 QTable v0.1.1-alpha 已实现能力、发布加固项与未来路线图。
+description: 区分 QTable v0.1.1-alpha 已实现能力与未来产品方向。
 ---
 
-本页以 `qtable-server` 与 `qtable-web` 当前 `v0.1.1-alpha` Tag / 主干能力为基线，避免把计划能力描述成已经交付。
+本页以 `qtable-server` 与 `qtable-web` 当前 `v0.1.1-alpha` Tag / 主干能力为基线，避免把规划方向描述成已经交付。
 
 ## 已实现基线
 
@@ -20,23 +20,13 @@ description: 区分 QTable v0.1.1-alpha 已实现能力、发布加固项与未�
 | Source Inbox | 已实现基线 | 两者 |
 | OAuth2 + S256 PKCE | 已实现 | qtable-server + qtable-web |
 
-## 正在加固
+## 未来产品规划
 
-这些工作属于 Alpha 发布质量提升，不代表上述产品面不存在：
+接下来的工作按产品方向持续推进，而不是在门户中绑定具体 GitHub Issue 编号：
 
-- 全栈浏览器 Release E2E — [`qtable-server #170`](https://github.com/QingZoneX/qtable-server/issues/170)
-- 大表性能与实时链路 — [`qtable-server #104`](https://github.com/QingZoneX/qtable-server/issues/104)
-- 自托管备份 / 恢复 / 升级 Runbook — [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173)
-- 前端响应式、可访问性、国际化与一致状态 — [`qtable-web #56`](https://github.com/QingZoneX/qtable-web/issues/56)
+- **发布质量与规模化**：继续强化端到端验证、大表性能、实时稳定性、前端响应式、可访问性、国际化，以及自托管备份、恢复和升级体验。
+- **开放接入与集成**：逐步扩展表单/公开采集、API、Webhook、Connector 与来源接入能力，让 QTable 更容易接入现有业务系统。
+- **AI 与自动化平台化**：扩展 BYO / Self-hosted AI、权限感知 Agent 与自动化编排，同时坚持 Preview → Confirm → Apply 的安全写入路径。
+- **QingZoneX 产品生态**：未来更高层的工作体验将复用 QTable 的结构化数据、权限、协作与自动化能力，而不是重复建设第二套数据模型。
 
-## 下一阶段
-
-以下能力 **不应** 描述为已交付：
-
-- Form View / Public Form — [`qtable-server #148`](https://github.com/QingZoneX/qtable-server/issues/148)
-- Table-as-API / Token / Webhook 平台 — [`qtable-server #116`](https://github.com/QingZoneX/qtable-server/issues/116)
-- Skill / Connector 平台 — [`qtable-server #117`](https://github.com/QingZoneX/qtable-server/issues/117)
-- Self-hosted / BYO AI 标准化 — [`qtable-server #120`](https://github.com/QingZoneX/qtable-server/issues/120)
-- Source Inbox 语义重复识别 — [`qtable-server #119`](https://github.com/QingZoneX/qtable-server/issues/119)
-
-具体状态始终以对应 GitHub Issue、`v0.1.1-alpha` Tag 和当前源码为准。
+这些内容是方向性规划，不代表承诺发布日期，也不应被描述为已经交付。当前可用能力始终以 `v0.1.1-alpha` Tag、当前源码和实际发布制品为准。
