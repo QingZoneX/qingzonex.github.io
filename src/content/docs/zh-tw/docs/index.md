@@ -12,7 +12,7 @@ sidebar:
 - [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server) — FastAPI / Strawberry GraphQL 後端、資料模型、權限、自動化、稽核、附件、搜尋、OAuth 與 AI 服務。
 - [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web) — React Web 應用、工作中心、Grid / Kanban / Gantt / Calendar / Gallery、儀表板、協作、自動化與 AI 互動。
 
-兩個儲存庫目前都採用 **`v0.1.0-alpha` / Open Source Preview** 原始碼基線，並以 **Apache License 2.0** 開源。公開原始碼並不等於已發佈 GitHub Release、容器映像或其他發行成品；請參考 [發佈狀態](./project/release-status/) 區分兩者。
+兩個儲存庫目前都採用 **`v0.1.1-alpha` / Open Source Preview** 原始碼基線，並以 **Apache License 2.0** 開源。公開原始碼並不等於已發佈 GitHub Release、容器映像或其他發行成品；請參考 [發佈狀態](./project/release-status/) 區分兩者。
 
 ## 建議閱讀路徑
 
