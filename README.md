@@ -9,7 +9,7 @@ QTable is one product implemented across two public repositories:
 
 Repository names are engineering boundaries, not separate products. Portal copy, documentation and links must stay centered on the QTable product while identifying `qtable-server` and `qtable-web` precisely when source ownership matters.
 
-The current source baseline is **`v0.1.0-alpha` / Open Source Preview** and both source repositories are public. A public source repository does not by itself imply that a GitHub Release or registry artifact has been published, so release documentation must keep source status and published artifacts distinct.
+The current source baseline is **`v0.1.1-alpha` / Open Source Preview** and both source repositories are public. A public source repository or tag does not by itself imply that a GitHub Release or registry artifact has been published, so release documentation must keep source/tag status and published artifacts distinct.
 
 ## Stack
 
@@ -57,7 +57,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) and [LOCALIZATION.md](LOCALIZATION.md).
 
 Portal claims are checked against the current `qtable-server` and `qtable-web` source, version files, release evidence and GitHub Issues while preserving the single-product QTable model.
 
-When the implementation repositories change names, versions, runtime requirements or delivered capabilities, update all three locales together and keep source links canonical. Do not present roadmap items as shipped features, and do not present a source-preview branch as a published release artifact.
+When the implementation repositories change names, versions, runtime requirements or delivered capabilities, update all three locales together and keep source links canonical. Do not present roadmap items as shipped features, and do not present a source-preview tag as a published release artifact unless a GitHub Release or registry artifact actually exists.
 
 ## License
 
