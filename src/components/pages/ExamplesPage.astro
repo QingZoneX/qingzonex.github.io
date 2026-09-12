@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TableTour from '../TableTour.astro';
 import Icon from '../Icon.astro';
 import { localePath } from '../../lib/i18n.mjs';
-import { getPortalContent, type PortalLocale } from '../../lib/portal-content';
+import { getPortalContent, type PortalLocale } from '../../lib/current-portal-content';
 interface Props { locale: PortalLocale }
 const { locale }=Astro.props; const c=getPortalContent(locale).examples; const href=(p='')=>localePath(locale,p,import.meta.env.BASE_URL);
 const copy = {
