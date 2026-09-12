@@ -1,37 +1,25 @@
 ---
-title: QTable release status
-description: "QTable Alpha status, implemented product baseline and active public-release hardening."
+title: Release status
+description: "QTable public-source status, Alpha baseline and distribution-artifact boundary."
 ---
 
 QTable is currently **`v0.1.0-alpha` — Open Source Preview**.
 
-The current release is managed as **one QTable product version**: the web frontend, API and domain services, data layer and object storage are validated together on the same release baseline.
+## Public source
 
-## Implemented product baseline
+Both implementation repositories are public:
 
-The current main branches include, among other capabilities:
+- [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server)
+- [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web)
 
-- Grid, Kanban, Gantt, Calendar and Gallery;
-- Home / My Work and Projects Center;
-- Dashboard Center / Workbench and permission-safe public sharing;
-- Automation Engine / Center and execution history;
-- notifications, record collaboration / activity and deep links;
-- permission-aware global search;
-- ChangeSet foundations and Recycle Bin;
-- durable private S3-compatible attachments;
-- goal-to-workspace, task / workload / assignment planning, Project Steward and safe Action Plans;
-- Source Inbox, source context and duplicate hints;
-- OAuth2 + S256 PKCE;
-- a canonical self-hosted Web + API + PostgreSQL + Redis + MinIO stack.
+Together they form one QTable product version. The web frontend, API / domain services, data layer and object storage should be validated on one compatible baseline.
 
-## Active public-Alpha hardening
+## Distribution status
 
-Active release tracks include browser-level full-stack E2E, production password-reset fail-closed behavior, Docker portability, browser security headers, private-data Service Worker protection, and backup / restore / upgrade runbooks.
+Neither repository currently has a published GitHub Release. “Open Source Preview” therefore describes the public Alpha source baseline; it **must not be interpreted as a published stable GitHub Release, Docker Hub image or other distribution artifact**. Treat an image, tag or Release as available only when the corresponding repository or registry actually publishes it.
 
-All of this work belongs to **QTable Release / Security / Operations / Full-stack Verification**.
+## Alpha expectations
 
-## Appropriate Alpha use
+The current baseline is appropriate for source evaluation, community development, staging and controlled trials. Before v1.0, public APIs, migration behavior, operations runbooks and some product contracts may still change.
 
-The Alpha is suited to evaluation, architecture review, local or self-hosted testing, community development, staging and controlled internal trials. Before production-critical adoption, read the latest release notes, validate migrations and backups, and pin the exact tag or commit you plan to deploy.
-
-Use the [production checklist](../../getting-started/production-checklist/) before exposing a self-hosted instance.
+Before production deployment, complete the [Production checklist](../../getting-started/production-checklist/) and review the [Feature matrix](../feature-matrix/).

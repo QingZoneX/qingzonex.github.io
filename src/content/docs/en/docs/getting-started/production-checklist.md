@@ -1,63 +1,40 @@
 ---
 title: Production checklist
-description: "Practical checklist for evaluating a QTable v0.1.0-alpha self-hosted deployment."
+description: "Practical checks for evaluating a QTable v0.1.0-alpha self-hosted deployment."
 ---
 
-QTable `v0.1.0-alpha` is an Open Source Preview. The canonical Compose stack makes evaluation and controlled deployment straightforward, but production ownership still requires explicit security, backup and upgrade decisions.
+`v0.1.0-alpha` is an Open Source Preview. Before exposing QTable to real users, complete these checks in an environment that matches your production topology.
 
-## Before exposing an instance
+## Version and source
 
-### Application and identity
+- [ ] `qtable-server` and `qtable-web` use exact commits / tags that were validated together.
+- [ ] For source Compose, both repositories are siblings and `.env` contains `QTABLE_UI_CONTEXT=../qtable-web`.
+- [ ] For prebuilt images, the target tags actually exist in the registry and their digests are recorded.
+- [ ] Public source visibility is not being mistaken for a published GitHub Release or stable artifact.
 
-- Set `APP_ENV=production`.
-- Replace the example `SECRET_KEY`.
-- Configure a stable Fernet `ENCRYPTION_KEY`; all instances sharing a database must use the same key.
-- Review the latest authentication/security release gates before public internet exposure.
-- Configure TLS and an appropriate reverse proxy/gateway.
-- Do not store real credentials in frontend environment variables or source control.
+## Configuration and secrets
 
-### Database
+- [ ] `APP_ENV=production`.
+- [ ] Default `SECRET_KEY`, database password and object-storage credentials are replaced.
+- [ ] A stable, correctly formatted Fernet `ENCRYPTION_KEY` is configured and shared by all instances.
+- [ ] OAuth plain PKCE, dynamic client registration and password-reset debug tokens remain disabled.
+- [ ] Provider API keys do not enter frontend environment variables, ordinary table fields or logs.
 
-- Use PostgreSQL for normal multi-user deployment.
-- Run `alembic upgrade head` in staging before production rollout.
-- Do not rely on the SQLite fallback for normal multi-user production.
-- Take a tested PostgreSQL backup before every migration/upgrade.
+## Network and browser security
 
-### Attachments
+- [ ] Only the web / reverse-proxy entry point is public; API, PostgreSQL, Redis and MinIO administration remain private or loopback-only.
+- [ ] TLS, HTTP → HTTPS and HSTS are configured.
+- [ ] qtable-web CSP, X-Content-Type-Options, Referrer-Policy, frame protection and Permissions-Policy are not weakened by the outer proxy.
 
-- Replace development MinIO/S3 credentials.
-- Configure persistent object storage and backups.
-- For external S3-compatible storage, configure endpoint, region/TLS and Compose endpoint mapping consistently.
-- Treat the database and object store as one application-data set when designing backup/restore.
+## Product closure
 
-### AI
+1. Sign in and verify workspace, object and row-level permissions.
+2. Exercise representative writes across Grid, Kanban, Gantt, Calendar and Gallery.
+3. Verify dashboard aggregation, public sharing and access after permission changes.
+4. Verify attachment upload / download and denial after access loss.
+5. Verify Recycle Bin restore / purge.
+6. Run at least one representative automation and inspect execution history.
+7. If AI is enabled, verify Preview → Confirm → Apply and permission re-validation.
+8. Perform a real PostgreSQL + object-storage backup and restore on a non-production copy.
 
-- Core tables can run without an external AI provider.
-- Store AI credentials through QTable's encrypted AI configuration flow.
-- Review what data a chosen provider will receive before enabling AI for sensitive workspaces.
-
-## Canonical startup
-
-Clone QTable and QTableUI as siblings, then run from QTable:
-
-```bash
-cp .env.example .env
-docker compose up --build -d
-```
-
-The canonical stack contains QTable API, QTableUI, PostgreSQL, Redis and MinIO.
-
-## Release verification
-
-Before production-critical use:
-
-1. Read both repositories' latest release notes.
-2. Check the [release status](../../project/release-status/) and open release-gate Issues.
-3. Verify fresh install, login, core table writes, hard refresh persistence and permission-negative paths.
-4. Verify upload/download plus permission loss for attachments if you use them.
-5. Verify Recycle Bin restore/purge behavior.
-6. Verify a representative automation and Dashboard path.
-7. Verify backup and restore on a non-production copy.
-8. Record the exact QTable and QTableUI commit/tag deployed.
-
-A formal backup/restore/upgrade runbook is tracked in [QTable #173](https://github.com/QingZoneX/QTable/issues/173). Until that work is closed, operators should treat backup/restore validation as their own release gate.
+The formal backup / restore / upgrade runbook is tracked in [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173). Until that work is closed, treat a real restore drill as a production prerequisite rather than relying only on the existence of backup files.

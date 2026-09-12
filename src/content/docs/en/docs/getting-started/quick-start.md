@@ -1,57 +1,55 @@
 ---
 title: Quick start
-description: Start QTable and QTableUI locally with the recommended PostgreSQL development stack.
+description: Run the complete QTable stack locally from the current public qtable-server and qtable-web repositories.
 ---
 
-The recommended development stack uses **PostgreSQL + Redis + S3-compatible attachment storage**. SQLite is an explicit lightweight fallback, not the normal deployment default.
+## 1. Clone both implementation repositories
 
-## Requirements
-
-- Python 3.12 recommended for QTable.
-- Node.js 22 for QTableUI.
-- Docker / Docker Compose for PostgreSQL, Redis and MinIO.
-
-## 1. Start QTable dependencies
+Place them under the same parent directory:
 
 ```bash
-git clone https://github.com/QingZoneX/QTable.git
-cd QTable
+git clone https://github.com/QingZoneX/qtable-server.git
+git clone https://github.com/QingZoneX/qtable-web.git
+```
+
+The layout should look like:
+
+```text
+qingzone/
+├── qtable-server/
+└── qtable-web/
+```
+
+## 2. Configure server Compose
+
+```bash
+cd qtable-server
 cp .env.example .env
-
-docker compose up -d db redis minio
 ```
 
-## 2. Start the backend
+The current server Compose still carries a compatibility default for the previous frontend directory layout, so with the current public repository name you **must** set this in `.env`:
+
+```dotenv
+QTABLE_UI_CONTEXT=../qtable-web
+```
+
+For local development you may keep the example development credentials. For any shared or internet-facing environment, replace `SECRET_KEY` and attachment-storage credentials and configure a stable `ENCRYPTION_KEY`.
+
+## 3. Start the full stack
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-alembic upgrade head
-uvicorn app.main:app --reload --port 9000
+docker compose up --build -d
 ```
 
-GraphQL is available at `http://localhost:9000/graphql`.
+Open `http://localhost:9100`. The web app is the user-facing endpoint; the API, PostgreSQL, Redis and MinIO are loopback-bound by default.
 
-## 3. Start QTableUI
-
-In a second terminal:
+## 4. Verify
 
 ```bash
-git clone https://github.com/QingZoneX/QTableUI.git
-cd QTableUI
-npm ci
-npm run dev
+docker compose ps
+curl -fsS http://localhost:9100/healthz
 ```
 
-Open `http://localhost:9100`.
+Core table capability does not require an external AI provider. If you enable AI, configure provider credentials through QTable's encrypted AI configuration flow rather than frontend environment variables or repository files.
 
-The frontend development server proxies API, GraphQL, WebSocket and OAuth traffic to the backend on port `9000`.
-
-## Next steps
-
-- [Architecture](../../qtable/architecture/)
-- [AI workflows](../../qtable/ai-workflows/)
-- [Security model](../../qtable/security/)
-- [QTableUI development](../../qtable-ui/development/)
+See [Self-hosting](../self-hosting/) and the [Production checklist](../production-checklist/) for deployment guidance.

@@ -1,34 +1,38 @@
-# Deployment and repository transfer
+# Deployment
 
-This portal is designed to move from the temporary private repository to the QingZoneX organization without changing application routes or hard-coding the temporary owner.
+This repository is the canonical QingZoneX organization portal at `QingZoneX/qingzonex.github.io`. It is designed for GitHub Pages root deployment and for an optional future custom domain without application-route rewrites.
 
-## 1. Private development gate
+## 1. Release gate
 
-Keep `boychina/qingzonex.github.io` private while the portal is under development. Pull request CI verifies:
-
-- reproducible `npm ci` installation;
-- deployment configuration;
-- source imports and required files;
-- documentation links;
-- a production build for the current personal-repository Pages path;
-- generated routes, internal links and assets;
-- a second production build simulating `QingZoneX/qingzonex.github.io` at the Pages root.
-
-Run the same transfer proof locally with:
+Before merging a portal change to `main`, run the same checks as CI:
 
 ```bash
 npm ci
+npm run verify:config
+npm run verify:source
+npm run verify:i18n
+npm run verify:links
+npm run build
+npm run verify:dist
 npm run verify:transfer
 ```
 
-The current personal repository is treated as a GitHub **project site**:
+The verification suite covers reproducible installation, site configuration, source imports and required files, documentation links, multilingual route parity, generated assets, canonical paths and the organization Pages build.
 
-```text
-site: https://boychina.github.io
-base: /qingzonex.github.io/
-```
+## 2. Product-source verification
 
-The transfer verification separately proves the final organization mode:
+Portal product claims must be reviewed against the two current public implementation repositories:
+
+- `QingZoneX/qtable-server` — API, domain services, data model, permissions, automation, auditability, attachments, search, OAuth and AI services;
+- `QingZoneX/qtable-web` — React web application, work centers, five views, dashboards, collaboration, automation and AI interactions.
+
+Both repositories currently carry the `0.1.0-alpha` source baseline. Public repository visibility and a source version do not automatically mean that a GitHub Release, Docker image or other distribution artifact has been published. The portal must distinguish those states explicitly.
+
+Before deployment, verify that repository names, source links, runtime requirements, feature claims, security guidance and release status in all three portal locales still match repository reality.
+
+## 3. GitHub Pages deployment
+
+The canonical deployment identity is:
 
 ```text
 site: https://qingzonex.github.io
@@ -36,73 +40,52 @@ base: /
 source repository: QingZoneX/qingzonex.github.io
 ```
 
-## 2. Before transferring ownership
-
-1. Ensure PR CI is green, including **Verify QingZoneX organization Pages transfer**.
-2. Review product claims against the latest QTable/QTableUI README, release notes and release-gate Issues.
-3. Merge the intended portal branch to `main` only when it is the version you want to move.
-4. Confirm the destination repository name will remain exactly `qingzonex.github.io`.
-5. Keep a local clone or tag/commit SHA for the transfer point.
-
-## 3. Transfer to QingZoneX
-
 In GitHub:
 
-1. Open the repository **Settings → General**.
-2. In the transfer-ownership section, transfer the repository to the `QingZoneX` organization.
-3. Keep the repository name `qingzonex.github.io`.
-4. Confirm the default branch remains `main` and that Actions are enabled by organization policy.
-5. Re-open the repository under `QingZoneX/qingzonex.github.io` and check the latest CI/workflow files are present.
-
-The application code does not need a path rewrite. `site-config.mjs` detects the organization Pages repository and switches to the root base automatically. Starlight edit links also use the runtime repository identity.
-
-## 4. Public GitHub Pages launch
-
-When the open-source release is ready:
-
-1. Make `QingZoneX/qingzonex.github.io` public.
-2. Open **Settings → Pages**.
-3. Set **Source** to **GitHub Actions**.
-4. Run **Deploy to GitHub Pages** or push the final release commit to `main`.
-5. Confirm the deployment environment reports `https://qingzonex.github.io/`.
-6. Verify these routes:
+1. Keep **Settings → Pages → Source** set to **GitHub Actions**.
+2. Merge only a verified portal revision to `main`.
+3. Confirm the **Deploy to GitHub Pages** workflow builds and publishes that exact revision.
+4. Verify the deployment environment reports `https://qingzonex.github.io/`.
+5. Verify these routes:
    - `/`
    - `/qtable/`
-   - `/qtable-ui/`
+   - `/qtable-ui/` (legacy redirect kept for compatibility)
    - `/examples/`
    - `/roadmap/`
    - `/docs/`
    - `/docs/project/feature-matrix/`
+   - `/docs/project/release-status/`
+   - `/docs/getting-started/quick-start/`
+   - `/docs/getting-started/self-hosting/`
    - `/docs/getting-started/production-checklist/`
-7. Verify Docs search, dark/light theme, mobile navigation, 404 behavior and the interactive table tour.
-8. Inspect page source for a `https://qingzonex.github.io/` canonical origin and confirm Docs **Edit page** links point to `QingZoneX/qingzonex.github.io`.
+6. Verify Docs search, dark/light theme, mobile navigation, language persistence, 404 behavior and the interactive table tour.
+7. Inspect page source for a `https://qingzonex.github.io/` canonical origin and confirm Docs **Edit page** links point to `QingZoneX/qingzonex.github.io`.
+8. Confirm all product-source links resolve to `QingZoneX/qtable-server` or `QingZoneX/qtable-web`, not retired repository names.
 
-The deploy workflow always builds and verifies the site. Its actual Pages artifact/deploy jobs are intentionally gated until the repository is public.
-
-## 5. Custom domain later
+## 4. Custom domain later
 
 When a custom domain is selected:
 
 1. Configure it under **Settings → Pages** and complete GitHub DNS verification.
 2. Add repository Actions variable `SITE_URL`, for example `https://qingzonex.com`.
 3. Add `public/CNAME` only if required by the chosen GitHub Pages setup.
-4. Re-run the Pages deployment and verify canonical URLs.
+4. Re-run the Pages deployment and verify canonical URLs, localized alternate links and Docs edit links.
 
-`SITE_URL` switches the Astro base back to `/` and becomes the canonical site origin.
+`SITE_URL` keeps the Astro base at `/` and becomes the canonical site origin.
 
-## 6. Dependency reproducibility
+## 5. Dependency reproducibility
 
 `package-lock.json` is committed and CI/deploy use `npm ci`. When dependencies intentionally change, update `package.json` and regenerate/commit the lockfile together.
 
 ## Final release checklist
 
-- QTable/QTableUI version and release status on the portal match repository reality.
+- `qtable-server` / `qtable-web` repository names and links are current in all locales.
+- QTable version and source/release status match repository reality.
 - Feature Matrix distinguishes implemented baseline, active hardening and future roadmap.
-- QTable/QTableUI security and release notes are linked and current.
-- Portal CI is green on the exact transfer/release commit.
-- `npm run verify:transfer` passes before transfer.
+- Security and contribution links point to the correct implementation repository.
+- Quick Start and self-hosting examples use the current clone paths and directory names.
+- Portal CI is green on the exact commit intended for deployment.
+- `npm run verify:transfer` passes for the organization Pages identity.
 - No secrets, private endpoints or development-only credentials are present.
-- Organization Actions policy permits the Pages workflow.
-- Repository is public before the deploy job is expected to publish.
 - Settings → Pages uses GitHub Actions.
-- The final Pages deployment is green and root/canonical/edit links are verified.
+- The final Pages deployment is green and root/canonical/edit/source links are verified.

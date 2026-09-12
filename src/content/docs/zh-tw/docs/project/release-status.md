@@ -1,37 +1,25 @@
 ---
-title: QTable 發佈狀態
-description: "QTable 目前 Alpha 狀態、已實作產品基線與公開發佈加固項。"
+title: 發佈狀態
+description: "QTable 目前公開原始碼狀態、Alpha 基線與發行成品邊界。"
 ---
 
 QTable 目前處於 **`v0.1.0-alpha` — Open Source Preview**。
 
-目前發佈以 **QTable 單一產品版本**為單位：Web 前端、API 與領域服務、資料層和物件儲存在同一發佈基線上協同驗證。
+## 公開原始碼
 
-## 已實作產品基線
+兩個實作儲存庫目前都已公開：
 
-目前 main 分支包括但不限於：
+- [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server)
+- [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web)
 
-- Grid、Kanban、Gantt、Calendar 與 Gallery；
-- Home / My Work 與 Projects Center；
-- Dashboard Center / Workbench 與權限安全公開分享；
-- Automation Engine / Center 與執行歷史；
-- 通知、記錄協作 / Activity 與 Deep Link；
-- 權限感知全域搜尋；
-- ChangeSet 基礎與 Recycle Bin；
-- 持久私有 S3-compatible 附件；
-- Goal-to-workspace、Task / Workload / Assignment Planning、Project Steward 與安全 Action Plan；
-- Source Inbox、來源脈絡與重複提示；
-- OAuth2 + S256 PKCE；
-- Web + API + PostgreSQL + Redis + MinIO 的標準自託管堆疊。
+兩者共同構成一個 QTable 產品版本。Web 前端、API / Domain Services、資料層與物件儲存應在同一相容基線上驗證。
 
-## 正在執行的公開 Alpha 加固
+## 發行成品狀態
 
-活躍發佈項目包括瀏覽器級完整堆疊 E2E、Production 密碼重設 fail-closed、Docker 可移植性、瀏覽器安全 Header、Service Worker 私有資料保護，以及備份 / 還原 / 升級 Runbook。
+目前兩個儲存庫都沒有已發佈的 GitHub Release。因此「Open Source Preview」描述的是公開 Alpha 原始碼基線，**不應被解讀為已經發佈正式 GitHub Release、Docker Hub 映像或其他穩定版成品**。映像、Tag 或 Release 只有在對應儲存庫或 Registry 實際發佈時才視為可用。
 
-以上工作統一屬於 **QTable 的 Release / Security / Operations / Full-stack Verification**。
+## Alpha 預期
 
-## Alpha 階段適用情境
+目前基線適合原始碼評估、社群開發、Staging 與受控試用。v1.0 之前，公開 API、遷移行為、維運 Runbook 與部分產品契約仍可能調整。
 
-適合評估、架構審查、本機 / 自託管測試、社群開發、Staging 與受控內部試用。正式環境關鍵資料採用前，請閱讀最新 Release Notes、驗證 Migration / Backup，並確認計畫部署的精確 Tag / Commit。
-
-對外開放自託管執行個體前使用 [正式環境檢查清單](../../getting-started/production-checklist/)。
+正式部署前，請完成 [正式環境檢查清單](../../getting-started/production-checklist/) 並閱讀 [功能矩陣](../feature-matrix/)。

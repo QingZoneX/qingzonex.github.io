@@ -1,51 +1,44 @@
 ---
 title: Self-hosting
-description: Run the canonical QTable and QTableUI stack with Docker Compose.
+description: Run qtable-web, API, PostgreSQL, Redis and object storage with qtable-server Docker Compose.
 ---
 
-The canonical one-command stack is maintained in the **QTable backend repository**.
-
-Clone QTable and QTableUI as siblings:
+The canonical source-based self-hosting layout uses sibling `qtable-server` and `qtable-web` repositories:
 
 ```text
 qingzone/
-├── QTable/
-└── QTableUI/
+├── qtable-server/
+└── qtable-web/
+```
+
+Inside `qtable-server`:
+
+```bash
+cp .env.example .env
+```
+
+Update the web build context to the current repository directory:
+
+```dotenv
+QTABLE_UI_CONTEXT=../qtable-web
 ```
 
 Then run:
 
 ```bash
-cd QTable
-cp .env.example .env
 docker compose up --build -d
 ```
 
-Open `http://localhost:9100`.
+Default ports are Web `9100`, API `9000`, PostgreSQL `5432`, Redis `6379`, MinIO API `9001` and MinIO Console `9002`. The canonical Compose setup binds data-plane and admin endpoints to `127.0.0.1` by default, except for the user-facing web service.
 
-## Included services
+## Production
 
-The current Compose stack contains:
-
-- QTable API
-- QTableUI
-- PostgreSQL 16
-- Redis 7
-- MinIO S3-compatible private attachment storage
-
-## Production checklist
-
-For a production deployment:
-
-- Keep PostgreSQL as the database.
 - Set `APP_ENV=production`.
-- Replace `SECRET_KEY`.
-- Use a stable `ENCRYPTION_KEY`.
-- Replace example attachment-storage credentials or configure a managed S3-compatible provider.
-- Configure durable PostgreSQL and object-storage backups.
-- Add TLS and an appropriate reverse proxy.
-- Do not use the SQLite fallback template for multi-user production deployments.
+- Use a strong `SECRET_KEY` and a stable valid Fernet `ENCRYPTION_KEY`.
+- Replace PostgreSQL and object-storage credentials.
+- Terminate TLS at a reverse proxy and configure HTTPS redirects plus HSTS.
+- Keep OAuth plain PKCE, dynamic client registration and password-reset debug tokens disabled.
+- Perform a real restore drill for PostgreSQL, object storage and critical configuration.
+- Record the exact deployed qtable-server and qtable-web commit / tag.
 
-:::caution[Secrets]
-Never commit real credentials, API keys or production `.env` files to source control.
-:::
+Public source does not imply that a particular container tag has been published. Before using prebuilt images, confirm that the exact version exists in the target registry and matches the source baseline you intend to deploy.

@@ -1,36 +1,37 @@
 ---
 title: Architecture
-description: QTable and QTableUI architecture, runtime services and storage boundaries.
+description: QTable architecture, runtime services and storage boundaries across qtable-web and qtable-server.
 ---
 
-The current architecture separates the frontend from the QTable API while keeping permissions and mutation rules on the server side.
+QTable separates frontend and backend source repositories while keeping one product model:
 
 ```text
-QTableUI (React + TypeScript + VTable + Apollo)
-               │
-        HTTP / GraphQL / WS
-               │
-QTable API (FastAPI + Strawberry GraphQL)
-       │                 │
- PostgreSQL/SQLite      Redis
-       │
- Permission / ChangeSet / AI services
-       │
- S3-compatible attachment storage
+qtable-web / QTable Web App
+React 19 + TypeScript 7 + VTable + Apollo
+                 │
+      REST / GraphQL / WebSocket / OAuth
+                 │
+qtable-server / QTable API & Domain Services
+FastAPI + Strawberry GraphQL
+                 │
+      ┌──────────┼──────────┐
+      │          │          │
+ PostgreSQL    Redis    S3-compatible
+                         object storage
 ```
 
-## Database modes
+## Web layer: qtable-web
 
-**PostgreSQL** is the default database for normal development and deployment.
+[`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web) owns the end-user experience, routing, view rendering, collaboration interactions and AI workflow UI. Its development server listens on `9100` by default; the production image uses Nginx for the SPA, proxy routes and security headers.
 
-**SQLite** is available for lightweight evaluation, offline development or constrained single-instance use. QTable does not automatically fall back from PostgreSQL to SQLite; switching database engines is explicit through configuration.
+## Service layer: qtable-server
 
-## Migrations
+[`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server) listens on `9000` by default and owns the data model, permissions, automation, audit, search, attachments, OAuth and AI services. The server is the final trusted boundary for authorization and writes.
 
-QTable carries an Alembic migration baseline. For a fresh database:
+## Data and runtime
 
-```bash
-alembic upgrade head
-```
+The canonical self-hosted stack uses PostgreSQL 16, Redis 7 and MinIO or external S3-compatible object storage. SQLite is an explicit lightweight fallback, not the normal production default.
 
-Schema evolution should be delivered through versioned migrations.
+## Security boundary
+
+Record detail, search, dashboard aggregation, attachment access and AI context all pass through server authorization. The client must never download hidden data for analytics or AI processing.

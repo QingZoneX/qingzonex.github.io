@@ -3,61 +3,38 @@ title: 正式環境檢查清單
 description: "評估 QTable v0.1.0-alpha 自託管部署時應執行的實際檢查。"
 ---
 
-QTable `v0.1.0-alpha` 屬於 Open Source Preview。標準 Compose 可方便用於評估與受控部署，但正式環境維運仍需要明確的安全、備份與升級決策。
+`v0.1.0-alpha` 是 Open Source Preview。將 QTable 提供給真實使用者前，應在與正式環境拓撲一致的環境完成以下檢查。
 
-## 對外開放執行個體之前
+## 版本與來源
 
-### 應用與身分
+- [ ] `qtable-server` 與 `qtable-web` 使用已共同驗證的精確 commit / tag。
+- [ ] 使用原始碼 Compose 時，兩個儲存庫為同層目錄，且 `.env` 包含 `QTABLE_UI_CONTEXT=../qtable-web`。
+- [ ] 使用預建映像時，已確認 Registry 中確實存在目標 Tag，並記錄 digest。
+- [ ] 未把「公開原始碼」誤認為「已發佈 GitHub Release / 穩定版成品」。
 
-- 設定 `APP_ENV=production`。
-- 替換範例 `SECRET_KEY`。
-- 設定穩定的 Fernet `ENCRYPTION_KEY`；共用同一資料庫的所有執行個體必須使用相同密鑰。
-- 公開到網際網路前檢查最新的認證與安全發佈門檻。
-- 設定 TLS 與適當的 Reverse Proxy / Gateway。
-- 不要在前端環境變數或原始碼中保存真實憑證。
+## 設定與秘密
 
-### 資料庫
+- [ ] `APP_ENV=production`。
+- [ ] 已更換預設 `SECRET_KEY`、資料庫密碼與物件儲存憑證。
+- [ ] 已設定穩定且格式正確的 Fernet `ENCRYPTION_KEY`，所有執行個體共用同一密鑰。
+- [ ] OAuth plain PKCE、動態 Client 註冊與密碼重設 Debug Token 保持關閉。
+- [ ] Provider API Key 不進入前端環境變數、一般表格欄位或 Log。
 
-- 一般多使用者部署使用 PostgreSQL。
-- 上線前先在 staging 執行 `alembic upgrade head`。
-- 一般多使用者正式環境不要依賴 SQLite 回退。
-- 每次 Migration 或升級前都要建立並驗證 PostgreSQL 備份。
+## 網路與瀏覽器安全
 
-### 附件
+- [ ] 只公開 Web / Reverse Proxy 入口；API、PostgreSQL、Redis 與 MinIO 管理端保持私網或 Loopback-only。
+- [ ] 已設定 TLS、HTTP → HTTPS 與 HSTS。
+- [ ] qtable-web 的 CSP、X-Content-Type-Options、Referrer-Policy、Frame 防護與 Permissions-Policy 未被外層 Proxy 弱化。
 
-- 替換開發用 MinIO/S3 憑證。
-- 設定持久物件儲存與備份。
-- 使用外部 S3 相容儲存時，確保 endpoint、region/TLS 與 Compose endpoint 對應一致。
-- 設計備份/還原時，把資料庫與物件儲存視為同一套應用資料。
+## 產品閉環
 
-### AI
+1. 登入並驗證 Workspace / 物件 / 列級權限。
+2. 實際執行 Grid、Kanban、Gantt、Calendar、Gallery 中代表性的讀寫路徑。
+3. 驗證 Dashboard 聚合、公開分享及權限變更後的存取行為。
+4. 驗證附件上傳 / 下載，以及失去權限後的拒絕行為。
+5. 驗證 Recycle Bin Restore / Purge。
+6. 驗證至少一條 Automation 規則與執行歷史。
+7. 若啟用 AI，驗證 Preview → Confirm → Apply 與權限重新檢查。
+8. 在非正式環境副本上實際執行一次 PostgreSQL + 物件儲存備份與還原。
 
-- 不設定外部 AI Provider 時，核心表格功能仍可執行。
-- AI 憑證應透過 QTable 的加密 AI 設定流程保存。
-- 對敏感工作空間啟用 AI 前，先確認所選 Provider 會接收哪些資料。
-
-## 標準啟動方式
-
-將 QTable 與 QTableUI Clone 為同層目錄，再於 QTable 執行：
-
-```bash
-cp .env.example .env
-docker compose up --build -d
-```
-
-標準堆疊包含 QTable API、QTableUI、PostgreSQL、Redis 與 MinIO。
-
-## 發佈驗證
-
-正式環境關鍵用途之前：
-
-1. 閱讀兩個儲存庫最新 Release Notes。
-2. 查看 [發佈狀態](../../project/release-status/) 與仍開啟的發佈門檻 Issue。
-3. 驗證 Fresh Install、登入、核心表寫入、Hard Refresh 持久化與權限拒絕路徑。
-4. 若使用附件，驗證上傳/下載及失去權限後的拒絕行為。
-5. 驗證資源回收筒 Restore / Purge。
-6. 驗證一條具代表性的 Automation 與 Dashboard 路徑。
-7. 在非正式環境副本實際執行一次備份與還原。
-8. 記錄部署的 QTable 與 QTableUI 精確 Commit/Tag。
-
-正式備份/還原/升級 Runbook 由 [QTable #173](https://github.com/QingZoneX/QTable/issues/173) 追蹤。在該工作關閉前，維運方應把備份還原驗證當成自己的發佈門檻。
+正式備份 / 還原 / 升級 Runbook 由 [`qtable-server #173`](https://github.com/QingZoneX/qtable-server/issues/173) 追蹤。在該工作完成前，應把真實還原演練視為上線前置條件，而不是只確認「存在備份檔」。

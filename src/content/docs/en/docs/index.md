@@ -1,28 +1,28 @@
 ---
-title: QTable Docs
-description: "Complete documentation for QingZoneX's open-source QTable product across the web experience, API services, self-hosting, security, attachments and AI workflows."
+title: QTable documentation
+description: "Complete documentation for the QingZoneX QTable open-source product across the web experience, API services, self-hosting, security, attachments and AI workflows."
 sidebar:
   order: 1
 ---
 
-**QTable** is the open-source product currently presented by QingZoneX: an AI-native project and work management system built on multidimensional tables.
+**QTable** is QingZoneX's open-source, AI-native project and work management product built on a multidimensional table model.
 
-From a user perspective, QTable is one complete product. From an engineering perspective, it contains a web frontend layer and an API / Domain Services layer. Both layers share the same Table / Record / View / Dashboard / Permission model and work together through REST / GraphQL / WebSocket / Auth / OAuth contracts.
+Users experience one QTable product. Engineering work is split across two public implementation repositories that share the Table / Record / View / Dashboard / Permission model and coordinate through REST / GraphQL / WebSocket / Auth / OAuth contracts.
 
-- [Backend and domain-services source](https://github.com/QingZoneX/QTable) — data models, permissions, automation, auditability, attachments, search and AI services.
-- [Web frontend implementation source](https://github.com/QingZoneX/QTableUI) — work centers, five views, dashboards, collaboration, automation and AI interactions.
+- [`QingZoneX/qtable-server`](https://github.com/QingZoneX/qtable-server) — FastAPI / Strawberry GraphQL backend, data model, permissions, automation, auditability, attachments, search, OAuth and AI services.
+- [`QingZoneX/qtable-web`](https://github.com/QingZoneX/qtable-web) — React web application, work centers, Grid / Kanban / Gantt / Calendar / Gallery, dashboards, collaboration, automation and AI interactions.
 
-The current open-source preview is **`v0.1.0-alpha`** under the **Apache License 2.0**.
+Both repositories currently use the **`v0.1.0-alpha` / Open Source Preview** source baseline under **Apache License 2.0**. Public source visibility does not itself mean that a GitHub Release, container image or other distribution artifact has been published. See [Release status](./project/release-status/) for that distinction.
 
 ## Recommended path
 
-1. Use the [Quick start](./getting-started/quick-start/) to launch the complete QTable locally.
-2. Read [QTable architecture](./qtable/architecture/) for the web, API, data and storage boundaries.
-3. Review the [QTable product overview](./qtable/overview/) for the current capability baseline.
-4. For frontend implementation work, see [Frontend development](./qtable-ui/development/).
-5. Before exposing a deployment, review the [Security model](./qtable/security/) and [Production checklist](./getting-started/production-checklist/).
-6. Use the [Feature matrix](./project/feature-matrix/) to separate implemented capability, active hardening and roadmap work.
+1. Use [Quick start](./getting-started/quick-start/) to run the complete QTable stack locally.
+2. Read [Architecture](./qtable/architecture/) for web, API, data and storage boundaries.
+3. Review the [QTable product overview](./qtable/overview/) for the implemented baseline.
+4. For frontend implementation work, see [Web frontend development](./qtable-ui/development/).
+5. Before internet-facing deployment, review the [Security model](./qtable/security/) and [Production checklist](./getting-started/production-checklist/).
+6. Use the [Feature matrix](./project/feature-matrix/) to distinguish shipped baseline, active hardening and future roadmap work.
 
 :::caution[Alpha status]
-The current version is appropriate for evaluation, community development, staging and controlled trials. Public APIs, migration behavior and some product contracts may still change before v1.0.
+The current baseline is appropriate for evaluation, community development, staging and controlled trials. Before v1.0, public APIs, migration behavior and some product contracts may still change.
 :::
