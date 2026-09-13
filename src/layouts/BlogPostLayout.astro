@@ -1,0 +1,73 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { QTABLE_SERVER_GITHUB_URL, QTABLE_WEB_GITHUB_URL } from '../lib/site';
+import type { PortalLocale } from '../lib/current-portal-content';
+
+interface Frontmatter {
+  title: string;
+  description: string;
+  date: string;
+  locale: PortalLocale;
+  slug: string;
+  series?: string;
+  seriesIndex?: number;
+  seriesTotal?: number;
+  sourcePath?: string;
+}
+
+const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
+const locale = frontmatter.locale || 'zh-cn';
+const route = `blog/${frontmatter.slug}/`;
+const localeTag = locale === 'en' ? 'en-US' : locale === 'zh-tw' ? 'zh-TW' : 'zh-CN';
+const published = new Intl.DateTimeFormat(localeTag, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(frontmatter.date));
+const sourceUrl = frontmatter.sourcePath
+  ? `https://github.com/QingZoneX/qingzonex.github.io/blob/main/${frontmatter.sourcePath}`
+  : 'https://github.com/QingZoneX/qingzonex.github.io';
+const copy = {
+  'zh-cn': {
+    blog: '技术博客', original: 'GitHub 原文', published: '发布于', series: '系列',
+    ctaTitle: 'QTable 已经开源', ctaCopy: '如果你对本文讨论的数据模型、AI 工作流或开源工程实践感兴趣，可以直接阅读代码、提交 Issue 或参与贡献。',
+    server: '后端源码', web: '前端源码', all: '返回博客', note: '本文的 Markdown 原文保存在 QingZoneX 门户仓库中，外部技术社区的转载应以这里作为 canonical source。',
+  },
+  'zh-tw': {
+    blog: '技術部落格', original: 'GitHub 原文', published: '發佈於', series: '系列',
+    ctaTitle: 'QTable 已經開源', ctaCopy: '如果你對本文討論的資料模型、AI 工作流程或開源工程實踐有興趣，可以直接閱讀程式碼、提交 Issue 或參與貢獻。',
+    server: '後端原始碼', web: '前端原始碼', all: '返回部落格', note: '本文的 Markdown 原文保存在 QingZoneX 入口網站倉庫中，外部技術社群的轉載應以這裡作為 canonical source。',
+  },
+  en: {
+    blog: 'Engineering Blog', original: 'Source on GitHub', published: 'Published', series: 'Series',
+    ctaTitle: 'QTable is open source', ctaCopy: 'If the data model, AI workflow, or open-source engineering discussed here interests you, read the code, open an issue, or contribute directly.',
+    server: 'Backend source', web: 'Web source', all: 'Back to blog', note: 'The canonical Markdown source for this article lives in the QingZoneX portal repository. Syndicated copies should point back here as the canonical source.',
+  },
+}[locale];
+---
+<BaseLayout locale={locale} route={route} title={`${frontmatter.title} · QingZoneX`} description={frontmatter.description}>
+  <article class="blog-post shell">
+    <header class="blog-hero">
+      <a class="blog-back" href={locale === 'zh-cn' ? '/blog/' : `/${locale}/blog/`}>← {copy.all}</a>
+      <div class="blog-kicker">{copy.blog}{frontmatter.seriesIndex ? ` · ${frontmatter.seriesIndex}/${frontmatter.seriesTotal ?? 10}` : ''}</div>
+      <h1>{frontmatter.title}</h1>
+      <p class="blog-description">{frontmatter.description}</p>
+      <div class="blog-meta">
+        <span>{copy.published} {published}</span>
+        {frontmatter.series && <span>{copy.series}: {frontmatter.series}</span>}
+        <a href={sourceUrl}>{copy.original}</a>
+      </div>
+    </header>
+
+    <div class="blog-layout">
+      <div class="blog-prose"><slot /></div>
+      <aside class="blog-source-note"><strong>Canonical source</strong><p>{copy.note}</p><a href={sourceUrl}>{copy.original} →</a></aside>
+    </div>
+
+    <section class="blog-cta">
+      <h2>{copy.ctaTitle}</h2>
+      <p>{copy.ctaCopy}</p>
+      <div class="blog-actions"><a class="button primary" href={QTABLE_SERVER_GITHUB_URL}>{copy.server}</a><a class="button secondary" href={QTABLE_WEB_GITHUB_URL}>{copy.web}</a></div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-post{max-width:1120px;padding-top:72px;padding-bottom:96px}.blog-hero{max-width:900px;margin:0 auto 48px}.blog-back{display:inline-block;margin-bottom:30px;color:var(--text-muted);text-decoration:none}.blog-back:hover{color:var(--text)}.blog-kicker{margin-bottom:14px;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6ea8ff}.blog-hero h1{margin:0;font-size:clamp(2.2rem,5vw,4.5rem);line-height:1.06;letter-spacing:-.04em}.blog-description{max-width:780px;margin:22px 0 20px;font-size:1.18rem;line-height:1.75;color:var(--text-muted)}.blog-meta{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--text-muted);font-size:.92rem}.blog-meta a{color:inherit}.blog-layout{display:grid;grid-template-columns:minmax(0,760px) minmax(220px,1fr);gap:56px;align-items:start;justify-content:center}.blog-prose{font-size:1.06rem;line-height:1.9;color:var(--text)}.blog-prose :global(h2){margin:3.4rem 0 1rem;font-size:2rem;line-height:1.25;letter-spacing:-.025em}.blog-prose :global(h3){margin:2.4rem 0 .8rem;font-size:1.35rem}.blog-prose :global(p),.blog-prose :global(ul),.blog-prose :global(ol){margin:1rem 0}.blog-prose :global(li){margin:.45rem 0}.blog-prose :global(blockquote){margin:2rem 0;padding:1rem 1.25rem;border-left:3px solid #6ea8ff;background:rgba(110,168,255,.08);border-radius:0 12px 12px 0}.blog-prose :global(pre){overflow:auto;margin:1.5rem 0;padding:1.1rem 1.25rem;border:1px solid var(--border);border-radius:14px;background:rgba(3,10,20,.72)}.blog-prose :global(code){font-size:.92em}.blog-prose :global(a){color:#6ea8ff}.blog-prose :global(strong){color:var(--text)}.blog-source-note{position:sticky;top:96px;padding:20px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.035);font-size:.9rem;line-height:1.65;color:var(--text-muted)}.blog-source-note strong{color:var(--text)}.blog-source-note a{color:#6ea8ff;text-decoration:none}.blog-cta{max-width:900px;margin:72px auto 0;padding:34px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(135deg,rgba(71,118,255,.12),rgba(90,214,190,.06))}.blog-cta h2{margin:0 0 10px;font-size:1.7rem}.blog-cta p{max-width:700px;margin:0;color:var(--text-muted);line-height:1.7}.blog-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}@media(max-width:820px){.blog-post{padding-top:42px}.blog-layout{grid-template-columns:1fr}.blog-source-note{position:static}.blog-hero h1{font-size:clamp(2rem,10vw,3.2rem)}}
+</style>

@@ -38,6 +38,7 @@ export default defineConfig({
       },
       sidebar: [
         { ...label('门户', '入口網站', 'Portal'), link: '/' },
+        { ...label('技术博客', '技術部落格', 'Engineering Blog'), link: '/blog/' },
         { ...label('开始', '開始', 'Start here'), items: [{ slug: 'docs' }, { slug: 'docs/getting-started/quick-start' }, { slug: 'docs/getting-started/self-hosting' }, { slug: 'docs/getting-started/production-checklist' }] },
         { label: 'QTable', items: [{ slug: 'docs/qtable/overview' }, { slug: 'docs/qtable/architecture' }, { slug: 'docs/qtable/ai-workflows' }, { slug: 'docs/qtable/security' }, { slug: 'docs/qtable/attachments' }, { slug: 'docs/qtable-ui/overview' }, { slug: 'docs/qtable-ui/development' }] },
         { ...label('项目', '專案', 'Project'), items: [{ slug: 'docs/project/feature-matrix' }, { slug: 'docs/project/release-status' }, { slug: 'docs/project/contributing' }] },
