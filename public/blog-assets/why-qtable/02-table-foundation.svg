@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <title id="title">为什么多维表格仍然是 AI 的强业务底座</title>
+  <desc id="desc">中心是 Structured Work Model，周围是结构化、可投影、可约束、可执行和可审计五个能力。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <text x="70" y="70" font-size="38" font-weight="750" fill="#0f172a">为什么多维表格仍然是 AI 的强业务底座</text>
+  <text x="70" y="108" font-size="19" fill="#60708a">它的价值不在“像表格”，而在于它是一套 AI 可以理解、约束和执行的工作模型。</text>
+
+  <g filter="url(#shadow)"><circle cx="600" cy="382" r="155" fill="#111d35"/></g>
+  <circle cx="600" cy="382" r="136" fill="#14233e" stroke="#74b6ff" stroke-width="3"/>
+  <text x="600" y="363" text-anchor="middle" font-size="34" font-weight="760" fill="#fff">Structured</text>
+  <text x="600" y="405" text-anchor="middle" font-size="34" font-weight="760" fill="#91c7ff">Work Model</text>
+  <text x="600" y="442" text-anchor="middle" font-size="16" fill="#cbdaf0">让自然语言最终落到可验证的业务对象</text>
+
+  <g stroke="#c9d8ec" stroke-width="3" fill="none">
+    <path d="M430 220 C505 235 530 285 542 305"/><path d="M770 220 C695 235 670 285 658 305"/>
+    <path d="M410 548 C500 535 525 480 540 462"/><path d="M790 548 C700 535 675 480 660 462"/>
+    <path d="M600 565 V525"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="100" y="160" width="330" height="122" rx="24" fill="#fff" stroke="#dce5f2"/>
+    <rect x="770" y="160" width="330" height="122" rx="24" fill="#fff" stroke="#dce5f2"/>
+    <rect x="80" y="500" width="330" height="122" rx="24" fill="#fff" stroke="#dce5f2"/>
+    <rect x="790" y="500" width="330" height="122" rx="24" fill="#fff" stroke="#dce5f2"/>
+    <rect x="435" y="565" width="330" height="122" rx="24" fill="#fff" stroke="#dce5f2"/>
+  </g>
+
+  <circle cx="140" cy="202" r="9" fill="#4f7dff"/><text x="168" y="210" font-size="24" font-weight="720" fill="#0f172a">结构化</text>
+  <text x="128" y="246" font-size="17" fill="#53627a">Field · Record · Relation · Formula</text>
+  <text x="128" y="270" font-size="17" fill="#53627a">对象明确，AI 才能查询、生成与校验。</text>
+
+  <circle cx="810" cy="202" r="9" fill="#37b888"/><text x="838" y="210" font-size="24" font-weight="720" fill="#0f172a">可投影</text>
+  <text x="798" y="246" font-size="17" fill="#53627a">Grid · Kanban · Gantt · Calendar</text>
+  <text x="798" y="270" font-size="17" fill="#53627a">一份事实，多种视图，不制造第二份数据。</text>
+
+  <circle cx="120" cy="542" r="9" fill="#8664ff"/><text x="148" y="550" font-size="24" font-weight="720" fill="#0f172a">可约束</text>
+  <text x="108" y="586" font-size="17" fill="#53627a">Permission · Validation · Relation rules</text>
+  <text x="108" y="610" font-size="17" fill="#53627a">AI 操作必须处在业务规则与权限边界内。</text>
+
+  <circle cx="830" cy="542" r="9" fill="#ff9f43"/><text x="858" y="550" font-size="24" font-weight="720" fill="#0f172a">可执行</text>
+  <text x="818" y="586" font-size="17" fill="#53627a">Automation · API · Search · Collaboration</text>
+  <text x="818" y="610" font-size="17" fill="#53627a">数据不只展示，还能真正驱动工作。</text>
+
+  <circle cx="475" cy="607" r="9" fill="#00a8c6"/><text x="503" y="615" font-size="24" font-weight="720" fill="#0f172a">可审计</text>
+  <text x="463" y="651" font-size="17" fill="#53627a">Preview · ChangeSet · Audit · Rollback</text>
+  <text x="463" y="675" font-size="17" fill="#53627a">每一次 AI 变更都能被理解、确认和追踪。</text>
+</svg>

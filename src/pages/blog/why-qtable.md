@@ -13,7 +13,7 @@ sourcePath: "src/pages/blog/why-qtable.md"
 
 如果今天再做一个多维表格产品，最先遇到的问题大概不是技术，而是一个更直接的问题：**为什么？**
 
-Airtable 已经证明了数据库和表格之间存在一个巨大的产品空间；Notion 把数据库嵌入到了文档与知识工作里；飞书多维表格也已经把多视图、自动化、协作和企业场景做得非常成熟。
+Airtable 已经证明了数据库和表格之间存在巨大的产品空间；Notion 把数据库嵌入到了文档与知识工作里；飞书多维表格也已经把多视图、自动化、协作和企业场景做得非常成熟。
 
 在这样的市场里，如果 QTable 的目标只是“再做一个支持 Grid、Kanban、Gantt 的开源表格”，那它很难形成真正有价值的差异。
 
@@ -23,27 +23,14 @@ Airtable 已经证明了数据库和表格之间存在一个巨大的产品空�
 
 多维表格只是目前我认为最适合承载这个问题的基础数据模型。
 
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/why-qtable/01-workflow-compare.svg" alt="传统工具路径与 QTable AI Native 工作路径对比" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">传统工具更强调“先搭系统再工作”；QTable 更关心“先表达目标，再由系统组织工作”。</figcaption>
+</figure>
+
 ## 从“配置一个工具”到“描述一个目标”
 
-传统项目管理或多维表格产品的典型使用路径，大致是这样的：
-
-```text
-创建 Workspace
-      ↓
-创建 Table
-      ↓
-设计字段
-      ↓
-配置 View
-      ↓
-录入任务
-      ↓
-创建 Dashboard
-      ↓
-配置自动化
-      ↓
-开始工作
-```
+传统项目管理或多维表格产品的典型使用路径，往往是先创建 Workspace，再创建 Table、设计字段、配置 View、录入任务、制作 Dashboard、配置自动化。等到这些都准备好之后，用户才真正开始工作。
 
 这套模型没有错。事实上，它非常强大。
 
@@ -64,45 +51,17 @@ Airtable 已经证明了数据库和表格之间存在一个巨大的产品空�
 
 这中间存在一个很大的**意图到结构的翻译成本**。
 
-而大模型第一次让我们有机会重新设计这条路径。
+而大模型第一次让我们有机会重新设计这条路径。用户可以先说“我想完成什么”，系统再帮助他把目标翻译成 Workspace、Table、View、Task、成员分工、Dashboard 和可执行计划。
 
-我希望 QTable 最终更接近：
+真正的变化不是“AI 帮你建了一张表”，而是：
 
-```text
-描述目标
-      ↓
-理解当前业务上下文
-      ↓
-生成 Workspace / Table / View
-      ↓
-拆解任务与依赖
-      ↓
-估算工作量与时间
-      ↓
-建议负责人
-      ↓
-生成 Dashboard
-      ↓
-诊断项目风险
-      ↓
-Preview Changes
-      ↓
-Human Confirm
-      ↓
-Apply
-```
-
-关键并不是“AI 帮你建了一张表”。
-
-真正的变化是：**用户开始从描述目标出发，而不是从配置软件出发。**
+> **用户开始从描述目标出发，而不是从配置软件出发。**
 
 ## AI Native 不是在右下角加一个聊天框
 
 今天很多产品都已经有 AI Assistant。
 
-最容易实现的方式是：把当前页面的数据拼成 Prompt，发送给模型，再把回答显示在一个 Chat 面板里。
-
-这当然有价值，但我并不认为这就叫 AI Native。
+最容易实现的方式，是把当前页面的数据拼成 Prompt，发送给模型，再把回答显示在一个 Chat 面板里。这当然有价值，但我并不认为这就叫 AI Native。
 
 如果 AI 只能回答：
 
@@ -129,54 +88,24 @@ Apply
 
 Agent 如果要执行真实工作，首先需要一个足够明确的世界模型。
 
-纯文档当然很灵活，但文档中的“任务”“成员”“状态”“截止日期”很多时候只是自然语言。
-
-传统数据库又非常结构化，但普通用户很难直接操作 Schema、Join、Constraint 和 Query。
+纯文档当然很灵活，但文档中的“任务”“成员”“状态”“截止日期”很多时候只是自然语言。传统数据库又非常结构化，但普通用户很难直接操作 Schema、Join、Constraint 和 Query。
 
 多维表格恰好处在两者中间。
 
-对于用户，它仍然是熟悉的表格和视图；对于系统，它却可以提供明确的结构：
-
-```text
-Workspace
-  └─ Table
-      ├─ Field
-      ├─ Record
-      ├─ Relation
-      ├─ Formula
-      └─ View
-          ├─ Grid
-          ├─ Kanban
-          ├─ Gantt
-          ├─ Calendar
-          └─ Gallery
-```
+对于用户，它仍然是熟悉的表格和视图；对于系统，它却可以提供明确的结构：Workspace、Table、Field、Record、Relation、Formula 和 View 都是可查询、可验证、可操作的业务对象。
 
 当一个任务拥有结构化的 `status`、`assignee`、`priority`、`startDate`、`dueDate` 和关系字段之后，AI 面对的就不再是一段模糊文本，而是一个可以被查询、验证和操作的业务对象。
 
-这件事很重要。
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/why-qtable/02-table-foundation.svg" alt="多维表格作为 AI 业务底座的五个能力：结构化、可投影、可约束、可执行、可审计" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">多维表格的重要性不在于“像表格”，而在于它能成为 AI 可理解、可约束、可执行、可审计的业务工作模型。</figcaption>
+</figure>
 
-因为从 Agent 的角度看：
+这件事很重要。因为从 Agent 的角度看，真正有价值的链路不是“自然语言 → 更多自然语言”，而是：
 
-```text
-Natural Language
-      ↓
-Structured Intent
-      ↓
-Structured Business Model
-      ↓
-Validated Action
-```
+**Natural Language → Structured Intent → Structured Business Model → Validated Action**
 
-远比：
-
-```text
-Natural Language
-      ↓
-More Natural Language
-```
-
-更接近真正的“工作”。
+这才更接近真正的“工作”。
 
 ## View 不应该成为第二份数据
 
@@ -184,15 +113,7 @@ More Natural Language
 
 Grid、Kanban、Gantt、Calendar、Gallery 看起来是完全不同的产品体验，但它们不应该拥有各自独立的任务数据。
 
-在 QTable 中，我更希望把它们理解成**同一份结构化数据的不同投影**：
-
-```text
-                 ┌─ Grid
-                 ├─ Kanban
-Table / Records ─┼─ Gantt
-                 ├─ Calendar
-                 └─ Gallery
-```
+在 QTable 中，我更希望把它们理解成**同一份结构化数据的不同投影**。
 
 这意味着：
 
@@ -201,25 +122,29 @@ Table / Records ─┼─ Gantt
 - AI 创建任务之后，不需要再分别同步 Grid 和 Kanban；
 - Dashboard 也应该从同一套权限和数据模型聚合，而不是保存一份旁路数据。
 
-当 AI 开始参与系统之后，这种“一份事实，多种视图”的原则会变得更加重要。
+当 AI 开始参与系统之后，这种“一份事实，多种视图”的原则会变得更加重要。否则每增加一种交互方式，就增加一套同步和一致性问题。
 
-否则每增加一种交互方式，就增加一套同步和一致性问题。
+## QTable 真正想做的不是功能堆叠
 
-## 我不希望 AI 绕过现有产品模型
+在当前的 QTable 设计里，Web 应用、API、权限、自动化、仪表盘、搜索、附件以及 AI 能力，并不是一些相互独立的功能点。
 
-这是 QTable 目前最核心的设计原则之一。
+它们共享的是同一套核心产品模型：
 
-一种很诱人的实现是专门给 AI 做一套快捷接口：
+- Table
+- Record
+- View
+- Permission
+- ChangeSet
+- Workspace Context
 
-```text
-LLM
- ↓
-AI-specific mutation
- ↓
-直接修改数据库
-```
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/why-qtable/03-unified-model.svg" alt="QTable Web、API、AI、Automation、Dashboard、Search 和 Files 围绕统一核心产品模型协作" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">QTable 并不是把很多功能拼在一起，而是让不同交互方式围绕同一个业务模型、同一个权限边界和同一条审计链路工作。</figcaption>
+</figure>
 
-这样实现起来往往更快。
+这点非常重要。
+
+一种很诱人的实现，是专门给 AI 做一套快捷接口：LLM 调用 AI-specific mutation，然后直接修改数据库。这样实现起来往往更快。
 
 但长期来看，这会产生两套系统：
 
@@ -232,47 +157,38 @@ AI-specific mutation
 
 换句话说：
 
-> **AI 不应该获得一条绕过产品规则的“超级管理员捷径”。**
+> **AI 不应该获得一条绕过产品规则的“超级管理员捷径”。它只是另一种发起业务操作的方式。**
 
-它只是另一种发起业务操作的方式。
+## 为什么“安全执行”比“聪明回答”更重要
 
-## 为什么要坚持 Preview → Confirm → Apply
+我对 QTable 还有一个非常强烈的判断：
 
-当 AI 只能生成文字时，模型偶尔犯错的代价可能只是一段错误回答。
+> **AI 如果只能回答问题，它只是一个助手；AI 如果能够在边界内安全执行工作，它才真正开始成为系统能力。**
 
-当 AI 可以修改业务数据之后，错误的成本完全不同。
+但让 AI 执行工作，不能走“模型想到什么就直接改数据库”这条路。
+
+当 AI 只能生成文字时，模型偶尔犯错的代价可能只是一段错误回答。当 AI 可以修改业务数据之后，错误的成本完全不同。
 
 “把这个项目整理一下”可能最终意味着几十条记录更新、任务重排、负责人变化，甚至创建和删除对象。
 
-因此 QTable 的 AI 写入流程从一开始就希望遵守：
+因此 QTable 的 AI 写入流程从一开始就希望遵守：**Preview → Confirm → Apply**。
 
-```text
-Understand
-   ↓
-Plan
-   ↓
-Preview
-   ↓
-Human Confirm
-   ↓
-Revalidate Permission / State
-   ↓
-Apply
-   ↓
-Audit
-```
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/why-qtable/04-preview-confirm-apply.svg" alt="QTable Preview、Confirm、Apply 三阶段 AI 安全执行流程，以及权限、上下文、并发和审计校验" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">真正可落地的 AI 不是“想到就执行”，而是“先预览、再确认、后执行”，并把权限、上下文、并发与审计校验内建到执行链路里。</figcaption>
+</figure>
 
 Preview 不是一个 UI 动画，而是系统边界。
 
 用户应该能看到 AI **准备做什么**，而不是只能在 AI **已经做完之后**寻找 Undo。
 
-而 Confirm 也不能意味着“用户点过一次按钮，从此全部放行”。真正 Apply 时仍然需要重新检查当前权限和业务状态，因为 Preview 到 Apply 之间，数据可能已经发生变化。
+Confirm 也不能意味着“用户点过一次按钮，从此全部放行”。真正 Apply 时仍然需要重新检查当前权限和业务状态，因为从 Preview 到 Apply 之间，数据可能已经发生变化。
 
-这个主题值得单独写一篇，后面的系列会详细展开。
+这不是为了让 AI 变慢，而是为了让 AI 能进入真实业务场景。
 
 ## AI 真正缺少的往往不是更大的模型，而是 Context
 
-当 QTable 从聊天助手继续走向 Agent，另一个问题很快就出现了：
+当 QTable 从聊天助手继续走向 Agent，另一个问题很快就出现了。
 
 用户说：
 
@@ -297,7 +213,7 @@ AI 至少需要知道：
 
 > **Agent 产品体验的核心竞争力，很可能不是 Prompt Engineering，而是 Context Engineering。**
 
-这个问题也会成为这个系列的第四篇文章。
+这个问题也会成为这个系列后续的一篇核心文章。
 
 ## 开源对 QTable 来说不是发布方式，而是产品约束
 
@@ -336,6 +252,21 @@ QTable 目前仍然处于 Alpha 阶段。
 
 这才是我继续做 QTable 的主要原因。
 
+## 这篇文章真正想表达什么
+
+如果只用一句话总结这篇文章，那就是：
+
+> **QTable 不是为了再做一个“更漂亮的表格”，而是为了探索：在 AI 时代，什么样的产品模型最适合承载真实工作。**
+
+在我当前的答案里，多维表格依然是一个很强的起点，但它必须继续向前演化：
+
+- 从静态配置工具，走向目标驱动系统；
+- 从手工搭建工作流，走向 AI 辅助组织工作；
+- 从“记录信息”，走向“承载执行”；
+- 从单纯协作工具，走向可理解、可确认、可审计的 AI 工作底座。
+
+这也是整个系列文章的起点。
+
 ## 接下来这个系列会写什么
 
 《构建 QTable：一个 AI Native 工作系统的设计与实现》会继续围绕真实代码和实际架构展开，而不是只介绍功能。
@@ -348,15 +279,6 @@ QTable 目前仍然处于 Alpha 阶段。
 4. Multi Tool Chain Runtime 如何处理 DAG、并行、重试与回滚；
 5. Grid / Kanban / Gantt 如何共享一套数据事实；
 6. 为什么 Agent 的权限不能高于当前用户；
-7. 私有附件为什么不能简单存一个 URL；
-8. QingZone 产品矩阵为什么需要统一 Identity Contract；
-9. 一个 Side Project 真正开源，需要补齐哪些供应链和 CI 工程。
+7. 开源工程里的 CI、SBOM、Provenance 与供应链信任。
 
-如果这些问题也是你正在做 AI 产品时遇到的问题，那么即使你并不使用 QTable，我也希望这个系列仍然值得读。
-
-QTable 的后端与 Web 前端都已经公开：
-
-- [QingZoneX/qtable-server](https://github.com/QingZoneX/qtable-server)
-- [QingZoneX/qtable-web](https://github.com/QingZoneX/qtable-web)
-
-代码比宣传文案更能说明一个产品真正相信什么。
+如果你也在思考这些问题，欢迎直接阅读 QTable 的代码和文档，或者参与讨论。

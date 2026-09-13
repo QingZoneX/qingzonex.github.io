@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <title id="title">传统工具路径与 AI Native 工作路径对比</title>
+  <desc id="desc">左侧展示工具优先的配置路径，右侧展示目标优先的 AI Native 工作路径。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#edf4ff"/></linearGradient>
+    <linearGradient id="goal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eafff6"/><stop offset="1" stop-color="#e7f2ff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="720" rx="34" fill="url(#bg)"/>
+  <text x="70" y="70" font-size="38" font-weight="750" fill="#0f172a">从“配置工具”到“描述目标”</text>
+  <text x="70" y="108" font-size="19" fill="#60708a">AI Native 的变化，不是多一个聊天框，而是重新定义工作从哪里开始。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="65" y="145" width="500" height="515" rx="28" fill="#fff" stroke="#d9e3f1"/>
+    <rect x="635" y="145" width="500" height="515" rx="28" fill="#fff" stroke="#d9e3f1"/>
+  </g>
+
+  <rect x="92" y="174" width="112" height="34" rx="17" fill="#e7efff" stroke="#bfd0f4"/>
+  <text x="148" y="197" text-anchor="middle" font-size="15" font-weight="700" fill="#315a9f">TOOL-FIRST</text>
+  <text x="92" y="246" font-size="28" font-weight="720" fill="#0f172a">传统路径</text>
+  <text x="92" y="278" font-size="17" fill="#6b7890">先把业务翻译成软件配置，再开始真正工作。</text>
+
+  <g font-size="19" fill="#15223a">
+    <rect x="105" y="320" width="420" height="52" rx="14" fill="#f8fbff" stroke="#c8d8ef"/><text x="130" y="353">01 · 创建 Workspace / Table</text>
+    <rect x="105" y="388" width="420" height="52" rx="14" fill="#f8fbff" stroke="#c8d8ef"/><text x="130" y="421">02 · 设计字段与关系</text>
+    <rect x="105" y="456" width="420" height="52" rx="14" fill="#f8fbff" stroke="#c8d8ef"/><text x="130" y="489">03 · 配置 View / Dashboard</text>
+    <rect x="105" y="524" width="420" height="52" rx="14" fill="#f8fbff" stroke="#c8d8ef"/><text x="130" y="557">04 · 录入任务与自动化</text>
+    <rect x="105" y="592" width="420" height="42" rx="14" fill="#eef3fb"/><text x="315" y="620" text-anchor="middle" font-weight="700" fill="#53627a">然后才开始工作</text>
+  </g>
+
+  <rect x="662" y="174" width="112" height="34" rx="17" fill="url(#goal)" stroke="#b8e2d0"/>
+  <text x="718" y="197" text-anchor="middle" font-size="15" font-weight="700" fill="#237458">GOAL-FIRST</text>
+  <text x="662" y="246" font-size="28" font-weight="720" fill="#0f172a">QTable 的 AI Native 路径</text>
+  <text x="662" y="278" font-size="17" fill="#6b7890">先表达目标，再让系统把目标组织成结构化工作。</text>
+
+  <g font-size="19" fill="#15223a">
+    <rect x="675" y="320" width="420" height="52" rx="14" fill="#fbfffd" stroke="#bee3d0"/><text x="700" y="353">01 · 描述目标与当前问题</text>
+    <rect x="675" y="388" width="420" height="52" rx="14" fill="#fbfffd" stroke="#bee3d0"/><text x="700" y="421">02 · 理解 Workspace / Team / Context</text>
+    <rect x="675" y="456" width="420" height="52" rx="14" fill="#fbfffd" stroke="#bee3d0"/><text x="700" y="489">03 · 生成结构、任务、视图与计划</text>
+    <rect x="675" y="524" width="420" height="52" rx="14" fill="#fbfffd" stroke="#bee3d0"/><text x="700" y="557">04 · Preview → Human Confirm</text>
+    <rect x="675" y="592" width="420" height="42" rx="14" fill="#e8faf2"/><text x="885" y="620" text-anchor="middle" font-weight="700" fill="#276d55">执行、协作并持续追踪</text>
+  </g>
+
+  <circle cx="600" cy="401" r="24" fill="#0f172a"/>
+  <path d="M590 401h18m-7-8 8 8-8 8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
