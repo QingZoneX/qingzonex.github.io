@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Shared QTable domain boundary</title>
+  <desc id="desc">Users, agents, and automation pass through shared query and domain services to the same table records and views, with relation, formula, permission, version, and change-history constraints.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9fcff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="domain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#162947"/><stop offset="1" stop-color="#0d182c"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="17" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">One Domain Boundary · Multiple Actors</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">Human actions, agents, and automation should meet the same business rules before touching shared state.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="85" y="150" width="286" height="112" rx="24" fill="#fff" stroke="#d8e4f1"/>
+    <rect x="457" y="150" width="286" height="112" rx="24" fill="#fff" stroke="#d8e4f1"/>
+    <rect x="829" y="150" width="286" height="112" rx="24" fill="#fff" stroke="#d8e4f1"/>
+  </g>
+  <circle cx="132" cy="206" r="27" fill="#e9efff"/><path d="M121 211c7-11 15-11 22 0M132 191a7 7 0 1 0 0 .1" fill="none" stroke="#42689d" stroke-width="3" stroke-linecap="round"/>
+  <text x="176" y="199" font-size="23" font-weight="740" fill="#0f172a">User</text><text x="176" y="226" font-size="14" fill="#78869b">Web · API · collaboration</text>
+  <circle cx="504" cy="206" r="27" fill="#eaf9f3"/><rect x="491" y="193" width="26" height="24" rx="8" fill="none" stroke="#34775c" stroke-width="3"/><circle cx="499" cy="204" r="2.7" fill="#34775c"/><circle cx="509" cy="204" r="2.7" fill="#34775c"/><path d="M498 212h12" stroke="#34775c" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="548" y="199" font-size="23" font-weight="740" fill="#0f172a">Agent</text><text x="548" y="226" font-size="14" fill="#78869b">Plan · query · proposed action</text>
+  <circle cx="876" cy="206" r="27" fill="#fff3df"/><path d="M864 207h24M876 195v24M867 198l18 18M885 198l-18 18" stroke="#9a6218" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="920" y="199" font-size="23" font-weight="740" fill="#0f172a">Automation</text><text x="920" y="226" font-size="14" fill="#78869b">Triggers · scheduled rules</text>
+
+  <g stroke="#9fb4cf" stroke-width="3" fill="none"><path d="M228 262v48h372"/><path d="M600 262v48"/><path d="M972 262v48H600"/></g>
+  <path d="M593 304l7 12 7-12z" fill="#708cac"/>
+
+  <g filter="url(#shadow)"><rect x="145" y="324" width="910" height="116" rx="26" fill="#fff" stroke="#cfddeb"/></g>
+  <rect x="174" y="348" width="146" height="68" rx="18" fill="#f4f8ff" stroke="#d3e0ef"/><text x="247" y="377" text-anchor="middle" font-size="16" font-weight="730" fill="#2e578b">Record Query</text><text x="247" y="399" text-anchor="middle" font-size="12" fill="#76869c">filter · sort · group</text>
+  <rect x="339" y="348" width="146" height="68" rx="18" fill="#f4faf7" stroke="#d0e9dd"/><text x="412" y="377" text-anchor="middle" font-size="16" font-weight="730" fill="#2f7157">Relation</text><text x="412" y="399" text-anchor="middle" font-size="12" fill="#76869c">linked objects</text>
+  <rect x="504" y="348" width="146" height="68" rx="18" fill="#f8f5ff" stroke="#dfd7f4"/><text x="577" y="377" text-anchor="middle" font-size="16" font-weight="730" fill="#644b94">Formula</text><text x="577" y="399" text-anchor="middle" font-size="12" fill="#76869c">derived values</text>
+  <rect x="669" y="348" width="166" height="68" rx="18" fill="#fff9ef" stroke="#ecdab8"/><text x="752" y="377" text-anchor="middle" font-size="16" font-weight="730" fill="#8f5c1c">Permission</text><text x="752" y="399" text-anchor="middle" font-size="12" fill="#76869c">object · row · actor</text>
+  <rect x="854" y="348" width="172" height="68" rx="18" fill="#f5f8fc" stroke="#d4dfec"/><text x="940" y="377" text-anchor="middle" font-size="16" font-weight="730" fill="#405673">Validation</text><text x="940" y="399" text-anchor="middle" font-size="12" fill="#76869c">version · invariants</text>
+  <text x="165" y="459" font-size="13" font-weight="760" fill="#74839a">SHARED QUERY + DOMAIN SERVICES</text>
+
+  <path d="M600 440v50" stroke="#728dab" stroke-width="3"/><path d="M593 482l7 12 7-12z" fill="#728dab"/>
+
+  <g filter="url(#shadow)"><rect x="190" y="504" width="820" height="184" rx="30" fill="url(#domain)" stroke="#2d4c73"/></g>
+  <text x="228" y="546" font-size="13" font-weight="760" fill="#87b9f7">SHARED BUSINESS STATE</text>
+  <text x="228" y="587" font-size="29" font-weight="760" fill="#fff">Table · Record · View</text>
+  <text x="228" y="617" font-size="15" fill="#afc3da">The actor changes. The domain objects do not.</text>
+  <g font-size="14" fill="#e8f1fa">
+    <rect x="228" y="642" width="124" height="30" rx="15" fill="#173455" stroke="#365d87"/><text x="290" y="662" text-anchor="middle">Stable ID</text>
+    <rect x="365" y="642" width="124" height="30" rx="15" fill="#173455" stroke="#365d87"/><text x="427" y="662" text-anchor="middle">Schema</text>
+    <rect x="502" y="642" width="124" height="30" rx="15" fill="#173455" stroke="#365d87"/><text x="564" y="662" text-anchor="middle">Version</text>
+  </g>
+  <g>
+    <rect x="692" y="543" width="278" height="103" rx="20" fill="#142a49" stroke="#42688f"/>
+    <text x="718" y="575" font-size="15" font-weight="720" fill="#fff">Write path</text>
+    <text x="718" y="604" font-size="14" fill="#bfd0e4">Action Plan → validated mutation</text>
+    <text x="718" y="627" font-size="14" fill="#8fb0d2">No AI-only database shortcut</text>
+  </g>
+
+  <g stroke="#9db3cc" stroke-width="3" fill="none"><path d="M460 688v50h-135"/><path d="M740 688v50h135"/></g>
+  <g filter="url(#shadow)">
+    <rect x="190" y="724" width="270" height="58" rx="18" fill="#fff" stroke="#d7e2ef"/>
+    <rect x="740" y="724" width="270" height="58" rx="18" fill="#fff" stroke="#d7e2ef"/>
+  </g>
+  <text x="325" y="759" text-anchor="middle" font-size="15" font-weight="720" fill="#405673">Change History · Audit</text>
+  <text x="875" y="759" text-anchor="middle" font-size="15" font-weight="720" fill="#405673">Action Plan · Review</text>
+</svg>

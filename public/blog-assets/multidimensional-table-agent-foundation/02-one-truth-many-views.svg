@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">One record set, many projections</title>
+  <desc id="desc">A shared record set in the center is projected into Grid, Kanban, Gantt, Calendar, Dashboard, and Agent experiences without copying the underlying business facts.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#172946"/><stop offset="1" stop-color="#0e182c"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="13" stdDeviation="17" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">One Record Set · Many Projections</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">Grid, Kanban, Gantt, Calendar, Dashboard, and Agent should share the same business facts.</text>
+
+  <g stroke="#c4d5e9" stroke-width="3" fill="none">
+    <path d="M415 300C355 278 330 248 304 219"/>
+    <path d="M785 300C845 278 870 248 896 219"/>
+    <path d="M405 382C342 382 314 382 274 382"/>
+    <path d="M795 382C858 382 886 382 926 382"/>
+    <path d="M420 466C360 494 332 521 304 552"/>
+    <path d="M780 466C840 494 868 521 896 552"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="405" y="245" width="390" height="285" rx="34" fill="url(#core)" stroke="#2d4c73"/>
+    <rect x="70" y="145" width="265" height="150" rx="24" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="865" y="145" width="265" height="150" rx="24" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="45" y="315" width="265" height="150" rx="24" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="890" y="315" width="265" height="150" rx="24" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="70" y="485" width="265" height="150" rx="24" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="865" y="485" width="265" height="150" rx="24" fill="#fff" stroke="#d9e4f1"/>
+  </g>
+
+  <rect x="438" y="275" width="128" height="32" rx="16" fill="#294563"/><text x="502" y="296" text-anchor="middle" font-size="13" font-weight="760" fill="#b9d8ff">SOURCE OF TRUTH</text>
+  <text x="438" y="356" font-size="34" font-weight="760" fill="#fff">Record Set</text>
+  <text x="438" y="389" font-size="17" fill="#b8c9dd">Stable objects, shared business state</text>
+  <g font-size="15" fill="#e6eef8">
+    <rect x="438" y="420" width="101" height="40" rx="12" fill="#172f50" stroke="#355b84"/><text x="488" y="445" text-anchor="middle">Fields</text>
+    <rect x="551" y="420" width="101" height="40" rx="12" fill="#172f50" stroke="#355b84"/><text x="601" y="445" text-anchor="middle">Relations</text>
+    <rect x="664" y="420" width="98" height="40" rx="12" fill="#172f50" stroke="#355b84"/><text x="713" y="445" text-anchor="middle">Version</text>
+  </g>
+  <text x="600" y="500" text-anchor="middle" font-size="14" fill="#8fa8c6">One mutation changes the underlying fact, not six copies.</text>
+
+  <rect x="92" y="168" width="76" height="28" rx="14" fill="#e9efff"/><text x="130" y="187" text-anchor="middle" font-size="12" font-weight="760" fill="#3b6097">VIEW</text>
+  <text x="92" y="232" font-size="25" font-weight="740" fill="#0f172a">Grid</text>
+  <g stroke="#b7c9df" fill="#f8fbff"><rect x="209" y="178" width="96" height="70" rx="8"/><path d="M209 201h96M209 224h96M241 178v70M273 178v70"/></g>
+  <text x="92" y="267" font-size="14" fill="#78869b">Rows + columns</text>
+
+  <rect x="887" y="168" width="76" height="28" rx="14" fill="#eaf9f3"/><text x="925" y="187" text-anchor="middle" font-size="12" font-weight="760" fill="#27765a">VIEW</text>
+  <text x="887" y="232" font-size="25" font-weight="740" fill="#0f172a">Kanban</text>
+  <g fill="#f7fbff" stroke="#c5d5e8"><rect x="1004" y="174" width="30" height="76" rx="7"/><rect x="1040" y="174" width="30" height="76" rx="7"/><rect x="1076" y="174" width="30" height="76" rx="7"/><rect x="1009" y="184" width="20" height="18" rx="4" fill="#e8efff"/><rect x="1045" y="207" width="20" height="22" rx="4" fill="#e6f8f0"/><rect x="1081" y="188" width="20" height="30" rx="4" fill="#fff2df"/></g>
+  <text x="887" y="267" font-size="14" fill="#78869b">State projection</text>
+
+  <rect x="67" y="338" width="76" height="28" rx="14" fill="#f2edff"/><text x="105" y="357" text-anchor="middle" font-size="12" font-weight="760" fill="#6546a9">VIEW</text>
+  <text x="67" y="402" font-size="25" font-weight="740" fill="#0f172a">Gantt</text>
+  <g fill="#eef4ff"><rect x="180" y="346" width="91" height="12" rx="6"/><rect x="205" y="372" width="67" height="12" rx="6" fill="#dff6ec"/><rect x="164" y="398" width="82" height="12" rx="6" fill="#eee7ff"/><path d="M156 333v91" stroke="#d4dfed" stroke-width="2"/></g>
+  <text x="67" y="437" font-size="14" fill="#78869b">Dates + dependencies</text>
+
+  <rect x="912" y="338" width="76" height="28" rx="14" fill="#fff3df"/><text x="950" y="357" text-anchor="middle" font-size="12" font-weight="760" fill="#9a6218">VIEW</text>
+  <text x="912" y="402" font-size="25" font-weight="740" fill="#0f172a">Calendar</text>
+  <g stroke="#cbd9e9" fill="#f9fbfe"><rect x="1030" y="340" width="92" height="76" rx="9"/><path d="M1030 362h92M1053 362v54M1076 362v54M1099 362v54M1030 380h92M1030 398h92"/><circle cx="1087" cy="389" r="6" fill="#62cba1" stroke="none"/></g>
+  <text x="912" y="437" font-size="14" fill="#78869b">Time projection</text>
+
+  <rect x="92" y="508" width="76" height="28" rx="14" fill="#eaf6ff"/><text x="130" y="527" text-anchor="middle" font-size="12" font-weight="760" fill="#31678f">VIEW</text>
+  <text x="92" y="572" font-size="25" font-weight="740" fill="#0f172a">Dashboard</text>
+  <g fill="#eef4ff"><rect x="205" y="512" width="96" height="78" rx="10" stroke="#c6d7ea"/><rect x="219" y="558" width="13" height="20" rx="3" fill="#7da7ff"/><rect x="240" y="542" width="13" height="36" rx="3" fill="#69c8a0"/><rect x="261" y="530" width="13" height="48" rx="3" fill="#a88cf4"/><rect x="282" y="548" width="8" height="30" rx="3" fill="#f1b463"/></g>
+  <text x="92" y="607" font-size="14" fill="#78869b">Aggregated facts</text>
+
+  <rect x="887" y="508" width="84" height="28" rx="14" fill="#e8efff"/><text x="929" y="527" text-anchor="middle" font-size="12" font-weight="760" fill="#385f9f">ACTOR</text>
+  <text x="887" y="572" font-size="25" font-weight="740" fill="#0f172a">Agent</text>
+  <circle cx="1059" cy="546" r="37" fill="#152846"/><circle cx="1047" cy="541" r="5" fill="#9fc9ff"/><circle cx="1071" cy="541" r="5" fill="#9fc9ff"/><path d="M1046 560c9 8 18 8 27 0" fill="none" stroke="#61d5a5" stroke-width="3" stroke-linecap="round"/>
+  <text x="887" y="607" font-size="14" fill="#78869b">Query + mutate facts</text>
+
+  <rect x="251" y="678" width="698" height="42" rx="21" fill="#eef8f4" stroke="#c8e5d8"/>
+  <text x="600" y="704" text-anchor="middle" font-size="15" font-weight="700" fill="#285e4c">Different experiences should not create different versions of reality.</text>
+</svg>
