@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Intent to validated action</title>
+  <desc id="desc">A five-stage path from natural-language intent through schema, records and relations, permissions and validation, to an auditable action.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#162744"/><stop offset="1" stop-color="#0d172b"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9fbf4"/><stop offset="1" stop-color="#e8f5ff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="720" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">Intent → Validated Action</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">An agent can act reliably only after language becomes explicit business structure.</text>
+
+  <g stroke="#cad8eb" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M256 355H302"/><path d="M474 355H520"/><path d="M692 355H738"/><path d="M910 355H956"/>
+  </g>
+  <g fill="#6682aa">
+    <path d="M296 348l12 7-12 7z"/><path d="M514 348l12 7-12 7z"/><path d="M732 348l12 7-12 7z"/><path d="M950 348l12 7-12 7z"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="182" width="192" height="346" rx="26" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="282" y="182" width="192" height="346" rx="26" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="500" y="182" width="192" height="346" rx="26" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="718" y="182" width="192" height="346" rx="26" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="936" y="182" width="200" height="346" rx="26" fill="url(#dark)" stroke="#294266"/>
+  </g>
+
+  <rect x="86" y="207" width="72" height="28" rx="14" fill="#e9efff"/><text x="122" y="226" text-anchor="middle" font-size="13" font-weight="760" fill="#385f9f">01</text>
+  <text x="86" y="276" font-size="25" font-weight="740" fill="#0f172a">Intent</text>
+  <text x="86" y="310" font-size="16" fill="#637089">Natural language</text>
+  <rect x="86" y="346" width="148" height="90" rx="16" fill="#f7faff" stroke="#dce6f3"/>
+  <text x="103" y="374" font-size="15" fill="#47566f">“Find late,</text><text x="103" y="398" font-size="15" fill="#47566f">high-priority,</text><text x="103" y="422" font-size="15" fill="#47566f">unassigned work.”</text>
+  <text x="86" y="482" font-size="13" fill="#8491a5">Goal · scope · time</text>
+
+  <rect x="304" y="207" width="72" height="28" rx="14" fill="#eaf9f3"/><text x="340" y="226" text-anchor="middle" font-size="13" font-weight="760" fill="#27765a">02</text>
+  <text x="304" y="276" font-size="25" font-weight="740" fill="#0f172a">Schema</text>
+  <text x="304" y="310" font-size="16" fill="#637089">Known semantics</text>
+  <g font-size="14" fill="#40516b">
+    <rect x="304" y="343" width="148" height="34" rx="10" fill="#f8fbff" stroke="#dce6f3"/><text x="318" y="365">priority · select</text>
+    <rect x="304" y="386" width="148" height="34" rx="10" fill="#f8fbff" stroke="#dce6f3"/><text x="318" y="408">due_date · date</text>
+    <rect x="304" y="429" width="148" height="34" rx="10" fill="#f8fbff" stroke="#dce6f3"/><text x="318" y="451">assignee · member</text>
+  </g>
+  <text x="304" y="492" font-size="13" fill="#8491a5">Field type · rules</text>
+
+  <rect x="522" y="207" width="72" height="28" rx="14" fill="#f2edff"/><text x="558" y="226" text-anchor="middle" font-size="13" font-weight="760" fill="#6546a9">03</text>
+  <text x="522" y="276" font-size="25" font-weight="740" fill="#0f172a">Objects</text>
+  <text x="522" y="310" font-size="16" fill="#637089">Records + relations</text>
+  <circle cx="558" cy="385" r="31" fill="#f4f0ff" stroke="#cfc2f5"/><text x="558" y="390" text-anchor="middle" font-size="13" font-weight="700" fill="#62479b">Task</text>
+  <circle cx="638" cy="355" r="26" fill="#eef7ff" stroke="#bfd8f4"/><text x="638" y="360" text-anchor="middle" font-size="12" font-weight="700" fill="#3b6597">Project</text>
+  <circle cx="638" cy="430" r="26" fill="#eefaf5" stroke="#bee4d2"/><text x="638" y="435" text-anchor="middle" font-size="12" font-weight="700" fill="#34775c">Member</text>
+  <path d="M586 374l28-11M585 400l29 20" stroke="#9aaec8" stroke-width="3"/>
+  <text x="522" y="492" font-size="13" fill="#8491a5">ID · relation · version</text>
+
+  <rect x="740" y="207" width="72" height="28" rx="14" fill="#fff3df"/><text x="776" y="226" text-anchor="middle" font-size="13" font-weight="760" fill="#9a6218">04</text>
+  <text x="740" y="276" font-size="25" font-weight="740" fill="#0f172a">Guardrails</text>
+  <text x="740" y="310" font-size="16" fill="#637089">Before mutation</text>
+  <g font-size="14" fill="#46566c">
+    <rect x="740" y="345" width="148" height="36" rx="10" fill="#fffaf1" stroke="#f0d9ae"/><text x="754" y="368">Permission</text>
+    <rect x="740" y="391" width="148" height="36" rx="10" fill="#fffaf1" stroke="#f0d9ae"/><text x="754" y="414">Validation</text>
+    <rect x="740" y="437" width="148" height="36" rx="10" fill="#fffaf1" stroke="#f0d9ae"/><text x="754" y="460">Current version</text>
+  </g>
+  <text x="740" y="502" font-size="13" fill="#8491a5">Read + write boundary</text>
+
+  <rect x="960" y="207" width="72" height="28" rx="14" fill="#294261"/><text x="996" y="226" text-anchor="middle" font-size="13" font-weight="760" fill="#b9d9ff">05</text>
+  <text x="960" y="276" font-size="25" font-weight="740" fill="#fff">Action</text>
+  <text x="960" y="310" font-size="16" fill="#b9c9dd">Apply + audit</text>
+  <rect x="960" y="346" width="152" height="116" rx="18" fill="#152846" stroke="#436b9b"/>
+  <circle cx="986" cy="374" r="8" fill="#61d5a5"/><text x="1004" y="380" font-size="14" fill="#e8f1fb">Structured plan</text>
+  <circle cx="986" cy="405" r="8" fill="#61d5a5"/><text x="1004" y="411" font-size="14" fill="#e8f1fb">Validated write</text>
+  <circle cx="986" cy="436" r="8" fill="#61d5a5"/><text x="1004" y="442" font-size="14" fill="#e8f1fb">Change history</text>
+  <text x="960" y="502" font-size="13" fill="#8fa8c6">Traceable outcome</text>
+
+  <rect x="238" y="580" width="724" height="72" rx="22" fill="url(#green)" stroke="#c7e6d8"/>
+  <text x="600" y="612" text-anchor="middle" font-size="18" font-weight="720" fill="#164f3d">Language is flexible. Execution must become explicit.</text>
+  <text x="600" y="638" text-anchor="middle" font-size="15" fill="#4d6d63">The durable layer is the business contract between the model and the data.</text>
+</svg>
