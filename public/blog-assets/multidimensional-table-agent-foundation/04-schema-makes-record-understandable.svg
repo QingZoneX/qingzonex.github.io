@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Schema makes a record understandable</title>
+  <desc id="desc">A task schema with typed fields and record metadata becomes explicit business semantics that an agent can use to identify priority, sort by date, filter by status, and update records safely.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b293d"/><stop offset="1" stop-color="#111b2b"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6aa6ff"/><stop offset="1" stop-color="#4e7dff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#09111f" flood-opacity=".28"/></filter>
+  </defs>
+
+  <rect width="1200" height="720" rx="34" fill="url(#bg)"/>
+  <text x="66" y="72" font-size="38" font-weight="780" fill="#f5f8ff">Schema makes a record understandable</text>
+  <text x="66" y="108" font-size="18" fill="#a9b8ce">Typed fields turn a row from loose values into a business object an agent can reason about.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="62" y="148" width="470" height="500" rx="28" fill="#22334b" stroke="#3a4f6e"/>
+    <rect x="680" y="148" width="458" height="500" rx="28" fill="#22334b" stroke="#3a4f6e"/>
+  </g>
+
+  <rect x="88" y="176" width="50" height="50" rx="14" fill="#294f7d"/>
+  <path d="M100 190h26v22h-26zM100 197h26M109 190v22M118 190v22" fill="none" stroke="#8fc1ff" stroke-width="2.4"/>
+  <text x="154" y="208" font-size="27" font-weight="740" fill="#f6f9ff">Table: <tspan fill="#79adff">Tasks</tspan></text>
+
+  <g font-size="16" fill="#dfe8f6">
+    <rect x="88" y="246" width="418" height="54" rx="14" fill="#293c56" stroke="#3c536f"/>
+    <text x="108" y="279" font-weight="650">priority</text><rect x="338" y="258" width="128" height="30" rx="15" fill="#3c4670"/><text x="402" y="279" text-anchor="middle" fill="#e5e7ff">select</text>
+
+    <rect x="88" y="310" width="418" height="54" rx="14" fill="#293c56" stroke="#3c536f"/>
+    <text x="108" y="343" font-weight="650">status</text><rect x="338" y="322" width="128" height="30" rx="15" fill="#3c4670"/><text x="402" y="343" text-anchor="middle" fill="#e5e7ff">select</text>
+
+    <rect x="88" y="374" width="418" height="54" rx="14" fill="#293c56" stroke="#3c536f"/>
+    <text x="108" y="407" font-weight="650">assignee</text><rect x="302" y="386" width="164" height="30" rx="15" fill="#31584f"/><text x="384" y="407" text-anchor="middle" fill="#dff7ec">member / relation</text>
+
+    <rect x="88" y="438" width="418" height="54" rx="14" fill="#293c56" stroke="#3c536f"/>
+    <text x="108" y="471" font-weight="650">due_date</text><rect x="356" y="450" width="110" height="30" rx="15" fill="#65543d"/><text x="411" y="471" text-anchor="middle" fill="#fff1d9">date</text>
+
+    <rect x="88" y="502" width="418" height="54" rx="14" fill="#293c56" stroke="#3c536f"/>
+    <text x="108" y="535" font-weight="650">project</text><rect x="338" y="514" width="128" height="30" rx="15" fill="#33566d"/><text x="402" y="535" text-anchor="middle" fill="#dff4ff">relation</text>
+  </g>
+
+  <text x="88" y="596" font-size="17" font-weight="720" fill="#f0f5fd">Record metadata</text>
+  <g font-size="15" fill="#dce6f4">
+    <rect x="88" y="612" width="198" height="28" rx="14" fill="#293c56"/><text x="104" y="631">id</text><text x="270" y="631" text-anchor="end" fill="#a8c9ff">stable identity</text>
+    <rect x="300" y="612" width="206" height="28" rx="14" fill="#293c56"/><text x="316" y="631">version</text><text x="492" y="631" text-anchor="end" fill="#a8c9ff">optimistic concurrency</text>
+  </g>
+
+  <path d="M558 378h78" stroke="url(#blue)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M624 348l40 30-40 30z" fill="#5b96ff"/>
+  <text x="610" y="438" text-anchor="middle" font-size="16" font-weight="700" fill="#8fbaff">business</text>
+  <text x="610" y="460" text-anchor="middle" font-size="16" font-weight="700" fill="#8fbaff">semantics</text>
+
+  <rect x="706" y="176" width="50" height="50" rx="14" fill="#294f7d"/>
+  <circle cx="731" cy="199" r="12" fill="#d9ebff"/><circle cx="726" cy="198" r="2.3" fill="#2c5b91"/><circle cx="736" cy="198" r="2.3" fill="#2c5b91"/><path d="M725 205h12" stroke="#2c5b91" stroke-width="2" stroke-linecap="round"/>
+  <text x="772" y="208" font-size="27" font-weight="740" fill="#f6f9ff"><tspan fill="#79adff">Agent</tspan> can act precisely</text>
+
+  <g>
+    <rect x="706" y="252" width="406" height="76" rx="18" fill="#293c56" stroke="#3c536f"/>
+    <circle cx="742" cy="290" r="20" fill="#70444d"/><circle cx="742" cy="290" r="9" fill="none" stroke="#ff8e91" stroke-width="4"/>
+    <text x="778" y="284" font-size="18" font-weight="720" fill="#f4f7fc">identify high-priority tasks</text>
+    <text x="778" y="307" font-size="14" fill="#a8b8ce">Find and focus on what matters</text>
+
+    <rect x="706" y="342" width="406" height="76" rx="18" fill="#293c56" stroke="#3c536f"/>
+    <rect x="722" y="360" width="40" height="40" rx="12" fill="#30558f"/>
+    <path d="M731 371h15M731 380h10M731 389h7M752 369v20M746 384l6 6 6-6" fill="none" stroke="#8ec1ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="778" y="374" font-size="18" font-weight="720" fill="#f4f7fc">sort by due date</text>
+    <text x="778" y="397" font-size="14" fill="#a8b8ce">Understand temporal priority</text>
+
+    <rect x="706" y="432" width="406" height="76" rx="18" fill="#293c56" stroke="#3c536f"/>
+    <rect x="722" y="450" width="40" height="40" rx="12" fill="#315b50"/>
+    <path d="M731 462h22l-8 9v9l-6 4v-13z" fill="#76d8ad"/>
+    <text x="778" y="464" font-size="18" font-weight="720" fill="#f4f7fc">filter by status</text>
+    <text x="778" y="487" font-size="14" fill="#a8b8ce">Narrow down relevant records</text>
+
+    <rect x="706" y="522" width="406" height="76" rx="18" fill="#293c56" stroke="#3c536f"/>
+    <rect x="722" y="540" width="40" height="40" rx="12" fill="#51467b"/>
+    <path d="M732 570l4-12 11-11 6 6-11 11zM746 548l6 6" fill="none" stroke="#c8afff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="778" y="554" font-size="18" font-weight="720" fill="#f4f7fc">update records safely</text>
+    <text x="778" y="577" font-size="14" fill="#a8b8ce">Make changes with correct context</text>
+  </g>
+</svg>

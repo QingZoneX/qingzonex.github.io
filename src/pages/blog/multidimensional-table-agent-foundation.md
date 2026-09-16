@@ -62,20 +62,12 @@ sourcePath: "src/pages/blog/multidimensional-table-agent-foundation.md"
 
 这几个看起来很普通的设计，对 Agent 很重要。
 
-假设用户说“把高优先级任务往前排”。如果系统只有一段任务描述，模型需要先猜什么叫优先级、日期在哪里、哪一段文字代表状态。进入结构化模型之后，问题会变成：
+假设用户说“把高优先级任务往前排”。如果系统只有一段任务描述，模型需要先猜什么叫优先级、日期在哪里、哪一段文字代表状态。进入结构化模型之后，系统面对的已经不是模糊文本，而是一组明确的业务对象和字段语义：
 
-```text
-Table: Tasks
-Fields:
-  priority   -> select
-  status     -> select
-  assignee   -> member / relation
-  due_date   -> date
-  project    -> relation
-Record:
-  id         -> stable identity
-  version    -> optimistic concurrency
-```
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/multidimensional-table-agent-foundation/04-schema-makes-record-understandable.svg" alt="QTable 的 Schema 把字段定义和记录元数据转换成 Agent 可以稳定使用的业务语义" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">Schema 把 priority、status、assignee、due_date 等字段语义，以及 id / version 这类记录约束，变成 Agent 可以稳定使用的业务契约。</figcaption>
+</figure>
 
 这时，AI 的职责从“猜这段文字是什么意思”，变成“在已经定义的业务语义里做判断”。两者的可靠性不是一个量级。
 
