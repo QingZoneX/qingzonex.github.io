@@ -62,20 +62,12 @@ sourcePath: "src/pages/zh-tw/blog/multidimensional-table-agent-foundation.md"
 
 這幾個看起來很普通的設計，對 Agent 很重要。
 
-假設使用者說「把高優先級任務往前排」。如果系統只有一段任務描述，模型需要先猜什麼叫優先級、日期在哪裡、哪一段文字代表狀態。進入結構化模型之後，問題會變成：
+假設使用者說「把高優先級任務往前排」。如果系統只有一段任務描述，模型需要先猜什麼叫優先級、日期在哪裡、哪一段文字代表狀態。進入結構化模型之後，系統面對的已經不是模糊文字，而是一組明確的業務物件和欄位語義：
 
-```text
-Table: Tasks
-Fields:
-  priority   -> select
-  status     -> select
-  assignee   -> member / relation
-  due_date   -> date
-  project    -> relation
-Record:
-  id         -> stable identity
-  version    -> optimistic concurrency
-```
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/multidimensional-table-agent-foundation/04-schema-makes-record-understandable.svg" alt="QTable 的 Schema 把欄位定義與紀錄中繼資料轉換成 Agent 可以穩定使用的業務語義" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">Schema 把 priority、status、assignee、due_date 等欄位語義，以及 id / version 這類紀錄約束，變成 Agent 可以穩定使用的業務契約。</figcaption>
+</figure>
 
 這時，AI 的職責從「猜這段文字是什麼意思」，變成「在已經定義的業務語義裡做判斷」。兩者的可靠性不是一個量級。
 
