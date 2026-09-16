@@ -62,20 +62,12 @@ A record can hold business values in JSON, but the field definitions are not imp
 
 Those details are mundane database design, but they matter a great deal to an agent.
 
-Suppose the user says, “pull the high-priority work forward.” With only a block of task prose, the model first has to guess where priority is expressed, how dates are represented, and which phrase means status. With a structured work model, the problem becomes closer to this:
+Suppose the user says, “pull the high-priority work forward.” With only a block of task prose, the model first has to guess where priority is expressed, how dates are represented, and which phrase means status. With a structured work model, the system is no longer dealing with ambiguous prose. It has explicit business objects and typed semantics:
 
-```text
-Table: Tasks
-Fields:
-  priority   -> select
-  status     -> select
-  assignee   -> member / relation
-  due_date   -> date
-  project    -> relation
-Record:
-  id         -> stable identity
-  version    -> optimistic concurrency
-```
+<figure style="margin:2.5rem 0 3rem">
+  <img src="/blog-assets/multidimensional-table-agent-foundation/04-schema-makes-record-understandable.svg" alt="QTable schema turning field definitions and record metadata into business semantics an agent can use reliably" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 48px rgba(15,23,42,.14)" />
+  <figcaption style="margin-top:.85rem;text-align:center;color:var(--text-muted);font-size:.9rem;line-height:1.6">Schema turns field semantics such as priority, status, assignee, and due date—plus record constraints such as id and version—into a business contract the agent can reason against.</figcaption>
+</figure>
 
 The model is no longer inventing the semantics of the system from scratch. It is reasoning inside semantics the product already knows.
 
