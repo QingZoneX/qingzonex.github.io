@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">QTable Context Engine from request to runtime</title>
+  <desc id="desc">A request is converted into ContextBuildInput, enriched by the Context Builder from identity, workspace, table, view, conversation, session, workflow and agent sources, then packaged as AgentContext and injected into the tool runtime.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9fbff"/><stop offset="1" stop-color="#edf4ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#182c4a"/><stop offset="1" stop-color="#0c172b"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".11"/></filter>
+  </defs>
+  <rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">Context is built before the agent reasons</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">QTable turns request coordinates into a structured AgentContext instead of dumping unrelated data into a prompt.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="170" width="250" height="510" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="370" y="170" width="260" height="510" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="690" y="170" width="450" height="510" rx="28" fill="url(#dark)" stroke="#315274"/>
+  </g>
+
+  <text x="88" y="210" font-size="14" font-weight="760" fill="#4d74b9">REQUEST COORDINATES</text>
+  <g font-size="15" fill="#42526a">
+    <rect x="88" y="240" width="194" height="44" rx="12" fill="#f7faff" stroke="#dce6f2"/><text x="108" y="267">user + workspace</text>
+    <rect x="88" y="296" width="194" height="44" rx="12" fill="#f7faff" stroke="#dce6f2"/><text x="108" y="323">table + view</text>
+    <rect x="88" y="352" width="194" height="44" rx="12" fill="#f7faff" stroke="#dce6f2"/><text x="108" y="379">project + task</text>
+    <rect x="88" y="408" width="194" height="44" rx="12" fill="#f7faff" stroke="#dce6f2"/><text x="108" y="435">team + organization</text>
+    <rect x="88" y="464" width="194" height="44" rx="12" fill="#f7faff" stroke="#dce6f2"/><text x="108" y="491">session + conversation</text>
+    <rect x="88" y="520" width="194" height="44" rx="12" fill="#f7faff" stroke="#dce6f2"/><text x="108" y="547">workflow + agent</text>
+    <rect x="88" y="576" width="194" height="44" rx="12" fill="#eef8f4" stroke="#c8e4d7"/><text x="108" y="603" fill="#2d6b54">current message</text>
+  </g>
+
+  <path d="M314 420H362" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M354 412l14 8-14 8z" fill="#6c88ad"/>
+
+  <text x="398" y="210" font-size="14" font-weight="760" fill="#4d74b9">CONTEXT BUILDER</text>
+  <text x="398" y="250" font-size="26" font-weight="750" fill="#0f172a">Resolve + constrain</text>
+  <g font-size="14" fill="#4c5d73">
+    <rect x="398" y="278" width="204" height="52" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="418" y="309">identity / membership</text>
+    <rect x="398" y="342" width="204" height="52" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="418" y="373">table permission / row policy</text>
+    <rect x="398" y="406" width="204" height="52" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="418" y="437">field + view metadata</text>
+    <rect x="398" y="470" width="204" height="52" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="418" y="501">conversation compression</text>
+    <rect x="398" y="534" width="204" height="52" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="418" y="565">session + cache snapshot</text>
+  </g>
+  <text x="398" y="626" font-size="13" fill="#718096">Output is structured, inspectable context.</text>
+
+  <path d="M634 420H682" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M674 412l14 8-14 8z" fill="#6c88ad"/>
+
+  <text x="720" y="210" font-size="14" font-weight="760" fill="#bcdcff">AGENT CONTEXT → RUNTIME</text>
+  <text x="720" y="250" font-size="28" font-weight="760" fill="#fff">AgentContext</text>
+  <g font-size="14">
+    <rect x="720" y="280" width="184" height="58" rx="15" fill="#152844" stroke="#3c6189"/><text x="740" y="304" fill="#eaf3fb" font-weight="700">Scope</text><text x="740" y="325" fill="#b8cce1">scopeKey + identities</text>
+    <rect x="924" y="280" width="184" height="58" rx="15" fill="#152844" stroke="#3c6189"/><text x="944" y="304" fill="#eaf3fb" font-weight="700">Business shape</text><text x="944" y="325" fill="#b8cce1">table + view metadata</text>
+    <rect x="720" y="354" width="184" height="58" rx="15" fill="#152844" stroke="#3c6189"/><text x="740" y="378" fill="#eaf3fb" font-weight="700">Memory</text><text x="740" y="399" fill="#b8cce1">session + conversation</text>
+    <rect x="924" y="354" width="184" height="58" rx="15" fill="#152844" stroke="#3c6189"/><text x="944" y="378" fill="#eaf3fb" font-weight="700">Execution</text><text x="944" y="399" fill="#b8cce1">workflow + agent stack</text>
+    <rect x="720" y="428" width="388" height="62" rx="15" fill="#24466b"/><text x="740" y="453" fill="#fff" font-weight="700">Summary + Context Window</text><text x="740" y="475" fill="#c6daee">compact hints for the reasoning path</text>
+    <rect x="720" y="510" width="388" height="76" rx="16" fill="#0f2038" stroke="#46698f"/><text x="740" y="537" fill="#fff" font-weight="700">Context Injector</text><text x="740" y="560" fill="#bfd3e7">ToolRouterRequest / ToolContextState</text><text x="740" y="580" fill="#bfd3e7">contextSummary + contextSnapshot</text>
+  </g>
+  <text x="720" y="626" font-size="14" font-weight="700" fill="#72ddb4">Tool Router / Skill Runtime / Agent Workflow</text>
+
+  <rect x="155" y="724" width="890" height="58" rx="22" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="759" text-anchor="middle" font-size="17" font-weight="720" fill="#25364e">Context is a business coordinate system: who, where, what scope, what history, and which execution path.</text>
+</svg>
