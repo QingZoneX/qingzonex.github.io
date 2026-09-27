@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">From one user goal to a multi tool chain</title>
+  <desc id="desc">A user goal is planned into a structured ToolChainPlan containing steps, dependencies, retries, rollback policies and context placeholders, then executed through registered QTable skills.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9fbff"/><stop offset="1" stop-color="#edf4ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#182d4b"/><stop offset="1" stop-color="#0d182c"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">A goal is not a tool call</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">QTable turns a user request into an explicit execution contract before it reaches the Skill runtime.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="180" width="270" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="395" y="150" width="410" height="530" rx="30" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="870" y="180" width="270" height="470" rx="28" fill="url(#dark)" stroke="#355779"/>
+  </g>
+
+  <text x="88" y="220" font-size="14" font-weight="760" fill="#4d74b9">USER GOAL</text>
+  <text x="88" y="266" font-size="26" font-weight="750" fill="#0f172a">“Plan an approval system</text>
+  <text x="88" y="298" font-size="26" font-weight="750" fill="#0f172a">and put the tasks in QTable.”</text>
+  <rect x="88" y="342" width="214" height="74" rx="16" fill="#f7faff" stroke="#dce6f2"/>
+  <text x="108" y="369" font-size="14" font-weight="700" fill="#40546e">Context</text>
+  <text x="108" y="392" font-size="13" fill="#718096">workspace · table · project</text>
+  <text x="108" y="411" font-size="13" fill="#718096">dryRun · confirmed · locale</text>
+  <text x="88" y="470" font-size="14" fill="#66758a">One sentence can imply several</text>
+  <text x="88" y="492" font-size="14" fill="#66758a">reads, transformations, and writes.</text>
+
+  <path d="M336 405H386" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M378 397l14 8-14 8z" fill="#6c88ad"/>
+
+  <text x="425" y="194" font-size="14" font-weight="760" fill="#4d74b9">TOOLCHAINPLAN</text>
+  <text x="425" y="236" font-size="27" font-weight="760" fill="#0f172a">Execution contract</text>
+  <g font-size="13">
+    <rect x="425" y="270" width="350" height="60" rx="14" fill="#eef4ff" stroke="#cfdcf0"/>
+    <text x="447" y="296" font-weight="700" fill="#345b94">split_task</text>
+    <text x="447" y="317" fill="#64748b">qtable.task.split · no dependencies</text>
+
+    <rect x="425" y="345" width="168" height="76" rx="14" fill="#f8fbff" stroke="#dce6f2"/>
+    <text x="445" y="371" font-weight="700" fill="#40546e">estimate</text>
+    <text x="445" y="392" fill="#718096">dependsOn: split</text>
+    <text x="445" y="411" fill="#718096">retry + timeout</text>
+
+    <rect x="607" y="345" width="168" height="76" rx="14" fill="#f8fbff" stroke="#dce6f2"/>
+    <text x="627" y="371" font-weight="700" fill="#40546e">gantt</text>
+    <text x="627" y="392" fill="#718096">dependsOn: split</text>
+    <text x="627" y="411" fill="#718096">saveResultAs</text>
+
+    <rect x="425" y="438" width="168" height="76" rx="14" fill="#fff9ef" stroke="#eed7b4"/>
+    <text x="445" y="464" font-weight="700" fill="#76551f">describe_schema</text>
+    <text x="445" y="485" fill="#846e4e">read before write</text>
+    <text x="445" y="504" fill="#846e4e">tableId from context</text>
+
+    <rect x="607" y="438" width="168" height="76" rx="14" fill="#eef8f4" stroke="#c8e3d6"/>
+    <text x="627" y="464" font-weight="700" fill="#2c664f">create_records</text>
+    <text x="627" y="485" fill="#557466">depends on prior output</text>
+    <text x="627" y="504" fill="#557466">rollback policy</text>
+  </g>
+  <rect x="425" y="542" width="350" height="78" rx="16" fill="#f6f8fb" stroke="#dce4ee"/>
+  <text x="445" y="568" font-size="13" font-weight="700" fill="#4a5c73">Arguments may reference:</text>
+  <text x="445" y="592" font-size="13" fill="#6b7890">context.* · steps.&lt;id&gt;.output.* · memory.*</text>
+
+  <path d="M811 405H861" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M853 397l14 8-14 8z" fill="#6c88ad"/>
+
+  <text x="898" y="220" font-size="14" font-weight="760" fill="#bcdcff">EXECUTION LAYER</text>
+  <text x="898" y="264" font-size="25" font-weight="750" fill="#fff">Registered Skills</text>
+  <g font-size="14" fill="#e8f2fb">
+    <rect x="898" y="300" width="214" height="48" rx="13" fill="#172d4b" stroke="#406589"/><text x="918" y="330">Tool Adapter Registry</text>
+    <rect x="898" y="362" width="214" height="48" rx="13" fill="#172d4b" stroke="#406589"/><text x="918" y="392">Tool Executor</text>
+    <rect x="898" y="424" width="214" height="48" rx="13" fill="#172d4b" stroke="#406589"/><text x="918" y="454">Skill Runtime</text>
+    <rect x="898" y="486" width="214" height="48" rx="13" fill="#24476c"/><text x="918" y="516" font-weight="700">QTable domain services</text>
+  </g>
+  <text x="898" y="586" font-size="13" fill="#b8cce1">Planner may be AI-generated</text>
+  <text x="898" y="608" font-size="13" fill="#b8cce1">or fall back to a known chain.</text>
+
+  <rect x="154" y="720" width="892" height="62" rx="22" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="757" text-anchor="middle" font-size="17" font-weight="730" fill="#25364e">The runtime should execute an explicit plan, not improvise side effects one function call at a time.</text>
+</svg>
