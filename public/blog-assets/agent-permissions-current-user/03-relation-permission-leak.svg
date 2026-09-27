@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Row permissions must also protect relation targets</title>
+  <desc id="desc">A visible source record may contain relations to visible and hidden target records. QTable sanitizes inaccessible relation identifiers on reads and rejects writes to hidden relation targets without revealing whether the target exists.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafcff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a2e4a"/><stop offset="1" stop-color="#0d182b"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">A hidden record can leak through a visible relation</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">Filtering source rows is not enough; linked record IDs must obey the target table's permissions too.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="176" width="300" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="450" y="176" width="300" height="470" rx="28" fill="url(#dark)" stroke="#355979"/>
+    <rect x="840" y="176" width="300" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+  </g>
+
+  <text x="90" y="216" font-size="14" font-weight="760" fill="#4d74b9">VISIBLE SOURCE ROW</text>
+  <text x="90" y="258" font-size="24" font-weight="750" fill="#0f172a">Task A</text>
+  <rect x="90" y="294" width="240" height="64" rx="14" fill="#f7faff" stroke="#dce6f2"/>
+  <text x="110" y="322" font-size="13" fill="#56667c">relation:</text>
+  <text x="110" y="344" font-size="14" font-weight="700" fill="#3e5876">[target-alice, target-bob]</text>
+  <text x="90" y="403" font-size="13" fill="#66758a">The source row itself is readable.</text>
+  <text x="90" y="425" font-size="13" fill="#66758a">That does not make every linked row readable.</text>
+
+  <path d="M368 410H442" stroke="#afc2da" stroke-width="4"/><path d="M434 402l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="480" y="216" font-size="14" font-weight="760" fill="#bcdcff">RELATION SANITIZER</text>
+  <text x="480" y="258" font-size="24" font-weight="750" fill="#fff">Check target scope</text>
+  <g font-size="13">
+    <rect x="480" y="294" width="240" height="72" rx="15" fill="#172d4b" stroke="#406589"/>
+    <text x="500" y="321" font-weight="700" fill="#fff">target-alice</text>
+    <text x="500" y="344" fill="#bdd1e6">target row visible → keep</text>
+    <rect x="480" y="382" width="240" height="72" rx="15" fill="#3b2530" stroke="#6f4352"/>
+    <text x="500" y="409" font-weight="700" fill="#fff">target-bob</text>
+    <text x="500" y="432" fill="#e1bdc7">target row hidden → remove ID</text>
+  </g>
+  <rect x="480" y="484" width="240" height="84" rx="15" fill="#24476c"/>
+  <text x="500" y="512" font-size="14" font-weight="700" fill="#fff">Read result</text>
+  <text x="500" y="537" font-size="13" fill="#c6daee">relation: [target-alice]</text>
+  <text x="500" y="558" font-size="13" fill="#c6daee">single hidden relation → null</text>
+
+  <path d="M758 410H832" stroke="#afc2da" stroke-width="4"/><path d="M824 402l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="870" y="216" font-size="14" font-weight="760" fill="#4d74b9">WRITE / PROBE DEFENSE</text>
+  <text x="870" y="258" font-size="24" font-weight="750" fill="#0f172a">Do not reveal hidden IDs</text>
+  <rect x="870" y="294" width="240" height="92" rx="15" fill="#fff4f4" stroke="#efc7c9"/>
+  <text x="890" y="322" font-size="14" font-weight="700" fill="#994148">Attempt to link hidden row</text>
+  <text x="890" y="347" font-size="13" fill="#85595d">target-bob</text>
+  <text x="890" y="369" font-size="13" fill="#85595d">→ reject</text>
+  <rect x="870" y="410" width="240" height="94" rx="15" fill="#f7faff" stroke="#dce6f2"/>
+  <text x="890" y="438" font-size="14" font-weight="700" fill="#455a72">Hidden and missing share error</text>
+  <text x="890" y="463" font-size="13" fill="#718096">“Record not found or no access”</text>
+  <text x="890" y="485" font-size="13" fill="#718096">so callers cannot enumerate secrets</text>
+
+  <rect x="170" y="708" width="860" height="68" rx="22" fill="#eef8f4" stroke="#c8e3d6"/>
+  <text x="600" y="748" text-anchor="middle" font-size="17" font-weight="730" fill="#285f4b">Permission boundaries must survive joins, relations, analytics, and AI context—not just direct row queries.</text>
+</svg>

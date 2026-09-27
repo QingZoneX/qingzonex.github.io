@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Agent authority stays bound to the authenticated user</title>
+  <desc id="desc">An authenticated request carries the user identity into RuntimeContext and SkillExecutionContext. Skill authorization then evaluates the current user's effective table permission and row visibility before a domain operation executes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafcff"/><stop offset="1" stop-color="#edf5ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19304f"/><stop offset="1" stop-color="#0d192d"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">The Agent does not get a second identity</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">The authenticated user's identity follows the request into every tool decision.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="176" width="250" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="365" y="176" width="250" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="670" y="176" width="470" height="470" rx="28" fill="url(#dark)" stroke="#355979"/>
+  </g>
+
+  <text x="88" y="216" font-size="14" font-weight="760" fill="#4d74b9">REQUEST IDENTITY</text>
+  <text x="88" y="260" font-size="24" font-weight="750" fill="#0f172a">Authenticated user</text>
+  <rect x="88" y="296" width="194" height="62" rx="14" fill="#eef4ff" stroke="#cfdbef"/>
+  <text x="108" y="322" font-size="13" font-weight="700" fill="#355d97">JWT / session</text>
+  <text x="108" y="345" font-size="14" fill="#526983">user_id = 42</text>
+  <text x="88" y="404" font-size="13" fill="#66758a">No hidden “agent admin” token.</text>
+  <text x="88" y="426" font-size="13" fill="#66758a">The runtime acts for this user.</text>
+
+  <path d="M318 410H357" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/><path d="M349 402l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="393" y="216" font-size="14" font-weight="760" fill="#4d74b9">RUNTIME CONTEXT</text>
+  <text x="393" y="260" font-size="24" font-weight="750" fill="#0f172a">Carry identity forward</text>
+  <g font-size="13" fill="#506178">
+    <rect x="393" y="296" width="194" height="54" rx="13" fill="#f8fbff" stroke="#dce6f2"/><text x="413" y="328">RuntimeContext.user_id</text>
+    <rect x="393" y="366" width="194" height="54" rx="13" fill="#f8fbff" stroke="#dce6f2"/><text x="413" y="398">SkillContext.user_id</text>
+    <rect x="393" y="436" width="194" height="54" rx="13" fill="#f8fbff" stroke="#dce6f2"/><text x="413" y="468">workspace / table scope</text>
+  </g>
+  <text x="393" y="540" font-size="13" fill="#66758a">Planner chooses a Tool.</text>
+  <text x="393" y="562" font-size="13" fill="#66758a">It does not choose a new identity.</text>
+
+  <path d="M623 410H662" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/><path d="M654 402l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="700" y="216" font-size="14" font-weight="760" fill="#bcdcff">AUTHORIZATION PATH</text>
+  <text x="700" y="258" font-size="25" font-weight="750" fill="#fff">Evaluate the same user's rights</text>
+  <g font-size="13">
+    <rect x="700" y="294" width="190" height="70" rx="15" fill="#172d4b" stroke="#406589"/>
+    <text x="720" y="320" font-weight="700" fill="#fff">Workspace / item</text>
+    <text x="720" y="343" fill="#bdd1e6">effective permission</text>
+
+    <rect x="920" y="294" width="190" height="70" rx="15" fill="#172d4b" stroke="#406589"/>
+    <text x="940" y="320" font-weight="700" fill="#fff">Row policy</text>
+    <text x="940" y="343" fill="#bdd1e6">visible records only</text>
+
+    <rect x="700" y="390" width="190" height="70" rx="15" fill="#172d4b" stroke="#406589"/>
+    <text x="720" y="416" font-weight="700" fill="#fff">Skill requirement</text>
+    <text x="720" y="439" fill="#bdd1e6">read / write target</text>
+
+    <rect x="920" y="390" width="190" height="70" rx="15" fill="#172d4b" stroke="#406589"/>
+    <text x="940" y="416" font-weight="700" fill="#fff">Domain service</text>
+    <text x="940" y="439" fill="#bdd1e6">current-state check</text>
+  </g>
+  <rect x="700" y="500" width="410" height="82" rx="16" fill="#24476c"/>
+  <text x="905" y="531" text-anchor="middle" font-size="15" font-weight="720" fill="#fff">Agent authority ≤ current user authority</text>
+  <text x="905" y="556" text-anchor="middle" font-size="13" fill="#c7daed">Tools may narrow capability; they must not amplify it.</text>
+
+  <rect x="170" y="708" width="860" height="66" rx="22" fill="#eef8f4" stroke="#c8e3d6"/>
+  <text x="600" y="747" text-anchor="middle" font-size="17" font-weight="730" fill="#285f4b">Being AI changes how an action is proposed—not who is authorized to perform it.</text>
+</svg>
