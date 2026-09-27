@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Observable and persistent tool-chain run</title>
+  <desc id="desc">Each tool-chain run stores run state, step state and event logs in PostgreSQL, emits lifecycle events over SSE, and caches a run snapshot in Redis for the hot path.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafcff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="13" stdDeviation="17" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="800" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">A chain should leave a timeline, not just a final answer</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">Run, step, and event state make long tool executions observable and debuggable.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="170" width="300" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="450" y="170" width="300" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="830" y="170" width="300" height="470" rx="28" fill="#13243e" stroke="#365777"/>
+  </g>
+
+  <text x="98" y="210" font-size="14" font-weight="760" fill="#4d74b9">POSTGRESQL</text>
+  <text x="98" y="252" font-size="24" font-weight="750" fill="#0f172a">Durable execution state</text>
+  <g font-size="13">
+    <rect x="98" y="284" width="244" height="72" rx="15" fill="#f8fbff" stroke="#dce6f2"/>
+    <text x="118" y="310" font-weight="700" fill="#455870">tool_chain_runs</text>
+    <text x="118" y="332" fill="#718096">plan · context · memory · result</text>
+    <text x="118" y="350" fill="#718096">status · traceId · pending confirmation</text>
+    <rect x="98" y="374" width="244" height="72" rx="15" fill="#f8fbff" stroke="#dce6f2"/>
+    <text x="118" y="400" font-weight="700" fill="#455870">tool_chain_step_runs</text>
+    <text x="118" y="422" fill="#718096">input · output · attempts</text>
+    <text x="118" y="440" fill="#718096">dependency · rollback snapshot</text>
+    <rect x="98" y="464" width="244" height="72" rx="15" fill="#eef8f4" stroke="#c8e3d6"/>
+    <text x="118" y="490" font-weight="700" fill="#2d674f">tool_chain_event_logs</text>
+    <text x="118" y="512" fill="#587568">event type · stepId · payload</text>
+    <text x="118" y="530" fill="#587568">traceId · timestamp</text>
+  </g>
+  <text x="98" y="582" font-size="13" fill="#718096">GET /api/tool-chains/runs/{id}</text>
+
+  <path d="M378 405H442" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M434 397l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="478" y="210" font-size="14" font-weight="760" fill="#4d74b9">LIFECYCLE EVENTS</text>
+  <text x="478" y="252" font-size="24" font-weight="750" fill="#0f172a">A run becomes a timeline</text>
+  <g font-size="13" fill="#506178">
+    <rect x="478" y="286" width="244" height="40" rx="11" fill="#f8fbff" stroke="#dce6f2"/><text x="496" y="311">planning_started</text>
+    <rect x="478" y="338" width="244" height="40" rx="11" fill="#f8fbff" stroke="#dce6f2"/><text x="496" y="363">planning_completed</text>
+    <rect x="478" y="390" width="244" height="40" rx="11" fill="#f8fbff" stroke="#dce6f2"/><text x="496" y="415">step_started / completed</text>
+    <rect x="478" y="442" width="244" height="40" rx="11" fill="#fff9ef" stroke="#ecd6b5"/><text x="496" y="467">step_retrying / waiting</text>
+    <rect x="478" y="494" width="244" height="40" rx="11" fill="#fff4f4" stroke="#efc7c9"/><text x="496" y="519">step_failed / rollback_*</text>
+    <rect x="478" y="546" width="244" height="40" rx="11" fill="#eef8f4" stroke="#c8e3d6"/><text x="496" y="571">run_completed / run_failed</text>
+  </g>
+
+  <path d="M758 405H822" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M814 397l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="858" y="210" font-size="14" font-weight="760" fill="#bcdcff">DELIVERY / HOT STATE</text>
+  <text x="858" y="252" font-size="24" font-weight="750" fill="#fff">See progress while it runs</text>
+  <rect x="858" y="290" width="244" height="86" rx="16" fill="#172d4b" stroke="#406589"/>
+  <text x="878" y="318" font-size="14" font-weight="700" fill="#fff">SSE stream</text>
+  <text x="878" y="341" font-size="13" fill="#bdd1e6">POST /api/tool-chains/stream</text>
+  <text x="878" y="360" font-size="13" fill="#bdd1e6">async queue emits each event</text>
+  <rect x="858" y="396" width="244" height="86" rx="16" fill="#172d4b" stroke="#406589"/>
+  <text x="878" y="424" font-size="14" font-weight="700" fill="#fff">Redis snapshot</text>
+  <text x="878" y="447" font-size="13" fill="#bdd1e6">tool-chain-run:{runId}</text>
+  <text x="878" y="466" font-size="13" fill="#bdd1e6">current TTL: 3600 seconds</text>
+  <rect x="858" y="502" width="244" height="84" rx="16" fill="#24476c"/>
+  <text x="878" y="530" font-size="14" font-weight="700" fill="#fff">traceId ties it together</text>
+  <text x="878" y="553" font-size="13" fill="#c6daee">run → step → event</text>
+  <text x="878" y="572" font-size="13" fill="#c6daee">useful for audit and debugging</text>
+
+  <rect x="170" y="690" width="860" height="62" rx="22" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="727" text-anchor="middle" font-size="17" font-weight="730" fill="#25364e">Long-running automation becomes supportable only when “what happened?” can be answered after the fact.</text>
+</svg>
