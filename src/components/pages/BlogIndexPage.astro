@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '04',
+        title: 'Context 不是把更多数据塞进 Prompt：QTable 的 Context Engine 如何建立真实业务上下文',
+        description: 'Agent 真正进入业务系统后，关键不是模型能记住多少，而是系统如何明确当前用户、Workspace、Table、View、Conversation 与权限边界。这篇结合 QTable 当前 Context Engine，拆解 Scope、对话压缩、Cache / Session / Snapshot，以及上下文如何注入 Agent Runtime。',
+        date: '2026 年 9 月 27 日',
+        tags: ['Context Engine', 'Agent Runtime', 'QTable'],
+        path: 'blog/context-engine-business-context/',
+      },
+      {
         number: '03',
         title: '为什么 AI 写操作不能直接落库：QTable 的 Preview → Confirm → Apply',
         description: 'AI 开始修改业务数据后，真正危险的是过期、越权或理解错误的决定变成业务事实。这篇结合 QTable 当前 Action Plan、record version、权限重校验与 ChangeSet 实现，拆解 Preview → Confirm → Apply 为什么是一条执行边界。',
@@ -46,6 +54,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '04',
+        title: 'Context 不是把更多資料塞進 Prompt：QTable 的 Context Engine 如何建立真實業務上下文',
+        description: 'Agent 真正進入業務系統後，關鍵不是模型能記住多少，而是系統如何明確目前使用者、Workspace、Table、View、Conversation 與權限邊界。這篇結合 QTable 目前 Context Engine，拆解 Scope、對話壓縮、Cache / Session / Snapshot，以及上下文如何注入 Agent Runtime。',
+        date: '2026 年 9 月 27 日',
+        tags: ['Context Engine', 'Agent Runtime', 'QTable'],
+        path: 'blog/context-engine-business-context/',
+      },
       {
         number: '03',
         title: '為什麼 AI 寫入不能直接落庫：QTable 的 Preview → Confirm → Apply',
@@ -79,6 +95,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '04',
+        title: 'Context Is Not More Prompt Stuffing: How QTable Builds Real Business Context for Agents',
+        description: 'Once an agent enters a business system, the hard part is not how much the model can remember. This article follows QTable’s current Context Engine through scope, permission-aware Table context, conversation compression, Cache / Session / Snapshot, and runtime injection.',
+        date: 'September 27, 2026',
+        tags: ['Context Engine', 'Agent Runtime', 'QTable'],
+        path: 'blog/context-engine-business-context/',
+      },
+      {
         number: '03',
         title: 'Why AI Writes Should Not Go Straight to the Database: QTable\'s Preview → Confirm → Apply',
         description: 'Once AI can change business data, stale, unauthorized, or misunderstood decisions can become durable facts. This article follows QTable’s current Action Plan, record-version checks, permission revalidation, and ChangeSet audit path to explain why Preview → Confirm → Apply is an execution boundary.',
@@ -109,7 +133,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>03 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>04 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">
