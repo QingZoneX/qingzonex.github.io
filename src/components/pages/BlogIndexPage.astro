@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '07',
+        title: 'Agent 不是系统管理员：为什么 QTable 的 Agent 权限不能高于当前用户',
+        description: 'Agent 可以读表、分析任务、调用 Tool，但它不应该因为“是 AI”就获得更高权限。这篇结合 QTable 当前身份传递、Workspace / Item Permission、Row Permission、Skill Authorizer、Relation Sanitizer 和 Action Plan Apply，拆解为什么 Agent 权限只能收窄，不能放大。',
+        date: '2026 年 9 月 27 日',
+        tags: ['Authorization', 'Agent Security', 'QTable'],
+        path: 'blog/agent-permissions-current-user/',
+      },
+      {
         number: '06',
         title: 'Grid、Kanban、Gantt 不应该各存一份数据：QTable 的 View 为什么只是同一事实的不同投影',
         description: '同一条任务在 Grid 里是一行，在 Kanban 里是一张卡片，在 Gantt 里是一段时间条。这篇结合 QTable 当前 Record / View 模型与 QTableUI 实现，拆解业务状态和视图状态为什么必须分开，以及 Kanban 排序、Gantt 映射、实时同步应该如何围绕同一份业务事实工作。',
@@ -70,6 +78,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '07',
+        title: 'Agent 不是系統管理員：為什麼 QTable 的 Agent 權限不能高於目前使用者',
+        description: 'Agent 可以讀表、分析任務、呼叫 Tool，但它不應該因為「是 AI」就獲得更高權限。這篇結合 QTable 目前身份傳遞、Workspace / Item Permission、Row Permission、Skill Authorizer、Relation Sanitizer 與 Action Plan Apply，拆解為什麼 Agent 權限只能收窄，不能放大。',
+        date: '2026 年 9 月 27 日',
+        tags: ['Authorization', 'Agent Security', 'QTable'],
+        path: 'blog/agent-permissions-current-user/',
+      },
       {
         number: '06',
         title: 'Grid、Kanban、Gantt 不應該各存一份資料：QTable 的 View 為什麼只是同一事實的不同投影',
@@ -127,6 +143,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '07',
+        title: 'An Agent Is Not a System Administrator: Why QTable Keeps Agent Permissions Below the Current User',
+        description: 'An Agent may read tables, analyze work, and call Tools, but being AI must not grant more authority than the current user. This article follows QTable’s current identity flow, Workspace / Item permissions, row permissions, Skill authorization, relation sanitization, and Action Plan Apply revalidation.',
+        date: 'September 27, 2026',
+        tags: ['Authorization', 'Agent Security', 'QTable'],
+        path: 'blog/agent-permissions-current-user/',
+      },
+      {
         number: '06',
         title: 'Grid, Kanban, and Gantt Should Not Store Three Copies of the Data: Why a QTable View Is Only a Projection',
         description: 'The same task is a row in Grid, a card in Kanban, and a bar in Gantt. This article follows QTable’s current Record / View model and QTableUI implementation to separate business state from view state, including Kanban ordering, Gantt field mapping, realtime convergence, and current consistency gaps.',
@@ -181,7 +205,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>06 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>07 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">
