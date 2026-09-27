@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Conversation compression and context window</title>
+  <desc id="desc">Older conversation turns are summarized heuristically while the most recent turns are retained, then combined with a compact context summary under a character-budget estimate.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafcff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="13" stdDeviation="17" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="800" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">Long conversation is memory, not an endless prompt</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">The current builder keeps a recent tail, compresses older turns heuristically, and tracks a character-budget estimate.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="168" width="330" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="435" y="168" width="330" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="810" y="168" width="330" height="470" rx="28" fill="#14263f" stroke="#365879"/>
+  </g>
+
+  <text x="88" y="208" font-size="14" font-weight="760" fill="#4d74b9">CONVERSATION</text>
+  <text x="88" y="248" font-size="25" font-weight="750" fill="#0f172a">Older turns</text>
+  <g font-size="13" fill="#5f6f86">
+    <rect x="88" y="278" width="274" height="42" rx="11" fill="#f7faff" stroke="#dce6f2"/><text x="106" y="304">[user] define launch scope ...</text>
+    <rect x="88" y="330" width="274" height="42" rx="11" fill="#f7faff" stroke="#dce6f2"/><text x="106" y="356">[assistant] project risks ...</text>
+    <rect x="88" y="382" width="274" height="42" rx="11" fill="#f7faff" stroke="#dce6f2"/><text x="106" y="408">[user] focus on backend ...</text>
+    <rect x="88" y="434" width="274" height="42" rx="11" fill="#f7faff" stroke="#dce6f2"/><text x="106" y="460">...</text>
+  </g>
+  <path d="M119 525H331" stroke="#d2dce9" stroke-width="2"/>
+  <text x="88" y="558" font-size="14" font-weight="700" fill="#7b608c">heuristic summary</text>
+  <text x="88" y="582" font-size="13" fill="#7d899a">uses up to the latest 8 compressed turns</text>
+
+  <path d="M396 405H427" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M419 397l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="463" y="208" font-size="14" font-weight="760" fill="#4d74b9">RECENT TAIL</text>
+  <text x="463" y="248" font-size="25" font-weight="750" fill="#0f172a">Keep the live thread</text>
+  <g font-size="13" fill="#516278">
+    <rect x="463" y="278" width="274" height="50" rx="12" fill="#eef8f4" stroke="#c8e4d7"/><text x="483" y="308">recent turn - 3</text>
+    <rect x="463" y="342" width="274" height="50" rx="12" fill="#eef8f4" stroke="#c8e4d7"/><text x="483" y="372">recent turn - 2</text>
+    <rect x="463" y="406" width="274" height="50" rx="12" fill="#eef8f4" stroke="#c8e4d7"/><text x="483" y="436">recent turn - 1</text>
+    <rect x="463" y="470" width="274" height="50" rx="12" fill="#e9f1ff" stroke="#c9d9f0"/><text x="483" y="500" font-weight="700">latest user message</text>
+  </g>
+  <text x="463" y="558" font-size="14" font-weight="700" fill="#376c56">Current default: up to 20 recent messages</text>
+  <text x="463" y="582" font-size="13" fill="#7d899a">The rest is represented by the summary.</text>
+
+  <path d="M771 405H802" stroke="#afc2da" stroke-width="4" stroke-linecap="round"/>
+  <path d="M794 397l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="838" y="208" font-size="14" font-weight="760" fill="#bcdcff">CONTEXT WINDOW</text>
+  <text x="838" y="248" font-size="25" font-weight="750" fill="#fff">Budget the payload</text>
+  <rect x="838" y="282" width="274" height="68" rx="15" fill="#18304f" stroke="#41688d"/>
+  <text x="858" y="309" font-size="14" font-weight="700" fill="#fff">Context summary</text>
+  <text x="858" y="332" font-size="13" fill="#bdd1e6">scope + workspace + table + view</text>
+  <rect x="838" y="366" width="274" height="68" rx="15" fill="#18304f" stroke="#41688d"/>
+  <text x="858" y="393" font-size="14" font-weight="700" fill="#fff">Recent turns</text>
+  <text x="858" y="416" font-size="13" fill="#bdd1e6">kept verbatim in the snapshot</text>
+  <rect x="838" y="450" width="274" height="96" rx="15" fill="#24476c"/>
+  <text x="858" y="478" font-size="14" font-weight="700" fill="#fff">Character budget estimate</text>
+  <text x="858" y="502" font-size="28" font-weight="760" fill="#83deb9">6,000</text>
+  <text x="858" y="526" font-size="13" fill="#c4d8eb">used / remaining tracked in ContextWindow</text>
+  <text x="838" y="584" font-size="13" fill="#b8cce1">This is not a tokenizer-accurate model limit.</text>
+
+  <rect x="166" y="680" width="868" height="70" rx="24" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="710" text-anchor="middle" font-size="18" font-weight="735" fill="#24364e">Compression should preserve continuity without pretending every old message deserves equal weight.</text>
+  <text x="600" y="734" text-anchor="middle" font-size="14" fill="#60708a">The current strategy is intentionally simple and inspectable: tail window + heuristic summary.</text>
+</svg>
