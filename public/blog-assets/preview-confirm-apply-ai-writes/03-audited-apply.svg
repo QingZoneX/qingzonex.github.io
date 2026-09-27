@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">From selected AI actions to auditable changes</title>
+  <desc id="desc">Selected actions enter a guarded transaction, update records and versions, and produce a ChangeSet containing before and after data for auditing and undo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9fcff"/><stop offset="1" stop-color="#edf4ff"/></linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#182b48"/><stop offset="1" stop-color="#0e192d"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="800" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">Apply should leave evidence, not just new values</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">QTable turns approved AI actions into versioned records and a traceable ChangeSet inside one write boundary.</text>
+
+  <g stroke="#c8d7e9" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M328 356H406"/><path d="M794 356H872"/>
+  </g>
+  <g fill="#6984a9"><path d="M398 348l14 8-14 8z"/><path d="M864 348l14 8-14 8z"/></g>
+
+  <g filter="url(#shadow)">
+    <rect x="62" y="180" width="266" height="360" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="406" y="156" width="388" height="408" rx="30" fill="url(#core)" stroke="#315274"/>
+    <rect x="872" y="180" width="266" height="360" rx="28" fill="#fff" stroke="#d9e4f1"/>
+  </g>
+
+  <text x="88" y="220" font-size="14" font-weight="760" fill="#4f76bd">SELECTED ACTIONS</text>
+  <g font-size="14" fill="#42526a">
+    <rect x="88" y="246" width="214" height="58" rx="14" fill="#f8fbff" stroke="#dce6f2"/><text x="108" y="271" font-weight="700">assign_owner</text><text x="108" y="292" fill="#758297">Task A → Bob</text>
+    <rect x="88" y="318" width="214" height="58" rx="14" fill="#f8fbff" stroke="#dce6f2"/><text x="108" y="343" font-weight="700">set_deadline</text><text x="108" y="364" fill="#758297">Task A → Monday</text>
+    <rect x="88" y="390" width="214" height="58" rx="14" fill="#f8fbff" stroke="#dce6f2"/><text x="108" y="415" font-weight="700">create_task</text><text x="108" y="436" fill="#758297">Regression test</text>
+  </g>
+  <text x="88" y="500" font-size="13" fill="#7d899b">actionId keeps selection explicit</text>
+
+  <text x="434" y="202" font-size="14" font-weight="760" fill="#bcdcff">GUARDED TRANSACTION</text>
+  <text x="434" y="246" font-size="28" font-weight="760" fill="#fff">Revalidate → Write → Commit</text>
+  <g font-size="15">
+    <rect x="434" y="282" width="332" height="48" rx="14" fill="#152844" stroke="#3e628b"/><circle cx="458" cy="306" r="7" fill="#62d2a7"/><text x="478" y="312" fill="#e9f3fb">permission, row visibility, schema</text>
+    <rect x="434" y="344" width="332" height="48" rx="14" fill="#152844" stroke="#3e628b"/><circle cx="458" cy="368" r="7" fill="#62d2a7"/><text x="478" y="374" fill="#e9f3fb">member + dependency validity</text>
+    <rect x="434" y="406" width="332" height="48" rx="14" fill="#152844" stroke="#3e628b"/><circle cx="458" cy="430" r="7" fill="#62d2a7"/><text x="478" y="436" fill="#e9f3fb">expected record version still matches</text>
+  </g>
+  <rect x="434" y="480" width="332" height="52" rx="14" fill="#244569"/>
+  <text x="600" y="502" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">any failure → rollback</text>
+  <text x="600" y="522" text-anchor="middle" font-size="13" fill="#bdd3eb">no half-written batch</text>
+
+  <text x="898" y="220" font-size="14" font-weight="760" fill="#4d78ba">AUDIT OUTPUT</text>
+  <rect x="898" y="246" width="214" height="86" rx="16" fill="#f8fbff" stroke="#dce6f2"/>
+  <text x="918" y="274" font-size="16" font-weight="740" fill="#0f172a">Record</text>
+  <text x="918" y="298" font-size="14" fill="#617089">version 12 → 13</text>
+  <text x="918" y="319" font-size="14" fill="#617089">changed fields captured</text>
+  <rect x="898" y="350" width="214" height="126" rx="16" fill="#eef8f4" stroke="#c7e3d6"/>
+  <text x="918" y="379" font-size="16" font-weight="740" fill="#174f3d">ChangeSet</text>
+  <text x="918" y="404" font-size="14" fill="#4d7064">actorType: ai</text>
+  <text x="918" y="426" font-size="14" fill="#4d7064">before / after</text>
+  <text x="918" y="448" font-size="14" fill="#4d7064">traceId + operation</text>
+  <text x="918" y="470" font-size="14" fill="#4d7064">supports audit / undo</text>
+
+  <rect x="160" y="628" width="880" height="92" rx="26" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="666" text-anchor="middle" font-size="19" font-weight="740" fill="#0f172a">The important output of Apply is not only “data changed”.</text>
+  <text x="600" y="696" text-anchor="middle" font-size="15" fill="#60708a">It is a durable record of who changed what, from which state to which state, and under which AI plan.</text>
+</svg>

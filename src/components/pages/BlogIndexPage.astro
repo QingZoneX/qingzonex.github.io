@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '03',
+        title: '为什么 AI 写操作不能直接落库：QTable 的 Preview → Confirm → Apply',
+        description: 'AI 开始修改业务数据后，真正危险的是过期、越权或理解错误的决定变成业务事实。这篇结合 QTable 当前 Action Plan、record version、权限重校验与 ChangeSet 实现，拆解 Preview → Confirm → Apply 为什么是一条执行边界。',
+        date: '2026 年 9 月 27 日',
+        tags: ['AI 安全', 'Action Plan', 'QTable'],
+        path: 'blog/preview-confirm-apply-ai-writes/',
+      },
+      {
         number: '02',
         title: '为什么多维表格适合作为 AI Agent 的业务数据底座',
         description: 'Agent 真正进入业务系统后，难点不是生成文字，而是理解对象、关系、权限和状态。这篇从 QTable 当前的 Field / Record / View / Relation / Permission 模型出发，讨论多维表格为什么是自然语言与可执行工作之间很实用的一层。',
@@ -38,6 +46,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '03',
+        title: '為什麼 AI 寫入不能直接落庫：QTable 的 Preview → Confirm → Apply',
+        description: 'AI 開始修改業務資料後，真正危險的是過期、越權或理解錯誤的決定成為業務事實。這篇結合 QTable 目前的 Action Plan、record version、權限重驗證與 ChangeSet 實作，拆解 Preview → Confirm → Apply 為什麼是一條執行邊界。',
+        date: '2026 年 9 月 27 日',
+        tags: ['AI 安全', 'Action Plan', 'QTable'],
+        path: 'blog/preview-confirm-apply-ai-writes/',
+      },
       {
         number: '02',
         title: '為什麼多維表格適合作為 AI Agent 的業務資料底座',
@@ -63,6 +79,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '03',
+        title: 'Why AI Writes Should Not Go Straight to the Database: QTable\'s Preview → Confirm → Apply',
+        description: 'Once AI can change business data, stale, unauthorized, or misunderstood decisions can become durable facts. This article follows QTable’s current Action Plan, record-version checks, permission revalidation, and ChangeSet audit path to explain why Preview → Confirm → Apply is an execution boundary.',
+        date: 'September 27, 2026',
+        tags: ['AI safety', 'Action Plan', 'QTable'],
+        path: 'blog/preview-confirm-apply-ai-writes/',
+      },
+      {
         number: '02',
         title: 'Why Multidimensional Tables Make a Good Business Data Foundation for AI Agents',
         description: 'Once an agent enters a real business system, fluent generation is not the hard part. This article starts from QTable’s current Field / Record / View / Relation / Permission model and asks why multidimensional tables make a practical layer between natural-language intent and executable work.',
@@ -85,7 +109,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>02 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>03 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">
