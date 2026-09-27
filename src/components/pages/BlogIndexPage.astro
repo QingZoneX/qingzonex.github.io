@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '05',
+        title: 'Agent 不是一串函数调用：QTable 的 Multi Tool Chain Runtime 如何把工具执行变成工作流',
+        description: '真实 Agent 往往需要拆任务、估工期、读 Schema、生成 Gantt 再写入 Record。这篇结合 QTable 当前 Multi Tool Chain Runtime，拆解 ToolChainPlan、依赖与数据传递、Retry / Confirm / Rollback、运行时可观测性，以及当前 DAG 并行调度仍需要补齐的部分。',
+        date: '2026 年 9 月 27 日',
+        tags: ['Tool Chain', 'Agent Runtime', 'QTable'],
+        path: 'blog/multi-tool-chain-runtime/',
+      },
+      {
         number: '04',
         title: 'Context 不是把更多数据塞进 Prompt：QTable 的 Context Engine 如何建立真实业务上下文',
         description: 'Agent 真正进入业务系统后，关键不是模型能记住多少，而是系统如何明确当前用户、Workspace、Table、View、Conversation 与权限边界。这篇结合 QTable 当前 Context Engine，拆解 Scope、对话压缩、Cache / Session / Snapshot，以及上下文如何注入 Agent Runtime。',
@@ -54,6 +62,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '05',
+        title: 'Agent 不是一串函式呼叫：QTable 的 Multi Tool Chain Runtime 如何把工具執行變成工作流',
+        description: '真實 Agent 往往需要拆任務、估工期、讀 Schema、產生 Gantt 再寫入 Record。這篇結合 QTable 目前 Multi Tool Chain Runtime，拆解 ToolChainPlan、Dependency 與 Data Passing、Retry / Confirm / Rollback、執行可觀測性，以及目前 DAG 平行調度仍需要補齊的部分。',
+        date: '2026 年 9 月 27 日',
+        tags: ['Tool Chain', 'Agent Runtime', 'QTable'],
+        path: 'blog/multi-tool-chain-runtime/',
+      },
       {
         number: '04',
         title: 'Context 不是把更多資料塞進 Prompt：QTable 的 Context Engine 如何建立真實業務上下文',
@@ -95,6 +111,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '05',
+        title: 'An Agent Is Not a Sequence of Function Calls: How QTable Turns Tools into a Runtime',
+        description: 'Real agent work often means task splitting, estimation, Schema inspection, Gantt generation, and Record creation. This article follows QTable’s current Multi Tool Chain Runtime through ToolChainPlan, dependencies, data passing, retry / confirmation / rollback, observability, and the DAG scheduling work that is still incomplete.',
+        date: 'September 27, 2026',
+        tags: ['Tool Chain', 'Agent Runtime', 'QTable'],
+        path: 'blog/multi-tool-chain-runtime/',
+      },
+      {
         number: '04',
         title: 'Context Is Not More Prompt Stuffing: How QTable Builds Real Business Context for Agents',
         description: 'Once an agent enters a business system, the hard part is not how much the model can remember. This article follows QTable’s current Context Engine through scope, permission-aware Table context, conversation compression, Cache / Session / Snapshot, and runtime injection.',
@@ -133,7 +157,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>04 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>05 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">
