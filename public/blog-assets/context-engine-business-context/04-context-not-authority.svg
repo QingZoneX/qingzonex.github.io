@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Context snapshot is not write authority</title>
+  <desc id="desc">Context snapshots and cache help agents reason consistently, while write-time domain services separately revalidate current permission, schema, relations and record versions before applying mutations.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafcff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#172944"/><stop offset="1" stop-color="#0d182b"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="13" stdDeviation="17" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="780" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">A context snapshot is evidence for reasoning, not permission to write</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">QTable caches and persists context, but mutation authority stays with current domain checks at Apply time.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="178" width="430" height="430" rx="30" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="700" y="178" width="430" height="430" rx="30" fill="url(#dark)" stroke="#355778"/>
+  </g>
+
+  <text x="100" y="218" font-size="14" font-weight="760" fill="#4d73b7">CONTEXT ENGINE</text>
+  <text x="100" y="258" font-size="27" font-weight="750" fill="#0f172a">Reasoning snapshot</text>
+  <g font-size="14" fill="#4d5e74">
+    <rect x="100" y="292" width="370" height="54" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="122" y="324">scopeKey + identities + coordinates</text>
+    <rect x="100" y="360" width="370" height="54" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="122" y="392">conversation summary + recent turns</text>
+    <rect x="100" y="428" width="370" height="54" rx="14" fill="#f7faff" stroke="#dce6f2"/><text x="122" y="460">table/view shape + context window</text>
+  </g>
+  <rect x="100" y="506" width="174" height="62" rx="14" fill="#eef8f4" stroke="#c7e3d6"/>
+  <text x="118" y="532" font-size="13" font-weight="700" fill="#255f49">Redis hot cache</text>
+  <text x="118" y="553" font-size="12" fill="#557567">snapshot TTL: 300s</text>
+  <rect x="296" y="506" width="174" height="62" rx="14" fill="#eef3fb" stroke="#d0ddeb"/>
+  <text x="314" y="532" font-size="13" font-weight="700" fill="#365b8d">DB persistence</text>
+  <text x="314" y="553" font-size="12" fill="#607590">Session + Snapshot</text>
+
+  <path d="M512 393H686" stroke="#bdcada" stroke-width="4" stroke-dasharray="8 9" stroke-linecap="round"/>
+  <circle cx="600" cy="393" r="46" fill="#fff" stroke="#d6e1ed" stroke-width="2"/>
+  <text x="600" y="386" text-anchor="middle" font-size="12" font-weight="760" fill="#7a8797">NOT</text>
+  <text x="600" y="405" text-anchor="middle" font-size="12" font-weight="760" fill="#7a8797">AUTHORITY</text>
+
+  <text x="730" y="218" font-size="14" font-weight="760" fill="#bcdcff">DOMAIN WRITE PATH</text>
+  <text x="730" y="258" font-size="27" font-weight="750" fill="#fff">Current-state revalidation</text>
+  <g font-size="14">
+    <rect x="730" y="292" width="370" height="54" rx="14" fill="#152a46" stroke="#3d6389"/><circle cx="754" cy="319" r="7" fill="#65d2a8"/><text x="774" y="324" fill="#eaf3fb">current user permission + row access</text>
+    <rect x="730" y="360" width="370" height="54" rx="14" fill="#152a46" stroke="#3d6389"/><circle cx="754" cy="387" r="7" fill="#65d2a8"/><text x="774" y="392" fill="#eaf3fb">current schema + relation validity</text>
+    <rect x="730" y="428" width="370" height="54" rx="14" fill="#152a46" stroke="#3d6389"/><circle cx="754" cy="455" r="7" fill="#65d2a8"/><text x="774" y="460" fill="#eaf3fb">current record version + state</text>
+  </g>
+  <rect x="730" y="506" width="370" height="62" rx="14" fill="#24466b"/>
+  <text x="915" y="532" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">valid now → commit + audit</text>
+  <text x="915" y="554" text-anchor="middle" font-size="13" fill="#c4d8eb">stale / unauthorized → reject</text>
+
+  <rect x="160" y="656" width="880" height="74" rx="24" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="686" text-anchor="middle" font-size="18" font-weight="740" fill="#24364e">Context helps the agent understand the world it entered.</text>
+  <text x="600" y="712" text-anchor="middle" font-size="14" fill="#60708a">The write service still decides whether that world permits the requested change right now.</text>
+</svg>
