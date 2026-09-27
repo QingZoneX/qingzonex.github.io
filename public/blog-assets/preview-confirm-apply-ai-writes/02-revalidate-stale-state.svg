@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">The world can change after preview</title>
+  <desc id="desc">A timeline showing a preview based on record version 12, a teammate changing the record to version 13, and apply rejecting the stale action during revalidation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="warn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff4e8"/><stop offset="1" stop-color="#fff9f0"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="13" stdDeviation="17" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">The world can change after Preview</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">Optimistic concurrency turns “stale plan” into a visible conflict instead of a silent overwrite.</text>
+
+  <path d="M118 358H1082" stroke="#c7d7e9" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="220" cy="358" r="14" fill="#5d86d9"/>
+  <circle cx="600" cy="358" r="14" fill="#f0a14b"/>
+  <circle cx="980" cy="358" r="14" fill="#e56e72"/>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="166" width="300" height="154" rx="24" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="450" y="396" width="300" height="170" rx="24" fill="url(#warn)" stroke="#efd6b4"/>
+    <rect x="828" y="166" width="300" height="190" rx="24" fill="#fff" stroke="#e5c5c7"/>
+  </g>
+
+  <text x="98" y="202" font-size="14" font-weight="760" fill="#4c72bb">10:02 · PREVIEW</text>
+  <text x="98" y="242" font-size="25" font-weight="740" fill="#0f172a">Task A · version 12</text>
+  <text x="98" y="274" font-size="16" fill="#5f6f86">status: In progress</text>
+  <text x="98" y="300" font-size="16" fill="#5f6f86">proposal: set deadline → Monday</text>
+
+  <text x="476" y="432" font-size="14" font-weight="760" fill="#9d671e">10:03 · REAL WORK CONTINUES</text>
+  <text x="476" y="472" font-size="25" font-weight="740" fill="#0f172a">A teammate edits Task A</text>
+  <text x="476" y="504" font-size="16" fill="#6a5d4f">deadline and status are updated</text>
+  <text x="476" y="530" font-size="16" font-weight="700" fill="#9b6420">record version: 12 → 13</text>
+
+  <text x="854" y="202" font-size="14" font-weight="760" fill="#bd555a">10:04 · APPLY</text>
+  <text x="854" y="242" font-size="25" font-weight="740" fill="#0f172a">Revalidation fails safely</text>
+  <rect x="854" y="270" width="248" height="58" rx="14" fill="#fff5f5" stroke="#efc6c8"/>
+  <text x="978" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#a54045">expected version 12</text>
+  <text x="978" y="316" text-anchor="middle" font-size="14" fill="#a54045">current version 13 → reject</text>
+
+  <g transform="translate(122 615)">
+    <rect width="956" height="78" rx="22" fill="#13233d"/>
+    <text x="36" y="34" font-size="18" font-weight="740" fill="#fff">Rejecting a stale write is not failure.</text>
+    <text x="36" y="59" font-size="15" fill="#b9c9dc">It is the system protecting newer human or automated work from being overwritten by an old AI decision.</text>
+  </g>
+</svg>
