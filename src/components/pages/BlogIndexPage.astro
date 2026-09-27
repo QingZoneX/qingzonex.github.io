@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '06',
+        title: 'Grid、Kanban、Gantt 不应该各存一份数据：QTable 的 View 为什么只是同一事实的不同投影',
+        description: '同一条任务在 Grid 里是一行，在 Kanban 里是一张卡片，在 Gantt 里是一段时间条。这篇结合 QTable 当前 Record / View 模型与 QTableUI 实现，拆解业务状态和视图状态为什么必须分开，以及 Kanban 排序、Gantt 映射、实时同步应该如何围绕同一份业务事实工作。',
+        date: '2026 年 9 月 27 日',
+        tags: ['View Model', 'Data Consistency', 'QTable'],
+        path: 'blog/one-truth-multiple-views/',
+      },
+      {
         number: '05',
         title: 'Agent 不是一串函数调用：QTable 的 Multi Tool Chain Runtime 如何把工具执行变成工作流',
         description: '真实 Agent 往往需要拆任务、估工期、读 Schema、生成 Gantt 再写入 Record。这篇结合 QTable 当前 Multi Tool Chain Runtime，拆解 ToolChainPlan、依赖与数据传递、Retry / Confirm / Rollback、运行时可观测性，以及当前 DAG 并行调度仍需要补齐的部分。',
@@ -62,6 +70,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '06',
+        title: 'Grid、Kanban、Gantt 不應該各存一份資料：QTable 的 View 為什麼只是同一事實的不同投影',
+        description: '同一條任務在 Grid 裡是一列，在 Kanban 裡是一張卡片，在 Gantt 裡是一段時間條。這篇結合 QTable 目前 Record / View Model 與 QTableUI 實作，拆解 Business State 和 View State 為什麼必須分開，以及 Kanban Order、Gantt Mapping、Realtime Sync 如何圍繞同一份業務事實工作。',
+        date: '2026 年 9 月 27 日',
+        tags: ['View Model', 'Data Consistency', 'QTable'],
+        path: 'blog/one-truth-multiple-views/',
+      },
       {
         number: '05',
         title: 'Agent 不是一串函式呼叫：QTable 的 Multi Tool Chain Runtime 如何把工具執行變成工作流',
@@ -111,6 +127,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '06',
+        title: 'Grid, Kanban, and Gantt Should Not Store Three Copies of the Data: Why a QTable View Is Only a Projection',
+        description: 'The same task is a row in Grid, a card in Kanban, and a bar in Gantt. This article follows QTable’s current Record / View model and QTableUI implementation to separate business state from view state, including Kanban ordering, Gantt field mapping, realtime convergence, and current consistency gaps.',
+        date: 'September 27, 2026',
+        tags: ['View Model', 'Data Consistency', 'QTable'],
+        path: 'blog/one-truth-multiple-views/',
+      },
+      {
         number: '05',
         title: 'An Agent Is Not a Sequence of Function Calls: How QTable Turns Tools into a Runtime',
         description: 'Real agent work often means task splitting, estimation, Schema inspection, Gantt generation, and Record creation. This article follows QTable’s current Multi Tool Chain Runtime through ToolChainPlan, dependencies, data passing, retry / confirmation / rollback, observability, and the DAG scheduling work that is still incomplete.',
@@ -157,7 +181,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>05 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>06 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">

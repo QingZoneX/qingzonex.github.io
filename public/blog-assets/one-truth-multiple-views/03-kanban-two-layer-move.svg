@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="title">Kanban card move updates business state and per-view order separately</title>
+  <desc id="desc">Moving a QTable Kanban card to another column updates the grouping or lane field in TableRecord.data and increments the record version. Manual card ordering is stored separately in BoardCardOrder for the specific view.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafcff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#192e4b"/><stop offset="1" stop-color="#0c182b"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="840" rx="34" fill="url(#bg)"/>
+  <text x="70" y="72" font-size="38" font-weight="760" fill="#0f172a">A Kanban move has two meanings</text>
+  <text x="70" y="108" font-size="18" fill="#60708a">Changing a column can be a business update; changing card order is presentation state for that one View.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="180" width="300" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+    <rect x="450" y="180" width="300" height="470" rx="28" fill="url(#dark)" stroke="#355979"/>
+    <rect x="840" y="180" width="300" height="470" rx="28" fill="#fff" stroke="#d9e4f1"/>
+  </g>
+
+  <text x="90" y="220" font-size="14" font-weight="760" fill="#4d74b9">USER ACTION</text>
+  <text x="90" y="260" font-size="25" font-weight="750" fill="#0f172a">Drag task card</text>
+  <rect x="90" y="298" width="240" height="88" rx="16" fill="#f7faff" stroke="#dce6f2"/>
+  <text x="110" y="326" font-size="13" fill="#64748b">From</text>
+  <text x="110" y="350" font-size="16" font-weight="720" fill="#445a76">In Progress</text>
+  <text x="110" y="374" font-size="13" fill="#64748b">position #5</text>
+  <path d="M210 410V460" stroke="#aebfd5" stroke-width="3"/>
+  <rect x="90" y="460" width="240" height="88" rx="16" fill="#eef8f4" stroke="#c8e3d6"/>
+  <text x="110" y="488" font-size="13" fill="#587568">To</text>
+  <text x="110" y="512" font-size="16" font-weight="720" fill="#2d674f">Done</text>
+  <text x="110" y="536" font-size="13" fill="#587568">between two cards</text>
+
+  <path d="M368 415H442" stroke="#afc2da" stroke-width="4"/><path d="M434 407l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="480" y="220" font-size="14" font-weight="760" fill="#bcdcff">MOVEBOARDCARD</text>
+  <text x="480" y="260" font-size="25" font-weight="750" fill="#fff">One transaction</text>
+  <rect x="480" y="298" width="240" height="112" rx="16" fill="#172d4b" stroke="#406589"/>
+  <text x="500" y="326" font-size="14" font-weight="700" fill="#fff">Business mutation</text>
+  <text x="500" y="351" font-size="13" fill="#bfd2e5">TableRecord.data[status]</text>
+  <text x="500" y="373" font-size="13" fill="#bfd2e5">record.version += 1</text>
+  <text x="500" y="395" font-size="13" fill="#bfd2e5">ChangeSet source = kanban</text>
+  <rect x="480" y="430" width="240" height="112" rx="16" fill="#24476c"/>
+  <text x="500" y="458" font-size="14" font-weight="700" fill="#fff">Presentation mutation</text>
+  <text x="500" y="483" font-size="13" fill="#c6daee">BoardCardOrder.rank</text>
+  <text x="500" y="505" font-size="13" fill="#c6daee">scoped by table + view + record</text>
+  <text x="500" y="527" font-size="13" fill="#c6daee">order revision += 1</text>
+  <text x="480" y="586" font-size="13" fill="#b8cce1">recordVersion and orderRevision</text>
+  <text x="480" y="607" font-size="13" fill="#b8cce1">protect different kinds of concurrency.</text>
+
+  <path d="M758 415H832" stroke="#afc2da" stroke-width="4"/><path d="M824 407l14 8-14 8z" fill="#6d88ad"/>
+
+  <text x="870" y="220" font-size="14" font-weight="760" fill="#4d74b9">RESULT</text>
+  <text x="870" y="260" font-size="25" font-weight="750" fill="#0f172a">Truth stays shared</text>
+  <rect x="870" y="298" width="240" height="96" rx="16" fill="#eef8f4" stroke="#c8e3d6"/>
+  <text x="890" y="327" font-size="14" font-weight="700" fill="#2e6750">Grid / Gantt</text>
+  <text x="890" y="351" font-size="13" fill="#587568">see status = Done</text>
+  <text x="890" y="373" font-size="13" fill="#587568">because the Record changed</text>
+  <rect x="870" y="418" width="240" height="106" rx="16" fill="#f7faff" stroke="#dce6f2"/>
+  <text x="890" y="447" font-size="14" font-weight="700" fill="#455a72">Another Kanban View</text>
+  <text x="890" y="471" font-size="13" fill="#718096">may keep its own manual order</text>
+  <text x="890" y="493" font-size="13" fill="#718096">without copying the business record</text>
+  <text x="870" y="580" font-size="13" fill="#66758a">The same task can have different visual</text>
+  <text x="870" y="601" font-size="13" fill="#66758a">positions without different business values.</text>
+
+  <rect x="170" y="714" width="860" height="72" rx="22" fill="#fff" stroke="#d5e1ee"/>
+  <text x="600" y="746" text-anchor="middle" font-size="16" font-weight="730" fill="#25364e">Status belongs to the task.</text>
+  <text x="600" y="770" text-anchor="middle" font-size="16" fill="#506178">Manual card rank belongs to a particular Kanban View.</text>
+</svg>
