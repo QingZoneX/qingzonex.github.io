@@ -64,7 +64,7 @@ AI 产品很容易有一种诱惑：
 
 如果业务规则已经明确到：
 
-“当 status 从 todo 变成 review，并且 priority = high 时，通知 assignee。”
+“当 status 从 backlog 变成 review，并且 priority = high 时，通知 assignee。”
 
 那么再把整条 Record 发给模型，让模型重新判断一次，实际上是在把一个确定性问题重新变成概率问题。
 
@@ -182,7 +182,7 @@ QTable 选择把这些状态持久化下来。
 
 和：
 
-“status 从 todo 变成 review”
+“status 从 backlog 变成 review”
 
 是不同的 Trigger。
 
