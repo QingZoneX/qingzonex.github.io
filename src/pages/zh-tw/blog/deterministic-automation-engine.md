@@ -64,7 +64,7 @@ AI 產品很容易出現一種誘惑：
 
 如果 Business Rule 已經明確到：
 
-「當 status 從 todo 變成 review，並且 priority = high 時，通知 assignee。」
+「當 status 從 backlog 變成 review，並且 priority = high 時，通知 assignee。」
 
 那麼再把整條 Record 丟給 Model，讓它重新判斷一次，其實是在把一個 Deterministic Problem 重新變成 Probabilistic Problem。
 
@@ -182,7 +182,7 @@ QTable v1 比較像是在收緊語意。
 
 和：
 
-「status 從 todo 變成 review」
+「status 從 backlog 變成 review」
 
 是不同的 Trigger Contract。
 
