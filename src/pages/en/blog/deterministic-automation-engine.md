@@ -60,7 +60,7 @@ It can choose which fixed value to write into a field.
 
 But if the business rule is already:
 
-“when status changes from todo to review and priority is high, notify assignee,”
+“when status changes from backlog to review and priority is high, notify assignee,”
 
 calling a model again does not add intelligence.
 
@@ -163,7 +163,7 @@ So:
 
 and:
 
-“status changed from todo to review”
+“status changed from backlog to review”
 
 are different trigger contracts.
 
