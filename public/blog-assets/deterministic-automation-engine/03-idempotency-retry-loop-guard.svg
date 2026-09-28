@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="title">QTable automation idempotency and retry model</title>
+<desc id="desc">Execution identity is unique per automation id, automation version and trigger event. Successful actions are checkpointed, failed actions use bounded exponential backoff, retries skip already successful steps, rule-version changes fail closed, and chain depth over eight is skipped.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+</defs>
+<rect width="1200" height="800" rx="34" fill="url(#bg)"/>
+<text x="66" y="72" font-size="38" font-weight="760" fill="#0f172a">Retrying automation is not the same as replaying everything</text>
+<text x="66" y="108" font-size="18" fill="#60708a">QTable checkpoints successful actions and protects an old failure from silently running under a new rule version.</text>
+<g filter="url(#shadow)"><rect x="62" y="170" width="1076" height="475" rx="30" fill="#fff" stroke="#d9e4f1"/></g>
+
+<rect x="95" y="216" width="294" height="108" rx="18" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="120" y="248" font-size="14" font-weight="760" fill="#355d97">UNIQUE EXECUTION KEY</text>
+<text x="120" y="281" font-size="17" font-weight="730" fill="#1f3554">automation id</text>
+<text x="120" y="304" font-size="17" font-weight="730" fill="#1f3554">+ rule version + trigger event id</text>
+
+<path d="M403 270H470" stroke="#9eb3cc" stroke-width="4"/><path d="M462 262l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="484" y="207" width="300" height="126" rx="20" fill="#eef8f4" stroke="#c8e3d6"/>
+<text x="510" y="241" font-size="14" font-weight="760" fill="#2d674f">ATTEMPT 1</text>
+<text x="510" y="275" font-size="14" fill="#587568">Action 1 · succeeded ✓</text>
+<text x="510" y="300" font-size="14" fill="#587568">Action 2 · failed ✕</text>
+<text x="510" y="323" font-size="14" fill="#587568">persist action_results checkpoint</text>
+
+<path d="M799 270H860" stroke="#9eb3cc" stroke-width="4"/><path d="M852 262l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="874" y="207" width="228" height="126" rx="20" fill="#fff9ef" stroke="#ecd6b5"/>
+<text x="899" y="241" font-size="14" font-weight="760" fill="#74551f">RETRY SCHEDULED</text>
+<text x="899" y="274" font-size="14" fill="#816c4c">5s → 10s → 20s …</text>
+<text x="899" y="298" font-size="14" fill="#816c4c">bounded at 300s</text>
+<text x="899" y="320" font-size="14" fill="#816c4c">up to maxRetries</text>
+
+<rect x="112" y="395" width="276" height="164" rx="20" fill="#f8fbff" stroke="#dce6f2"/>
+<text x="138" y="430" font-size="14" font-weight="760" fill="#405570">ON RETRY</text>
+<text x="138" y="466" font-size="14" fill="#66758a">✓ skip Action 1</text>
+<text x="138" y="493" font-size="14" fill="#66758a">↻ retry Action 2</text>
+<text x="138" y="520" font-size="14" fill="#66758a">do not duplicate create / notify</text>
+
+<rect x="462" y="395" width="276" height="164" rx="20" fill="#fff4f4" stroke="#efc7c9"/>
+<text x="488" y="430" font-size="14" font-weight="760" fill="#994148">FAIL CLOSED ON VERSION CHANGE</text>
+<text x="488" y="466" font-size="14" fill="#85595d">execution was created under v1</text>
+<text x="488" y="493" font-size="14" fill="#85595d">rule is now v2</text>
+<text x="488" y="520" font-size="14" fill="#85595d">→ automation_version_changed</text>
+
+<rect x="812" y="395" width="276" height="164" rx="20" fill="#f4effb" stroke="#ddcff0"/>
+<text x="838" y="430" font-size="14" font-weight="760" fill="#67478f">CHAIN LOOP GUARD</text>
+<text x="838" y="466" font-size="14" fill="#715f83">automation writes can trigger automation</text>
+<text x="838" y="493" font-size="14" fill="#715f83">root event + parent execution tracked</text>
+<text x="838" y="520" font-size="14" fill="#715f83">depth &gt; 8 → skipped</text>
+
+<rect x="205" y="698" width="790" height="54" rx="18" fill="#fff" stroke="#d5e1ee"/>
+<text x="600" y="731" text-anchor="middle" font-size="16" font-weight="730" fill="#25364e">Idempotency is not “never fail.” It is making failure and retry produce a bounded, inspectable result instead of duplicate side effects.</text>
+</svg>
