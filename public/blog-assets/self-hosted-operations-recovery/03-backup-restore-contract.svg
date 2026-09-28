@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="title">QTable backup and recovery contract</title>
+<desc id="desc">A recoverable backup includes PostgreSQL, object storage, stable encryption and authentication secrets, deployment configuration, and exact image or revision identity. Recovery restores data into an isolated environment, applies a compatible application revision, validates attachment references and critical flows, and only then returns traffic.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+</defs>
+<rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+<text x="64" y="72" font-size="38" font-weight="760" fill="#0f172a">A backup is not proven until it can restore a usable system</text>
+<text x="64" y="108" font-size="18" fill="#60708a">QTable data is split across relational state and binary objects; recovery must preserve both sides of the reference.</text>
+<g filter="url(#shadow)"><rect x="58" y="165" width="1084" height="540" rx="30" fill="#fff" stroke="#d9e4f1"/></g>
+
+<text x="96" y="208" font-size="14" font-weight="760" fill="#405570">BACKUP SET</text>
+<rect x="90" y="235" width="225" height="118" rx="18" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="115" y="268" font-size="15" font-weight="750" fill="#355d97">PostgreSQL</text>
+<text x="115" y="296" font-size="13" fill="#5d7390">records · permissions</text>
+<text x="115" y="320" font-size="13" fill="#5d7390">attachment registry · audit</text>
+<text x="115" y="342" font-size="13" fill="#5d7390">alembic_version</text>
+
+<rect x="338" y="235" width="225" height="118" rx="18" fill="#f4effb" stroke="#ddcff0"/>
+<text x="363" y="268" font-size="15" font-weight="750" fill="#67478f">Object storage</text>
+<text x="363" y="296" font-size="13" fill="#715f83">attachment objects</text>
+<text x="363" y="320" font-size="13" fill="#715f83">bucket contents</text>
+<text x="363" y="342" font-size="13" fill="#715f83">object keys must still match DB</text>
+
+<rect x="586" y="235" width="225" height="118" rx="18" fill="#fff9ef" stroke="#ecd6b5"/>
+<text x="611" y="268" font-size="15" font-weight="750" fill="#74551f">Stable secrets</text>
+<text x="611" y="296" font-size="13" fill="#816c4c">ENCRYPTION_KEY</text>
+<text x="611" y="320" font-size="13" fill="#816c4c">SECRET_KEY / credentials</text>
+<text x="611" y="342" font-size="13" fill="#816c4c">protected outside the backup</text>
+
+<rect x="834" y="235" width="225" height="118" rx="18" fill="#eef8f4" stroke="#c8e3d6"/>
+<text x="859" y="268" font-size="15" font-weight="750" fill="#2d674f">Release identity</text>
+<text x="859" y="296" font-size="13" fill="#587568">backend + UI revision</text>
+<text x="859" y="320" font-size="13" fill="#587568">image digest / version</text>
+<text x="859" y="342" font-size="13" fill="#587568">deployment configuration</text>
+
+<path d="M574 384V425" stroke="#9eb3cc" stroke-width="4"/>
+<path d="M566 417l8 14 8-14z" fill="#6d88ad"/>
+
+<text x="96" y="458" font-size="14" font-weight="760" fill="#405570">RESTORE DRILL</text>
+
+<rect x="92" y="485" width="190" height="108" rx="18" fill="#f8fbff" stroke="#dce6f2"/>
+<text x="116" y="516" font-size="14" font-weight="750" fill="#405570">1 · Isolated target</text>
+<text x="116" y="546" font-size="13" fill="#66758a">no production traffic</text>
+<text x="116" y="569" font-size="13" fill="#66758a">known clean volumes</text>
+
+<path d="M294 539H330" stroke="#9eb3cc" stroke-width="4"/><path d="M322 531l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="344" y="485" width="190" height="108" rx="18" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="368" y="516" font-size="14" font-weight="750" fill="#355d97">2 · Restore data</text>
+<text x="368" y="546" font-size="13" fill="#5d7390">database + objects</text>
+<text x="368" y="569" font-size="13" fill="#5d7390">restore stable secrets</text>
+
+<path d="M546 539H582" stroke="#9eb3cc" stroke-width="4"/><path d="M574 531l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="596" y="485" width="190" height="108" rx="18" fill="#eef8f4" stroke="#c8e3d6"/>
+<text x="620" y="516" font-size="14" font-weight="750" fill="#2d674f">3 · Start compatible app</text>
+<text x="620" y="546" font-size="13" fill="#587568">migration state understood</text>
+<text x="620" y="569" font-size="13" fill="#587568">health checks green</text>
+
+<path d="M798 539H834" stroke="#9eb3cc" stroke-width="4"/><path d="M826 531l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="848" y="485" width="220" height="108" rx="18" fill="#fff4f4" stroke="#efc7c9"/>
+<text x="872" y="516" font-size="14" font-weight="750" fill="#994148">4 · Verify business truth</text>
+<text x="872" y="546" font-size="13" fill="#85595d">records + permissions + files</text>
+<text x="872" y="569" font-size="13" fill="#85595d">critical flows before cutover</text>
+
+<rect x="184" y="738" width="832" height="52" rx="18" fill="#fff" stroke="#d5e1ee"/>
+<text x="600" y="770" text-anchor="middle" font-size="16" font-weight="730" fill="#25364e">Backup answers “do bytes exist?” Restore drill answers the harder question: “can those bytes become the same business system again?”</text>
+</svg>
