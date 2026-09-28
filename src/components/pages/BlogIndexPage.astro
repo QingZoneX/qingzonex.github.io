@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '09',
+        title: 'Agent 不该负责所有自动化：QTable 的 Automation Engine 为什么把确定性执行留给规则系统',
+        description: 'AI Native 不意味着所有工作流都要交给模型。这篇结合 QTable 当前 Rule / Event / Execution、ChangeSet Event Materialization、Scheduler、Worker、Run-As Permission、Retry、Rule Version、Loop Guard 与 Execution History，拆解 Agent 和 Automation 为什么应该分工。',
+        date: '2026 年 9 月 28 日',
+        tags: ['Automation', 'Deterministic Runtime', 'QTable'],
+        path: 'blog/deterministic-automation-engine/',
+      },
+      {
         number: '08',
         title: '开源不是把仓库设成 Public：QTable 如何用 CI、SBOM、Provenance 建立供应链信任',
         description: '代码公开只是第一步，真正部署的是依赖、容器镜像和发布制品。这篇结合 QTable / QTableUI 当前 CI、依赖审计、CycloneDX SBOM、Trivy、BuildKit Provenance、OCI Metadata、Image Digest 和 Full-Stack Release Gate，拆解一份源码如何变成可以被追溯和验证的发布物。',
@@ -86,6 +94,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '09',
+        title: 'Agent 不該負責所有自動化：QTable 的 Automation Engine 為什麼把確定性執行留給規則系統',
+        description: 'AI Native 不代表所有 Workflow 都要交給 Model。這篇結合 QTable 目前 Rule / Event / Execution、ChangeSet Event Materialization、Scheduler、Worker、Run-As Permission、Retry、Rule Version、Loop Guard 與 Execution History，拆解 Agent 和 Automation 為什麼應該分工。',
+        date: '2026 年 9 月 28 日',
+        tags: ['Automation', 'Deterministic Runtime', 'QTable'],
+        path: 'blog/deterministic-automation-engine/',
+      },
       {
         number: '08',
         title: '開源不是把倉庫設成 Public：QTable 如何用 CI、SBOM、Provenance 建立供應鏈信任',
@@ -159,6 +175,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '09',
+        title: 'An Agent Should Not Run Every Automation: Why QTable Keeps Deterministic Execution in the Automation Engine',
+        description: 'AI-native does not mean every workflow belongs to a model. This article follows QTable’s Rule / Event / Execution model, ChangeSet event materialization, scheduler, worker, run-as permissions, retries, rule versions, loop guard, and execution history to explain how Agent and Automation responsibilities should differ.',
+        date: 'September 28, 2026',
+        tags: ['Automation', 'Deterministic Runtime', 'QTable'],
+        path: 'blog/deterministic-automation-engine/',
+      },
+      {
         number: '08',
         title: 'Open Source Is More Than Making a Repository Public: How QTable Builds Supply-Chain Trust with CI, SBOMs, and Provenance',
         description: 'Publishing source is only the first step; users deploy dependencies, images, and release artifacts. This article follows QTable / QTableUI CI, dependency audits, CycloneDX SBOMs, Trivy, BuildKit provenance, OCI metadata, image digests, and full-stack release gates to connect reviewed source to verifiable artifacts.',
@@ -229,7 +253,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>08 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>09 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">
