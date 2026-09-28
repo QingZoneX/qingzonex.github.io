@@ -15,6 +15,14 @@ const copy = {
     series: '系列文章', read: '阅读全文', source: 'Markdown 原文保存在本仓库，外部技术社区内容将以此处作为 canonical source。',
     articles: [
       {
+        number: '10',
+        title: 'Self-hosted 不是 docker compose up：QTable 如何把升级、备份、恢复和可观测性变成系统边界',
+        description: 'Self-hosted 真正困难的不是把容器启动起来，而是长期升级、恢复和运营。这篇结合 QTable 当前 PostgreSQL / Redis / MinIO / QTable / QTableUI Compose、Alembic、Health Check、Release Gate、ChangeSet 与 Runtime Trace，梳理系统已经具备的可运营基础，以及 Backup / Restore、Readiness、Metrics / Alerting 仍需要补齐的边界。',
+        date: '2026 年 9 月 28 日',
+        tags: ['Self-hosted', 'Recovery', 'Observability'],
+        path: 'blog/self-hosted-operations-recovery/',
+      },
+      {
         number: '09',
         title: 'Agent 不该负责所有自动化：QTable 的 Automation Engine 为什么把确定性执行留给规则系统',
         description: 'AI Native 不意味着所有工作流都要交给模型。这篇结合 QTable 当前 Rule / Event / Execution、ChangeSet Event Materialization、Scheduler、Worker、Run-As Permission、Retry、Rule Version、Loop Guard 与 Execution History，拆解 Agent 和 Automation 为什么应该分工。',
@@ -94,6 +102,14 @@ const copy = {
     intro: '這不是產品功能公告，而是一組圍繞真實工程問題展開的文章：為什麼要做 QTable、AI 如何安全操作業務資料、Context 如何建立、Agent 如何執行工作，以及一個專案如何真正走向開源。',
     series: '系列文章', read: '閱讀全文', source: 'Markdown 原文保存在本倉庫，外部技術社群內容將以此處作為 canonical source。',
     articles: [
+      {
+        number: '10',
+        title: 'Self-hosted 不只是 docker compose up：QTable 如何把升級、備份、恢復與可觀測性變成系統邊界',
+        description: 'Self-hosted 真正困難的不是把 Container 啟動起來，而是長期 Upgrade、Recover 與 Operate。這篇結合 QTable 目前 PostgreSQL / Redis / MinIO / QTable / QTableUI Compose、Alembic、Health Check、Release Gate、ChangeSet 與 Runtime Trace，整理已具備的 Operational Foundation，以及 Backup / Restore、Readiness、Metrics / Alerting 仍需要補齊的 Boundary。',
+        date: '2026 年 9 月 28 日',
+        tags: ['Self-hosted', 'Recovery', 'Observability'],
+        path: 'blog/self-hosted-operations-recovery/',
+      },
       {
         number: '09',
         title: 'Agent 不該負責所有自動化：QTable 的 Automation Engine 為什麼把確定性執行留給規則系統',
@@ -175,6 +191,14 @@ const copy = {
     series: 'Series', read: 'Read article', source: 'The canonical Markdown source lives in this repository. Syndicated copies on external engineering communities should point back here.',
     articles: [
       {
+        number: '10',
+        title: 'Self-hosted Is More Than docker compose up: How QTable Turns Upgrades, Backup, Recovery, and Observability into System Boundaries',
+        description: 'The hard part of self-hosting is not starting containers; it is upgrading, recovering, and operating the system for years. This article follows QTable’s PostgreSQL / Redis / MinIO / QTable / QTableUI Compose stack, Alembic migrations, health checks, release gates, ChangeSets, and runtime traces to separate today’s operational foundations from the backup/restore, readiness, metrics, and alerting work still ahead.',
+        date: 'September 28, 2026',
+        tags: ['Self-hosted', 'Recovery', 'Observability'],
+        path: 'blog/self-hosted-operations-recovery/',
+      },
+      {
         number: '09',
         title: 'An Agent Should Not Run Every Automation: Why QTable Keeps Deterministic Execution in the Automation Engine',
         description: 'AI-native does not mean every workflow belongs to a model. This article follows QTable’s Rule / Event / Execution model, ChangeSet event materialization, scheduler, worker, run-as permissions, retries, rule versions, loop guard, and execution history to explain how Agent and Automation responsibilities should differ.',
@@ -253,7 +277,7 @@ const copy = {
 <BaseLayout locale={locale} route="blog/" title={copy.metaTitle} description={copy.metaDescription}>
   <section class="blog-index shell">
     <header class="blog-index-hero"><span class="blog-eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.intro}</p></header>
-    <div class="blog-section-head"><span>{copy.series}</span><span>09 / 10</span></div>
+    <div class="blog-section-head"><span>{copy.series}</span><span>10 / 10</span></div>
     <div class="article-list">
       {copy.articles.map((article) => (
         <article class="article-card">

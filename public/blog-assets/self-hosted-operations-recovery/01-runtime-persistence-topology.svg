@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="title">QTable self-hosted runtime and persistence topology</title>
+<desc id="desc">QTableUI is the public web edge. It proxies to the QTable API on a private network. QTable depends on PostgreSQL, Redis and S3-compatible object storage. PostgreSQL and MinIO store durable business data, Redis supports runtime state and cache, and every service has a health check in the canonical Compose stack.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#edf4ff"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+</defs>
+<rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+<text x="64" y="72" font-size="38" font-weight="760" fill="#0f172a">Self-hosting is a runtime topology, not a single container</text>
+<text x="64" y="108" font-size="18" fill="#60708a">The operational boundary spans web, API, database, cache, object storage, migrations, secrets and health checks.</text>
+
+<g filter="url(#shadow)">
+<rect x="70" y="165" width="1060" height="540" rx="30" fill="#fff" stroke="#d9e4f1"/>
+</g>
+
+<rect x="100" y="220" width="235" height="122" rx="20" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="126" y="252" font-size="14" font-weight="760" fill="#355d97">PUBLIC EDGE</text>
+<text x="126" y="286" font-size="22" font-weight="760" fill="#1f3554">QTableUI</text>
+<text x="126" y="314" font-size="14" fill="#5d7390">Nginx · SPA · /healthz</text>
+
+<path d="M350 281H447" stroke="#9eb3cc" stroke-width="4"/>
+<path d="M439 273l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="462" y="210" width="265" height="142" rx="20" fill="#eef8f4" stroke="#c8e3d6"/>
+<text x="488" y="243" font-size="14" font-weight="760" fill="#2d674f">PRIVATE APPLICATION NETWORK</text>
+<text x="488" y="278" font-size="22" font-weight="760" fill="#244c3c">QTable API</text>
+<text x="488" y="307" font-size="14" fill="#587568">FastAPI · GraphQL · workers</text>
+<text x="488" y="330" font-size="14" fill="#587568">entrypoint runs Alembic upgrade head</text>
+
+<path d="M595 367V416" stroke="#9eb3cc" stroke-width="4"/>
+<path d="M587 408l8 14 8-14z" fill="#6d88ad"/>
+
+<rect x="94" y="455" width="285" height="158" rx="20" fill="#f8fbff" stroke="#dce6f2"/>
+<text x="120" y="487" font-size="14" font-weight="760" fill="#405570">POSTGRESQL 16</text>
+<text x="120" y="520" font-size="16" font-weight="700" fill="#33445b">Durable business state</text>
+<text x="120" y="547" font-size="14" fill="#66758a">tables · records · permissions</text>
+<text x="120" y="572" font-size="14" fill="#66758a">audit · automation · metadata</text>
+<text x="120" y="596" font-size="14" fill="#66758a">named volume: postgres_data</text>
+
+<rect x="456" y="455" width="285" height="158" rx="20" fill="#fff9ef" stroke="#ecd6b5"/>
+<text x="482" y="487" font-size="14" font-weight="760" fill="#74551f">REDIS 7</text>
+<text x="482" y="520" font-size="16" font-weight="700" fill="#65491b">Runtime acceleration</text>
+<text x="482" y="547" font-size="14" fill="#816c4c">cache · rate limiting</text>
+<text x="482" y="572" font-size="14" fill="#816c4c">appendonly persistence enabled</text>
+<text x="482" y="596" font-size="14" fill="#816c4c">named volume: redis_data</text>
+
+<rect x="818" y="455" width="285" height="158" rx="20" fill="#f4effb" stroke="#ddcff0"/>
+<text x="844" y="487" font-size="14" font-weight="760" fill="#67478f">S3 / MINIO</text>
+<text x="844" y="520" font-size="16" font-weight="700" fill="#593d7e">Durable binary objects</text>
+<text x="844" y="547" font-size="14" fill="#715f83">attachments · object keys</text>
+<text x="844" y="572" font-size="14" fill="#715f83">stable registry in PostgreSQL</text>
+<text x="844" y="596" font-size="14" fill="#715f83">named volume: minio_data</text>
+
+<path d="M512 350L274 444" fill="none" stroke="#9eb3cc" stroke-width="3"/>
+<path d="M595 352V444" fill="none" stroke="#9eb3cc" stroke-width="3"/>
+<path d="M679 350L926 444" fill="none" stroke="#9eb3cc" stroke-width="3"/>
+
+<rect x="774" y="214" width="318" height="132" rx="20" fill="#fff4f4" stroke="#efc7c9"/>
+<text x="800" y="246" font-size="14" font-weight="760" fill="#994148">HEALTH CONTRACT</text>
+<text x="800" y="280" font-size="14" fill="#85595d">Postgres · pg_isready</text>
+<text x="800" y="304" font-size="14" fill="#85595d">Redis · PING · MinIO · health/live</text>
+<text x="800" y="328" font-size="14" fill="#85595d">QTable · / · QTableUI · /healthz</text>
+
+<rect x="180" y="738" width="840" height="52" rx="18" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="600" y="770" text-anchor="middle" font-size="16" font-weight="730" fill="#355d97">The recovery unit is the whole data contract: database + object storage + compatible application revision + stable secrets and configuration.</text>
+</svg>

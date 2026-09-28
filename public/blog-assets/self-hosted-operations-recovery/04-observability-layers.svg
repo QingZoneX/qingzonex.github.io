@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc" font-family="Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="title">QTable operational observability layers</title>
+<desc id="desc">Current QTable provides container liveness checks, release smoke evidence, application logs, execution traces and business audit ChangeSets. A mature operations plane adds dependency-aware readiness, platform metrics, alerts, service-level objectives, backup freshness and restore verification.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfdff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity=".10"/></filter>
+</defs>
+<rect width="1200" height="820" rx="34" fill="url(#bg)"/>
+<text x="64" y="72" font-size="38" font-weight="760" fill="#0f172a">“Container is alive” is only the first observability question</text>
+<text x="64" y="108" font-size="18" fill="#60708a">Operations need signals from infrastructure health all the way to business-side effects and recovery readiness.</text>
+
+<g filter="url(#shadow)"><rect x="70" y="165" width="1060" height="520" rx="30" fill="#fff" stroke="#d9e4f1"/></g>
+
+<rect x="105" y="218" width="430" height="86" rx="18" fill="#eef8f4" stroke="#c8e3d6"/>
+<text x="130" y="248" font-size="14" font-weight="760" fill="#2d674f">CURRENT · LIVENESS</text>
+<text x="130" y="279" font-size="14" fill="#587568">Postgres · Redis · MinIO · QTable root · QTableUI /healthz</text>
+
+<rect x="665" y="218" width="430" height="86" rx="18" fill="#fff9ef" stroke="#ecd6b5"/>
+<text x="690" y="248" font-size="14" font-weight="760" fill="#74551f">NEXT · READINESS</text>
+<text x="690" y="279" font-size="14" fill="#816c4c">Can this instance safely serve traffic with required dependencies now?</text>
+
+<path d="M545 261H655" stroke="#9eb3cc" stroke-width="4"/><path d="M647 253l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="105" y="344" width="430" height="108" rx="18" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="130" y="375" font-size="14" font-weight="760" fill="#355d97">CURRENT · EVIDENCE</text>
+<text x="130" y="405" font-size="14" fill="#5d7390">release smoke artifacts · browser traces · application logs</text>
+<text x="130" y="429" font-size="14" fill="#5d7390">Automation traceId · ChangeSet ids · action history</text>
+
+<rect x="665" y="344" width="430" height="108" rx="18" fill="#f4effb" stroke="#ddcff0"/>
+<text x="690" y="375" font-size="14" font-weight="760" fill="#67478f">NEXT · TELEMETRY</text>
+<text x="690" y="405" font-size="14" fill="#715f83">request latency · error rate · queue lag · DB saturation</text>
+<text x="690" y="429" font-size="14" fill="#715f83">structured logs · metrics · traces · alert routing</text>
+
+<path d="M545 398H655" stroke="#9eb3cc" stroke-width="4"/><path d="M647 390l14 8-14 8z" fill="#6d88ad"/>
+
+<rect x="105" y="492" width="430" height="108" rx="18" fill="#fff4f4" stroke="#efc7c9"/>
+<text x="130" y="523" font-size="14" font-weight="760" fill="#994148">CURRENT · BUSINESS AUDIT</text>
+<text x="130" y="553" font-size="14" fill="#85595d">who changed what · source · actor · trace · rule execution</text>
+<text x="130" y="577" font-size="14" fill="#85595d">useful when “healthy” infrastructure produced wrong business state</text>
+
+<rect x="665" y="492" width="430" height="108" rx="18" fill="#f8fbff" stroke="#dce6f2"/>
+<text x="690" y="523" font-size="14" font-weight="760" fill="#405570">NEXT · OPERABILITY</text>
+<text x="690" y="553" font-size="14" fill="#66758a">SLOs · backup freshness · restore drill status · capacity</text>
+<text x="690" y="577" font-size="14" fill="#66758a">alerts tied to runbooks and recovery decisions</text>
+
+<rect x="170" y="728" width="860" height="54" rx="18" fill="#eef4ff" stroke="#cfdcf0"/>
+<text x="600" y="761" text-anchor="middle" font-size="16" font-weight="730" fill="#355d97">Health checks tell you whether a process answers. Operability tells you whether the product is serving correctly, durably, and recoverably.</text>
+</svg>
