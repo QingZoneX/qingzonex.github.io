@@ -1,11 +1,37 @@
 export const LOCALE_STORAGE_KEY = 'qingzonex.locale.v1';
 export const DEFAULT_LOCALE = 'zh-cn';
-export const SUPPORTED_LOCALES = ['zh-cn', 'zh-tw', 'en'];
+export const SUPPORTED_LOCALES = ['zh-cn', 'zh-tw', 'en', 'ar', 'fr', 'ru', 'ja', 'ko'];
 
 export const LOCALE_SETTINGS = {
-  'zh-cn': { label: '简体中文', lang: 'zh-CN', prefix: '', ogLocale: 'zh_CN', badge: '简' },
-  'zh-tw': { label: '繁體中文', lang: 'zh-TW', prefix: 'zh-tw', ogLocale: 'zh_TW', badge: '繁' },
-  en: { label: 'English', lang: 'en', prefix: 'en', ogLocale: 'en_US', badge: 'EN' },
+  'zh-cn': { label: '简体中文', lang: 'zh-CN', prefix: '', ogLocale: 'zh_CN', badge: '简', direction: 'ltr' },
+  'zh-tw': { label: '繁體中文', lang: 'zh-TW', prefix: 'zh-tw', ogLocale: 'zh_TW', badge: '繁', direction: 'ltr' },
+  en: { label: 'English', lang: 'en', prefix: 'en', ogLocale: 'en_US', badge: 'EN', direction: 'ltr' },
+  ar: { label: 'العربية', lang: 'ar', prefix: 'ar', ogLocale: 'ar_AR', badge: 'ع', direction: 'rtl' },
+  fr: { label: 'Français', lang: 'fr', prefix: 'fr', ogLocale: 'fr_FR', badge: 'FR', direction: 'ltr' },
+  ru: { label: 'Русский', lang: 'ru', prefix: 'ru', ogLocale: 'ru_RU', badge: 'RU', direction: 'ltr' },
+  ja: { label: '日本語', lang: 'ja', prefix: 'ja', ogLocale: 'ja_JP', badge: '日', direction: 'ltr' },
+  ko: { label: '한국어', lang: 'ko', prefix: 'ko', ogLocale: 'ko_KR', badge: '한', direction: 'ltr' },
+};
+
+/** Path segments used to mirror a locale under `/<prefix>/…`; the default locale stays at the root. */
+export const LOCALE_PREFIXES = SUPPORTED_LOCALES
+  .map((code) => LOCALE_SETTINGS[code].prefix)
+  .filter(Boolean);
+
+/**
+ * Base language tags that map onto a shipped locale. `zh` keeps its dedicated
+ * handling below because script subtags decide between Simplified and Traditional.
+ */
+const LANGUAGE_ALIASES = {
+  en: 'en',
+  ar: 'ar',
+  fa: 'ar',
+  he: 'ar',
+  ur: 'ar',
+  fr: 'fr',
+  ru: 'ru',
+  ja: 'ja',
+  ko: 'ko',
 };
 
 export function normalizeBase(base = '/') {
@@ -24,8 +50,10 @@ export function normalizeLocaleTag(input) {
   if (!value) return undefined;
   if (value === 'zh-tw' || value === 'zh-hk' || value === 'zh-mo' || value === 'zh-hant' || value.startsWith('zh-hant-')) return 'zh-tw';
   if (value === 'zh' || value === 'zh-cn' || value === 'zh-sg' || value === 'zh-hans' || value.startsWith('zh-hans-')) return 'zh-cn';
-  if (value === 'en' || value.startsWith('en-')) return 'en';
-  if (SUPPORTED_LOCALES.includes(value)) return value;
+  const base = value.split('-')[0];
+  if (base === 'zh') return 'zh-cn';
+  if (LANGUAGE_ALIASES[base]) return LANGUAGE_ALIASES[base];
+  if (SUPPORTED_LOCALES.includes(base)) return base;
   return undefined;
 }
 
@@ -46,16 +74,25 @@ export function stripBase(pathname, base = '/') {
   return normalizedPath.replace(/^\/+/, '');
 }
 
+function localePrefixPattern() {
+  return LOCALE_PREFIXES.map((prefix) => prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+}
+
 export function inferLocaleFromPath(pathname, base = '/') {
   const relative = stripBase(pathname, base).toLowerCase();
-  if (relative === 'en' || relative.startsWith('en/')) return 'en';
-  if (relative === 'zh-tw' || relative.startsWith('zh-tw/')) return 'zh-tw';
-  return 'zh-cn';
+  const segment = relative.split('/')[0];
+  for (const code of SUPPORTED_LOCALES) {
+    const { prefix } = LOCALE_SETTINGS[code];
+    if (prefix && segment === prefix) return code;
+  }
+  return DEFAULT_LOCALE;
 }
 
 export function logicalPathFromPathname(pathname, base = '/') {
   const relative = stripBase(pathname, base);
-  return relative.replace(/^(?:en|zh-tw)(?:\/|$)/i, '');
+  const prefixes = localePrefixPattern();
+  if (!prefixes) return relative;
+  return relative.replace(new RegExp(`^(?:${prefixes})(?:/|$)`, 'i'), '');
 }
 
 export function localePath(locale, path = '', base = '/') {
@@ -68,19 +105,27 @@ export function localePath(locale, path = '', base = '/') {
   return ensureTrailingSlash(output);
 }
 
+export function isRtlLocale(locale) {
+  return (LOCALE_SETTINGS[normalizeLocaleTag(locale) || DEFAULT_LOCALE] || LOCALE_SETTINGS[DEFAULT_LOCALE]).direction === 'rtl';
+}
+
 export function localeBootstrapScript(base = '/') {
   const normalizedBase = normalizeBase(base);
   return `(() => {
     const KEY = ${JSON.stringify(LOCALE_STORAGE_KEY)};
     const BASE = ${JSON.stringify(normalizedBase)};
-    const DEFAULT = 'zh-cn';
-    const SUPPORTED = new Set(['zh-cn', 'zh-tw', 'en']);
+    const DEFAULT = ${JSON.stringify(DEFAULT_LOCALE)};
+    const SUPPORTED = new Set(${JSON.stringify(SUPPORTED_LOCALES)});
+    const PREFIXES = ${JSON.stringify(LOCALE_PREFIXES)};
+    const ALIASES = ${JSON.stringify(LANGUAGE_ALIASES)};
     const normalize = (input) => {
       const value = String(input || '').trim().toLowerCase().replaceAll('_', '-');
       if (value === 'zh-tw' || value === 'zh-hk' || value === 'zh-mo' || value === 'zh-hant' || value.startsWith('zh-hant-')) return 'zh-tw';
       if (value === 'zh' || value === 'zh-cn' || value === 'zh-sg' || value === 'zh-hans' || value.startsWith('zh-hans-')) return 'zh-cn';
-      if (value === 'en' || value.startsWith('en-')) return 'en';
-      return SUPPORTED.has(value) ? value : undefined;
+      const base = value.split('-')[0];
+      if (base === 'zh') return 'zh-cn';
+      if (ALIASES[base]) return ALIASES[base];
+      return SUPPORTED.has(base) ? base : undefined;
     };
     const ensureSlash = (pathname) => pathname === '/' || pathname.endsWith('/') ? pathname : pathname + '/';
     const stripBase = (pathname) => {
@@ -90,14 +135,20 @@ export function localeBootstrapScript(base = '/') {
     };
     const localeFromPath = (pathname) => {
       const relative = stripBase(pathname).toLowerCase();
-      if (relative === 'en' || relative.startsWith('en/')) return 'en';
-      if (relative === 'zh-tw' || relative.startsWith('zh-tw/')) return 'zh-tw';
-      return 'zh-cn';
+      const segment = relative.split('/')[0];
+      return PREFIXES.includes(segment) ? segment : DEFAULT;
     };
-    const logicalPath = (pathname) => stripBase(pathname).replace(/^(?:en|zh-tw)(?:\\/|$)/i, '');
+    const logicalPath = (pathname) => {
+      const relative = stripBase(pathname);
+      for (const prefix of PREFIXES) {
+        if (relative.toLowerCase().startsWith(prefix.toLowerCase() + '/')) return relative.slice(prefix.length + 1);
+        if (relative.toLowerCase() === prefix.toLowerCase()) return '';
+      }
+      return relative;
+    };
     const targetPath = (locale, pathname) => {
       const logical = logicalPath(pathname).replace(/^\\/+|\\/+$/g, '');
-      const prefix = locale === 'zh-cn' ? '' : locale;
+      const prefix = locale === DEFAULT ? '' : locale;
       const relative = [prefix, logical].filter(Boolean).join('/');
       const result = relative ? (BASE + relative).replace(/([^:]\\/)\\/+/g, '$1') : BASE;
       return ensureSlash(result);

@@ -7,10 +7,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 const expect = (actual, expected, label) => { if (actual !== expected) errors.push(`${label}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`); };
 
-for (const [input, expected] of [['zh-CN','zh-cn'],['zh-SG','zh-cn'],['zh-Hans','zh-cn'],['zh','zh-cn'],['zh-TW','zh-tw'],['zh-HK','zh-tw'],['zh-MO','zh-tw'],['zh-Hant','zh-tw'],['en-US','en'],['en-GB','en'],['fr-FR',undefined]]) expect(normalizeLocaleTag(input), expected, `normalize ${input}`);
+for (const [input, expected] of [['zh-CN','zh-cn'],['zh-SG','zh-cn'],['zh-Hans','zh-cn'],['zh','zh-cn'],['zh-TW','zh-tw'],['zh-HK','zh-tw'],['zh-MO','zh-tw'],['zh-Hant','zh-tw'],['en-US','en'],['en-GB','en'],['fr-FR','fr'],['ru-RU','ru'],['ja-JP','ja'],['ko-KR','ko'],['ar-EG','ar'],['he-IL','ar'],['de-DE',undefined]]) expect(normalizeLocaleTag(input), expected, `normalize ${input}`);
 expect(resolvePreferredLocale('en',['zh-CN']), 'en', 'stored locale overrides browser');
 expect(resolvePreferredLocale(null,['zh-HK','en-US']), 'zh-tw', 'browser language order');
-expect(resolvePreferredLocale(null,['fr-FR']), DEFAULT_LOCALE, 'unsupported browser fallback');
+expect(resolvePreferredLocale(null,['fr-FR']), 'fr', 'supported browser fallback');
+expect(resolvePreferredLocale(null,['de-DE']), DEFAULT_LOCALE, 'unsupported browser fallback');
 expect(ensureTrailingSlash('/zh-tw'), '/zh-tw/', 'trailing slash helper');
 expect(localePath('zh-cn','','/'), '/', 'root zh-cn homepage');
 expect(localePath('zh-tw','','/'), '/zh-tw/', 'root zh-tw homepage');
@@ -25,11 +26,16 @@ expect(inferLocaleFromPath('/qingzonex.github.io/en/docs/','/qingzonex.github.io
 expect(inferLocaleFromPath('/qingzonex.github.io/docs/','/qingzonex.github.io/'), 'zh-cn', 'infer root locale with base');
 
 const portalPages = ['index.astro','qtable.astro','qtable-ui.astro','examples.astro','roadmap.astro'];
+const portalPrefixes = ['', 'en', 'zh-tw', 'ar', 'fr', 'ru', 'ja', 'ko'];
 for (const page of portalPages) {
-  for (const prefix of ['', 'en', 'zh-tw']) {
+  for (const prefix of portalPrefixes) {
     const file = path.join(root, 'src/pages', prefix, page);
     if (!fs.existsSync(file)) errors.push(`missing localized portal page: ${path.relative(root,file)}`);
   }
+}
+for (const prefix of portalPrefixes.slice(1)) {
+  const blogIndex = path.join(root, 'src/pages', prefix, 'blog', 'index.astro');
+  if (!fs.existsSync(blogIndex)) errors.push(`missing localized blog index: ${path.relative(root, blogIndex)}`);
 }
 
 function markdownSet(dir) {
@@ -37,7 +43,16 @@ function markdownSet(dir) {
   const walk=(current)=>{ for(const entry of fs.readdirSync(current,{withFileTypes:true})){ const full=path.join(current,entry.name); if(entry.isDirectory()) walk(full); else if(/\.mdx?$/.test(entry.name)) out.push(path.relative(dir,full).replaceAll(path.sep,'/')); }};
   walk(dir); return out.sort();
 }
-const docRoots = [path.join(root,'src/content/docs/docs'),path.join(root,'src/content/docs/zh-tw/docs'),path.join(root,'src/content/docs/en/docs')];
+const docRoots = [
+  path.join(root,'src/content/docs/docs'),
+  path.join(root,'src/content/docs/zh-tw/docs'),
+  path.join(root,'src/content/docs/en/docs'),
+  path.join(root,'src/content/docs/ar/docs'),
+  path.join(root,'src/content/docs/fr/docs'),
+  path.join(root,'src/content/docs/ru/docs'),
+  path.join(root,'src/content/docs/ja/docs'),
+  path.join(root,'src/content/docs/ko/docs'),
+];
 if (docRoots.every(fs.existsSync)) {
   const baseline=markdownSet(docRoots[0]);
   for (const dir of docRoots.slice(1)) {
@@ -47,7 +62,7 @@ if (docRoots.every(fs.existsSync)) {
 } else errors.push('one or more localized documentation roots are missing');
 
 const contentSource=fs.readFileSync(path.join(root,'src/lib/portal-content.ts'),'utf8');
-for(const marker of ["'zh-cn':", "'zh-tw':", 'en: {']) if(!contentSource.includes(marker)) errors.push(`portal content dictionary missing ${marker}`);
+for(const marker of ["'zh-cn':", "'zh-tw':", 'en: {', 'ar: {', 'fr: {', 'ru: {', 'ja: {', 'ko: {']) if(!contentSource.includes(marker)) errors.push(`portal content dictionary missing ${marker}`);
 
 const switcherPath = path.join(root, 'src/components/LocaleSwitcher.astro');
 const starlightSwitcherPath = path.join(root, 'src/components/StarlightLanguageSwitcher.astro');
@@ -64,4 +79,4 @@ for(const marker of [LOCALE_STORAGE_KEY,'navigator.languages','starlight-lang-se
 if (!bootstrap.includes("pathname + '/'")) errors.push('locale bootstrap does not enforce a trailing slash for generated page routes.');
 
 if(errors.length){ console.error(errors.join('\n')); process.exit(1); }
-console.log(`i18n contract verified: 3 portal locales, ${markdownSet(docRoots[0]).length} docs per locale, trailing-slash-safe routes, browser detection, persisted preference and accessible custom switchers.`);
+console.log(`i18n contract verified: ${docRoots.length} portal locales, ${markdownSet(docRoots[0]).length} docs per locale, trailing-slash-safe routes, browser detection, persisted preference and accessible custom switchers.`);

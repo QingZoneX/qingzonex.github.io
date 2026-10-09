@@ -18,7 +18,7 @@ interface Frontmatter {
 const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
 const locale = frontmatter.locale || 'zh-cn';
 const route = `blog/${frontmatter.slug}/`;
-const localeTag = locale === 'en' ? 'en-US' : locale === 'zh-tw' ? 'zh-TW' : 'zh-CN';
+const localeTag = { 'zh-cn':'zh-CN', 'zh-tw':'zh-TW', en:'en-US', ar:'ar', fr:'fr-FR', ru:'ru-RU', ja:'ja-JP', ko:'ko-KR' }[locale] || 'zh-CN';
 const published = new Intl.DateTimeFormat(localeTag, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(frontmatter.date));
 const sourceUrl = frontmatter.sourcePath
   ? `https://github.com/QingZoneX/qingzonex.github.io/blob/main/${frontmatter.sourcePath}`
@@ -38,6 +38,31 @@ const copy = {
     blog: 'Engineering Blog', original: 'Source on GitHub', published: 'Published', series: 'Series',
     ctaTitle: 'QTable is open source', ctaCopy: 'If the data model, AI workflow, or open-source engineering discussed here interests you, read the code, open an issue, or contribute directly.',
     server: 'Backend source', web: 'Web source', all: 'Back to blog', note: 'The canonical Markdown source for this article lives in the QingZoneX portal repository. Syndicated copies should point back here as the canonical source.',
+  },
+  ar: {
+    blog: 'المدونة الهندسية', original: 'المصدر على GitHub', published: 'نُشر', series: 'سلسلة',
+    ctaTitle: 'QTable مفتوح المصدر', ctaCopy: 'إذا كان نموذج البيانات أو سير عمل الذكاء الاصطناعي أو الممارسات الهندسية مفتوحة المصدر المذكورة هنا تهمّك، فاقرأ الكود أو افتح Issue أو شارك مباشرة.',
+    server: 'كود الخادم', web: 'كود الواجهة', all: 'العودة إلى المدونة', note: 'يُحفظ مصدر Markdown المعتمد لهذه المقالة في مستودع بوابة QingZoneX، وينبغي أن تشير النسخ المنقولة إلى هنا بوصفه المصدر المعتمد.',
+  },
+  fr: {
+    blog: "Blog d'ingénierie", original: 'Source sur GitHub', published: 'Publié', series: 'Série',
+    ctaTitle: 'QTable est open source', ctaCopy: "Si le modèle de données, le workflow IA ou l'ingénierie open source abordés ici vous intéressent, lisez le code, ouvrez une issue ou contribuez directement.",
+    server: 'Code backend', web: 'Code web', all: 'Retour au blog', note: "La source Markdown canonique de cet article vit dans le dépôt du portail QingZoneX. Les copies syndiquées doivent pointer ici comme source canonique.",
+  },
+  ru: {
+    blog: 'Инженерный блог', original: 'Исходник на GitHub', published: 'Опубликовано', series: 'Серия',
+    ctaTitle: 'QTable — открытый проект', ctaCopy: 'Если описанные здесь модель данных, ИИ-процесс или инженерная практика вам интересны, читайте код, открывайте issue или участвуйте напрямую.',
+    server: 'Код бэкенда', web: 'Код веба', all: 'Назад в блог', note: 'Канонический Markdown-источник этой статьи хранится в репозитории портала QingZoneX. Перепечатки должны ссылаться сюда как на канонический источник.',
+  },
+  ja: {
+    blog: 'エンジニアリングブログ', original: 'GitHub の原文', published: '公開', series: 'シリーズ',
+    ctaTitle: 'QTable はオープンソースです', ctaCopy: 'ここで扱うデータモデル、AI ワークフロー、オープンソース開発に興味があれば、コードを読むか Issue を立てるか、直接貢献してください。',
+    server: 'バックエンドのソース', web: 'フロントのソース', all: 'ブログへ戻る', note: 'この記事の正規の Markdown 原文は QingZoneX ポータルのリポジトリに保存されています。転載はここを canonical source として示してください。',
+  },
+  ko: {
+    blog: '엔지니어링 블로그', original: 'GitHub 원문', published: '게시', series: '시리즈',
+    ctaTitle: 'QTable은 오픈소스입니다', ctaCopy: '여기서 다룬 데이터 모델, AI 워크플로, 오픈소스 엔지니어링에 관심이 있다면 코드를 읽거나 이슈를 열거나 직접 기여하세요.',
+    server: '백엔드 소스', web: '웹 소스', all: '블로그로 돌아가기', note: '이 글의 정식 Markdown 원문은 QingZoneX 포털 저장소에 보관됩니다. 외부 전재는 여기를 canonical source로 표시해야 합니다.',
   },
 }[locale];
 ---

@@ -10,6 +10,11 @@ const copy = {
   'zh-cn': { live:'本地交互演示', hint:'切换视图、搜索任务并观察同一份结构化数据如何以不同方式呈现。', cards:[['views','多视图切换'],['search','本地筛选'],['shield','明确演示边界']] },
   'zh-tw': { live:'本機互動示範', hint:'切換檢視、搜尋任務，觀察同一份結構化資料如何以不同方式呈現。', cards:[['views','多檢視切換'],['search','本機篩選'],['shield','清楚示範邊界']] },
   en: { live:'Local interactive demo', hint:'Switch views, filter tasks and see how the same structured data is presented from different angles.', cards:[['views','Switch views'],['search','Local filtering'],['shield','Clear demo boundary']] },
+  ar: { live:'عرض تفاعلي محلي', hint:'بدّل العروض وابحث في المهام ولاحظ كيف تُقدَّم البيانات المنظّمة نفسها بطرق مختلفة.', cards:[['views','تبديل العروض'],['search','تصفية محلية'],['shield','حدود واضحة للعرض']] },
+  fr: { live:'Démo interactive locale', hint:'Changez de vue, filtrez les tâches et observez comment les mêmes données structurées sont présentées sous des angles différents.', cards:[['views','Changer de vue'],['search','Filtrage local'],['shield','Limites claires de la démo']] },
+  ru: { live:'Локальная интерактивная демонстрация', hint:'Переключайте представления, фильтруйте задачи и смотрите, как одни и те же структурированные данные показываются с разных сторон.', cards:[['views','Переключение представлений'],['search','Локальная фильтрация'],['shield','Явная граница демонстрации']] },
+  ja: { live:'ローカル対話デモ', hint:'ビューを切り替え、タスクを検索して、同じ構造化データが異なる角度からどう表示されるか確認してください。', cards:[['views','ビュー切り替え'],['search','ローカルフィルター'],['shield','明確なデモの境界']] },
+  ko: { live:'로컬 인터랙티브 데모', hint:'보기를 전환하고 작업을 검색하며 같은 구조화 데이터가 서로 다른 각도에서 어떻게 표시되는지 확인하세요.', cards:[['views','보기 전환'],['search','로컬 필터링'],['shield','명확한 데모 경계']] },
 }[locale];
 ---
 <BaseLayout locale={locale} route="examples/" title={c.metaTitle} description={c.metaDescription}>

@@ -11,11 +11,21 @@ const layerLabels = {
   'zh-cn': { web: 'Web 前端实现', api: 'API 与领域服务', data:'数据与存储' },
   'zh-tw': { web: 'Web 前端實作', api: 'API 與領域服務', data:'資料與儲存' },
   en: { web: 'Web frontend implementation', api: 'API & domain services', data:'Data & storage' },
+  ar: { web: 'تنفيذ واجهة الويب', api: 'واجهة API وخدمات النطاق', data:'البيانات والتخزين' },
+  fr: { web: "Implémentation du front web", api: 'API et services de domaine', data:'Données et stockage' },
+  ru: { web: 'Реализация веб-интерфейса', api: 'API и доменные сервисы', data:'Данные и хранилище' },
+  ja: { web: 'Web フロント実装', api: 'API とドメインサービス', data:'データとストレージ' },
+  ko: { web: '웹 프런트 구현', api: 'API와 도메인 서비스', data:'데이터와 스토리지' },
 }[locale];
 const focusCopy = {
   'zh-cn': { hero:'QTable 将 Web 应用、API 与领域服务统一在同一数据模型、权限边界和发布节奏中，形成从界面到底层服务完整可自托管工作系统。', frontendTitle:'QTable Web 体验承载完整产品交互。', ctaTitle:'启动完整 QTable。' },
   'zh-tw': { hero:'QTable 將 Web 應用程式、API 與領域服務統一在同一資料模型、權限邊界與發佈節奏中，形成從介面到底層服務的完整自託管工作系統。', frontendTitle:'QTable Web 體驗承載完整產品互動。', ctaTitle:'啟動完整 QTable。' },
   en: { hero:'QTable unifies the web application, API and domain services around one data model, permission boundary and release cadence to form a complete self-hostable work system.', frontendTitle:'The QTable web experience carries the complete product interaction model.', ctaTitle:'Launch the complete QTable stack.' },
+  ar: { hero:'يوحّد QTable تطبيق الويب وواجهة API وخدمات النطاق حول نموذج بيانات واحد وحدود صلاحيات واحدة وإيقاع إصدار واحد، ليشكّل نظام عمل متكاملًا قابلًا للاستضافة الذاتية.', frontendTitle:'تحمل تجربة QTable Web نموذج تفاعل المنتج الكامل.', ctaTitle:'شغّل حزمة QTable الكاملة.' },
+  fr: { hero:"QTable unifie l'application web, l'API et les services de domaine autour d'un même modèle de données, d'une frontière de permission et d'un rythme de version, pour former un système de travail complet auto-hébergeable.", frontendTitle:"L'expérience QTable Web porte le modèle d'interaction produit complet.", ctaTitle:'Lancez la pile QTable complète.' },
+  ru: { hero:'QTable объединяет веб-приложение, API и доменные сервисы вокруг одной модели данных, одной границы прав и одного релизного ритма, образуя полноценную самодостаточную рабочую систему.', frontendTitle:'Веб-интерфейс QTable несёт полную модель взаимодействия с продуктом.', ctaTitle:'Запустите полный стек QTable.' },
+  ja: { hero:'QTable は Web アプリ・API・ドメインサービスを 1 つのデータモデル・1 つの権限境界・1 つのリリースリズムに統合し、完全にセルフホスト可能な作業システムを形成します。', frontendTitle:'QTable Web 体験が製品インタラクションの全体を担います。', ctaTitle:'完全な QTable スタックを起動。' },
+  ko: { hero:'QTable은 웹 앱, API, 도메인 서비스를 하나의 데이터 모델, 하나의 권한 경계, 하나의 릴리스 리듬으로 통합해 완전히 셀프 호스팅 가능한 작업 시스템을 만듭니다.', frontendTitle:'QTable 웹 경험이 완전한 제품 상호작용 모델을 담당합니다.', ctaTitle:'완전한 QTable 스택 실행.' },
 }[locale];
 ---
 <BaseLayout locale={locale} route="qtable/" title={c.metaTitle} description={c.metaDescription}>

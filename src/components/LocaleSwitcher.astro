@@ -1,8 +1,9 @@
 ---
 import { LOCALE_SETTINGS, SUPPORTED_LOCALES, localePath } from '../lib/i18n.mjs';
+import type { PortalLocale } from '../lib/current-portal-content';
 
 interface Props {
-  locale: 'zh-cn' | 'zh-tw' | 'en';
+  locale: PortalLocale;
   route?: string;
   label: string;
   compact?: boolean;

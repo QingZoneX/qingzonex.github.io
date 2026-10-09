@@ -32,11 +32,56 @@ const copy = {
     views:'Flexible work views', ai:'AI-driven workflows', aiCopy:'AI works from the data and business context the current user can see, while suggestions, previews and applies stay inside the existing permission boundary.',
     aiChecks:['Data-grounded Q&A','Project risk and progress analysis','Task breakdown and execution suggestions'], aiQuestion:'Analyze this project’s progress', aiResponse:'The project is progressing normally. Prioritize active high-priority tasks and re-check permissions and current state before applying any change.', aiInput:'Ask QTable AI…',
   },
+  ar: {
+    note:'اجعل البيانات تقود عملًا أفضل', assistant:'مساعد الذكاء الاصطناعي', assistantCopy:'افهم بياناتك واجعل العمل أكثر فاعلية',
+    baseline:'تغطي نسخة Alpha الحالية أسطح العمل الرئيسية عبر العمل الفردي وتنفيذ المشاريع والأتمتة والتعاون والبحث والتحليل، وكلها فوق نموذج بيانات منظّم واحد.',
+    foundation:'يجمع QTable الواجهة وخدمات API / النطاق وبنية البيانات التحتية في منتج واحد قابل للاستضافة الذاتية، يسهل توسيعه وفق الحدود الهندسية.', architectureAction:'استكشف المعمارية',
+    web:'تجربة ويب حديثة', webCopy:'عروض متعددة ولوحات معلومات وتعاون وذكاء اصطناعي', api:'واجهة API وخدمات النطاق', apiCopy:'لحظية وأتمتة وصلاحيات وتدقيق وذكاء اصطناعي', data:'البيانات والتخزين', dataCopy:'بنية تحتية مفتوحة المصدر قابلة للاستضافة الذاتية',
+    views:'عروض عمل مرنة', ai:'سير عمل مدفوع بالذكاء الاصطناعي', aiCopy:'يعمل الذكاء الاصطناعي انطلاقًا من البيانات وسياق العمل المرئي للمستخدم الحالي، بينما تلتزم الاقتراحات والمعاينة والتطبيق بحدود الصلاحيات الحالية.',
+    aiChecks:['أسئلة وأجوبة قائمة على البيانات','تحليل مخاطر المشروع وتقدمه','تفكيك المهام واقتراحات التنفيذ'], aiQuestion:'حلّل تقدّم هذا المشروع', aiResponse:'المشروع يتقدم بشكل طبيعي. ننصح بالتركيز على المهام النشطة عالية الأولوية وإعادة فحص الصلاحيات والحالة قبل تطبيق أي تغيير.', aiInput:'اسأل ذكاء QTable…',
+  },
+  fr: {
+    note:'Laissez les données guider un meilleur travail', assistant:'Assistant IA', assistantCopy:'Comprenez vos données et rendez le travail plus efficace',
+    baseline:"L'Alpha actuelle couvre les principales surfaces de travail — travail personnel, exécution de projet, automatisation, collaboration, recherche et analyse — sur un même modèle de données structuré.",
+    foundation:"QTable réunit le front web, les services API / domaine et l'infrastructure de données en un seul produit auto-hébergeable, facile à étendre selon les frontières d'ingénierie.", architectureAction:"Explorer l'architecture",
+    web:'Expérience web moderne', webCopy:'Vues multiples, tableaux de bord, collaboration et IA', api:'API et services de domaine', apiCopy:'Temps réel, automatisation, permissions, audit et IA', data:'Données et stockage', dataCopy:'Infrastructure ouverte auto-hébergeable',
+    views:'Vues de travail flexibles', ai:'Workflows pilotés par IA', aiCopy:"L'IA travaille à partir des données et du contexte métier visibles par l'utilisateur courant ; suggestions, aperçus et applications restent dans la frontière de permission existante.",
+    aiChecks:['Questions-réponses ancrées dans les données','Analyse des risques et de l\'avancement du projet','Décomposition des tâches et suggestions d\'exécution'], aiQuestion:'Analyser l\'avancement de ce projet', aiResponse:"Le projet progresse normalement. Priorisez les tâches actives à haute priorité et revérifiez les permissions et l'état avant toute modification.", aiInput:'Poser une question à QTable AI…',
+  },
+  ru: {
+    note:'Пусть данные ведут к лучшей работе', assistant:'ИИ-ассистент', assistantCopy:'Понимайте данные и делайте работу эффективнее',
+    baseline:'Текущая Alpha охватывает основные рабочие поверхности — личную работу, выполнение проектов, автоматизацию, совместную работу, поиск и анализ — на одной структурированной модели данных.',
+    foundation:'QTable объединяет веб-интерфейс, API / доменные сервисы и инфраструктуру данных в один самодостаточный продукт, который легко расширять по инженерным границам.', architectureAction:'Изучить архитектуру',
+    web:'Современный веб-интерфейс', webCopy:'Несколько представлений, дашборды, совместная работа и ИИ', api:'API и доменные сервисы', apiCopy:'Реальное время, автоматизация, права, аудит и ИИ', data:'Данные и хранилище', dataCopy:'Самодостаточная открытая инфраструктура',
+    views:'Гибкие представления работы', ai:'ИИ-процессы', aiCopy:'ИИ работает на основе данных и делового контекста, видимых текущему пользователю; предложения, предпросмотр и применение остаются в границах прав.',
+    aiChecks:['Ответы на вопросы на основе данных','Анализ рисков и прогресса проекта','Декомпозиция задач и предложения по выполнению'], aiQuestion:'Проанализируй прогресс этого проекта', aiResponse:'Проект развивается нормально. Сосредоточьтесь на активных высокоприоритетных задачах и заново проверьте права и состояние перед применением изменений.', aiInput:'Спросить QTable AI…',
+  },
+  ja: {
+    note:'データでより良い仕事を', assistant:'AI アシスタント', assistantCopy:'データを理解し、仕事をより効率的に',
+    baseline:'現在の Alpha は個人の作業・プロジェクト遂行・自動化・コラボレーション・検索・分析という主要な作業面を、単一の構造化データモデル上でカバーしています。',
+    foundation:'QTable は Web フロント、API / ドメインサービス、データ基盤を 1 つのセルフホスト可能な製品にまとめ、エンジニアリング境界に沿って拡張しやすくしています。', architectureAction:'アーキテクチャを見る',
+    web:'モダンな Web 体験', webCopy:'複数のビュー、ダッシュボード、コラボレーション、AI', api:'API とドメインサービス', apiCopy:'リアルタイム、自動化、権限、監査、AI', data:'データとストレージ', dataCopy:'セルフホスト可能なオープン基盤',
+    views:'柔軟な作業ビュー', ai:'AI 駆動のワークフロー', aiCopy:'AI は現在のユーザーに見えるデータと業務コンテキストから動作し、提案・プレビュー・適用は既存の権限境界に従います。',
+    aiChecks:['データに根ざした Q&A','プロジェクトのリスクと進捗の分析','タスク分解と実行提案'], aiQuestion:'このプロジェクトの進捗を分析して', aiResponse:'プロジェクトは正常に進んでいます。進行中の高優先度タスクを優先し、変更を適用する前に権限と最新状態を再確認してください。', aiInput:'QTable AI に質問…',
+  },
+  ko: {
+    note:'데이터가 더 나은 일을 이끌게', assistant:'AI 어시스턴트', assistantCopy:'데이터를 이해하고 일을 더 효율적으로',
+    baseline:'현재 Alpha는 개인 업무, 프로젝트 실행, 자동화, 협업, 검색, 분석의 주요 작업면을 단일 구조화 데이터 모델 위에서 다룹니다.',
+    foundation:'QTable은 웹 프런트, API / 도메인 서비스, 데이터 인프라를 하나의 셀프 호스팅 가능한 제품으로 묶어 엔지니어링 경계에 따라 확장하기 쉽게 합니다.', architectureAction:'아키텍처 살펴보기',
+    web:'현대적인 웹 경험', webCopy:'여러 보기, 대시보드, 협업, AI', api:'API와 도메인 서비스', apiCopy:'실시간, 자동화, 권한, 감사, AI', data:'데이터와 스토리지', dataCopy:'셀프 호스팅 가능한 오픈 인프라',
+    views:'유연한 작업 보기', ai:'AI 기반 워크플로', aiCopy:'AI는 현재 사용자가 볼 수 있는 데이터와 업무 컨텍스트에서 동작하며, 제안·미리보기·적용은 기존 권한 경계를 따릅니다.',
+    aiChecks:['데이터 기반 질의응답','프로젝트 리스크·진행 분석','작업 분해와 실행 제안'], aiQuestion:'이 프로젝트의 진행 상황 분석', aiResponse:'프로젝트가 정상적으로 진행 중입니다. 진행 중인 높은 우선순위 작업에 집중하고 변경 적용 전에 권한과 최신 상태를 재확인하세요.', aiInput:'QTable AI에게 질문…',
+  },
 }[locale];
 const layerLabels = {
   'zh-cn': { web: 'Web 前端实现', api: 'API 与领域服务' },
   'zh-tw': { web: 'Web 前端實作', api: 'API 與領域服務' },
   en: { web: 'Web frontend implementation', api: 'API & domain services' },
+  ar: { web: 'تنفيذ واجهة الويب', api: 'واجهة API وخدمات النطاق' },
+  fr: { web: "Implémentation du front web", api: 'API et services de domaine' },
+  ru: { web: 'Реализация веб-интерфейса', api: 'API и доменные сервисы' },
+  ja: { web: 'Web フロント実装', api: 'API とドメインサービス' },
+  ko: { web: '웹 프런트 구현', api: 'API와 도메인 서비스' },
 }[locale];
 const focused = (value: string) => {
   if (locale === 'zh-cn') return value.replaceAll('QNote/Clipper', '来源接入').replaceAll('QTableUI', '前端实现');

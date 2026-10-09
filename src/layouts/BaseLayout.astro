@@ -26,6 +26,11 @@ const portalCopy = {
   'zh-cn': { blog: '博客', explore: '探索', tagline: 'QTable 开源产品门户、技术博客与文档：从 Web 体验、API 服务到自托管与 AI 工作流。' },
   'zh-tw': { blog: '部落格', explore: '探索', tagline: 'QTable 開源產品入口網站、技術部落格與文件：從 Web 體驗、API 服務到自託管與 AI 工作流程。' },
   en: { blog: 'Blog', explore: 'Explore', tagline: 'The QTable open-source portal, engineering blog and docs, from the web experience and API services to self-hosting and AI workflows.' },
+  ar: { blog: 'المدونة', explore: 'استكشف', tagline: 'بوابة QTable مفتوحة المصدر مع المدونة الهندسية والوثائق: من تجربة الويب وخدمات API إلى الاستضافة الذاتية وسير عمل الذكاء الاصطناعي.' },
+  fr: { blog: 'Blog', explore: 'Explorer', tagline: "Le portail open source QTable, son blog d'ingénierie et sa documentation : de l'expérience web et des services API à l'auto-hébergement et aux workflows IA." },
+  ru: { blog: 'Блог', explore: 'Обзор', tagline: 'Открытый портал QTable, инженерный блог и документация: от веб-интерфейса и API до самостоятельного хостинга и ИИ-процессов.' },
+  ja: { blog: 'ブログ', explore: '見る', tagline: 'QTable オープンソースポータル、エンジニアリングブログ、ドキュメント。Web 体験と API サービスからセルフホスト、AI ワークフローまで。' },
+  ko: { blog: '블로그', explore: '살펴보기', tagline: 'QTable 오픈소스 포털, 엔지니어링 블로그, 문서: 웹 경험과 API 서비스부터 셀프 호스팅, AI 워크플로까지.' },
 }[locale];
 const nav = [
   { label: 'QTable', href: localHref('qtable/') },
@@ -38,7 +43,7 @@ const isNavActive = (href: string) => currentPath === href || currentPath.starts
 const alternates = SUPPORTED_LOCALES.map((code) => ({ code, settings: LOCALE_SETTINGS[code], href: localePath(code, route, base) }));
 ---
 <!doctype html>
-<html lang={localeInfo.lang} data-theme="dark" data-locale={locale}>
+<html lang={localeInfo.lang} dir={localeInfo.direction ?? 'ltr'} data-theme="dark" data-locale={locale}>
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><meta name="generator" content={Astro.generator}/><meta name="theme-color" content="#07111f"/><meta name="color-scheme" content="dark light"/><meta name="description" content={description}/>{noIndex && <meta name="robots" content="noindex,follow"/>}
   <meta property="og:type" content="website"/><meta property="og:site_name" content="QingZoneX"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical.toString()}/><meta property="og:image" content={socialImage.toString()}/><meta property="og:locale" content={localeInfo.ogLocale}/>{alternates.filter((item)=>item.code!==locale).map((item)=><meta property="og:locale:alternate" content={item.settings.ogLocale}/>)}
